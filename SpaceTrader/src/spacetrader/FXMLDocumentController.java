@@ -77,6 +77,7 @@ public class FXMLDocumentController implements Initializable {
                 //.message( "")
                 //.actions(Dialog.Actions.OK, Dialog.Actions.CANCEL)
                 .showConfirm();
+        // Should direct to a new screen upon hitting "yes" but it doesn't work. Anyone have ideas?
         if (response == Dialog.Actions.YES) {
             URL url = getClass().getResource("CharacterCreation.fxml");
             loader.setLocation(url);
