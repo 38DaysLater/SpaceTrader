@@ -19,7 +19,7 @@
       </ImageView>
         <Label fx:id="label" layoutX="216.0" layoutY="14.0" minHeight="16" minWidth="69" prefHeight="150.0" prefWidth="443.0" text="Space&#10;    Traders" textFill="#ffff2f">
          <font>
-            <Font name="OCR A Extended" size="64.0" />
+            <Font name="OCR A Extended" size="64.0" /> 
          </font>
       </Label>
       <Button fx:id="loadGameButton" alignment="CENTER" blendMode="HARD_LIGHT" layoutX="61.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleLoadButtonAction" text="Load Game">
