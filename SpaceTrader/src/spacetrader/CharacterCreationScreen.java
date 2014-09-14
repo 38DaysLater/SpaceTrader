@@ -58,7 +58,6 @@ public class CharacterCreationScreen extends Application {
         TextField tradeField = new TextField ();
         
         ok.setOnAction(new EventHandler<ActionEvent>() {
-            
             @Override
             public void handle(ActionEvent event) {
                 Character player = new Character();

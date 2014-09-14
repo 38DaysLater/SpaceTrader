@@ -28,7 +28,7 @@ public class Character {
             return ("Name = " + name + '\n' + "Pilot = " + pilot + '\n' + "Fight = " + fight + '\n' + "Trade = " + trade + '\n' + "Engineer = " + engineer);
         }
 	//setters
-        public void setName(String name) {name = name;}
+        public void setName(String name) {this.name = name;}
         
 	public void setPilot(int num){pilot += num;}
 
