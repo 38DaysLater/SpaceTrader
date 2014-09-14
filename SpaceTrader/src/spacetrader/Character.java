@@ -9,39 +9,50 @@ package spacetrader;
 public class Character {
 
 	//for constructor
-	String name;
-	int pilot, flight, trade, engineer; 
-	int health = 10; //arbitrary starting health
+	private String name;
+	private int pilot, fight, trade, engineer; 
+	private int health = 10; //arbitrary starting health
 
 	public Character(String n, int p, int f, int t, int e) {
 		name = n;
 		pilot = p;
-		flight = f;
+		fight = f;
 		trade = t; 
 		engineer = e; 
 	}
-
+        
+        public Character() {
+		
+	}
+        public String toString() {
+            return ("Name = " + name + '\n' + "Pilot = " + pilot + '\n' + "Fight = " + fight + '\n' + "Trade = " + trade + '\n' + "Engineer = " + engineer);
+        }
 	//setters
-	private void setPilot(int num){pilot += num;}
+        public void setName(String name) {name = name;}
+        
+	public void setPilot(int num){pilot += num;}
 
-	private void setFlight(int num){flight += num;}
+	public void setFight(int num){fight += num;}
 
-	private void setTrade(int num){trade += num;}
+	public void setTrade(int num){trade += num;}
 
-	private void setEngineer(int num){engineer += num;}
+	public void setEngineer(int num){engineer += num;}
 
-	private void setHealth(int num){health += num;}
+	public void setHealth(int num){health += num;}
 
 	//getters
-	private int getPilot(){return pilot;}
+        
+        public String getName() {return name;};
+        
+	public int getPilot(){return pilot;}
 
-	private int getFlight(){return flight;}
+	public int getFight(){return fight;}
 	
-	private int getTrade(){return trade;}
+	public int getTrade(){return trade;}
 
-	private int getEngineer(){return engineer;}
+	public int getEngineer(){return engineer;}
 
-	private int getHealth(){return health;}
+	public int getHealth(){return health;}
 
 
 }
