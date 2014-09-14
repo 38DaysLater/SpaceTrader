@@ -27,6 +27,7 @@ import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.action.Action;
 import static org.controlsfx.dialog.Dialog.Actions.NO;
 import static org.controlsfx.dialog.Dialog.Actions.YES;
+import org.controlsfx.dialog.Dialog.Actions;
 import org.controlsfx.dialog.Dialogs;
 //import org.controlsfx.dialog.Dialog.Actions;
 //import org.controlsfx.dialog.Dialog;
@@ -78,7 +79,7 @@ public class FXMLDocumentController implements Initializable {
                 //.actions(Dialog.Actions.OK, Dialog.Actions.CANCEL)
                 .showConfirm();
         // Should direct to a new screen upon hitting "yes" but it doesn't work. Anyone have ideas?
-        if (response == Dialog.Actions.YES) {
+        if (response == org.controlsfx.dialog.Dialog.Actions.YES) {
             URL url = getClass().getResource("CharacterCreation.fxml");
             loader.setLocation(url);
             loader.setBuilderFactory(new JavaFXBuilderFactory());
