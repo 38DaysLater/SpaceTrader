@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
@@ -22,6 +23,7 @@
             <Image url="@resources/STS115_Atlantis_undock_ISS_edit2.jpg" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" layoutX="15.0" layoutY="27.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="585.0" />
       <VBox layoutX="90.0" layoutY="150.0" prefHeight="192.0" prefWidth="469.0">
          <children>
             <Slider fx:id="pilotSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#pilotDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
@@ -42,7 +44,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider fx:id="flightSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#flightDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
+            <Slider fx:id="fightSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#flightDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -118,7 +120,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Trainer" textAlignment="CENTER" textFill="YELLOW">
+            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Trader" textAlignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="LilyUPC Italic" size="27.0" />
                </font>
@@ -139,12 +141,22 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <TextField layoutX="325.0" layoutY="38.0" opacity="0.33" prefHeight="57.0" prefWidth="203.0" promptText="Shepherd">
+      <TextField fx:id="nameBox" layoutX="325.0" layoutY="38.0" onAction="#nameHandler" opacity="0.62" prefHeight="57.0" prefWidth="203.0" promptText="Shepherd">
          <font>
             <Font name="LilyUPC" size="29.0" />
          </font>
       </TextField>
       <Label blendMode="HARD_LIGHT" layoutX="90.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" text="Enter Character Name:" textFill="YELLOW">
+         <font>
+            <Font name="LilyUPC Italic" size="34.0" />
+         </font>
+      </Label>
+      <Label blendMode="HARD_LIGHT" layoutX="90.0" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" text="Skill Points:" textFill="YELLOW">
+         <font>
+            <Font name="LilyUPC Italic" size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="spNumLabel" blendMode="HARD_LIGHT" layoutX="211.0" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" text="16" textFill="YELLOW">
          <font>
             <Font name="LilyUPC Italic" size="34.0" />
          </font>

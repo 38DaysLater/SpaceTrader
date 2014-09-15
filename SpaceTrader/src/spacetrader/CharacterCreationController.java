@@ -10,6 +10,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 
 /**
@@ -18,6 +22,22 @@ import javafx.scene.input.DragEvent;
  * @author shiro_000
  */
 public class CharacterCreationController implements Initializable {
+    @FXML
+    private Slider pilotSlider;
+    @FXML
+    private Slider fightSlider;
+    @FXML
+    private Slider tradeSlider;
+    @FXML
+    private Slider engineerSlider;
+    @FXML
+    private Button okBut;
+    @FXML
+    private Button cancelBut;
+    @FXML
+    private TextField nameBox;
+    @FXML
+    private Label spNumLabel;
 
     /**
      * Initializes the controller class.
@@ -44,11 +64,15 @@ public class CharacterCreationController implements Initializable {
     }
 
     @FXML
-    private void okButton(ActionEvent event) {
+    private void okButtonHandler(ActionEvent event) {
     }
 
     @FXML
-    private void cancelButton(ActionEvent event) {
+    private void cancelButtonHandel(ActionEvent event) {
+    }
+
+    @FXML
+    private void nameHandler(ActionEvent event) {
     }
     
 }
