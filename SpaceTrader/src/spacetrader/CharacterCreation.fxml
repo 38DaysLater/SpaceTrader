@@ -17,7 +17,7 @@
         <URL value="@charactercreation.css" />
     </stylesheets>
    <children>
-      <ImageView depthTest="ENABLE" fitHeight="415.0" fitWidth="600.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="3.0">
+      <ImageView depthTest="ENABLE" fitHeight="408.0" fitWidth="620.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-4.0">
          <image>
             <Image url="@resources/STS115_Atlantis_undock_ISS_edit2.jpg" />
          </image>
@@ -102,7 +102,7 @@
       <Button fx:id="cancelBut" layoutX="515.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelButtonHandel" text="Cancel" />
       <VBox alignment="CENTER" depthTest="DISABLE" layoutY="161.0" prefHeight="200.0" prefWidth="100.0" spacing="22.0" AnchorPane.topAnchor="161.0">
          <children>
-            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Pilot" textAlignment="CENTER">
+            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Pilot" textAlignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="LilyUPC Italic" size="27.0" />
                </font>
@@ -110,7 +110,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Fighter" textAlignment="CENTER">
+            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Fighter" textAlignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="LilyUPC Italic" size="27.0" />
                </font>
@@ -118,7 +118,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Trainer" textAlignment="CENTER">
+            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Trainer" textAlignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="LilyUPC Italic" size="27.0" />
                </font>
@@ -126,7 +126,7 @@
                   <Insets />
                </opaqueInsets>
             </Label>
-            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Engineer" textAlignment="CENTER">
+            <Label alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" text="Engineer" textAlignment="CENTER" textFill="YELLOW">
                <font>
                   <Font name="LilyUPC Italic" size="27.0" />
                </font>
@@ -144,7 +144,7 @@
             <Font name="LilyUPC" size="29.0" />
          </font>
       </TextField>
-      <Label blendMode="HARD_LIGHT" layoutX="90.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" text="Enter Character Name:">
+      <Label blendMode="HARD_LIGHT" layoutX="90.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" text="Enter Character Name:" textFill="YELLOW">
          <font>
             <Font name="LilyUPC Italic" size="34.0" />
          </font>
