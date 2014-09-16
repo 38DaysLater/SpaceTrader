@@ -5,6 +5,7 @@
  */
 package spacetrader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -101,14 +107,33 @@ public class CharacterCreationController implements Initializable {
 
     @FXML
     private void okButtonHandler(ActionEvent event) {
+        Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
+        
+        Stage stage = (Stage) okBut.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
 
     @FXML
     private void cancelButtonHandel(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("SpaceTrader");
+            stage.setScene(scene);
+            stage.show();
+
+//        //hide this current window
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
     }
 
     @FXML
     private void nameHandler(ActionEvent event) {
+        
     }
     
 }
