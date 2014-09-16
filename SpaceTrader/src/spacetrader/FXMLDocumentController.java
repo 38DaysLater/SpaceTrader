@@ -50,16 +50,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handleNewGameButtonAction(ActionEvent event) {
-        Parent root;
+      
+//        Parent root;
         try {
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("CharacterCreation.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("New Commander");
-        stage.setScene(new Scene(root, 450, 450));
-        stage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("CharacterCreation.fxml"));
 
-        //hide this current window (if this is whant you want
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("New Commander");
+            stage.setScene(scene);
+            stage.show();
+
+//        //hide this current window
+            ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
         }
     }
