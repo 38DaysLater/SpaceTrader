@@ -26,7 +26,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" layoutX="15.0" layoutY="27.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="585.0" />
       <VBox layoutX="90.0" layoutY="150.0" prefHeight="192.0" prefWidth="469.0">
          <children>
-            <Slider fx:id="pilotSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#pilotDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
+            <Slider fx:id="pilotSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider fx:id="fightSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#flightDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
+            <Slider fx:id="fightSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -62,7 +62,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider fx:id="tradeSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#tradeDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
+            <Slider fx:id="tradeSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -80,7 +80,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider fx:id="engineerSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" onDragDone="#engineerDone" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
+            <Slider fx:id="engineerSlider" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
