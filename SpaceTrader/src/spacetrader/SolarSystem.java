@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package myuniverse;
+package spacetrader;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +14,11 @@ public class SolarSystem {
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
-            
+    private final int NUM_PLANETS = 9;        
+        
+    
+    
+    
     public SolarSystem(String name, int x, int y) {
         HashSet<Integer> xHash = new HashSet<Integer>();
         HashSet<Integer> yHash = new HashSet<Integer>();
@@ -32,8 +31,8 @@ public class SolarSystem {
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
         
-        int size = rand.nextInt(2) + 1;
-        for (int index = 0; index < size; index++){
+        //int size = rand.nextInt(2) + 1;
+        for (int index = 0; index < NUM_PLANETS; index++){
             int xpos = rand.nextInt(SOLARSIZE);
             int ypos = rand.nextInt(SOLARSIZE);
             String pname = Planets.values()[rand.nextInt(119)].toString();
