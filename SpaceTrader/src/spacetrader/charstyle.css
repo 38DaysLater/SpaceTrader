@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 22, 2014, 4:05:09 PM
+    Author     : shiro_000
+*/
+
+@font-face {
+    font-family: OCR A Extended;
+    src: url('ocraextended.ttf');
+}
+
+#title {
+    -fx-font-family: 'OCR A Extended';
+    -fx-text-fill: yellow;
+    -fx-font-size: 49px;   
+}
+#charlabels {
+    -fx-font-family: 'OCR A Extended';
+    -fx-text-fill: yellow;
+    -fx-font-size: 22px;
+}
+#skilllabels {
+    -fx-font-family: 'OCR A Extended';
+    -fx-text-fill: yellow;
+    -fx-font-size: 18px;
+}
+
+.button {
+    -fx-font-family: 'OCR A Extended';
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+}
+.slider {
+    -fx-font: 20px "LilyUPC";
+    -fx-text-fill: yellow;
+    -fx-padding: 0;
+}
