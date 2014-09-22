@@ -10,14 +10,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="loadingPane" prefHeight="442.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="loadingPane" prefHeight="442.0" prefWidth="673.0" stylesheets="@charstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.FXMLDocumentController">
     <children>
       <ImageView fx:id="imageView" fitHeight="457.0" fitWidth="689.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/STS115_Atlantis_undock_ISS_edit2.jpg" />
          </image>
       </ImageView>
-        <Label fx:id="label" layoutX="216.0" layoutY="14.0" minHeight="16" minWidth="69" prefHeight="150.0" prefWidth="443.0" text="Space&#10;    Traders" textFill="#ffff2f">
+        <Label id="title" fx:id="label" layoutX="216.0" layoutY="14.0" minHeight="16" minWidth="69" prefHeight="150.0" prefWidth="443.0" text="Space&#10;    Traders" textFill="YELLOW">
          <font>
             <Font name="OCR A Extended" size="49.0" />
          </font>
