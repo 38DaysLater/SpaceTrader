@@ -7,7 +7,7 @@ package spacetrader;
 
 
 /**
- *
+ * This is an enumerated type for the technology level.
  * @author lsmoore
  */
 public enum TechLevel {

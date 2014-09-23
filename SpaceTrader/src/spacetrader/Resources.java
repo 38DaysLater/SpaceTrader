@@ -7,7 +7,7 @@ package spacetrader;
 
 
 /**
- *
+ * This is an enumerated type for the Resources.
  * @author lsmoore
  */
 public enum Resources {

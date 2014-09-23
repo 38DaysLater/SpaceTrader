@@ -6,7 +6,7 @@ package spacetrader;
  */
 
 /**
- *
+ * This is an enumerated type for the government type.
  * @author lsmoore
  */
 public enum GovernmentType {

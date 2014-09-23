@@ -1,8 +1,9 @@
 package spacetrader;
 /**
- *
+ * This is an enumerated type for the planets.
  * @author lsmoore
  */
+
 public enum Planets {
     Acamar,
     Adahn,		// The alternate personality for The Nameless One in Planescape: Torment
