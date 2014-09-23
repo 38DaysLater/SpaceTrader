@@ -20,6 +20,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -56,7 +58,14 @@ public class CharacterCreationController implements Initializable {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box maybe                    
+                    //dialog box start
+                      Dialogs.create()
+//                      .owner(stage)
+                      .title("OH NO!")
+                      .masthead("You ran out of skill points")
+                      .message( "Please be sure your points are not negative before you confirm.")
+                      .showWarning();
+                    //end dialog box                   
                     spNumLabel.setText(Integer.toString(sp-value));
                 } else {
                     pilotVal = newValue.intValue();
@@ -68,7 +77,14 @@ public class CharacterCreationController implements Initializable {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box maybe        
+                    //dialog box start
+                      Dialogs.create()
+//                      .owner(stage)
+                      .title("OH NO!")
+                      .masthead("You ran out of skill points")
+                      .message( "Please be sure your points are not negative before you confirm.")
+                      .showWarning();
+                    //end dialog box        
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     fightVal = newValue.intValue();
@@ -80,7 +96,14 @@ public class CharacterCreationController implements Initializable {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box maybe        
+                    //dialog box start
+                      Dialogs.create()
+//                      .owner(stage)
+                      .title("OH NO!")
+                      .masthead("You ran out of skill points")
+                      .message( "Please be sure your points are not negative before you confirm.")
+                      .showWarning();
+                    //end dialog box       
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     tradeVal = newValue.intValue();
@@ -92,7 +115,14 @@ public class CharacterCreationController implements Initializable {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box maybe
+                    //dialog box start
+                      Dialogs.create()
+//                      .owner(stage)
+                      .title("OH NO!")
+                      .masthead("You ran out of skill points")
+                      .message( "Please be sure your points are not negative before you confirm.")
+                      .showWarning();
+                    //end dialog box
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     enginVal = newValue.intValue();
@@ -104,23 +134,44 @@ public class CharacterCreationController implements Initializable {
 
     @FXML
     private void okButtonHandler(ActionEvent event) {
-        Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
-        
-//        Stage stage = (Stage) okBut.getScene().getWindow();
-//        // do what you have to do
-//        stage.close();
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
+        if (nameBox.getText() == null || nameBox.getText().isEmpty()) {
+            //dialog box start
+              Dialogs.create()
+              .title("No name")
+              .masthead("You do not have a name.")
+              .message( "Please enter a name before you confirm.")
+              .showWarning();
+            //end dialog box
+        } else if (Integer.parseInt(spNumLabel.getText()) < 0 ) {
+                        //dialog box start
+              Dialogs.create()
+              .title("OH NO!")
+              .masthead("You have negative skill points")
+              .message( "Please be sure your points are not negative before you confirm.")
+              .showWarning();
+            //end dialog box
+        } else {
+            Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
 
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Space Trader");
-            stage.setScene(scene);
-            stage.show();
+    //        Stage stage = (Stage) okBut.getScene().getWindow();
+    //        // do what you have to do
+    //        stage.close();
+            try {
+                Universe uni = new Universe();
+                System.out.println(uni);
+                
+                Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
 
-//        //hide this current window
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Space Trader");
+                stage.setScene(scene);
+                stage.show();
+
+    //        //hide this current window
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            } catch (IOException e) {
+            }
         }
     }
 

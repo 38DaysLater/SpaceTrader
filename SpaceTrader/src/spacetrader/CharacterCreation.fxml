@@ -13,7 +13,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@charstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.CharacterCreationController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@resources/charstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.CharacterCreationController">
    <children>
       <ImageView depthTest="ENABLE" fitHeight="408.0" fitWidth="620.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-4.0">
          <image>
@@ -23,7 +23,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="379.0" layoutX="6.0" layoutY="14.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="608.0" />
       <VBox layoutX="100.0" layoutY="149.0" prefHeight="192.0" prefWidth="469.0">
          <children>
-            <Slider id="pslide" fx:id="pilotSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true" stylesheets="@charstyle.css">
+            <Slider id="pslide" fx:id="pilotSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -41,7 +41,7 @@
                   </SepiaTone>
                </effect>
             </Slider>
-            <Slider id="fslide" fx:id="fightSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true" stylesheets="@charstyle.css">
+            <Slider id="fslide" fx:id="fightSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -59,7 +59,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider id="tslide" fx:id="tradeSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true" stylesheets="@charstyle.css">
+            <Slider id="tslide" fx:id="tradeSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -77,7 +77,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Slider>
-            <Slider id="eslide" fx:id="engineerSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true" stylesheets="@charstyle.css">
+            <Slider id="eslide" fx:id="engineerSlider" blendMode="ADD" majorTickUnit="1.0" max="10.0" minorTickCount="0" rotate="-5.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true">
                <effect>
                   <SepiaTone>
                      <input>
@@ -99,7 +99,7 @@
       </VBox>
       <Button fx:id="okBut" layoutX="456.0" layoutY="355.0" mnemonicParsing="false" onAction="#okButtonHandler" text="Ok" />
       <Button fx:id="cancelBut" layoutX="515.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelButtonHandel" text="Cancel" />
-      <VBox alignment="CENTER" depthTest="DISABLE" layoutY="149.0" prefHeight="209.0" prefWidth="100.0" spacing="22.0" stylesheets="@charstyle.css" AnchorPane.topAnchor="149.0">
+      <VBox alignment="CENTER" depthTest="DISABLE" layoutY="149.0" prefHeight="209.0" prefWidth="100.0" spacing="22.0" AnchorPane.topAnchor="149.0">
          <children>
             <Label id="skilllabels" alignment="CENTER" blendMode="HARD_LIGHT" lineSpacing="10.0" prefHeight="31.0" prefWidth="55.0" text="Pilot" textAlignment="CENTER" textFill="YELLOW">
                <font>
