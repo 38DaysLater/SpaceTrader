@@ -7,7 +7,9 @@ package spacetrader;
 import java.util.Random;
 
 /**
- *
+ * This class represents a Planet.  It is instantiated by the Solar System class
+ * It contains its name, position, police level, tech level, resources, 
+ * government type, chance of meeting pirates, and its solar system
  * @author lsmoore
  */
 public class Planet {
@@ -20,6 +22,11 @@ public class Planet {
     private GovernmentType govType;
     private SolarSystem solarSystem;
     
+ /**
+ * This is the constructor. Solar system passes in the name, coordinates, and 
+ * what solar system it belongs to.  It randomly generates the rest.  
+ * @param a String of the name, two ints for x and y, and the solar system.
+ */
     
     public Planet(String name, int x, int y, SolarSystem ss){
         this.name = name;
@@ -34,6 +41,12 @@ public class Planet {
         govType = GovernmentType.values()[rand.nextInt(6)];
         resources = Resources.values()[rand.nextInt(13)];
     }
+    
+    /**
+ * Displays the contents of the solar system 
+ * @param none
+ * @return a string of the contents
+ */
     
     public String toString() {
         String message;
