@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
+ * This class represents a Solar System.  It is instantiated by the Universe class
+ * It contains a list of planets, its name, position, size, and number of planets
  * @author lsmoore
  */
 public class SolarSystem {
@@ -17,7 +18,11 @@ public class SolarSystem {
     private final int NUM_PLANETS = 9;        
         
     
-    
+/**
+ * This is the constructor. Universe passes in the name and coordinates
+ * @param a String of the name and two ints for x and y
+ */
+ 
     
     public SolarSystem(String name, int x, int y) {
         HashSet<Integer> xHash = new HashSet<Integer>();
@@ -31,7 +36,7 @@ public class SolarSystem {
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
         
-        //int size = rand.nextInt(2) + 1;
+        //randomely generates the positions, name, and other characteristcs of the planets
         for (int index = 0; index < NUM_PLANETS; index++){
             int xpos = rand.nextInt(SOLARSIZE);
             int ypos = rand.nextInt(SOLARSIZE);
@@ -52,6 +57,12 @@ public class SolarSystem {
         
     }
     
+/**
+ * Gets a list of the planets
+ * @param none
+ * @return a list of the planets
+ */
+    
     public List<Planet> getPlanets() {
         ArrayList<Planet> list = new ArrayList<Planet>();
         for (Planet planet: planetSet) {
@@ -60,10 +71,20 @@ public class SolarSystem {
         return list;
     }
     
+/**
+ * returns the name of the solar system
+ * @param none
+ * @return a string of the name
+ */
     public String getName(){
         return name;
     }
     
+/**
+ * Displays the contents of the solar system 
+ * @param none
+ * @return a string of the contents
+ */
     public String toString(){
         String message;
         message = "Solar System Name: " + name;
@@ -72,14 +93,10 @@ public class SolarSystem {
         List<Planet> list = getPlanets();
         for (Planet planet: list){
             message = message + "\n\t" + planet.toString();
-            message = message + "\n--------------------------------------";
+            message = message + "\n--------------------------------------\n";
         }
         
         return message;
     }
-    /*
-    public static void main(String[] args){
-        SolarSystem zeSS = new SolarSystem("Afiq", 5, 5);
-        System.out.println(zeSS.toString());
-    }   */
+    
 }
