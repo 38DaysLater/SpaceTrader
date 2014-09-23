@@ -77,9 +77,9 @@ public class SolarSystem {
         
         return message;
     }
-    
+    /*
     public static void main(String[] args){
         SolarSystem zeSS = new SolarSystem("Afiq", 5, 5);
         System.out.println(zeSS.toString());
-    }   
+    }   */
 }

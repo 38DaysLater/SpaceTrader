@@ -8,10 +8,11 @@ import java.io.IOException;
 
 
 public class Universe {
-
+        private final int NUM_SOLAR_SYSTEMS = 5;
+        SolarSystem[] SSArray = new SolarSystem[NUM_SOLAR_SYSTEMS];
+        
 	public Universe() throws IOException{
 		//set up total number of SS we want
-		final int NUM_SOLAR_SYSTEMS = 30;
 		
 		//sets up string of solar system name creation
 		String[] solarSystemNames = new String[NUM_SOLAR_SYSTEMS];
@@ -50,9 +51,8 @@ public class Universe {
 		//creating a solar system
 		int i = 0;
 		for(int[] xy: coordinates) {
-			System.out.print(solarSystemNames[i] + ": ");
-			System.out.println(xy[0] + "  " + xy[1]);
 			SolarSystem ss = new SolarSystem(solarSystemNames[i], xy[0], xy[1]);
+                        SSArray[i] = ss;
 			i++;
 		}
 		
@@ -60,15 +60,23 @@ public class Universe {
 
         
 	}//ends the constructor
-	@Override
+
+        
+        @Override
 	public String toString(){
-		//
-		return null;
+            String returnString = "";
+            for(int i = 0; i < NUM_SOLAR_SYSTEMS; i ++){
+                returnString = returnString + SSArray[i].toString();
+            }
+             
+            return returnString;
 	}
 	public static void main(String args[]) throws IOException{
 		Universe u = new Universe();
-		
-		
+                System.out.println();
+                System.out.print(u);
+                
+			
 	}
 	
 	
