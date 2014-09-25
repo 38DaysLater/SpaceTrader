@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -9,15 +10,271 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab text="Untitled Tab 1">
+    <Tab text="Planet Name">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </Tab>
-    <Tab text="Untitled Tab 2">
+    <Tab text="Market">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Accordion layoutY="52.0" prefHeight="445.0" prefWidth="796.0">
+                    <panes>
+                      <TitledPane animated="false" text="Consumables">
+                           <content>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane layoutX="-1.0" prefHeight="327.0" prefWidth="390.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Button fx:id="bcButt" mnemonicParsing="false" onAction="#buyConHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Food" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Water" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Medicine" GridPane.rowIndex="3" />
+                                                <TextField fx:id="bfoodText" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="bwatText" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="bmedText" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="bfoodP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="bWatP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="bmedP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="bfoodQuan" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="bwatQuan" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="bmedQuan" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane prefHeight="327.0" prefWidth="390.0">
+                                             <children>
+                                                <Button fx:id="scButt" mnemonicParsing="false" onAction="#sellConHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Food" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Water" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Medicine" GridPane.rowIndex="3" />
+                                                <TextField fx:id="sfoodText" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="swatText" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="smedText" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="sfoodP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="swatP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="smedP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="sfoodQuan" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="swatQuan" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="smedQuan" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Equipment">
+                           <content>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane prefHeight="327.0" prefWidth="390.0">
+                                             <children>
+                                                <Button fx:id="bEButt" mnemonicParsing="false" onAction="#buyEquiHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Firearms" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Machines" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Robots" GridPane.rowIndex="3" />
+                                                <TextField fx:id="bFireTxt" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="bMacTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="bRobTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="bFireP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="bMacP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="bRobP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="bFireQ" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="bMacQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="bRobQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane prefHeight="327.0" prefWidth="390.0">
+                                             <children>
+                                                <Button fx:id="sEButt" mnemonicParsing="false" onAction="#sellEquiHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Firearms" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Machines" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Robots" GridPane.rowIndex="3" />
+                                                <TextField fx:id="sFireTxt" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="sMacTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="sRobTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="sFireP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="sMacP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="sRobP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="sFireQ" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="sMacQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="sRobQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children></AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Misc.">
+                           <content>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane prefHeight="327.0" prefWidth="390.0">
+                                             <children>
+                                                <Button fx:id="bMButt" mnemonicParsing="false" onAction="#buyMiscHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Furs" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Ore" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Games" GridPane.rowIndex="3" />
+                                                <TextField fx:id="bFursTxt" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="bOreTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="bGamTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="bFursP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="bOreP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="bGamP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="bFursQ" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="bOreQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="bGamQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children></AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <GridPane prefHeight="327.0" prefWidth="390.0">
+                                             <children>
+                                                <Button fx:id="sMButt" mnemonicParsing="false" onAction="#sellMiscHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="126.0" text="Item" textAlignment="CENTER" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="107.0" text="Price" GridPane.columnIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="105.0" text="Quantity" GridPane.columnIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Furs" GridPane.rowIndex="1" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="132.0" text="Ore" GridPane.rowIndex="2" />
+                                                <Label alignment="CENTER" prefHeight="27.0" prefWidth="128.0" text="Games" GridPane.rowIndex="3" />
+                                                <TextField fx:id="sFursTxt" prefHeight="39.0" prefWidth="51.0" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <TextField fx:id="sOreTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <TextField fx:id="sGamTxt" promptText="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="sFursP" alignment="CENTER" prefHeight="27.0" prefWidth="103.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="sOreP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="sGamP" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="sFursQ" alignment="CENTER" layoutX="118.0" layoutY="237.0" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Label fx:id="sOreQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <Label fx:id="sGamQ" alignment="CENTER" prefHeight="27.0" prefWidth="101.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                             </children>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="110.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="103.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="102.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </children></AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="124.0" text="Buying" />
+                  <Label layoutX="415.0" layoutY="14.0" prefHeight="27.0" prefWidth="82.0" text="Selling" />
+               </children></AnchorPane>
       </content>
     </Tab>
+      <Tab text="Universe">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
   </tabs>
 </TabPane>
