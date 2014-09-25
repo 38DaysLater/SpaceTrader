@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 
 public class Universe {
-        private final int NUM_SOLAR_SYSTEMS = 5;
+        private final int NUM_SOLAR_SYSTEMS = 3;
         SolarSystem[] SSArray = new SolarSystem[NUM_SOLAR_SYSTEMS];
         
         

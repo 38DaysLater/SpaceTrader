@@ -15,7 +15,7 @@ public class SolarSystem {
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
-    private final int NUM_PLANETS = 9;        
+    private final int NUM_PLANETS = 3;        
         
     
 /**
