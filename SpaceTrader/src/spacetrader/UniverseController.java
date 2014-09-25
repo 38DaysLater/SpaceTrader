@@ -7,7 +7,12 @@ package spacetrader;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,6 +20,54 @@ import javafx.fxml.Initializable;
  * @author shiro_000
  */
 public class UniverseController implements Initializable {
+    @FXML
+    private Button bcButt;
+    @FXML
+    private TextField bfoodText, bwatText, bmedText;
+    @FXML
+    private Label bfoodP, bWatP, bmedP;
+    @FXML
+    private Label bfoodQuan, bwatQuan, bmedQuan;
+    @FXML
+    private Button scButt;
+    @FXML
+    private TextField sfoodText, swatText, smedText;
+    @FXML
+    private Label sfoodP, swatP, smedP;
+    @FXML
+    private Label sfoodQuan, swatQuan, smedQuan;
+    @FXML
+    private Button bEButt;
+    @FXML
+    private TextField bFireTxt, bMacTxt, bRobTxt;
+    @FXML
+    private Label bFireP, bMacP, bRobP;
+    @FXML
+    private Label bFireQ, bMacQ, bRobQ;
+    @FXML
+    private Button sEButt;
+    @FXML
+    private TextField sFireTxt, sMacTxt, sRobTxt;
+    @FXML
+    private Label sFireP, sMacP, sRobP;
+    @FXML
+    private Label sFireQ, sMacQ, sRobQ;
+    @FXML
+    private Button bMButt;
+    @FXML
+    private TextField bFursTxt, bOreTxt, bGamTxt;
+    @FXML
+    private Label bFursP, bOreP, bGamP;
+    @FXML
+    private Label bFursQ, bOreQ, bGamQ;
+    @FXML
+    private Button sMButt;
+    @FXML
+    private TextField sFursTxt, sOreTxt, sGamTxt;
+    @FXML
+    private Label sFursP, sOreP, sGamP;
+    @FXML
+    private Label sFursQ, sOreQ, sGamQ;
 
     /**
      * Initializes the controller class.
@@ -23,5 +76,29 @@ public class UniverseController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void buyConHandle(ActionEvent event) {
+    }
+
+    @FXML
+    private void sellConHandle(ActionEvent event) {
+    }
+
+    @FXML
+    private void buyEquiHandle(ActionEvent event) {
+    }
+
+    @FXML
+    private void sellEquiHandle(ActionEvent event) {
+    }
+
+    @FXML
+    private void buyMiscHandle(ActionEvent event) {
+    }
+
+    @FXML
+    private void sellMiscHandle(ActionEvent event) {
+    }
     
 }
