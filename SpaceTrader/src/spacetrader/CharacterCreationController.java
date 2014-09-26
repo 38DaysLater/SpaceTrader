@@ -53,19 +53,11 @@ public class CharacterCreationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Take in values from sliders and update skillpoint label
         pilotSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box start
-                      Dialogs.create()
-//                      .owner(stage)
-                      .title("OH NO!")
-                      .masthead("You ran out of skill points")
-                      .message( "Please be sure your points are not negative before you confirm.")
-                      .showWarning();
-                    //end dialog box                   
                     spNumLabel.setText(Integer.toString(sp-value));
                 } else {
                     pilotVal = newValue.intValue();
@@ -76,15 +68,7 @@ public class CharacterCreationController implements Initializable {
         fightSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
-                if (value > sp) {
-                    //dialog box start
-                      Dialogs.create()
-//                      .owner(stage)
-                      .title("OH NO!")
-                      .masthead("You ran out of skill points")
-                      .message( "Please be sure your points are not negative before you confirm.")
-                      .showWarning();
-                    //end dialog box        
+                if (value > sp) {       
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     fightVal = newValue.intValue();
@@ -95,15 +79,7 @@ public class CharacterCreationController implements Initializable {
         tradeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
-                if (value > sp) {
-                    //dialog box start
-                      Dialogs.create()
-//                      .owner(stage)
-                      .title("OH NO!")
-                      .masthead("You ran out of skill points")
-                      .message( "Please be sure your points are not negative before you confirm.")
-                      .showWarning();
-                    //end dialog box       
+                if (value > sp) {      
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     tradeVal = newValue.intValue();
@@ -115,14 +91,6 @@ public class CharacterCreationController implements Initializable {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
                 if (value > sp) {
-                    //dialog box start
-                      Dialogs.create()
-//                      .owner(stage)
-                      .title("OH NO!")
-                      .masthead("You ran out of skill points")
-                      .message( "Please be sure your points are not negative before you confirm.")
-                      .showWarning();
-                    //end dialog box
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     enginVal = newValue.intValue();
@@ -132,8 +100,13 @@ public class CharacterCreationController implements Initializable {
         });
     }    
 
+    /**
+     * Handles when the ok button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void okButtonHandler(ActionEvent event) {
+        //checks to see if there was a name inputed
         if (nameBox.getText() == null || nameBox.getText().isEmpty()) {
             //dialog box start
               Dialogs.create()
@@ -142,8 +115,9 @@ public class CharacterCreationController implements Initializable {
               .message( "Please enter a name before you confirm.")
               .showWarning();
             //end dialog box
+        //makes sure not too many skill points are used
         } else if (Integer.parseInt(spNumLabel.getText()) < 0 ) {
-                        //dialog box start
+            //dialog box start
               Dialogs.create()
               .title("OH NO!")
               .masthead("You have negative skill points")
@@ -151,11 +125,8 @@ public class CharacterCreationController implements Initializable {
               .showWarning();
             //end dialog box
         } else {
+            //instantiates character and Universe, then brings up Universe screen 
             Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
-
-    //        Stage stage = (Stage) okBut.getScene().getWindow();
-    //        // do what you have to do
-    //        stage.close();
             try {
                 Universe uni = new Universe();
                 System.out.println(uni);
@@ -168,15 +139,20 @@ public class CharacterCreationController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
 
-    //        //hide this current window
+    //        //hide current window
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
             }
         }
     }
-
+    
+    /**
+     * Handles when the cancel button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void cancelButtonHandel(ActionEvent event) {
+        //hides this window and brings up the start screen
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
@@ -192,6 +168,10 @@ public class CharacterCreationController implements Initializable {
         }
     }
 
+    /**
+     * Handles when the cancel button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void nameHandler(ActionEvent event) {
         

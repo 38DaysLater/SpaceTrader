@@ -45,13 +45,15 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
 
+    /**
+     * Handles when the new game button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void handleNewGameButtonAction(ActionEvent event) {
-      
-//        Parent root;
         try {
             Parent root = FXMLLoader.load(getClass().getResource("CharacterCreation.fxml"));
 
@@ -66,11 +68,19 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException e) {
         }
     }
-
+    
+    /**
+     * Handles when the load game button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void handleLoadButtonAction(ActionEvent event) {
     }
 
+    /**
+     * Handles when the Option button is clicked
+     * @param ActionEvent event
+     */
     @FXML
     private void handleOptionButtonAction(ActionEvent event) {
     }
