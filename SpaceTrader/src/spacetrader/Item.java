@@ -1,5 +1,7 @@
 package spacetrader;
 
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -53,7 +55,8 @@ public class Item {
     
     public void calcFinalPrice(RandConditions rc1, int techLevel) {
         double mult = calcCondtionMultiplyer(rc1);
-        finalPrice = (int) mult * basePrice + 3*2 * (IPL * (techLevel - MTLP)) + Var;
+        Random rand = new Random();
+        finalPrice = (int) mult * basePrice + 3*2 * (IPL * (techLevel - MTLP)) + rand.nextInt(Var);
     }
 /**
  * Gets the name
