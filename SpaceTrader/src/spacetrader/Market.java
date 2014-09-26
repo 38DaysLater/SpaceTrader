@@ -44,14 +44,17 @@ public class Market {
         for (Item item: Items.getList()) {
             if (techLevel >= item.getMTLP()) {
                 item.calcFinalPrice(randCond1, techLevel);
+                //keepign track of the final prices of itme to be placed in inventory
                 priceList.put(item.getName(), item);
-
+                
+                //adding the item to the inventory
                 inventory.add(item, NUM_ITEMS);
             }
         }
     }
     
-    public void sellItem(String itemName) {
+    //incomplete
+    public void sellItem(String itemName, Character player) {
         if (priceList.containsKey(itemName)){
             Item currItem = priceList.get(itemName);
             int price = currItem.getFinalPrice();
@@ -60,7 +63,8 @@ public class Market {
         }
     }
     
-    public void BuyItem(Item item) {
+    //incomplete
+    public void BuyItem(Item item, Character player) {
         if (item.getMTLU() < techLevel) {
             
         }

@@ -59,4 +59,31 @@ public class Items {
     public static ArrayList<Item> getList() {
         return list;
     }
+    
+    public static Item getItem(String name) {
+        if (name.equals("Water")) {
+            return list.get(0);
+        } else if(name.equals("Furs")){
+            return list.get(1);
+         } else if (name.equals("Food")){
+             return list.get(2);
+         } else if (name.equals("Ore")){
+             return list.get(3);
+         } else if (name.equals("Games")){
+             return list.get(4);
+         } else if (name.equals("Firearms")){
+             return list.get(5);
+         } else if (name.equals("Medicine")){
+             return list.get(6);
+         } else if (name.equals("Machines")){
+             return list.get(7);
+         } else if (name.equals("Narcotics")){
+             return list.get(8);
+         } else if (name.equals("Robots")){
+             return list.get(9);
+         } else {
+             return null;
+         }
+    }
+    
 }
