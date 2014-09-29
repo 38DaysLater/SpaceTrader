@@ -64,5 +64,20 @@ public class Planet {
         
         return message;
     }
+    
+    
+    
+    //getters
+    
+    public int[] getLocation(){
+        int[] location = new int[2];
+        location[0] = x;
+        location[1] = y;
+        return location;
+    }
+    
+    public String getPlanetName(){
+        return name;
+    }
    
 }
