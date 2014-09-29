@@ -40,7 +40,7 @@
                                               <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Button fx:id="bcButt" mnemonicParsing="false" onAction="#buyConHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
@@ -113,7 +113,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children>
@@ -167,7 +167,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children>
@@ -213,7 +213,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -266,7 +266,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -311,7 +311,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
