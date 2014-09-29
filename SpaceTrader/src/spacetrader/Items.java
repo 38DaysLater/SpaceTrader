@@ -15,6 +15,8 @@ public class Items {
     private static ArrayList<Item> list;
     
     static {
+        list = new ArrayList<Item>();
+        
         Item water = new Item(0, 0, 2, 30, 3, 4, RandConditions.DROUGHT, 
                 RandConditions.LOTSOFWATER, RandConditions.DESERT, "Water");
         list.add(water);
