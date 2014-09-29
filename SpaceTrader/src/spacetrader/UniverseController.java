@@ -8,10 +8,12 @@ package spacetrader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 
 /**
@@ -20,6 +22,10 @@ import javafx.scene.control.TextField;
  * @author shiro_000
  */
 public class UniverseController implements Initializable {
+    @FXML
+    private Tab planetNameTab;
+    @FXML
+    private Tab marketTab;
     @FXML
     private Button bcButt;
     @FXML
@@ -75,8 +81,9 @@ public class UniverseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        planetNameTab.setText("Mordor");
     }    
-
+    
     @FXML
     private void buyConHandle(ActionEvent event) {
     }
@@ -99,6 +106,18 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void sellMiscHandle(ActionEvent event) {
+    }
+    
+    @FXML
+    private void PlanetNameTabSelected(Event event) {
+    }
+    
+    @FXML
+    private void marketTabSelected(Event event) {
+    }
+
+    @FXML
+    private void universeTabSelected(Event event) {
     }
     
 }

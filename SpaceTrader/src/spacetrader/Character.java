@@ -54,5 +54,11 @@ public class Character {
 
 	public int getHealth(){return health;}
 
+        Ship s = new Ship();
+        //make ship class. That has cargo hold.  That's where the inventory of the player goes
+        //Every ship has an inventory, and every characater has a ship
+        //when buying and selling, the character class needs methods to edit the inventory of the ship
+        
+        
 
 }

@@ -11,12 +11,12 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.UniverseController">
   <tabs>
-    <Tab text="Planet Name">
+    <Tab fx:id="planetNameTab" onSelectionChanged="#PlanetNameTabSelected" text="Planet Name">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
       </content>
     </Tab>
-    <Tab text="Market">
+    <Tab fx:id="marketTab" onSelectionChanged="#marketTabSelected" text="Market">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -40,7 +40,7 @@
                                               <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                               <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
                                                 <Button fx:id="bcButt" mnemonicParsing="false" onAction="#buyConHandle" prefHeight="39.0" prefWidth="84.0" text="OK" GridPane.columnIndex="3" GridPane.rowIndex="4" />
@@ -113,7 +113,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children>
@@ -167,7 +167,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children>
@@ -213,7 +213,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -266,7 +266,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -311,7 +311,7 @@
                                                 <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
                                        </children></AnchorPane>
@@ -332,7 +332,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Universe">
+      <Tab onSelectionChanged="#universeTabSelected" text="Universe">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
