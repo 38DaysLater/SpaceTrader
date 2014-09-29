@@ -102,7 +102,7 @@ public class Item {
     public boolean equals(Object ob1) {
         if (ob1 instanceof Item){
             Item it2 = (Item) ob1;
-            if (finalPrice == it2.finalPrice && name.equals(it2.name)) {
+            if (name.equals(it2.name)) {
                 return true;
             }
             return false;
