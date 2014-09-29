@@ -77,6 +77,10 @@ public class Item {
     public int getFinalPrice() {
         return finalPrice;
     }
+    
+    public void setFinalPrice(int number) {
+        finalPrice = number;
+    }
 
 /**
  * A helper method that determines the effect of the random condition

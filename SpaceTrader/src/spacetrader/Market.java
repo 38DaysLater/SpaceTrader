@@ -48,7 +48,7 @@ public class Market {
                 priceList.put(item.getName(), item);
                 
                 //adding the item to the inventory
-                inventory.add(item, NUM_ITEMS);
+                inventory.add(item.getName(), NUM_ITEMS);
             }
         }
     }
@@ -59,7 +59,7 @@ public class Market {
             Item currItem = priceList.get(itemName);
             int price = currItem.getFinalPrice();
             money += price;
-            inventory.removeItem(currItem);
+            //inventory.removeItem(currItem);
         }
     }
     

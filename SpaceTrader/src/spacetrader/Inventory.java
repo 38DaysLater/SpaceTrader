@@ -15,14 +15,41 @@ import java.util.Hashtable;
  */
 public class Inventory {
     
-    private Hashtable<Item, Integer> list;
+    private Hashtable<String, ItemWrapper> list;
+    
+    private class ItemWrapper {
+        private Item item;
+        private int count;
+        
+        public ItemWrapper(Item item) {
+            this.item = item;
+            count = 0;
+        }
+        
+        public ItemWrapper(Item item, int count) {
+            this.item = item;
+            this.count = count;
+        }
+        
+        public void incrementCount() {
+            count++;
+        }
+        
+        public void decrementCount() {
+            count--;
+        }
+        
+        public void addCount(int num) {
+            count += num;
+        }
+    }
 
 /**
  * This is the constructor. It creates an empty hashtable to store the items in
  * @param None
  */
     public Inventory() {
-        list = new Hashtable<Item, Integer>();
+        list = new Hashtable<String, ItemWrapper>();
     }
 /**
  * Adds an item to the list (aka hashtable)
@@ -30,14 +57,20 @@ public class Inventory {
  * @return None
  */
     
-    public void add(Item item) {
+    public void add(String name) {
+        if (Items.getItem(name) == null) {
+            return;
+        }
         //if the item is alread in the inventory, increment its count by 1
-        if (list.contains(item)){
-            int numInList = list.remove(item);
-            list.put(item, numInList + 1);
+        if (list.contains(name)){
+            ItemWrapper iw = list.remove(name);
+            iw.incrementCount();
+            list.put(name, iw);
         } else {
             // the item isn't in the inventory, so add it along with a count of 1
-            list.put(item, 1);
+            Item currItem = Items.getItem(name);
+            ItemWrapper iw = new ItemWrapper(currItem);
+            list.put(name, iw);
         }
     }
     
@@ -47,14 +80,21 @@ public class Inventory {
  * @return None
  */
     
-    public void add(Item item, int num) {
+    public void add(String name, int num) {
+        if (Items.getItem(name) == null) {
+            return;
+        }
         //if the item is alread in the inventory, increment its count by 1
-        if (list.contains(item)){
-            int numInList = list.remove(item);
-            list.put(item, numInList + num);
+        if (list.contains(name)){
+            ItemWrapper iw = list.remove(name);
+            iw.addCount(num);
+            list.put(name, iw);
         } else {
             // the item isn't in the inventory, so add it along with a count of 1
-            list.put(item, num);
+            Item currItem = Items.getItem(name);
+            ItemWrapper iw = new ItemWrapper(currItem);
+            iw.addCount(num);
+            list.put(name, iw);
         }
     }
 /**
@@ -63,12 +103,23 @@ public class Inventory {
  * @return the number of times it occurs in the hashtable
  */
 
-    public int getItemCount(Item item) {
-        if (list.contains(item)){
-            return list.get(item);
+    public int getItemCount(String name) {
+        if (list.contains(name)) {
+            ItemWrapper iw =  list.get(name);
+            return iw.count;
         } else {
             // the item isn't in the inventory, so its count is zero
             return 0;
+        }
+    }
+    
+    public int getItemPrice(String name) {
+        if (list.contains(name)) {
+            ItemWrapper iw =  list.get(name);
+            return iw.item.getFinalPrice();
+        } else {
+            // the item isn't in the inventory, so its count is zero
+            return -1;
         }
     }
     
@@ -78,18 +129,19 @@ public class Inventory {
  * @return how many items of this type are still left (-1 if not present at all)
  */
     
-    public int removeItem(Item item) {
-        if (list.contains(item)){
+    public int removeItem(String name) {
+        if (list.contains(name)){
             // there is at least one instance of the item in the inventory
-            int count = list.get(item);
-            list.remove(item);
+            int count = list.get(name).count;
+            ItemWrapper iw = list.remove(name);
             
             //if there is only one item, remove it alltogether from the hastable
-            if (count == 1) {
+            if (iw.count == 1) {
                 return 0;
             //else, just decrement its count by one
             } else {
-                list.put(item, count - 1);
+                iw.decrementCount();
+                list.put(iw.item.getName(), iw);
                 return count - 1;
             }
         } else {
