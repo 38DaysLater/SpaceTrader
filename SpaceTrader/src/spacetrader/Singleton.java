@@ -12,19 +12,24 @@ package spacetrader;
  */
 public class Singleton {
     
-    private Character c; 
-    private Universe u; 
+    private static Character c; 
+    private static Universe u; 
     
-    public Singleton(Character cha, Universe uni){
-        c = cha;
-        u = uni; 
+    public static void  setCharacter(Character ch){
+        c = ch;
     }
+    
+    public static void setUniverse(Universe uni){
+        u = uni;
+    }
+    
+    
 
-    public Character getCharacter(){
+    public static Character getCharacter(){
         return c;
     }
     
-    public Universe getUniverse(){
+    public static Universe getUniverse(){
         return u;
     }
     
