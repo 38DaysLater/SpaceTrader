@@ -65,8 +65,6 @@ public class Planet {
         return message;
     }
     
-    
-    
     //getters
     
     public int[] getLocation(){
@@ -78,6 +76,11 @@ public class Planet {
     
     public String getPlanetName(){
         return name;
+    }
+    
+    
+    public Market getMarket(){
+        return market;
     }
    
 }
