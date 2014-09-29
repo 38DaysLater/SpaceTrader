@@ -80,6 +80,12 @@ public class SolarSystem {
         return name;
     }
     
+    public Planet getPlanet(int i){
+        Object[] PArray = planetSet.toArray();
+        return (Planet)PArray[i];
+    }
+    
+    
 /**
  * Displays the contents of the solar system 
  * @param none
