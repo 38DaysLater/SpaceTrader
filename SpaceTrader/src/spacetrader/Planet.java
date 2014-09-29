@@ -21,6 +21,7 @@ public class Planet {
     private Resources resources;
     private GovernmentType govType;
     private SolarSystem solarSystem;
+    private Market market;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -40,9 +41,11 @@ public class Planet {
         techLevel = TechLevel.values()[rand.nextInt(8)];
         govType = GovernmentType.values()[rand.nextInt(6)];
         resources = Resources.values()[rand.nextInt(13)];
+        
+        market = new Market(techLevel.ordinal(), resources.ordinal());
     }
     
-    /**
+ /**
  * Displays the contents of the solar system 
  * @param none
  * @return a string of the contents
@@ -60,6 +63,21 @@ public class Planet {
         //message = message + "\n\tSolar System: " + solarSystem.getName();
         
         return message;
+    }
+    
+    
+    
+    //getters
+    
+    public int[] getLocation(){
+        int[] location = new int[2];
+        location[0] = x;
+        location[1] = y;
+        return location;
+    }
+    
+    public String getPlanetName(){
+        return name;
     }
    
 }
