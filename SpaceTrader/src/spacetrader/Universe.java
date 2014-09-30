@@ -103,10 +103,8 @@ public class Universe {
             return returnString;
 	}
         
-        public Planet getCurrentPlanet(int SSNum, int planetNum){
-            SolarSystem ss = SSArray[SSNum];
-            Planet p = ss.getPlanet(planetNum);            
-            return p;
+        public SolarSystem getSolarSystem(int SSNum){
+            return SSArray[SSNum];
         }
 
 	
