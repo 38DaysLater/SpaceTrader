@@ -466,7 +466,10 @@ public class UniverseController implements Initializable {
     @FXML
     private void universeTabSelected(Event event) {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
-        
+        SolarSystem ss = cha.getCurrentSolarSystem();
+//        for (int i = 0; i < ss.size; i ++) {
+//            gc.drawImage(ss[i].getPlanetPic(), ss[i].getLocation()[0], ss[i].getLocation()[1]);
+//        }
     }
 
     @FXML

@@ -35,7 +35,7 @@ public class Planet {
         this.name = name;
         this.x = x;
         this.y = y;
-        pic = new Image("Planet.png");
+        pic = new Image("file:Planet.png");
         solarSystem = ss;
         
         Random rand = new Random();
