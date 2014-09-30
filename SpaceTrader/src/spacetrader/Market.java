@@ -26,7 +26,8 @@ public class Market {
     public Market(int techLevel, int resourceLevel) {
         this.techLevel = techLevel;
         inventory = new Inventory();
-        //inventory.setCapacity(100000000); //marketplace can hold whatever it wants
+        inventory.setCapacity(100000000); //marketplace can hold whatever it wants
+        inventory.addToBalance(1000);
         Random rand = new Random();
         //keeps track of the prices of each item
         priceList = new Hashtable<String,Item>();
@@ -69,12 +70,12 @@ public class Market {
         } 
         
         //adjust balances
-        playerInventory.setBalance(-1*quantityWanted*price);
-        inventory.setBalance(quantityWanted*price);
+        playerInventory.subtractFromBalance(quantityWanted*price);
+        inventory.addToBalance(quantityWanted*price);
         
         //adjust items in inventories
         playerInventory.add(itemName, quantityWanted);
-        inventory.add(itemName, -1 * quantityWanted);
+        inventory.removeItem(itemName, quantityWanted);
         
         
         return true;
@@ -97,8 +98,8 @@ public class Market {
         }
         
         //adjust balances
-        playerInventory.setBalance(quantitySelling * price);
-        inventory.setBalance(-1 * quantitySelling * price);
+        playerInventory.addToBalance(quantitySelling * price);
+        inventory.subtractFromBalance(quantitySelling * price);
         
         //adjust items in inventories
         playerInventory.add(itemName, -1 *  quantitySelling);

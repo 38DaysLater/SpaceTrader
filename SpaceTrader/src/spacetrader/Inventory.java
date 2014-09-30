@@ -46,6 +46,10 @@ public class Inventory {
         public void addCount(int num) {
             count += num;
         }
+        
+        public void decrementCount(int num ) {
+            count -= num;
+        }
     }
 
 /**
@@ -142,8 +146,9 @@ public class Inventory {
  */
     
     public int removeItem(String name) {
-        if (list.contains(name)){
-            // there is at least one instance of the item in the inventory
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
+        // there is at least one instance of the item in the inventory
             int count = list.get(name).count;
             ItemWrapper iw = list.remove(name);
             
@@ -165,15 +170,49 @@ public class Inventory {
 
     }
     
+    
+    public int removeItem(String name, int quantitySelling){
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
+        // there is at least one instance of the item in the inventory
+            int count = list.get(name).count;
+            ItemWrapper iw = list.remove(name);
+            
+            //if there is only one item, remove it alltogether from the hastable
+            if (iw.count == quantitySelling) {
+                totalItemCount -= count;
+                return 0;
+            //else, just decrement its count by one
+            } else if (iw.count > quantitySelling){
+                iw.decrementCount(quantitySelling);
+                list.put(iw.item.getName(), iw);
+                totalItemCount -= quantitySelling;
+                return count - quantitySelling;
+            } else {
+                return -1;
+            }
+        } else {
+            // the item isn't in the inventory, so just -1
+            return -1;
+        }
+
+    }
+    
+    
     //get balance
     public int getBalance(){
         return balance;
     }
     
-    //set balance
-    public void setBalance(int x){
+    public void addToBalance(int x){
         balance += x;
     }
+    
+    public void subtractFromBalance(int x){
+        balance -= x;
+    }
+    
+
     
     //get capacity
     public int getCapacity(){

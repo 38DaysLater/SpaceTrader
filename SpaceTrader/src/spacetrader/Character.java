@@ -24,7 +24,7 @@ public class Character {
 		engineer = e;
                 Ship ship = new Ship();
                 inventory = new Inventory();
-                inventory.setBalance(5000);
+                inventory.addToBalance(5000);
 	}
         
         public Character() {
