@@ -121,6 +121,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
         swatQuan.setText(upSellLab("Water"));
@@ -157,7 +158,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-        
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
         swatQuan.setText(upSellLab("Water"));
@@ -194,7 +195,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-        
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFireQ.setText(upSellLab("Firearms"));
         sMacQ.setText(upSellLab("Machines"));
@@ -231,7 +232,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-    
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFireQ.setText(upSellLab("Firearms"));
         sMacQ.setText(upSellLab("Machines"));
@@ -268,7 +269,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-        
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));
@@ -305,7 +306,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-          
+        //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));

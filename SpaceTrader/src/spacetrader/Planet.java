@@ -5,6 +5,7 @@
  */
 package spacetrader;
 import java.util.Random;
+import javafx.scene.image.Image;
 
 /**
  * This class represents a Planet.  It is instantiated by the Solar System class
@@ -22,6 +23,7 @@ public class Planet {
     private GovernmentType govType;
     private SolarSystem solarSystem;
     private Market market;
+    private Image pic;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -33,6 +35,7 @@ public class Planet {
         this.name = name;
         this.x = x;
         this.y = y;
+        pic = new Image("Planet.png");
         solarSystem = ss;
         
         Random rand = new Random();
@@ -83,4 +86,7 @@ public class Planet {
         return market;
     }
    
+    public Image getPlanetPic() {
+        return pic;
+    }
 }
