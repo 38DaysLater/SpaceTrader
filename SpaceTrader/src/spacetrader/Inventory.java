@@ -21,6 +21,13 @@ public class Inventory {
     private int capacity = 100;
     private int totalItemCount = 0;
     
+    
+    
+    
+    
+    
+    
+    
     private class ItemWrapper {
         private Item item;
         private int count;
@@ -70,7 +77,8 @@ public class Inventory {
             return;
         }
         //if the item is alread in the inventory, increment its count by 1
-        if (list.contains(name)){
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
             ItemWrapper iw = list.remove(name);
             iw.incrementCount();
             list.put(name, iw);
@@ -96,8 +104,9 @@ public class Inventory {
             return;
         }
         //if the item is alread in the inventory, increment its count by 1
-        if (list.contains(name)){
-            ItemWrapper iw = list.remove(name);
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
+        ItemWrapper iw = list.remove(name);
             iw.addCount(num);
             list.put(name, iw);
         } else {

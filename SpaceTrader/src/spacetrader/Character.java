@@ -15,6 +15,7 @@ public class Character {
 	private int health = 10; //arbitrary starting health
 
         private Planet currentPlanet = null;
+        private SolarSystem currentSolarSystem = null;
         
 	public Character(String n, int p, int f, int t, int e) {
 		name = n;
@@ -24,7 +25,7 @@ public class Character {
 		engineer = e;
                 Ship ship = new Ship();
                 inventory = new Inventory();
-                inventory.addToBalance(5000);
+                inventory.addToBalance(10000);
 	}
         
         public Character() {
@@ -73,6 +74,14 @@ public class Character {
             returnArray[0] = currentPlanet;
             returnArray[1] = currentPlanet.getLocation();
             return returnArray;
+        }
+        
+        public void setCurrentSolarSystem(SolarSystem ss) {
+            currentSolarSystem = ss;
+        }
+        
+        public SolarSystem getCurrentSolarSystem(){
+            return currentSolarSystem;
         }
         
 
