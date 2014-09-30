@@ -57,6 +57,8 @@ public class Market {
         int price = inventory.getItemPrice(itemName);
         int quantityAvailable = inventory.getItemCount(itemName);
         Inventory playerInventory = player.getInventory();
+        int playerCapacity = playerInventory.getCapacity();
+        int playerNumItemsHas = playerInventory.totalItemCount();
         
         if(quantityWanted < 0) {
             return "That's not a valid quantity";
@@ -71,7 +73,11 @@ public class Market {
         } else if(playerInventory.totalItemCount() + quantityWanted > playerInventory.getCapacity()){
             //System.out.println("Player cannot hold that many items");
             return "Player cannot hold that many items";
-        } 
+        } else if(playerCapacity < playerNumItemsHas + quantityWanted){
+            String returnString = "You cannot hold that many items \n";
+            returnString = returnString + "You have " + playerNumItemsHas + " items and can only carry " + playerCapacity + " items.";
+            return returnString;
+        }
         
         //adjust balances: player loses money, vendor gets money
         playerInventory.subtractFromBalance(quantityWanted*price);

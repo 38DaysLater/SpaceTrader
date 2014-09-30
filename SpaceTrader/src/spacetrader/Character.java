@@ -26,6 +26,7 @@ public class Character {
                 Ship ship = new Ship();
                 inventory = new Inventory();
                 inventory.addToBalance(10000);
+                inventory.setCapacity(6);
 	}
         
         public Character() {
