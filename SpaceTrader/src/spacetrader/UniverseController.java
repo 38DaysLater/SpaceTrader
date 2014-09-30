@@ -128,6 +128,10 @@ public class UniverseController implements Initializable {
         bfoodQuan.setText(upBuyLab("Food"));
         bwatQuan.setText(upBuyLab("Water"));
         bmedQuan.setText(upBuyLab("Medicine"));
+        //clear textboxes
+        bfoodText.clear();
+        bwatText.clear();
+        bmedText.clear();
     }
 
     @FXML
@@ -161,6 +165,10 @@ public class UniverseController implements Initializable {
         bfoodQuan.setText(upBuyLab("Food"));
         bwatQuan.setText(upBuyLab("Water"));
         bmedQuan.setText(upBuyLab("Medicine"));
+        //clear textboxes
+        sfoodText.clear();
+        swatText.clear();
+        smedText.clear();
     }
 
     @FXML
@@ -194,6 +202,10 @@ public class UniverseController implements Initializable {
         bFireQ.setText(upBuyLab("Firearms"));
         bMacQ.setText(upBuyLab("Machines"));
         bRobQ.setText(upBuyLab("Robots"));
+        //clear textboxes
+        bFireTxt.clear();
+        bMacTxt.clear();
+        bRobTxt.clear();
     }
 
     @FXML
@@ -227,6 +239,10 @@ public class UniverseController implements Initializable {
         bFireQ.setText(upBuyLab("Firearms"));
         bMacQ.setText(upBuyLab("Machines"));
         bRobQ.setText(upBuyLab("Robots"));
+        //clear textboxes
+        sFireTxt.clear();
+        sMacTxt.clear();
+        sRobTxt.clear();
     }
 
     @FXML
@@ -260,6 +276,10 @@ public class UniverseController implements Initializable {
         bFursQ.setText(upBuyLab("Furs"));
         bOreQ.setText(upBuyLab("Ore"));
         bGamQ.setText(upBuyLab("Games"));
+        //clear textboxes
+        bFursTxt.clear();
+        bOreTxt.clear();
+        bGamTxt.clear();
     }
 
     @FXML
@@ -293,6 +313,10 @@ public class UniverseController implements Initializable {
         bFursQ.setText(upBuyLab("Furs"));
         bOreQ.setText(upBuyLab("Ore"));
         bGamQ.setText(upBuyLab("Games"));
+        //clear textboxes
+        sFursTxt.clear();
+        sOreTxt.clear();
+        sGamTxt.clear();
     }
     
     @FXML
