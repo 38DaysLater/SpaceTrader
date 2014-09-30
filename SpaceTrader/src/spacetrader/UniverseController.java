@@ -81,7 +81,7 @@ public class UniverseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        planetNameTab.setText("Mordor");
+        planetNameTab.setText(Singleton.getUniverse().getCurrentPlanet(0, 0).getPlanetName());
     }    
     
     @FXML
@@ -114,6 +114,29 @@ public class UniverseController implements Initializable {
     
     @FXML
     private void marketTabSelected(Event event) {
+        
+        int check = Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Food");
+        if (check != -1) {
+            bfoodP.setText(Integer.toString(check));
+            sfoodP.setText(Integer.toString(check));
+        } else {
+            bfoodP.setText("N/A");
+            sfoodP.setText("N/A");
+        }
+        check = Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Water");
+        if (check != -1) {
+            bWatP.setText(Integer.toString(check));
+            swatP.setText(Integer.toString(check));
+        } else {
+            bWatP.setText("N/A");
+            swatP.setText("N/A");
+        }
+        bfoodQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Food")));
+        bwatQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Water")));
+        bmedP.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Medicine")));
+        bmedQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Medicine")));
+        
+        
     }
 
     @FXML

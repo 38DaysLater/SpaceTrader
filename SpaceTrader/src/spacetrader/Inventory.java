@@ -7,6 +7,7 @@ package spacetrader;
  */
 
 import java.util.Hashtable;
+import java.util.Set;
 
 /**
  * This class represents an Inventory.  Every item present in the inventory is
@@ -104,7 +105,8 @@ public class Inventory {
  */
 
     public int getItemCount(String name) {
-        if (list.contains(name)) {
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
         } else {
@@ -114,7 +116,8 @@ public class Inventory {
     }
     
     public int getItemPrice(String name) {
-        if (list.contains(name)) {
+        Set<String> set = list.keySet();
+        if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.item.getFinalPrice();
         } else {
@@ -122,7 +125,7 @@ public class Inventory {
             return -1;
         }
     }
-    
+   
 /**
  * Removes exactly one item from the list
  * @param the item we're looking to release

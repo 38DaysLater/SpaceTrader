@@ -127,9 +127,10 @@ public class CharacterCreationController implements Initializable {
         } else {
             //instantiates character and Universe, then brings up Universe screen 
             Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
+            Singleton.setCharacter(ch);
             try {
                 Universe uni = new Universe();
-                System.out.println(uni);
+                Singleton.setUniverse(uni);
                 
                 Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
 
