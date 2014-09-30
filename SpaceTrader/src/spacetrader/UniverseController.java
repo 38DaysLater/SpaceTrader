@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -24,9 +25,10 @@ import javafx.scene.control.TextField;
  * @author shiro_000
  */
 public class UniverseController implements Initializable {
-    private Canvas UniverseCanvas;
+    private Canvas universeCanvas = new Canvas();
     private Universe uni = Singleton.getUniverse();
     private Character cha = Singleton.getCharacter();
+    private String success;
     @FXML
     private Tab planetNameTab;
     @FXML
@@ -90,7 +92,6 @@ public class UniverseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("Universe page initialized");
         planNameLabel.setText(currentP().getPlanetName());
         String text = currentP().toString();
         int index = text.indexOf("\n");
@@ -100,13 +101,25 @@ public class UniverseController implements Initializable {
     @FXML
     private void buyConHandle(ActionEvent event) {
         if (!bfoodText.getText().isEmpty()) {
-        currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
+            success = currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
         }
         if (!bwatText.getText().isEmpty()) {
-        currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
+            success = currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
         }
         if (!bmedText.getText().isEmpty()) {
-        currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
+            success = currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
         }
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
@@ -119,9 +132,27 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void sellConHandle(ActionEvent event) {
-        currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
-        currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
-        currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
+        if (!sfoodText.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!swatText.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!smedText.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
@@ -134,38 +165,134 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void buyEquiHandle(ActionEvent event) {
-        currentP().getMarket().sellItem("Firearms", cha, Integer.parseInt(bFireTxt.getText()));
-        currentP().getMarket().sellItem("Machines", cha, Integer.parseInt(bMacTxt.getText()));
-        currentP().getMarket().sellItem("Robots", cha, Integer.parseInt(bRobTxt.getText()));
+        if (!bFireTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Firearms", cha, Integer.parseInt(bFireTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!bMacTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Machines", cha, Integer.parseInt(bMacTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!bRobTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Robots", cha, Integer.parseInt(bRobTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFireQ.setText(upSellLab("Firearms"));
+        sMacQ.setText(upSellLab("Machines"));
+        sRobQ.setText(upSellLab("Robots"));
+        bFireQ.setText(upBuyLab("Firearms"));
+        bMacQ.setText(upBuyLab("Machines"));
+        bRobQ.setText(upBuyLab("Robots"));
     }
 
     @FXML
     private void sellEquiHandle(ActionEvent event) {
-        currentP().getMarket().buyItem("Firearms", cha, Integer.parseInt(sFireTxt.getText()));
-        currentP().getMarket().buyItem("Machines", cha, Integer.parseInt(sMacTxt.getText()));
-        currentP().getMarket().buyItem("Robots", cha, Integer.parseInt(sRobTxt.getText()));
-        
+        if (!sFireTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Firearms", cha, Integer.parseInt(sFireTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!sMacTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Machines", cha, Integer.parseInt(sMacTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!sRobTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Robots", cha, Integer.parseInt(sRobTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+    
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFireQ.setText(upSellLab("Firearms"));
+        sMacQ.setText(upSellLab("Machines"));
+        sRobQ.setText(upSellLab("Robots"));
+        bFireQ.setText(upBuyLab("Firearms"));
+        bMacQ.setText(upBuyLab("Machines"));
+        bRobQ.setText(upBuyLab("Robots"));
     }
 
     @FXML
     private void buyMiscHandle(ActionEvent event) {
-        currentP().getMarket().sellItem("Furs", cha, Integer.parseInt(bFursTxt.getText()));
-        currentP().getMarket().sellItem("Ore", cha, Integer.parseInt(bOreTxt.getText()));
-        currentP().getMarket().sellItem("Games", cha, Integer.parseInt(bGamTxt.getText()));
+        if (!bFursTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Furs", cha, Integer.parseInt(bFursTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!bOreTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Ore", cha, Integer.parseInt(bOreTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!bGamTxt.getText().isEmpty()) {
+            success = currentP().getMarket().sellItem("Games", cha, Integer.parseInt(bGamTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFursQ.setText(upSellLab("Furs"));
+        sOreQ.setText(upSellLab("Ore"));
+        sGamQ.setText(upSellLab("Games"));
+        bFursQ.setText(upBuyLab("Furs"));
+        bOreQ.setText(upBuyLab("Ore"));
+        bGamQ.setText(upBuyLab("Games"));
     }
 
     @FXML
     private void sellMiscHandle(ActionEvent event) {
-        currentP().getMarket().buyItem("Furs", cha, Integer.parseInt(sFursTxt.getText()));
-        currentP().getMarket().buyItem("Ore", cha, Integer.parseInt(sOreTxt.getText()));
-        currentP().getMarket().buyItem("Games", cha, Integer.parseInt(sGamTxt.getText()));
-        
+        if (!sFursTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Furs", cha, Integer.parseInt(sFursTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!sOreTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Ore", cha, Integer.parseInt(sOreTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+        if (!sGamTxt.getText().isEmpty()) {
+            success = currentP().getMarket().buyItem("Games", cha, Integer.parseInt(sGamTxt.getText()));
+            if (success != null) {
+                //dialog box
+                dialog(success);
+            }
+        }
+          
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFursQ.setText(upSellLab("Furs"));
+        sOreQ.setText(upSellLab("Ore"));
+        sGamQ.setText(upSellLab("Games"));
+        bFursQ.setText(upBuyLab("Furs"));
+        bOreQ.setText(upBuyLab("Ore"));
+        bGamQ.setText(upBuyLab("Games"));
     }
     
     @FXML
@@ -313,7 +440,7 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void universeTabSelected(Event event) {
-        GraphicsContext gc = UniverseCanvas.getGraphicsContext2D();
+        GraphicsContext gc = universeCanvas.getGraphicsContext2D();
         
     }
 
@@ -329,5 +456,14 @@ public class UniverseController implements Initializable {
     }
     private Planet currentP() {
         return ((Planet)cha.getCurrentPlanet()[0]);
+    }
+    private void dialog(String mess) {
+        //dialog box start
+        Dialogs.create()
+        .title("OH NO!")
+        .masthead("There was an error with your transaction")
+        .message(mess)
+        .showWarning();
+        //end dialog box
     }
 }
