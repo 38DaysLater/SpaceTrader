@@ -44,6 +44,11 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <ImageView fitHeight="407.0" fitWidth="827.0" layoutY="112.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/scales1.jpg" />
+                     </image>
+                  </ImageView>
                   <Accordion layoutY="52.0" prefHeight="462.0" prefWidth="796.0">
                     <panes>
                       <TitledPane animated="false" text="Consumables">
@@ -52,7 +57,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="409.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1left.jpg" />
                                              </image>
@@ -130,7 +135,7 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="991.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="991.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1right.jpg" />
                                              </image>
@@ -216,7 +221,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="409.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1left.jpg" />
                                              </image>
@@ -294,7 +299,7 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="991.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="991.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1right.jpg" />
                                              </image>
@@ -379,7 +384,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="409.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="393.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1left.jpg" />
                                              </image>
@@ -456,7 +461,7 @@
                                        </children></AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <ImageView fitHeight="407.0" fitWidth="991.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="407.0" fitWidth="991.0" opacity="0.42" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@resources/scales1right.jpg" />
                                              </image>

@@ -93,6 +93,8 @@ public class UniverseController implements Initializable {
     
     @FXML
     private void buyConHandle(ActionEvent event) {
+        
+        
     }
 
     @FXML
