@@ -105,8 +105,7 @@ public class Market {
         }
         
         //adjust balances: Player gets money, vendor losing
-        System.out.println("price of item :" + inventory.getItemPrice(itemName));
-        System.out.println("Amount added to player's wallet: " + quantitySelling*price);
+
         playerInventory.addToBalance(quantitySelling * price);
         inventory.subtractFromBalance(quantitySelling * price);
         
