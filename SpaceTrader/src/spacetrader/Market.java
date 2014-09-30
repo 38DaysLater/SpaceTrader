@@ -14,11 +14,10 @@ import java.util.Random;
  */
 public class Market {
     private Inventory inventory;
-    private int techLevel, money;
+    private int techLevel;
     private RandConditions randCond1;
     private Hashtable<String, Item> priceList;
     private final int NUM_ITEMS = 5;
-    private final int MONEY_MULT = 50;
 
 /**
  * This is the constructor. It generates the inventory
@@ -27,13 +26,11 @@ public class Market {
     public Market(int techLevel, int resourceLevel) {
         this.techLevel = techLevel;
         inventory = new Inventory();
+        //inventory.setCapacity(100000000); //marketplace can hold whatever it wants
         Random rand = new Random();
         //keeps track of the prices of each item
         priceList = new Hashtable<String,Item>();
-        
-        //preallocating a certain amount of money for the store
-        money = MONEY_MULT * resourceLevel;
-        
+               
         
         //generating a random event
         int index1 = rand.nextInt(19);
@@ -53,21 +50,63 @@ public class Market {
         }
     }
     
-    //incomplete
-    public void sellItem(String itemName, Character player) {
-        if (priceList.containsKey(itemName)){
-            Item currItem = priceList.get(itemName);
-            int price = currItem.getFinalPrice();
-            money += price;
-            //inventory.removeItem(currItem);
-        }
+    //Player is trying to buy something
+    //Returns false if unable to do so or true if transaction is valid
+    public boolean sellItem(String itemName, Character player, int quantityWanted) {
+        int price = inventory.getItemPrice(itemName);
+        int quantityAvailable = inventory.getItemCount(itemName);
+        Inventory playerInventory = player.getInventory();
+        
+        if(quantityWanted > quantityAvailable){
+            System.out.println("Vendor does not have enough to sell");
+            return false;
+        } else if(price*quantityWanted > playerInventory.getBalance()) {
+            System.out.println("Insufficient sales by player");
+            return false;
+        } else if(playerInventory.totalItemCount() + quantityWanted > playerInventory.getCapacity()){
+            System.out.println("Player cannot hold that many items");
+            return false;
+        } 
+        
+        //adjust balances
+        playerInventory.setBalance(-1*quantityWanted*price);
+        inventory.setBalance(quantityWanted*price);
+        
+        //adjust items in inventories
+        playerInventory.add(itemName, quantityWanted);
+        inventory.add(itemName, -1 * quantityWanted);
+        
+        
+        return true;
     }
     
-    //incomplete
-    public void BuyItem(Item item, Character player) {
-        if (item.getMTLU() < techLevel) {
-            
+    //Player is trying to sell something
+    //Returns false if unable to do so or true if transaction is valid
+    public boolean buyItem(String itemName, Character player, int quantitySelling) {
+        int price = inventory.getItemPrice(itemName);
+        Inventory playerInventory = player.getInventory();
+        int quantityAvailable = playerInventory.getItemCount(itemName);
+
+        
+        if(quantitySelling > quantityAvailable){
+            System.out.println("Player does not have enough to sell");
+            return false;
+        } else if(price*quantitySelling > inventory.getBalance()) {
+            System.out.println("Vendor has insufficient funds");
+            return false;
         }
+        
+        //adjust balances
+        playerInventory.setBalance(quantitySelling * price);
+        inventory.setBalance(-1 * quantitySelling * price);
+        
+        //adjust items in inventories
+        playerInventory.add(itemName, -1 *  quantitySelling);
+        inventory.add(itemName, quantitySelling);
+        
+        
+        return true;
+        
     }
     
 /**

@@ -17,6 +17,9 @@ import java.util.Set;
 public class Inventory {
     
     private Hashtable<String, ItemWrapper> list;
+    private int balance = 0;
+    private int capacity = 100;
+    private int totalItemCount = 0;
     
     private class ItemWrapper {
         private Item item;
@@ -73,6 +76,9 @@ public class Inventory {
             ItemWrapper iw = new ItemWrapper(currItem);
             list.put(name, iw);
         }
+        
+        totalItemCount++;
+        
     }
     
 /**
@@ -97,6 +103,9 @@ public class Inventory {
             iw.addCount(num);
             list.put(name, iw);
         }
+        
+        totalItemCount += num;
+        
     }
 /**
  * Finds the number of a specific items in the list
@@ -140,16 +149,45 @@ public class Inventory {
             
             //if there is only one item, remove it alltogether from the hastable
             if (iw.count == 1) {
+                totalItemCount --;
                 return 0;
             //else, just decrement its count by one
             } else {
                 iw.decrementCount();
                 list.put(iw.item.getName(), iw);
+                totalItemCount --;
                 return count - 1;
             }
         } else {
             // the item isn't in the inventory, so just -1
             return -1;
         }
+
     }
+    
+    //get balance
+    public int getBalance(){
+        return balance;
+    }
+    
+    //set balance
+    public void setBalance(int x){
+        balance += x;
+    }
+    
+    //get capacity
+    public int getCapacity(){
+        return capacity;
+    }
+    
+    //set capacity
+    public void setCapacity(int x){
+        capacity = x;
+    }
+    
+    //get total item count
+    public int totalItemCount(){
+        return totalItemCount;
+    }
+    
 }

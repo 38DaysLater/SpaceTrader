@@ -14,7 +14,7 @@ public class Ship {
     
     
     public Ship(){
-        //ship it's own inventory.
+        Inventory shipInventory = new Inventory();
     }
     
     

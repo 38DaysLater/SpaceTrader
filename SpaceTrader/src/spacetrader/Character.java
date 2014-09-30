@@ -11,6 +11,7 @@ public class Character {
 	//for constructor
 	private String name;
 	private int pilot, fight, trade, engineer; 
+        private Inventory inventory;
 	private int health = 10; //arbitrary starting health
 
 	public Character(String n, int p, int f, int t, int e) {
@@ -18,7 +19,10 @@ public class Character {
 		pilot = p;
 		fight = f;
 		trade = t; 
-		engineer = e; 
+		engineer = e;
+                Ship ship = new Ship();
+                inventory = new Inventory();
+                //inventory.changeBalance(1000);
 	}
         
         public Character() {
@@ -54,7 +58,10 @@ public class Character {
 
 	public int getHealth(){return health;}
 
-        Ship s = new Ship();
+        public Inventory getInventory(){
+            return inventory;
+        }
+        
         //make ship class. That has cargo hold.  That's where the inventory of the player goes
         //Every ship has an inventory, and every characater has a ship
         //when buying and selling, the character class needs methods to edit the inventory of the ship
