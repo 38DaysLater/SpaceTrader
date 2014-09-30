@@ -58,6 +58,10 @@ public class Market {
         int quantityAvailable = inventory.getItemCount(itemName);
         Inventory playerInventory = player.getInventory();
         
+        if(quantityWanted < 0) {
+            return "That's not a valid quantity";
+        }
+        
         if(quantityWanted > quantityAvailable){
             //System.out.println("Vendor does not have enough to sell");
             return "Vendor does not have enough to sell";
@@ -69,14 +73,13 @@ public class Market {
             return "Player cannot hold that many items";
         } 
         
-        //adjust balances
+        //adjust balances: player loses money, vendor gets money
         playerInventory.subtractFromBalance(quantityWanted*price);
-        inventory.addToBalance(quantityWanted*price);
+        inventory.addToBalance(quantityWanted * price);
         
-        //adjust items in inventories
+        //adjust items in inventories: Player gets item, vendor loses item
         playerInventory.add(itemName, quantityWanted);
         inventory.removeItem(itemName, quantityWanted);
-        
         
         return null;
     }
@@ -84,10 +87,14 @@ public class Market {
     //Player is trying to sell something
     //Returns false if unable to do so or true if transaction is valid
     public String buyItem(String itemName, Character player, int quantitySelling) {
-        int price = inventory.getItemPrice(itemName);
         Inventory playerInventory = player.getInventory();
         int quantityAvailable = playerInventory.getItemCount(itemName);
+        int price = playerInventory.getItemPrice(itemName);
 
+        
+        if(quantitySelling < 0) { 
+            return "That's not a valid input";
+        }
         
         if(quantitySelling > quantityAvailable){
             //System.out.println("Player does not have enough to sell");
@@ -97,12 +104,13 @@ public class Market {
             return "Vendor has insufficient funds";
         }
         
-        //adjust balances
+        //adjust balances: Player gets money, vendor losing
+
         playerInventory.addToBalance(quantitySelling * price);
         inventory.subtractFromBalance(quantitySelling * price);
         
-        //adjust items in inventories
-        playerInventory.add(itemName, -1 *  quantitySelling);
+        //adjust items in inventories: Player lose item, vendor gain item
+        playerInventory.removeItem(itemName, quantitySelling);
         inventory.add(itemName, quantitySelling);
         
         

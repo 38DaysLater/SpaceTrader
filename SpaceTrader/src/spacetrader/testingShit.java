@@ -27,7 +27,9 @@ public class testingShit {
         System.out.println("Market has this much money : " + mi.getBalance());
         System.out.println("Player has this much money : " + ci.getBalance());        
         
-        m.sellItem("Water", c, 7);
+        m.sellItem("Water", c, 1);
+        m.sellItem("Water", c, 1);
+        m.sellItem("Water", c, 1);
         
         System.out.println("--------");
         
