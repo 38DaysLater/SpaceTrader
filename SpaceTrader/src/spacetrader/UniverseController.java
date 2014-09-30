@@ -25,6 +25,12 @@ public class UniverseController implements Initializable {
     @FXML
     private Tab planetNameTab;
     @FXML
+    private Label planNameLabel;
+    @FXML
+    private Label planInfoLabel;
+    @FXML
+    private Button newsButt;
+    @FXML
     private Tab marketTab;
     @FXML
     private Button bcButt;
@@ -81,7 +87,10 @@ public class UniverseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        planetNameTab.setText(Singleton.getUniverse().getCurrentPlanet(0, 0).getPlanetName());
+        planNameLabel.setText(Singleton.getUniverse().getCurrentPlanet(0, 0).getPlanetName());
+        String text = Singleton.getUniverse().getCurrentPlanet(0, 0).toString();
+        int index = text.indexOf("\n");
+        planInfoLabel.setText(Singleton.getUniverse().getCurrentPlanet(0, 0).toString().substring(index + 1));
     }    
     
     @FXML
@@ -119,21 +128,40 @@ public class UniverseController implements Initializable {
         if (check != -1) {
             bfoodP.setText(Integer.toString(check));
             sfoodP.setText(Integer.toString(check));
+            sfoodText.setVisible(true);
+            bfoodText.setVisible(true);
         } else {
             bfoodP.setText("N/A");
             sfoodP.setText("N/A");
+            sfoodText.setVisible(false);
+            bfoodText.setVisible(false);
         }
         check = Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Water");
         if (check != -1) {
             bWatP.setText(Integer.toString(check));
             swatP.setText(Integer.toString(check));
+            swatText.setVisible(true);
+            bwatText.setVisible(true);
         } else {
             bWatP.setText("N/A");
             swatP.setText("N/A");
+            swatText.setVisible(false);
+            bwatText.setVisible(false);
+        }
+        check = Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Medicine");
+        if (check != -1) {
+            bmedP.setText(Integer.toString(check));
+            smedP.setText(Integer.toString(check));
+            smedText.setVisible(true);
+            bmedText.setVisible(true);
+        } else {
+            bmedP.setText("N/A");
+            smedP.setText("N/A");
+            smedText.setVisible(false);
+            bmedText.setVisible(false);
         }
         bfoodQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Food")));
         bwatQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Water")));
-        bmedP.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Medicine")));
         bmedQuan.setText(Integer.toString(Singleton.getUniverse().getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Medicine")));
         
         
@@ -141,6 +169,10 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void universeTabSelected(Event event) {
+    }
+
+    @FXML
+    private void newsButtHandle(ActionEvent event) {
     }
     
 }

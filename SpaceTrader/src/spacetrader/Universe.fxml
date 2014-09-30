@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -11,9 +12,31 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="796.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.UniverseController">
   <tabs>
-    <Tab fx:id="planetNameTab" onSelectionChanged="#PlanetNameTabSelected" text="Planet Name">
+    <Tab fx:id="planetNameTab" onSelectionChanged="#PlanetNameTabSelected" text="Current Planet">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="602.0" fitWidth="833.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/Current%20Planet.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="planNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="283.0" layoutY="48.0" prefHeight="60.0" prefWidth="229.0" text="Planet Name" textFill="WHITE">
+                     <font>
+                        <Font size="34.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="planInfoLabel" alignment="CENTER" layoutX="157.0" layoutY="108.0" prefHeight="214.0" prefWidth="481.0" text="Planet Info" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="newsButt" blendMode="HARD_LIGHT" layoutX="46.0" layoutY="443.0" mnemonicParsing="false" onAction="#newsButtHandle" prefHeight="47.0" prefWidth="166.0" text="Newspaper">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
       </content>
     </Tab>
     <Tab fx:id="marketTab" onSelectionChanged="#marketTabSelected" text="Market">
