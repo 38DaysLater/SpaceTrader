@@ -94,6 +94,13 @@ public class SolarSystem {
         return (Planet)PArray[i];
     }
     
+    public int[] getLocation(){
+        int[] loc = new int[2];
+        loc[0] = x;
+        loc[1] = y;
+        return loc;
+    }
+    
     
 /**
  * Displays the contents of the solar system 

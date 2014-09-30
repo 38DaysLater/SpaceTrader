@@ -81,8 +81,12 @@ public class Character {
             currentSolarSystem = ss;
         }
         
-        public SolarSystem getCurrentSolarSystem(){
-            return currentSolarSystem;
+        public Object[] getCurrentSolarSystem(){
+            Object[] SSArray = new Object[3];
+            SSArray[0] = currentSolarSystem;
+            SSArray[1] = currentSolarSystem.getLocation();
+            SSArray[2] = currentSolarSystem.getPlanets();
+            return SSArray;
         }
         
 
