@@ -52,20 +52,20 @@ public class Market {
     
     //Player is trying to buy something
     //Returns false if unable to do so or true if transaction is valid
-    public boolean sellItem(String itemName, Character player, int quantityWanted) {
+    public String sellItem(String itemName, Character player, int quantityWanted) {
         int price = inventory.getItemPrice(itemName);
         int quantityAvailable = inventory.getItemCount(itemName);
         Inventory playerInventory = player.getInventory();
         
         if(quantityWanted > quantityAvailable){
-            System.out.println("Vendor does not have enough to sell");
-            return false;
+            //System.out.println("Vendor does not have enough to sell");
+            return "Vendor does not have enough to sell";
         } else if(price*quantityWanted > playerInventory.getBalance()) {
-            System.out.println("Insufficient sales by player");
-            return false;
+            //System.out.println("Insufficient sales by player");
+            return "Insufficient sales by player";
         } else if(playerInventory.totalItemCount() + quantityWanted > playerInventory.getCapacity()){
-            System.out.println("Player cannot hold that many items");
-            return false;
+            //System.out.println("Player cannot hold that many items");
+            return "Player cannot hold that many items";
         } 
         
         //adjust balances
@@ -77,23 +77,23 @@ public class Market {
         inventory.add(itemName, -1 * quantityWanted);
         
         
-        return true;
+        return null;
     }
     
     //Player is trying to sell something
     //Returns false if unable to do so or true if transaction is valid
-    public boolean buyItem(String itemName, Character player, int quantitySelling) {
+    public String buyItem(String itemName, Character player, int quantitySelling) {
         int price = inventory.getItemPrice(itemName);
         Inventory playerInventory = player.getInventory();
         int quantityAvailable = playerInventory.getItemCount(itemName);
 
         
         if(quantitySelling > quantityAvailable){
-            System.out.println("Player does not have enough to sell");
-            return false;
+            //System.out.println("Player does not have enough to sell");
+            return "Player does not have enough to sell";
         } else if(price*quantitySelling > inventory.getBalance()) {
-            System.out.println("Vendor has insufficient funds");
-            return false;
+            //System.out.println("Vendor has insufficient funds");
+            return "Vendor has insufficient funds";
         }
         
         //adjust balances
@@ -105,7 +105,7 @@ public class Market {
         inventory.add(itemName, quantitySelling);
         
         
-        return true;
+        return null;
         
     }
     

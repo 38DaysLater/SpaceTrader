@@ -568,7 +568,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Canvas fx:id="UniverseCanvas" height="528.0" width="796.0" />
+                  <Canvas fx:id="universeCanvas" height="528.0" width="796.0" />
                </children></AnchorPane>
         </content>
       </Tab>
