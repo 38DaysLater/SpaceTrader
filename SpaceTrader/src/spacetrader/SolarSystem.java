@@ -10,7 +10,7 @@ import java.util.Random;
  * @author lsmoore
  */
 public class SolarSystem {
-    
+    private static int ssCount = 0;
     private HashSet<Planet> planetSet;
     private String name;
     private int x, y;
@@ -36,24 +36,33 @@ public class SolarSystem {
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
         
-        //randomely generates the positions, name, and other characteristcs of the planets
-        for (int index = 0; index < NUM_PLANETS; index++){
-            int xpos = rand.nextInt(SOLARSIZE);
-            int ypos = rand.nextInt(SOLARSIZE);
-            String pname = Planets.values()[rand.nextInt(119)].toString();
-            
-            if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
-                xpos = rand.nextInt(SOLARSIZE);
-                ypos = rand.nextInt(SOLARSIZE);
-                pname = Planets.values()[rand.nextInt(119)].toString(); 
-            }
-            
-            xHash.add(xpos);
-            yHash.add(ypos);
-            stringHash.add(pname);
-            Planet planet = new Planet(pname, xpos, ypos, this);   
-            planetSet.add(planet);
+        if(ssCount == 0) {
+            planetSet.add(new Planet("Second Earth", 0,0,this));
         }
+        
+        
+        else{
+            //randomely generates the positions, name, and other characteristcs of the planets
+            for (int index = 0; index < NUM_PLANETS; index++){
+                int xpos = rand.nextInt(SOLARSIZE);
+                int ypos = rand.nextInt(SOLARSIZE);
+                String pname = Planets.values()[rand.nextInt(119)].toString();
+
+                if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
+                    xpos = rand.nextInt(SOLARSIZE);
+                    ypos = rand.nextInt(SOLARSIZE);
+                    pname = Planets.values()[rand.nextInt(119)].toString(); 
+                }
+
+                xHash.add(xpos);
+                yHash.add(ypos);
+                stringHash.add(pname);
+                Planet planet = new Planet(pname, xpos, ypos, this);   
+                planetSet.add(planet);
+            }
+        }
+        
+        ssCount++;
         
     }
     

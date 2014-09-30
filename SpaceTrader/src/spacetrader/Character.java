@@ -14,6 +14,8 @@ public class Character {
         private Inventory inventory;
 	private int health = 10; //arbitrary starting health
 
+        private Planet currentPlanet = null;
+        
 	public Character(String n, int p, int f, int t, int e) {
 		name = n;
 		pilot = p;
@@ -62,10 +64,16 @@ public class Character {
             return inventory;
         }
         
-        //make ship class. That has cargo hold.  That's where the inventory of the player goes
-        //Every ship has an inventory, and every characater has a ship
-        //when buying and selling, the character class needs methods to edit the inventory of the ship
+        public void setCurrentPlanet(Planet p){
+            currentPlanet = p;
+        }
         
+        public Object[] getCurrentPlanet(){
+            Object[] returnArray = new Object[2];
+            returnArray[0] = currentPlanet;
+            returnArray[1] = currentPlanet.getLocation();
+            return returnArray;
+        }
         
 
 }
