@@ -22,7 +22,7 @@ public class Character {
 		engineer = e;
                 Ship ship = new Ship();
                 inventory = new Inventory();
-                //inventory.changeBalance(1000);
+                inventory.setBalance(5000);
 	}
         
         public Character() {
