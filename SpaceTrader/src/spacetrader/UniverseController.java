@@ -188,6 +188,12 @@ public class UniverseController implements Initializable {
         }
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFireQ.setText(upSellLab("Firearms"));
+        sMacQ.setText(upSellLab("Machines"));
+        sRobQ.setText(upSellLab("Robots"));
+        bFireQ.setText(upBuyLab("Firearms"));
+        bMacQ.setText(upBuyLab("Machines"));
+        bRobQ.setText(upBuyLab("Robots"));
     }
 
     @FXML
@@ -215,6 +221,12 @@ public class UniverseController implements Initializable {
         }
     
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFireQ.setText(upSellLab("Firearms"));
+        sMacQ.setText(upSellLab("Machines"));
+        sRobQ.setText(upSellLab("Robots"));
+        bFireQ.setText(upBuyLab("Firearms"));
+        bMacQ.setText(upBuyLab("Machines"));
+        bRobQ.setText(upBuyLab("Robots"));
     }
 
     @FXML
@@ -242,6 +254,12 @@ public class UniverseController implements Initializable {
         }
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFursQ.setText(upSellLab("Furs"));
+        sOreQ.setText(upSellLab("Ore"));
+        sGamQ.setText(upSellLab("Games"));
+        bFursQ.setText(upBuyLab("Furs"));
+        bOreQ.setText(upBuyLab("Ore"));
+        bGamQ.setText(upBuyLab("Games"));
     }
 
     @FXML
@@ -269,6 +287,12 @@ public class UniverseController implements Initializable {
         }
           
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        sFursQ.setText(upSellLab("Furs"));
+        sOreQ.setText(upSellLab("Ore"));
+        sGamQ.setText(upSellLab("Games"));
+        bFursQ.setText(upBuyLab("Furs"));
+        bOreQ.setText(upBuyLab("Ore"));
+        bGamQ.setText(upBuyLab("Games"));
     }
     
     @FXML
