@@ -20,7 +20,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialogs;
 
 /**
@@ -143,6 +142,7 @@ public class CharacterCreationController implements Initializable {
     //        //hide current window
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
+                System.out.println("IOExcpetion caught in CharacterCreationController.java line:147");
             }
         }
     }

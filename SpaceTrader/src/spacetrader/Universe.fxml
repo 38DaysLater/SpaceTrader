@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -565,7 +566,10 @@
     </Tab>
       <Tab onSelectionChanged="#universeTabSelected" text="Universe">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Canvas fx:id="UniverseCanvas" height="528.0" width="796.0" />
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>

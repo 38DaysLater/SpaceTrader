@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -22,6 +24,7 @@ import javafx.scene.control.TextField;
  * @author shiro_000
  */
 public class UniverseController implements Initializable {
+    private Canvas UniverseCanvas;
     private Universe uni = Singleton.getUniverse();
     private Character cha = Singleton.getCharacter();
     @FXML
@@ -87,22 +90,23 @@ public class UniverseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        planNameLabel.setText(uni.getCurrentPlanet(0, 0).getPlanetName());
-        String text = uni.getCurrentPlanet(0, 0).toString();
+        System.out.println("Universe page initialized");
+        planNameLabel.setText(currentP().getPlanetName());
+        String text = currentP().toString();
         int index = text.indexOf("\n");
-        planInfoLabel.setText(uni.getCurrentPlanet(0, 0).toString().substring(index + 1));
+        planInfoLabel.setText(currentP().toString().substring(index + 1));
     }    
     
     @FXML
     private void buyConHandle(ActionEvent event) {
         if (!bfoodText.getText().isEmpty()) {
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
+        currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
         }
         if (!bwatText.getText().isEmpty()) {
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
+        currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
         }
         if (!bmedText.getText().isEmpty()) {
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
+        currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
         }
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
@@ -115,9 +119,9 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void sellConHandle(ActionEvent event) {
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
+        currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
+        currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
+        currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sfoodQuan.setText(upSellLab("Food"));
@@ -130,46 +134,46 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void buyEquiHandle(ActionEvent event) {
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Firearms", cha, Integer.parseInt(bFireTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Machines", cha, Integer.parseInt(bMacTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Robots", cha, Integer.parseInt(bRobTxt.getText()));
+        currentP().getMarket().sellItem("Firearms", cha, Integer.parseInt(bFireTxt.getText()));
+        currentP().getMarket().sellItem("Machines", cha, Integer.parseInt(bMacTxt.getText()));
+        currentP().getMarket().sellItem("Robots", cha, Integer.parseInt(bRobTxt.getText()));
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
     }
 
     @FXML
     private void sellEquiHandle(ActionEvent event) {
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Firearms", cha, Integer.parseInt(sFireTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Machines", cha, Integer.parseInt(sMacTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Robots", cha, Integer.parseInt(sRobTxt.getText()));
+        currentP().getMarket().buyItem("Firearms", cha, Integer.parseInt(sFireTxt.getText()));
+        currentP().getMarket().buyItem("Machines", cha, Integer.parseInt(sMacTxt.getText()));
+        currentP().getMarket().buyItem("Robots", cha, Integer.parseInt(sRobTxt.getText()));
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
     }
 
     @FXML
     private void buyMiscHandle(ActionEvent event) {
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Furs", cha, Integer.parseInt(bFursTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Ore", cha, Integer.parseInt(bOreTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().sellItem("Games", cha, Integer.parseInt(bGamTxt.getText()));
+        currentP().getMarket().sellItem("Furs", cha, Integer.parseInt(bFursTxt.getText()));
+        currentP().getMarket().sellItem("Ore", cha, Integer.parseInt(bOreTxt.getText()));
+        currentP().getMarket().sellItem("Games", cha, Integer.parseInt(bGamTxt.getText()));
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
     }
 
     @FXML
     private void sellMiscHandle(ActionEvent event) {
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Furs", cha, Integer.parseInt(sFursTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Ore", cha, Integer.parseInt(sOreTxt.getText()));
-        uni.getCurrentPlanet(0,0).getMarket().buyItem("Games", cha, Integer.parseInt(sGamTxt.getText()));
+        currentP().getMarket().buyItem("Furs", cha, Integer.parseInt(sFursTxt.getText()));
+        currentP().getMarket().buyItem("Ore", cha, Integer.parseInt(sOreTxt.getText()));
+        currentP().getMarket().buyItem("Games", cha, Integer.parseInt(sGamTxt.getText()));
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
     }
     
     @FXML
     private void PlanetNameTabSelected(Event event) {
-        planNameLabel.setText(uni.getCurrentPlanet(0, 0).getPlanetName());
-        String text = uni.getCurrentPlanet(0, 0).toString();
+        planNameLabel.setText(currentP().getPlanetName());
+        String text = currentP().toString();
         int index = text.indexOf("\n");
-        planInfoLabel.setText(uni.getCurrentPlanet(0, 0).toString().substring(index + 1));
+        planInfoLabel.setText(currentP().toString().substring(index + 1));
        
     }
     
@@ -178,7 +182,7 @@ public class UniverseController implements Initializable {
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         
-        int check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Food");
+        int check = currentP().getMarket().getInventory().getItemPrice("Food");
         if (check != -1) {
             bfoodP.setText(Integer.toString(check));
             sfoodP.setText(Integer.toString(check));
@@ -190,7 +194,7 @@ public class UniverseController implements Initializable {
             sfoodText.setVisible(false);
             bfoodText.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Water");
+        check = currentP().getMarket().getInventory().getItemPrice("Water");
         if (check != -1) {
             bWatP.setText(Integer.toString(check));
             swatP.setText(Integer.toString(check));
@@ -202,7 +206,7 @@ public class UniverseController implements Initializable {
             swatText.setVisible(false);
             bwatText.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Medicine");
+        check = currentP().getMarket().getInventory().getItemPrice("Medicine");
         if (check != -1) {
             bmedP.setText(Integer.toString(check));
             smedP.setText(Integer.toString(check));
@@ -214,7 +218,7 @@ public class UniverseController implements Initializable {
             smedText.setVisible(false);
             bmedText.setVisible(false);
         } 
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Firearms");
+        check = currentP().getMarket().getInventory().getItemPrice("Firearms");
         if (check != -1) {
             bFireP.setText(Integer.toString(check));
             sFireP.setText(Integer.toString(check));
@@ -226,7 +230,7 @@ public class UniverseController implements Initializable {
             sFireTxt.setVisible(false);
             bFireTxt.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Machines");
+        check = currentP().getMarket().getInventory().getItemPrice("Machines");
         if (check != -1) {
             bMacP.setText(Integer.toString(check));
             sMacP.setText(Integer.toString(check));
@@ -238,7 +242,7 @@ public class UniverseController implements Initializable {
             sMacTxt.setVisible(false);
             bMacTxt.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Robots");
+        check = currentP().getMarket().getInventory().getItemPrice("Robots");
         if (check != -1) {
             bRobP.setText(Integer.toString(check));
             sRobP.setText(Integer.toString(check));
@@ -250,7 +254,7 @@ public class UniverseController implements Initializable {
             sRobTxt.setVisible(false);
             bRobTxt.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Furs");
+        check = currentP().getMarket().getInventory().getItemPrice("Furs");
         if (check != -1) {
             bFursP.setText(Integer.toString(check));
             sFursP.setText(Integer.toString(check));
@@ -262,7 +266,7 @@ public class UniverseController implements Initializable {
             sFursTxt.setVisible(false);
             bFursTxt.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Ore");
+        check = currentP().getMarket().getInventory().getItemPrice("Ore");
         if (check != -1) {
             bOreP.setText(Integer.toString(check));
             sOreP.setText(Integer.toString(check));
@@ -274,7 +278,7 @@ public class UniverseController implements Initializable {
             sOreTxt.setVisible(false);
             bOreTxt.setVisible(false);
         }
-        check = uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemPrice("Games");
+        check = currentP().getMarket().getInventory().getItemPrice("Games");
         if (check != -1) {
             bGamP.setText(Integer.toString(check));
             sGamP.setText(Integer.toString(check));
@@ -286,29 +290,31 @@ public class UniverseController implements Initializable {
             sGamTxt.setVisible(false);
             bGamTxt.setVisible(false);
         }
-        bfoodQuan.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Food")));
+        bfoodQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Food")));
         sfoodQuan.setText(Integer.toString(cha.getInventory().getItemCount("Food")));
-        bwatQuan.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Water")));
+        bwatQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Water")));
         swatQuan.setText(Integer.toString(cha.getInventory().getItemCount("Water")));
-        bmedQuan.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Medicine")));
+        bmedQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine")));
         smedQuan.setText(Integer.toString(cha.getInventory().getItemCount("Medicine")));
-        bFireQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Firearms")));
+        bFireQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms")));
         sFireQ.setText(Integer.toString(cha.getInventory().getItemCount("Firearms")));
-        bMacQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Machines")));
+        bMacQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines")));
         sMacQ.setText(Integer.toString(cha.getInventory().getItemCount("Machines")));
-        bRobQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Robots")));
+        bRobQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots")));
         sRobQ.setText(Integer.toString(cha.getInventory().getItemCount("Robots")));
-        bFursQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Furs")));
+        bFursQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs")));
         sFursQ.setText(Integer.toString(cha.getInventory().getItemCount("Furs")));
-        bOreQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Ore")));
+        bOreQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore")));
         sOreQ.setText(Integer.toString(cha.getInventory().getItemCount("Ore")));
-        bGamQ.setText(Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount("Games")));
+        bGamQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Games")));
         sGamQ.setText(Integer.toString(cha.getInventory().getItemCount("Games")));
         
     }
 
     @FXML
     private void universeTabSelected(Event event) {
+        GraphicsContext gc = UniverseCanvas.getGraphicsContext2D();
+        
     }
 
     @FXML
@@ -319,6 +325,9 @@ public class UniverseController implements Initializable {
         return Integer.toString(cha.getInventory().getItemCount(item));
     }
     private String upBuyLab(String item) {
-        return Integer.toString(uni.getCurrentPlanet(0, 0).getMarket().getInventory().getItemCount(item));
+        return Integer.toString(currentP().getMarket().getInventory().getItemCount(item));
+    }
+    private Planet currentP() {
+        return ((Planet)cha.getCurrentPlanet()[0]);
     }
 }
