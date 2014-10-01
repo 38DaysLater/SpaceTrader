@@ -5,18 +5,34 @@
  */
 package spacetrader;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
+import static javafx.embed.swing.SwingFXUtils.toFXImage;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+//import java.awt.Image;
+
 import org.controlsfx.dialog.Dialogs;
 
 /**
@@ -25,7 +41,8 @@ import org.controlsfx.dialog.Dialogs;
  * @author shiro_000
  */
 public class UniverseController implements Initializable {
-    private Canvas universeCanvas = new Canvas();
+    @FXML
+    private Canvas universeCanvas;// = new Canvas(796.0, 530.0);
     private Universe uni = Singleton.getUniverse();
     private Character cha = Singleton.getCharacter();
     private String success;
@@ -466,10 +483,14 @@ public class UniverseController implements Initializable {
     @FXML
     private void universeTabSelected(Event event) {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
-        SolarSystem ss = cha.getCurrentSolarSystem();
-//        for (int i = 0; i < ss.size; i ++) {
-//            gc.drawImage(ss[i].getPlanetPic(), ss[i].getLocation()[0], ss[i].getLocation()[1]);
-//        }
+        gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
+        Object[] ss = cha.getCurrentSolarSystem();
+        List<Planet> planets = (List<Planet>)ss[2];
+        planets.stream().forEach((p) -> {
+            Image image = p.getPlanetPic();
+            gc.drawImage(image, p.getLocation()[0]+ (universeCanvas.getWidth() - image.getWidth())/2, p.getLocation()[1]+ (universeCanvas.getHeight() - image.getHeight())/2);
+        });
+        
     }
 
     @FXML
