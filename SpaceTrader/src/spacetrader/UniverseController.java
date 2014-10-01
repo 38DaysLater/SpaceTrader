@@ -3,6 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/**
+ * This class is the universe controller class.
+ * It governs the FXML screen containing the space trader universe
+ * The class entails universe, market, and current planet tabs
+ * It also sets up everything the user needs to play the game
+ * @author Olivia
+ */
 package spacetrader;
 
 import java.net.URL;
@@ -97,7 +104,11 @@ public class UniverseController implements Initializable {
         int index = text.indexOf("\n");
         planInfoLabel.setText(currentP().toString().substring(index + 1));
     }    
-    
+    /**
+     * Handles when the ok button is clicked inside the buy
+     * consumables section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void buyConHandle(ActionEvent event) {
         if (!bfoodText.getText().isEmpty()) {
@@ -134,6 +145,11 @@ public class UniverseController implements Initializable {
         bmedText.clear();
     }
 
+    /**
+     * Handles when the ok button is clicked inside the sell
+     * consumables section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void sellConHandle(ActionEvent event) {
         if (!sfoodText.getText().isEmpty()) {
@@ -171,6 +187,11 @@ public class UniverseController implements Initializable {
         smedText.clear();
     }
 
+    /**
+     * Handles when the ok button is clicked inside the buy
+     * equipment section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void buyEquiHandle(ActionEvent event) {
         if (!bFireTxt.getText().isEmpty()) {
@@ -208,6 +229,11 @@ public class UniverseController implements Initializable {
         bRobTxt.clear();
     }
 
+    /**
+     * Handles when the ok button is clicked inside the sell
+     * equipment section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void sellEquiHandle(ActionEvent event) {
         if (!sFireTxt.getText().isEmpty()) {
@@ -231,7 +257,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-    
+        //update labels
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFireQ.setText(upSellLab("Firearms"));
         sMacQ.setText(upSellLab("Machines"));
@@ -245,6 +271,11 @@ public class UniverseController implements Initializable {
         sRobTxt.clear();
     }
 
+    /**
+     * Handles when the ok button is clicked inside the buy
+     * misc. section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void buyMiscHandle(ActionEvent event) {
         if (!bFursTxt.getText().isEmpty()) {
@@ -268,7 +299,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-        
+        //update labels
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));
@@ -282,6 +313,11 @@ public class UniverseController implements Initializable {
         bGamTxt.clear();
     }
 
+    /**
+     * Handles when the ok button is clicked inside the sell
+     * misc. section of the market
+     * @param ActionEvent event
+     */
     @FXML
     private void sellMiscHandle(ActionEvent event) {
         if (!sFursTxt.getText().isEmpty()) {
@@ -305,7 +341,7 @@ public class UniverseController implements Initializable {
                 dialog(success);
             }
         }
-          
+        //uodate labels
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));
@@ -318,7 +354,10 @@ public class UniverseController implements Initializable {
         sOreTxt.clear();
         sGamTxt.clear();
     }
-    
+    /**
+     * Handles when the planet tab is selected
+     * @param Event event
+     */
     @FXML
     private void PlanetNameTabSelected(Event event) {
         planNameLabel.setText(currentP().getPlanetName());
@@ -328,6 +367,10 @@ public class UniverseController implements Initializable {
        
     }
     
+    /**
+     * Handles when the market tab is selected
+     * @param Event event
+     */
     @FXML
     private void marketTabSelected(Event event) {
         
@@ -462,25 +505,56 @@ public class UniverseController implements Initializable {
         
     }
 
+    /**
+     * Handles when the universe tab is selected
+     * @param Event event
+     */
     @FXML
     private void universeTabSelected(Event event) {
-        GraphicsContext gc = universeCanvas.getGraphicsContext2D();
+        //GraphicsContext gc = universeCanvas.getGraphicsContext2D();
         
     }
 
+    /**
+     * Handles when the newspaper button is selected
+     * inside the planet tab
+     * @param ActionEvent event
+     */
     @FXML
     private void newsButtHandle(ActionEvent event) {
     }
     
+    /**
+     * Helper method for buying items from market
+     * @param String item
+     * @return String for label update
+     */
     private String upSellLab(String item) {
         return Integer.toString(cha.getInventory().getItemCount(item));
     }
+    /**
+     * Helper method for selling items to market
+     * @param String item
+     * @return String for label update
+     */
     private String upBuyLab(String item) {
         return Integer.toString(currentP().getMarket().getInventory().getItemCount(item));
     }
+    
+    /**
+     * Helper method for getting the current planet
+     * @param String item
+     * @return Planet
+     */
     private Planet currentP() {
         return ((Planet)cha.getCurrentPlanet()[0]);
     }
+    
+    /**
+     * Helper method for creating dialogs
+     * takes in string of the message to display
+     * @param String mess
+     */
     private void dialog(String mess) {
         //dialog box start
         Dialogs.create()
