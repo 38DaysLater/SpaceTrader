@@ -1,17 +1,12 @@
 package spacetrader;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.util.Hashtable;
 import java.util.Set;
 
 /**
  * This class represents an Inventory.  Every item present in the inventory is
- * stored in a Hashtable along with the number of times it appears in the list
+ * stored in a Hashtable along with the number of times it appears in the list.
+ * The key is the name of the item, and the value is the item itself along with the number of times it appears
  * @author lsmoore
  */
 public class Inventory {
@@ -20,14 +15,14 @@ public class Inventory {
     private int balance = 0;
     private int capacity = 100;
     private int totalItemCount = 0;
-    
-    
-    
-    
-    
-    
-    
-    
+
+    /**
+    * This helper class contains the item along with the number of times it appears.  
+    * Every item present in the inventory is
+    * stored in a Hashtable along with the number of times it appears in the list
+    * @author lsmoore
+    */
+
     private class ItemWrapper {
         private Item item;
         private int count;
@@ -179,6 +174,11 @@ public class Inventory {
 
     }
     
+ /**
+ * Removes a certain number of items from the list
+ * @param the item we're looking to release, and the number of times to do so
+ * @return how many items of this type are still left (-1 if not present at all)
+ */
     
     public int removeItem(String name, int quantitySelling){
         Set<String> set = list.keySet();

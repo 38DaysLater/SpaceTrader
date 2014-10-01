@@ -1,7 +1,9 @@
-/*
- * Character is any character in the game. 
- * Contains info on its stats, ship, health, inventory. 
- * All characters have specific locations. 
+/**
+ * This class represents a Character. 
+ * A character instance has a name, fight level, pilot level, trade level, and 
+ * engineer level.  A character also an inventory, health, currentPlanet, and 
+ * currentSolarySystem.  
+ * @author lawrence, Olivia, and Afiq
  */
 
 package spacetrader;
@@ -16,13 +18,15 @@ public class Character {
 
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
-        /*
-         * Constructor for the player or a special character like pirate,
-         * mercenary, etc.
-         * @param Name, pilot, fight, trade, engineer
-         * 
-         */
-        public Character(String n, int p, int f, int t, int e) {
+
+
+        /**
+        * This is the constructor. It establishes the character
+        * special characters will have this available
+        * @param name, pilot level, flight level, fight level, trade level, engineer level
+        */
+        
+	public Character(String n, int p, int f, int t, int e) {
 		name = n;
 		pilot = p;
 		fight = f;

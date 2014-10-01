@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class is the character creation class.
+ * It governs the FXML screen containing the set up of the character
+ * The class entails sliders which set the pilot, fight, engineer, and tech level
+ * It also establishes the limit of skill points available at the beginning of the game
+ * @author Olivia
  */
+
 package spacetrader;
 
 import java.io.IOException;
@@ -22,11 +25,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 
-/**
- * FXML Controller class
- *
- * @author shiro_000
- */
 public class CharacterCreationController implements Initializable {
     @FXML
     private Slider pilotSlider;
