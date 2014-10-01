@@ -24,6 +24,7 @@ public class Planet {
     private SolarSystem solarSystem;
     private Market market;
     private Image pic;
+    private double sizeX, sizeY;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -36,6 +37,8 @@ public class Planet {
         this.x = x;
         this.y = y;
         pic = new Image("/spacetrader/resources/Planet.png");
+        sizeX = pic.getWidth();
+        sizeY = pic.getHeight();
         solarSystem = ss;
         
         Random rand = new Random();
@@ -68,6 +71,12 @@ public class Planet {
         return message;
     }
     
+    boolean isHit(double px, double py) {
+        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
+            if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
+                return true;
+        return false;
+    }
     //getters
     
     public int[] getLocation(){

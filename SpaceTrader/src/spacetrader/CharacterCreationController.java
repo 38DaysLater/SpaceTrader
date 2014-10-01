@@ -1,5 +1,5 @@
 /**
- * This class is the character creation class.
+ * This class is the character creation controller class.
  * It governs the FXML screen containing the set up of the character
  * The class entails sliders which set the pilot, fight, engineer, and tech level
  * It also establishes the limit of skill points available at the beginning of the game

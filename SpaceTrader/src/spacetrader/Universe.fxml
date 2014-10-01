@@ -568,7 +568,17 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Canvas fx:id="universeCanvas" height="530.0" width="796.0" />
+                  <Canvas fx:id="universeCanvas" height="530.0" onMouseClicked="#uniCanvasMouseClicked" onMouseMoved="#uniCanvasMouseMoved" width="796.0" />
+                  <Label fx:id="currentSSLabelCanvas" alignment="CENTER" layoutX="221.0" layoutY="14.0" prefHeight="37.0" prefWidth="355.0" text="Current SolarSystem">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="177.0" text="Planet: [X, Y]">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
       </Tab>
