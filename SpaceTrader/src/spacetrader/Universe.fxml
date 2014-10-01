@@ -568,13 +568,18 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <ImageView fitHeight="601.0" fitWidth="882.0" layoutY="-73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/stars.jpg" />
+                     </image>
+                  </ImageView>
                   <Canvas fx:id="universeCanvas" height="530.0" onMouseClicked="#uniCanvasMouseClicked" onMouseMoved="#uniCanvasMouseMoved" width="796.0" />
-                  <Label fx:id="currentSSLabelCanvas" alignment="CENTER" layoutX="221.0" layoutY="14.0" prefHeight="37.0" prefWidth="355.0" text="Current SolarSystem">
+                  <Label fx:id="currentSSLabelCanvas" alignment="CENTER" layoutX="221.0" layoutY="14.0" prefHeight="37.0" prefWidth="355.0" text="Current SolarSystem" textFill="WHITE">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="177.0" text="Planet: [X, Y]">
+                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="177.0" text="Planet: [X, Y]" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
