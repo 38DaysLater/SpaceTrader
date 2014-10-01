@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The FXML Document Controller class goversn the opening game screen
+ * It provides the user with the option to create a new game, load a game, and 
+ * bring up the options screen
+ * @author Olivia
  */
 package spacetrader;
 
@@ -21,11 +22,6 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
 
-/**
- * FXML Controller class
- *
- * @author shiro_000
- */
 public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane loadingPane;

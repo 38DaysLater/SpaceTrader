@@ -56,7 +56,7 @@ public class Item {
     public void calcFinalPrice(RandConditions rc1, int techLevel) {
         double mult = calcCondtionMultiplyer(rc1);
         Random rand = new Random();
-        finalPrice = (int) mult * basePrice + 3*2 * (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(Var);
+        finalPrice = Math.abs((int) mult * basePrice + 3*2 * (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(Var));
     }
 /**
  * Gets the name

@@ -1,12 +1,8 @@
 package spacetrader;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * This is an enumerated type for the government type.
+ * There six total options: communist, facist, capitalist, socialist, anarchist, and feudal
  * @author lsmoore
  */
 public enum GovernmentType {
@@ -14,6 +10,6 @@ public enum GovernmentType {
     FACIST,
     CAPITALIST,
     SOCIALIST,
-    ANRACHIST,
+    ANARCHIST,
     FEUDAL
 }

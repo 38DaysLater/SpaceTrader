@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *This class acts as the vessel that the character has. The player
+ *will have a ship at all times but this can be interchanged
+ *Ship keeps track of fuel and its specs will be taken into account
+ *for mini games.
  */
 
 package spacetrader;

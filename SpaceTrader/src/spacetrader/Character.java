@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class represents a Character. 
+ * A character instance has a name, fight level, pilot level, trade level, and 
+ * engineer level.  A character also an inventory, health, currentPlanet, and 
+ * currentSolarySystem.  
+ * @author lawrence, Olivia, and Afiq
  */
 
 package spacetrader;
@@ -16,6 +18,13 @@ public class Character {
 
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
+
+
+        /**
+        * This is the constructor. It establishes the character
+        * special characters will have this available
+        * @param name, pilot level, flight level, fight level, trade level, engineer level
+        */
         
 	public Character(String n, int p, int f, int t, int e) {
 		name = n;
@@ -25,9 +34,11 @@ public class Character {
 		engineer = e;
                 Ship ship = new Ship();
                 inventory = new Inventory();
-                inventory.addToBalance(10000);
-                inventory.setCapacity(6);
+                inventory.addToBalance(3000);
+                inventory.setCapacity(10);
 	}
+        
+        
         
         public Character() {
 		
@@ -70,6 +81,15 @@ public class Character {
             currentPlanet = p;
         }
         
+        
+        
+        /*
+        returns the current planet
+        @param None
+        @return array length 2. 
+        0th index is planet. 
+        1st index is int array of xy coordinate of planet
+        */
         public Object[] getCurrentPlanet(){
             Object[] returnArray = new Object[2];
             returnArray[0] = currentPlanet;
@@ -77,6 +97,10 @@ public class Character {
             return returnArray;
         }
         
+        
+        /*
+        sets the solar system by just passing one in. 
+        */
         public void setCurrentSolarSystem(SolarSystem ss) {
             currentSolarSystem = ss;
         }
