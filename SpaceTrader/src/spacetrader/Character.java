@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class represents a Character. 
+ * A character instance has a name, fight level, pilot level, trade level, and 
+ * engineer level.  A character also an inventory, health, currentPlanet, and 
+ * currentSolarySystem.  
+ * @author lawrence, Olivia, and Afiq
  */
 
 package spacetrader;
@@ -16,6 +18,11 @@ public class Character {
 
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
+        
+        /**
+        * This is the constructor. It establishes the character
+        * @param name, pilot level, flight level, fight level, trade level, engineer level
+        */
         
 	public Character(String n, int p, int f, int t, int e) {
 		name = n;
