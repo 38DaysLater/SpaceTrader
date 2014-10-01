@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Character is any character in the game. 
+ * Contains info on its stats, ship, health, inventory. 
+ * All characters have specific locations. 
  */
 
 package spacetrader;
@@ -16,8 +16,13 @@ public class Character {
 
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
-        
-	public Character(String n, int p, int f, int t, int e) {
+        /*
+         * Constructor for the player or a special character like pirate,
+         * mercenary, etc.
+         * @param Name, pilot, fight, trade, engineer
+         * 
+         */
+        public Character(String n, int p, int f, int t, int e) {
 		name = n;
 		pilot = p;
 		fight = f;
@@ -25,9 +30,11 @@ public class Character {
 		engineer = e;
                 Ship ship = new Ship();
                 inventory = new Inventory();
-                inventory.addToBalance(10000);
-                inventory.setCapacity(6);
+                inventory.addToBalance(3000);
+                inventory.setCapacity(10);
 	}
+        
+        
         
         public Character() {
 		
@@ -70,6 +77,15 @@ public class Character {
             currentPlanet = p;
         }
         
+        
+        
+        /*
+        returns the current planet
+        @param None
+        @return array length 2. 
+        0th index is planet. 
+        1st index is int array of xy coordinate of planet
+        */
         public Object[] getCurrentPlanet(){
             Object[] returnArray = new Object[2];
             returnArray[0] = currentPlanet;
@@ -77,10 +93,18 @@ public class Character {
             return returnArray;
         }
         
+        
+        /*
+        sets the solar system by just passing one in. 
+        */
         public void setCurrentSolarSystem(SolarSystem ss) {
             currentSolarSystem = ss;
         }
         
+        
+        /*
+        returns the current solar system.
+        */
         public SolarSystem getCurrentSolarSystem(){
             return currentSolarSystem;
         }

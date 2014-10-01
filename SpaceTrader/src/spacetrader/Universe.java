@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- *
+ * This is the universe for the game, contains solar systems and generates
+ * random ones but the player will always start off in the Chocolate Milkyway
+ * and on the planet second earth, the only planet in that solar system
  * @author AfiqAzaibi
  */
 
