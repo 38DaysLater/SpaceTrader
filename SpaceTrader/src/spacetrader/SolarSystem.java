@@ -51,13 +51,13 @@ public class SolarSystem {
         else{
             //randomely generates the positions, name, and other characteristcs of the planets
             for (int index = 0; index < NUM_PLANETS; index++){
-                int xpos = rand.nextInt(SOLARSIZE);
-                int ypos = rand.nextInt(SOLARSIZE);
+                int xpos = rand.nextInt(760)-380;
+                int ypos = rand.nextInt(510)-255;
                 String pname = Planets.values()[rand.nextInt(119)].toString();
 
                 if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
-                    xpos = rand.nextInt(SOLARSIZE);
-                    ypos = rand.nextInt(SOLARSIZE);
+                    xpos = rand.nextInt(760)-380;
+                    ypos = rand.nextInt(510)-255;
                     pname = Planets.values()[rand.nextInt(119)].toString(); 
                 }
 
@@ -109,7 +109,7 @@ public class SolarSystem {
     }
     
     public boolean isHit(double px, double py) {
-        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
+        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2))) 
             if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
                 return true;
         return false;

@@ -579,7 +579,7 @@
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="177.0" text="Planet: [X, Y]" textFill="WHITE">
+                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="464.0" text="Planet: [X, Y]" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
