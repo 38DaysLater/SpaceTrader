@@ -584,6 +584,11 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Button fx:id="uniButton" blendMode="HARD_LIGHT" layoutX="643.0" layoutY="480.0" mnemonicParsing="false" onAction="#uniButtonHandler" prefHeight="31.0" prefWidth="139.0" text="Universe" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
         </content>
       </Tab>

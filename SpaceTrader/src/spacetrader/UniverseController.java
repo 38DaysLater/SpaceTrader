@@ -114,6 +114,8 @@ public class UniverseController implements Initializable {
     private Label currentSSLabelCanvas;
     @FXML
     private Label planPosUni;
+    @FXML
+    private Button uniButton;
 
     /**
      * Initializes the controller class.
@@ -535,6 +537,10 @@ public class UniverseController implements Initializable {
     @FXML
     private void universeTabSelected(Event event) {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
+        drawSolarSystem(gc);
+    }
+    
+    private void drawSolarSystem(GraphicsContext gc) {
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         Object[] ss = cha.getCurrentSolarSystem();
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
@@ -545,30 +551,69 @@ public class UniverseController implements Initializable {
         });
         //eventually draw fuel circle
     }
+    
     @FXML
     private void uniCanvasMouseClicked(MouseEvent event) {
-        System.out.print(event.getX());
-        System.out.println( " " + event.getY());
-        Object[] ss = cha.getCurrentSolarSystem();
-        List<Planet> planets = (List<Planet>)ss[2];
-        for (Planet p : planets) {
-            if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                System.out.println("You clicked planet: " + p.getPlanetName());
+        if (!currentSSLabelCanvas.getText().equals("Universe")) {
+            System.out.print(event.getX());
+            System.out.println( " " + event.getY());
+            Object[] ss = cha.getCurrentSolarSystem();
+            List<Planet> planets = (List<Planet>)ss[2];
+            for (Planet p : planets) {
+                if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
+                    System.out.println("You clicked planet: " + p.getPlanetName());
+                    //dialog box to travel to planet
+                }
+            }
+        } else {
+            SolarSystem[] solar = uni.getAllSolarSystems();
+            for (SolarSystem p : solar) {
+                if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
+                    System.out.println("You clicked Solar System: " + p.getName()+ "[" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
+                    //dialog box for going to solar system and then set current solarsystem 
+                    //show button
+                }
             }
         }
-        
     }
 
     @FXML
     private void uniCanvasMouseMoved(MouseEvent event) {
-        Object[] ss = cha.getCurrentSolarSystem();
-        List<Planet> planets = (List<Planet>)ss[2];
-        for (Planet p : planets) {
-            if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                planPosUni.setText(p.getPlanetName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
-            } else {
-                planPosUni.setText(" ");
+        if (!currentSSLabelCanvas.getText().equals("Universe")) {
+            Object[] ss = cha.getCurrentSolarSystem();
+            List<Planet> planets = (List<Planet>)ss[2];
+            for (Planet p : planets) {
+                if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
+                    planPosUni.setText(p.getPlanetName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
+                } else {
+                    planPosUni.setText(" ");
+                }
             }
+        } else {
+            SolarSystem[] solar = uni.getAllSolarSystems();
+            for (SolarSystem p : solar) {
+                if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
+                    planPosUni.setText(p.getName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
+                } else {
+                    planPosUni.setText(" ");
+                }
+            }
+        }
+    }
+    
+    @FXML
+    private void uniButtonHandler(ActionEvent event) {
+        GraphicsContext gc = universeCanvas.getGraphicsContext2D();
+        drawUniverse(gc);
+        //hide button
+    }
+    private void drawUniverse(GraphicsContext gc) {
+        gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
+        SolarSystem[] solar = uni.getAllSolarSystems();
+        currentSSLabelCanvas.setText("Universe");
+        for (SolarSystem solar1 : solar) {
+            Image image = solar1.getSSPic();
+            gc.drawImage(image, solar1.getLocation()[0] + (universeCanvas.getWidth() - image.getWidth())/2, solar1.getLocation()[1] + (universeCanvas.getHeight() - image.getHeight())/2);
         }
         
     }
@@ -621,4 +666,6 @@ public class UniverseController implements Initializable {
         .showWarning();
         //end dialog box
     }
+
+    
 }

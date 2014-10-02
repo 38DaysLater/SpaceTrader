@@ -108,6 +108,10 @@ public class Universe {
         public SolarSystem getSolarSystem(int SSNum){
             return SSArray[SSNum];
         }
+        
+        public SolarSystem[] getAllSolarSystems() {
+            return SSArray;
+        }
 
 	
 	

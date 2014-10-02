@@ -3,6 +3,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javafx.scene.image.Image;
 
 /**
  * This class represents a Solar System.  It is instantiated by the Universe class
@@ -15,7 +16,9 @@ public class SolarSystem {
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
-    private final int NUM_PLANETS = 3;        
+    private final int NUM_PLANETS = 3; 
+    private Image pic;
+    private double sizeX, sizeY;
         
     
 /**
@@ -32,6 +35,10 @@ public class SolarSystem {
         this.name = name;
         this.x = x;
         this.y = y;
+        pic = new Image("/spacetrader/resources/SolarSystem2.png");
+        sizeX = pic.getWidth();
+        sizeY = pic.getHeight();
+        
         
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
@@ -101,7 +108,15 @@ public class SolarSystem {
         return loc;
     }
     
-    
+    public boolean isHit(double px, double py) {
+        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
+            if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
+                return true;
+        return false;
+    }
+    public Image getSSPic() {
+        return pic;
+    }
 /**
  * Displays the contents of the solar system 
  * @param none
