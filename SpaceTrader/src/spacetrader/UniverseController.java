@@ -595,10 +595,19 @@ public class UniverseController implements Initializable {
                             //check if enough fuel to get there
                             //bring up travel page - for events and decrement fuel
                             //set current planet and solarsystem
-                            int dist = cha.setCurrentPlanet(p);
-                            cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
-                            //sets current shown tab to the planet info tab
-                            tabPane.getSelectionModel().select(0);
+                            int dist = cha.checkDistance(p);
+                            String thing = cha.getShip().checkSufficientFuel(dist);
+                            if(thing == null){
+                                cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
+                                cha.setCurrentPlanet(p);
+                                //sets current shown tab to the planet info tab                                
+                                tabPane.getSelectionModel().select(0);
+                            } else {
+                                Dialogs.create()
+                                .title("WARNING!")
+                                .masthead("You cannot travel here")
+                                .message(thing)
+                                .showWarning();                            }
                         } else {
                             // ... user chose NO, CANCEL, or closed the dialog
                         }
