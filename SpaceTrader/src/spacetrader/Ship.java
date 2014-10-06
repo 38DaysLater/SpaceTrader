@@ -12,7 +12,7 @@ package spacetrader;
  * @author AfiqAzaibi
  */
 public class Ship {
-    private int fuel = 10000;
+    private int fuel = 999999999;
     
     public Ship(){
         
