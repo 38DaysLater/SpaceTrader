@@ -15,7 +15,7 @@ public class Ship {
     private int fuel = 10000;
     
     public Ship(){
-        Inventory shipInventory = new Inventory();
+        
     }
     
     /**
