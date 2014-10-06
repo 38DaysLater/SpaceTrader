@@ -17,21 +17,31 @@ public class Ship {
     public Ship(){
         Inventory shipInventory = new Inventory();
     }
-    
     /**
      * @author Hutchinson
      * substractFuel() will decrement the fuel levels based on how far you've moved
-     * @param int start_pos, end_pos
+     * @param int fuel, int distance
      * @return new fuel level
      */
-    public int subtractFuel() { //needs params
-        fuel -= 50; //will be changed to reflect  the actual position of the character
+    public int subtractFuel(int fuel, int distance, Character player) {
+        //int val = 0;
+        double pn = player.getPilot() / 10;
+        /*int fn = player.getFight();
+        int tn = player.getTrade();
+        int en = player.getEngineer();
+        int hn = player.getHealth();
+        String nn = player.getName();
+        nn = nn.toLowerCase();
+        int[] array = new int[nn.length()];
+        for (int i = 0; i <= nn.length(); i++) {
+            array[i] = nn.charAt(i) - 48;
+            val += array[i];
+        }*/
+        fuel -= distance/pn;
         return fuel;
-        // Needs getters for the position
     }
     
-    
-    
-    
-    
+    public int getFuelLevel() {
+        return fuel;
+    }
 }
