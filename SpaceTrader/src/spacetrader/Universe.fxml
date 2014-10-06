@@ -584,11 +584,12 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="uniButton" blendMode="HARD_LIGHT" layoutX="643.0" layoutY="480.0" mnemonicParsing="false" onAction="#uniButtonHandler" prefHeight="31.0" prefWidth="139.0" text="Universe" textFill="WHITE">
+                  <Button fx:id="uniButton" blendMode="HARD_LIGHT" layoutX="637.0" layoutY="463.0" mnemonicParsing="false" onAction="#uniButtonHandler" prefHeight="31.0" prefWidth="139.0" text="Universe" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
+                  <Label fx:id="fuelLabel" layoutX="14.0" layoutY="22.0" textFill="WHITE" />
                </children></AnchorPane>
         </content>
       </Tab>

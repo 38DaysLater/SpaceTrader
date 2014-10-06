@@ -78,14 +78,17 @@ public class Character {
             return inventory;
         }
         
-        public int setCurrentPlanet(Planet p){
+        public int checkDistance(Planet p){
             int distance = 0;
             int[] oldLoc = currentPlanet.getLocation();
             int[] newLoc = p.getLocation();
             distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1] - newLoc[1]);
             double d = Math.sqrt(distance); 
-            currentPlanet = p;
             return (int)d;
+        }
+        
+        public void setCurrentPlanet(Planet p){
+            currentPlanet = p;
         }
         
         public Ship getShip(){
