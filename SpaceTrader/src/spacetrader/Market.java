@@ -53,7 +53,7 @@ public class Market {
     
     //Player is trying to buy something
     //Returns false if unable to do so or true if transaction is valid
-    public String sellItem(String itemName, Character player, int quantityWanted) {
+    public String sellItem(String itemName, Character player, Integer quantityWanted) {
         int price = inventory.getItemPrice(itemName);
         int quantityAvailable = inventory.getItemCount(itemName);
         Inventory playerInventory = player.getInventory();
@@ -61,7 +61,7 @@ public class Market {
         int playerNumItemsHas = playerInventory.totalItemCount();
         
         if(quantityWanted < 0) {
-            return "That's not a valid quantity";
+            return "Only positive integers please";
         }
         
         if(quantityWanted > quantityAvailable){
@@ -77,6 +77,9 @@ public class Market {
             String returnString = "You cannot hold that many items \n";
             returnString = returnString + "You have " + playerNumItemsHas + " items and can only carry " + playerCapacity + " items.";
             return returnString;
+        } else if(quantityWanted instanceof Integer){
+            return "That's not an integer. Please try again.";
+            
         }
         
         //adjust balances: player loses money, vendor gets money
@@ -92,14 +95,14 @@ public class Market {
     
     //Player is trying to sell something
     //Returns false if unable to do so or true if transaction is valid
-    public String buyItem(String itemName, Character player, int quantitySelling) {
+    public String buyItem(String itemName, Character player, Integer quantitySelling) {
         Inventory playerInventory = player.getInventory();
         int quantityAvailable = playerInventory.getItemCount(itemName);
         int price = playerInventory.getItemPrice(itemName);
 
         
         if(quantitySelling < 0) { 
-            return "That's not a valid input";
+            return "Input positive integers only";
         }
         
         if(quantitySelling > quantityAvailable){
@@ -108,6 +111,8 @@ public class Market {
         } else if(price*quantitySelling > inventory.getBalance()) {
             //System.out.println("Vendor has insufficient funds");
             return "Vendor has insufficient funds";
+        } else if (quantitySelling instanceof Integer) {
+            return "That's not an integer. Please try again.";
         }
         
         //adjust balances: Player gets money, vendor losing
