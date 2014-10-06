@@ -19,13 +19,16 @@ public class Ship {
     }
     /**
      * @author Hutchinson
-     * substractFuel() will decrement the fuel levels based on how far you've moved
-     * @param int fuel, int distance
+     * substractFuel() will decrement the fuel levels based on how far you've moved and your pilot score
+     * @param int fuel, int distance, Character player
      * @return new fuel level
      */
     public int subtractFuel(int fuel, int distance, Character player) {
         //int val = 0;
-        double pn = player.getPilot() / 10;
+        
+        player = Singleton.getCharacter(); //Grabs current character
+        double pn = player.getPilot() / 10; //Stores the player's pilot score
+        
         /*int fn = player.getFight();
         int tn = player.getTrade();
         int en = player.getEngineer();
@@ -37,10 +40,17 @@ public class Ship {
             array[i] = nn.charAt(i) - 48;
             val += array[i];
         }*/
-        fuel -= distance/pn;
+        
+        fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
         return fuel;
     }
     
+    /**
+     * @author Hutchinson
+     * getFuelLevel() gets the current level of fuel
+     * @param none
+     * @return current fuel level
+     */
     public int getFuelLevel() {
         return fuel;
     }
