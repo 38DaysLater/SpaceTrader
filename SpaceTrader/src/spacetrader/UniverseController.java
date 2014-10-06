@@ -141,26 +141,30 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void buyConHandle(ActionEvent event) {
-        if (!bfoodText.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+        try {
+            if (!bfoodText.getText().isEmpty()) {
+                success = currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
-        }
-        if (!bwatText.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+            if (!bwatText.getText().isEmpty()) {
+                success = currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
-        }
-        if (!bmedText.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+            if (!bmedText.getText().isEmpty()) {
+                success = currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
+        } catch(NumberFormatException e) {
+            dialog("Please enter a valid Integer.");
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
@@ -183,26 +187,30 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void sellConHandle(ActionEvent event) {
-        if (!sfoodText.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+        try {
+            if (!sfoodText.getText().isEmpty()) {
+                success = currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
-        }
-        if (!swatText.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+            if (!swatText.getText().isEmpty()) {
+                success = currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
-        }
-        if (!smedText.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+            if (!smedText.getText().isEmpty()) {
+                success = currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
+                if (success != null) {
+                    //dialog box
+                    dialog(success);
+                }
             }
+        } catch (NumberFormatException e) {
+            dialog("Please enter a valid Integer.");
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
@@ -547,7 +555,10 @@ public class UniverseController implements Initializable {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
         drawSolarSystem(gc);
     }
-    
+    /**
+     * Helper method that draws the current Solar System on the canvas
+     * @param GraphicsContext gc
+     */
     private void drawSolarSystem(GraphicsContext gc) {
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         Object[] ss = cha.getCurrentSolarSystem();
@@ -560,6 +571,10 @@ public class UniverseController implements Initializable {
         //eventually draw fuel circle
     }
     
+    /**
+     * Handles when the universeCanvas is clicked
+     * @param MouseEvent event
+     */
     @FXML
     private void uniCanvasMouseClicked(MouseEvent event) {
         if (!currentSSLabelCanvas.getText().equals("Universe")) {
@@ -580,7 +595,8 @@ public class UniverseController implements Initializable {
                             //check if enough fuel to get there
                             //bring up travel page - for events and decrement fuel
                             //set current planet and solarsystem
-                            cha.setCurrentPlanet(p);
+                            int dist = cha.setCurrentPlanet(p);
+                            cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                             //sets current shown tab to the planet info tab
                             tabPane.getSelectionModel().select(0);
                         } else {
@@ -608,6 +624,10 @@ public class UniverseController implements Initializable {
         }
     }
 
+    /**
+     * Handles when the mouse is moved on the universe canvas
+     * @param MouseEvent event
+     */
     @FXML
     private void uniCanvasMouseMoved(MouseEvent event) {
         boolean hit;
@@ -645,6 +665,10 @@ public class UniverseController implements Initializable {
         drawUniverse(gc);
         //hide button
     }
+    /**
+     * Helper method that draws the all of the Solar Systems on the canvas
+     * @param GraphicsContext gc
+     */
     private void drawUniverse(GraphicsContext gc) {
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         SolarSystem[] solar = uni.getAllSolarSystems();

@@ -23,10 +23,10 @@ public class Ship {
      * @param int fuel, int distance, Character player
      * @return new fuel level
      */
-    public int subtractFuel(int fuel, int distance, Character player) {
+    public int subtractFuel(int fuel, int distance) {
         //int val = 0;
         
-        player = Singleton.getCharacter(); //Grabs current character
+        Character player = Singleton.getCharacter(); //Grabs current character
         double pn = player.getPilot() / 10; //Stores the player's pilot score
         
         /*int fn = player.getFight();
