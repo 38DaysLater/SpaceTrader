@@ -143,7 +143,7 @@ public class CharacterCreationController implements Initializable {
     //        //hide current window
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
-                System.out.println("IOExcpetion caught in CharacterCreationController.java line:147");
+                System.out.println("IOExcpetion caught in CharacterCreationController.java line:146");
             }
         }
     }

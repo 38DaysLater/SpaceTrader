@@ -29,7 +29,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -118,6 +120,8 @@ public class UniverseController implements Initializable {
     private Label planPosUni;
     @FXML
     private Button uniButton;
+    @FXML
+    private TabPane tabPane;
 
     /**
      * Initializes the controller class.
@@ -400,11 +404,10 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void marketTabSelected(Event event) {
-        System.out.println("Current Planet: " + currentP().getPlanetName());
-        System.out.println("market items: " + currentP().getMarket().getInventory().getItems());
-        
+        //sets initial coin amount from player inventory
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         
+        //sets all labels for item price and quantity from market and player inventory
         int check = currentP().getMarket().getInventory().getItemPrice("Food");
         if (check != -1) {
             bfoodP.setText(Integer.toString(check));
@@ -513,6 +516,7 @@ public class UniverseController implements Initializable {
             sGamTxt.setVisible(false);
             bGamTxt.setVisible(false);
         }
+        //sets quantities of each item for market and player
         bfoodQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Food")));
         sfoodQuan.setText(Integer.toString(cha.getInventory().getItemCount("Food")));
         bwatQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Water")));
@@ -577,9 +581,17 @@ public class UniverseController implements Initializable {
                             //bring up travel page - for events and decrement fuel
                             //set current planet and solarsystem
                             cha.setCurrentPlanet(p);
+                            //sets current shown tab to the planet info tab
+                            tabPane.getSelectionModel().select(0);
                         } else {
                             // ... user chose NO, CANCEL, or closed the dialog
                         }
+                    } else {
+                        Dialogs.create()
+                        .title("Current Planet")
+                        .masthead("You are on this planet.")
+                        .message(p.toString())
+                        .showInformation();
                     }
                 }
             }
