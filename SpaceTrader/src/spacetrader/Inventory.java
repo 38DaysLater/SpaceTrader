@@ -237,5 +237,7 @@ public class Inventory {
     public int totalItemCount(){
         return totalItemCount;
     }
-    
+     public Hashtable<String, ItemWrapper> getItems() {
+         return list;
+     }
 }

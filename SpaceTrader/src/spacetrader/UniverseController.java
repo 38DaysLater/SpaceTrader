@@ -39,6 +39,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 //import java.awt.Image;
 
 import org.controlsfx.dialog.Dialogs;
@@ -398,6 +400,8 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void marketTabSelected(Event event) {
+        System.out.println("Current Planet: " + currentP().getPlanetName());
+        System.out.println("market items: " + currentP().getMarket().getInventory().getItems());
         
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         
@@ -547,7 +551,6 @@ public class UniverseController implements Initializable {
         List<Planet> planets = (List<Planet>)ss[2];
         planets.stream().forEach((p) -> {
             Image image = p.getPlanetPic();
-            System.out.println("Drawing planet: " + p.getPlanetName()+ "[" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
             gc.drawImage(image, p.getLocation()[0]+ (universeCanvas.getWidth() - image.getWidth())/2, p.getLocation()[1]+ (universeCanvas.getHeight() - image.getHeight())/2);
         });
         //eventually draw fuel circle
@@ -556,21 +559,34 @@ public class UniverseController implements Initializable {
     @FXML
     private void uniCanvasMouseClicked(MouseEvent event) {
         if (!currentSSLabelCanvas.getText().equals("Universe")) {
-            System.out.print(event.getX());
-            System.out.println( " " + event.getY());
             Object[] ss = cha.getCurrentSolarSystem();
             List<Planet> planets = (List<Planet>)ss[2];
             for (Planet p : planets) {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                    System.out.println("You clicked planet: " + p.getPlanetName());
                     //dialog box to travel to planet
+                    if (p != cha.getCurrentPlanet()[0]) {
+                        Action response = Dialogs.create()
+                        .title("Confirm Travel")
+                        .masthead("Do you want to continue?")
+                        .message("You have chosen to travel to " + p.getPlanetName() + " in the " + currentSSLabelCanvas.getText() + " System.")
+                        .showConfirm();
+
+                        if (response == Dialog.Actions.YES) {
+                            // ... user chose YES
+                            //check if enough fuel to get there
+                            //bring up travel page - for events and decrement fuel
+                            //set current planet and solarsystem
+                            cha.setCurrentPlanet(p);
+                        } else {
+                            // ... user chose NO, CANCEL, or closed the dialog
+                        }
+                    }
                 }
             }
         } else {
             SolarSystem[] solar = uni.getAllSolarSystems();
             for (SolarSystem p : solar) {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                    System.out.println("You clicked Solar System: " + p.getName()+ "[" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
                     //dialog box for going to solar system and then set current solarsystem 
                     cha.setCurrentSolarSystem(p);
                     drawSolarSystem(universeCanvas.getGraphicsContext2D());
@@ -603,7 +619,6 @@ public class UniverseController implements Initializable {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
                     hit = true;
                     planPosUni.setText(p.getName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
-                  
                 }  
             }
             if (!hit) {
