@@ -45,6 +45,23 @@ public class Ship {
         return fuel;
     }
     
+    //rusn a check to see if player can travel a distance.
+    public String checkSufficientFuel(int distance){
+        if(calcFuelForTravel(distance) > fuel) {
+            return "Insufficient fuel";
+        }
+        return null;
+    }
+    
+    //checks to see how much fuel will use. 
+    //private since only use in class
+    private int calcFuelForTravel(int dist){
+        Character player = Singleton.getCharacter(); //Grabs current character
+        double pn = player.getPilot() / 10; //Stores the player's pilot score
+        double returnValue = dist/pn;
+        return (int)returnValue;
+    }
+    
     /**
      * @author Hutchinson
      * getFuelLevel() gets the current level of fuel
