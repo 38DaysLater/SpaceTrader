@@ -117,6 +117,8 @@ public class UniverseController implements Initializable {
     @FXML
     private Label currentSSLabelCanvas;
     @FXML
+    private Label fuelLabel;
+    @FXML
     private Label planPosUni;
     @FXML
     private Button uniButton;
@@ -563,6 +565,9 @@ public class UniverseController implements Initializable {
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         Object[] ss = cha.getCurrentSolarSystem();
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
+        int fuelLevel = Singleton.getCharacter().getShip().getFuelLevel();
+        String fuelString = Integer.toString(fuelLevel);
+        fuelLabel.setText("Fuel level:" + fuelString);
         List<Planet> planets = (List<Planet>)ss[2];
         planets.stream().forEach((p) -> {
             Image image = p.getPlanetPic();
