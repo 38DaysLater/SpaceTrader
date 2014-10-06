@@ -16,6 +16,7 @@ public class Character {
         private Inventory inventory;
 	private int health = 10; //arbitrary starting health
 
+        private Ship ship = null;
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
 
@@ -32,7 +33,7 @@ public class Character {
 		fight = f;
 		trade = t; 
 		engineer = e;
-                Ship ship = new Ship();
+                ship = new Ship();
                 inventory = new Inventory();
                 inventory.addToBalance(3000);
                 inventory.setCapacity(10);
@@ -77,10 +78,19 @@ public class Character {
             return inventory;
         }
         
-        public void setCurrentPlanet(Planet p){
+        public int setCurrentPlanet(Planet p){
+            int distance = 0;
+            int[] oldLoc = currentPlanet.getLocation();
+            int[] newLoc = p.getLocation();
+            distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1] - newLoc[1]);
+            double d = Math.sqrt(distance); 
             currentPlanet = p;
+            return (int)d;
         }
         
+        public Ship getShip(){
+            return ship;
+        }
         
         
         /*
