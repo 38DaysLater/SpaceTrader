@@ -12,7 +12,7 @@ package spacetrader;
  * @author AfiqAzaibi
  */
 public class Ship {
-    private int fuel = 50000000;
+    private int fuel = 500;
     
     public Ship(){
         
@@ -27,22 +27,8 @@ public class Ship {
         //int val = 0;
         
         Character player = Singleton.getCharacter(); //Grabs current character
-        double pn = player.getPilot() / 10; //Stores the player's pilot score
-        
-        /*int fn = player.getFight();
-        int tn = player.getTrade();
-        int en = player.getEngineer();
-        int hn = player.getHealth();
-        String nn = player.getName();
-        nn = nn.toLowerCase();
-        int[] array = new int[nn.length()];
-        for (int i = 0; i <= nn.length(); i++) {
-            array[i] = nn.charAt(i) - 48;
-            val += array[i];
-        }*/
-        
-      //  fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
-        fuel -= 200;
+        double pn = player.getPilot() / 3; //Stores the player's pilot score / 3        
+        fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
         return fuel;
     }
     
@@ -59,10 +45,9 @@ public class Ship {
     //private since only use in class
     private int calcFuelForTravel(int dist){
         Character player = Singleton.getCharacter(); //Grabs current character
-        //double pn = player.getPilot() / 10; //Stores the player's pilot score
-        //double returnValue = dist/pn;
-       // return (int)returnValue;
-        return player.getShip().getFuelLevel();
+        double pn = player.getPilot() / 3; //Stores the player's pilot score / 3
+        double returnValue = dist/pn;
+        return (int)returnValue;
     }
     
     /**

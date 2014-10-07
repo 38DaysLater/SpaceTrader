@@ -675,7 +675,7 @@ public class UniverseController implements Initializable {
         int fuelLevel = Singleton.getCharacter().getShip().getFuelLevel();
         String fuelString = Integer.toString(fuelLevel);
         System.out.println(fuelLevel);
-        fuelLabel.setText("Fuel level:" + fuelString);
+        fuelLabel.setText("Fuel level: " + fuelString);
     }
     /**
      * Helper method that draws the current Solar System on the canvas
@@ -724,7 +724,6 @@ public class UniverseController implements Initializable {
                                 //player has enoughfuel to rech destination
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
-                                fuelLabel.setText("Fuel level: " + cha.getShip().getFuelLevel());
                                 //sets current shown tab to the planet info tab                                
                                 tabPane.getSelectionModel().select(0);
                             } else {
