@@ -27,7 +27,7 @@ public class Market {
     public Market(int techLevel, int resourceLevel, Planet planet) {
         this.planet = planet;
         this.techLevel = techLevel;
-        inventory = new Inventory();
+        inventory = new Inventory(techLevel);
         inventory.setCapacity(100000000); //marketplace can hold whatever it wants
         inventory.addToBalance(1000);
         Random rand = new Random();

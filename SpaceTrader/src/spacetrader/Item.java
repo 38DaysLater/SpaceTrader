@@ -115,7 +115,7 @@ public class Item {
     // }
     
 /**
- * retrieves the MTLP
+ * retrieves the Minimum Tech Level to Produce
  * @param none
  * @return an int of the MTLP
  */
@@ -123,7 +123,7 @@ public class Item {
         return MTLP;
     }
 /**
- * retrieves the MTLU
+ * retrieves the Minimum Tech Level to Use
  * @param none
  * @return an int of the MTLU
  */
