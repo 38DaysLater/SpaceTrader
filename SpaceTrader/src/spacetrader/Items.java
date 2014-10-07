@@ -88,4 +88,11 @@ public class Items {
          }
     }
     
+    public static ArrayList<Item> getElligibleItems(int tl) {
+        ArrayList<Item> newList = new ArrayList<Item>();
+        for (int i = 0; i <= tl; i++) {
+            newList.add(list.get(i));
+        }
+        return newList;
+    }
 }

@@ -1,5 +1,6 @@
 package spacetrader;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ public class Inventory {
     private int capacity = 100;
     private int totalItemCount = 0;
     private Hashtable<String, Integer> priceList;
+    private final ArrayList<Item> elligibleItems; 
     private int techLevel = 10;
 
     /**
@@ -63,10 +65,12 @@ public class Inventory {
     public Inventory(int techLevel) {
         this.techLevel = techLevel;
         list = new Hashtable<String, ItemWrapper>();
+        elligibleItems = Items.getElligibleItems(techLevel);
     }
     
     public Inventory() {
         list = new Hashtable<String, ItemWrapper>();
+        elligibleItems = Items.getElligibleItems(9);
     }
     
     public void setPriceList(Hashtable<String, Integer> priceList) {
@@ -153,12 +157,16 @@ public class Inventory {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             return priceList.get(name);
-        } else if (Items.getItem(name).getMTLU() <= techLevel && priceList.contains(name)){
+        } else if (elligibleItems.contains(Items.getItem(name))){
             // the item isn't in the inventory, but it could have it
+            System.out.print(priceList.values());
+            if (priceList.contains(name))
+                    return 0;
             return priceList.get(name);
         } else {
             return -1;
         }
+        
     }
    
 /**
