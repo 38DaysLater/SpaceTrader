@@ -15,6 +15,8 @@ public class Inventory {
     private int balance = 0;
     private int capacity = 100;
     private int totalItemCount = 0;
+    private Hashtable<String, Integer> priceList;
+    private int techLevel = 10;
 
     /**
     * This helper class contains the item along with the number of times it appears.  
@@ -58,8 +60,17 @@ public class Inventory {
  * This is the constructor. It creates an empty hashtable to store the items in
  * @param None
  */
+    public Inventory(int techLevel) {
+        this.techLevel = techLevel;
+        list = new Hashtable<String, ItemWrapper>();
+    }
+    
     public Inventory() {
         list = new Hashtable<String, ItemWrapper>();
+    }
+    
+    public void setPriceList(Hashtable<String, Integer> priceList) {
+        this.priceList = priceList;
     }
 /**
  * Adds an item to the list (aka hashtable)
@@ -126,19 +137,22 @@ public class Inventory {
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
-        } else {
+        } else if (Items.getItem(name).getMTLU() <= techLevel){
             // the item isn't in the inventory, so its count is zero
             return 0;
+        } else {
+            return -1;
         }
     }
     
     public int getItemPrice(String name) {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
-            ItemWrapper iw =  list.get(name);
-            return iw.item.getFinalPrice();
+            return priceList.get(name);
+        } else if (Items.getItem(name).getMTLU() <= techLevel && priceList.contains(name)){
+            // the item isn't in the inventory, but it could have it
+            return priceList.get(name);
         } else {
-            // the item isn't in the inventory, so its count is zero
             return -1;
         }
     }
@@ -167,8 +181,10 @@ public class Inventory {
                 totalItemCount --;
                 return count - 1;
             }
+        } else if (Items.getItem(name).getMTLU() <= techLevel){
+            // the item isn't in the inventory, but it could have it
+            return 0;
         } else {
-            // the item isn't in the inventory, so just -1
             return -1;
         }
 
@@ -200,8 +216,10 @@ public class Inventory {
             } else {
                 return -1;
             }
+        } else if (Items.getItem(name).getMTLU() <= techLevel){
+            // the item isn't in the inventory, but it could have it
+            return 0;
         } else {
-            // the item isn't in the inventory, so just -1
             return -1;
         }
 

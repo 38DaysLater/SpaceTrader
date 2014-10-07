@@ -2,7 +2,9 @@ package spacetrader;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.Random;
+import java.util.HashSet;
 import javafx.scene.image.Image;
 
 /**
@@ -12,7 +14,7 @@ import javafx.scene.image.Image;
  */
 public class SolarSystem {
     private static int ssCount = 0;
-    private HashSet<Planet> planetSet;
+    private Set<Planet> planetSet;
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
@@ -42,15 +44,14 @@ public class SolarSystem {
         
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
+        Planet planet;
         
-        if(ssCount == 0) {
-            planetSet.add(new Planet("Second Earth", 0,0,this));
-        }
-        
-        
-        else{
+        if (ssCount == 0) {
+            planetSet.add(new Planet("Second Earth", 0,0, this));
+        } else{
             //randomely generates the positions, name, and other characteristcs of the planets
             for (int index = 0; index < NUM_PLANETS; index++){
+                planet = null;
                 int xpos = rand.nextInt(760)-380;
                 int ypos = rand.nextInt(510)-255;
                 String pname = Planets.values()[rand.nextInt(119)].toString();
@@ -64,7 +65,7 @@ public class SolarSystem {
                 xHash.add(xpos);
                 yHash.add(ypos);
                 stringHash.add(pname);
-                Planet planet = new Planet(pname, xpos, ypos, this);   
+                planet = new Planet(pname, xpos, ypos, this);   
                 planetSet.add(planet);
             }
         }
@@ -136,4 +137,7 @@ public class SolarSystem {
         return message;
     }
     
+    public static void main(String[] args){
+        SolarSystem ss = new SolarSystem("Test", 0, 0);
+    }
 }
