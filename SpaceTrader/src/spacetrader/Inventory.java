@@ -72,6 +72,10 @@ public class Inventory {
     public void setPriceList(Hashtable<String, Integer> priceList) {
         this.priceList = priceList;
     }
+    
+    public Hashtable<String, Integer> getPriceList() {
+        return priceList;
+    }
 /**
  * Adds an item to the list (aka hashtable)
  * @param item to add

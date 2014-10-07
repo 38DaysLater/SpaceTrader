@@ -61,6 +61,7 @@ public class Market {
         int price = inventory.getItemPrice(itemName);
         int quantityAvailable = inventory.getItemCount(itemName);
         Inventory playerInventory = player.getInventory();
+        playerInventory.setPriceList(inventory.getPriceList());
         int playerCapacity = playerInventory.getCapacity();
         int playerNumItemsHas = playerInventory.totalItemCount();
         
@@ -100,6 +101,7 @@ public class Market {
     //Returns false if unable to do so or true if transaction is valid
     public String buyItem(String itemName, Character player, Object quantitySelling) {
         Inventory playerInventory = player.getInventory();
+        playerInventory.setPriceList(inventory.getPriceList());
         int quantityAvailable = playerInventory.getItemCount(itemName);
         int price = playerInventory.getItemPrice(itemName);
 
