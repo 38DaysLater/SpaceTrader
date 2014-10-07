@@ -15,6 +15,7 @@ public class Inventory {
     private int balance = 0;
     private int capacity = 100;
     private int totalItemCount = 0;
+    private Hashtable<String, Integer> priceList;
 
     /**
     * This helper class contains the item along with the number of times it appears.  
@@ -60,6 +61,10 @@ public class Inventory {
  */
     public Inventory() {
         list = new Hashtable<String, ItemWrapper>();
+    }
+    
+    public void setPriceList(Hashtable<String, Integer> priceList) {
+        this.priceList = priceList;
     }
 /**
  * Adds an item to the list (aka hashtable)
@@ -135,8 +140,7 @@ public class Inventory {
     public int getItemPrice(String name) {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
-            ItemWrapper iw =  list.get(name);
-            return iw.item.getFinalPrice();
+            return priceList.get(name);
         } else {
             // the item isn't in the inventory, so its count is zero
             return -1;
