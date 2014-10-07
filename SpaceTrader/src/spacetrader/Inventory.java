@@ -151,7 +151,7 @@ public class Inventory {
             return priceList.get(name);
         } else if (Items.getItem(name).getMTLU() <= techLevel && priceList.contains(name)){
             // the item isn't in the inventory, but it could have it
-            return 0;
+            return priceList.get(name);
         } else {
             return -1;
         }
