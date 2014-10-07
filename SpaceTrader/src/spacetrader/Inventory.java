@@ -145,8 +145,9 @@ public class Inventory {
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
-        } else if (Items.getItem(name).getMTLU() <= techLevel){
-            // the item isn't in the inventory, so its count is zero
+        } else if (elligibleItems.contains(Items.getItem(name))){
+            // the item isn't in the inventory, but it could have it
+            //System.out.print(priceList.keys());
             return 0;
         } else {
             return -1;
@@ -159,7 +160,7 @@ public class Inventory {
             return priceList.get(name);
         } else if (elligibleItems.contains(Items.getItem(name))){
             // the item isn't in the inventory, but it could have it
-            System.out.print(priceList.values());
+            System.out.print(priceList.keys());
             if (priceList.contains(name))
                     return 0;
             return priceList.get(name);
