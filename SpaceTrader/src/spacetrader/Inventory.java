@@ -160,7 +160,7 @@ public class Inventory {
             return priceList.get(name);
         } else if (elligibleItems.contains(Items.getItem(name))){
             // the item isn't in the inventory, but it could have it
-            System.out.print(priceList.keys());
+            //System.out.print(priceList.keys());
             if (priceList.contains(name))
                     return 0;
             return priceList.get(name);

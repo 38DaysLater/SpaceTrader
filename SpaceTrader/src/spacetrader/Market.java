@@ -52,7 +52,7 @@ public class Market {
             }
         }
         inventory.setPriceList(priceList);
-        System.out.println();
+//        System.out.println();
     }
     
     //Player is trying to buy something

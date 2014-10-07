@@ -611,7 +611,6 @@ public class UniverseController implements Initializable {
         drawSolarSystem(gc);
         int fuelLevel = Singleton.getCharacter().getShip().getFuelLevel();
         String fuelString = Integer.toString(fuelLevel);
-        System.out.println(fuelLevel);
         fuelLabel.setText("Fuel level: " + fuelString);
     }
     /**

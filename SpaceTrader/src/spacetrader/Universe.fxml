@@ -574,12 +574,12 @@
                      </image>
                   </ImageView>
                   <Canvas fx:id="universeCanvas" height="530.0" onMouseClicked="#uniCanvasMouseClicked" onMouseMoved="#uniCanvasMouseMoved" width="796.0" />
-                  <Label fx:id="currentSSLabelCanvas" alignment="CENTER" focusTraversable="false" layoutX="221.0" layoutY="14.0" prefHeight="37.0" prefWidth="355.0" text="Current SolarSystem" textFill="WHITE">
+                  <Label fx:id="currentSSLabelCanvas" alignment="CENTER" layoutX="221.0" layoutY="14.0" prefHeight="37.0" prefWidth="355.0" text="Current SolarSystem" textFill="WHITE">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="planPosUni" focusTraversable="false" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="464.0" text="Planet: [X, Y]" textFill="WHITE">
+                  <Label fx:id="planPosUni" layoutX="14.0" layoutY="482.0" prefHeight="32.0" prefWidth="207.0" text="Planet: [X, Y]" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -589,7 +589,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="fuelLabel" focusTraversable="false" layoutX="14.0" layoutY="22.0" prefHeight="29.0" prefWidth="220.0" text="Fuel Level: 0" textFill="WHITE">
+                  <Label fx:id="fuelLabel" layoutX="14.0" layoutY="22.0" prefHeight="29.0" prefWidth="177.0" text="Fuel Level: 0" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
