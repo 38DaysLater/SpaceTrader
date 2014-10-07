@@ -422,14 +422,7 @@ public class UniverseController implements Initializable {
         String bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Food"));
         String bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Food"));
         String sQuan = Integer.toString(cha.getInventory().getItemCount("Food"));
-        if (bQuan.equals("0")) {
-            bfoodP.setText(bPrice);
-            sfoodP.setText(bPrice);
-            bfoodQuan.setText(bQuan);
-            sfoodQuan.setText(sQuan);
-            sfoodText.setVisible(true);
-            bfoodText.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bfoodP.setText("N/A");
             sfoodP.setText("N/A");
             bfoodQuan.setText("N/A");
@@ -447,14 +440,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Water"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Water"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Water"));
-        if (bQuan.equals("0")) {
-            bWatP.setText(bPrice);
-            swatP.setText(bPrice);
-            bwatQuan.setText(bQuan);
-            swatQuan.setText(sQuan);
-            swatText.setVisible(true);
-            bwatText.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bWatP.setText("N/A");
             swatP.setText("N/A");
             bwatQuan.setText("N/A");
@@ -472,14 +458,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Medicine"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Medicine"));
-        if (bQuan.equals("0")) {
-            bmedP.setText(bPrice);
-            smedP.setText(bPrice);
-            bmedQuan.setText(bQuan);
-            smedQuan.setText(sQuan);
-            smedText.setVisible(true);
-            bmedText.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bmedP.setText("N/A");
             smedP.setText("N/A");
             bmedQuan.setText("N/A");
@@ -497,14 +476,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Firearms"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Firearms"));
-        if (bQuan.equals("0")) {
-            bFireP.setText(bPrice);
-            sFireP.setText(bPrice);
-            bFireQ.setText(bQuan);
-            sFireQ.setText(sQuan);
-            sFireTxt.setVisible(true);
-            bFireTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bFireP.setText("N/A");
             sFireP.setText("N/A");
             bFireQ.setText("N/A");
@@ -522,14 +494,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Machines"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Machines"));
-        if (bQuan.equals("0")) {
-            bMacP.setText(bPrice);
-            sMacP.setText(bPrice);
-            bMacQ.setText(bQuan);
-            sMacQ.setText(sQuan);
-            sMacTxt.setVisible(true);
-            bMacTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bMacP.setText("N/A");
             sMacP.setText("N/A");
             bMacQ.setText("N/A");
@@ -547,14 +512,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Robots"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Robots"));
-        if (bQuan.equals("0")) {
-            bRobP.setText(bPrice);
-            sRobP.setText(bPrice);
-            bRobQ.setText(bQuan);
-            sRobQ.setText(sQuan);
-            sRobTxt.setVisible(true);
-            bRobTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bRobP.setText("N/A");
             sRobP.setText("N/A");
             bRobQ.setText("N/A");
@@ -572,14 +530,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Furs"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Furs"));
-        if (bQuan.equals("0")) {
-            bFursP.setText(bPrice);
-            sFursP.setText(bPrice);
-            bFursQ.setText(bQuan);
-            sFursQ.setText(sQuan);
-            sFursTxt.setVisible(true);
-            bFursTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bFursP.setText("N/A");
             sFursP.setText("N/A");
             bFursQ.setText("N/A");
@@ -597,14 +548,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Ore"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Ore"));
-        if (bQuan.equals("0")) {
-            bOreP.setText(bPrice);
-            sOreP.setText(bPrice);
-            bOreQ.setText(bQuan);
-            sOreQ.setText(sQuan);
-            sOreTxt.setVisible(true);
-            bOreTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bOreP.setText("N/A");
             sOreP.setText("N/A");
             bOreQ.setText("N/A");
@@ -622,14 +566,7 @@ public class UniverseController implements Initializable {
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Games"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Games"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Games"));
-        if (bQuan.equals("0")) {
-            bGamP.setText(bPrice);
-            sGamP.setText(bPrice);
-            bGamQ.setText(bQuan);
-            sGamQ.setText(sQuan);
-            sGamTxt.setVisible(true);
-            bGamTxt.setVisible(false);
-        } else if (bQuan.equals("-1")) {
+        if (bQuan.equals("-1")) {
             bGamP.setText("N/A");
             sGamP.setText("N/A");
             bGamQ.setText("N/A");
@@ -828,7 +765,11 @@ public class UniverseController implements Initializable {
      * @return String for label update
      */
     private String upSellLab(String item) {
-        return Integer.toString(cha.getInventory().getItemCount(item));
+        String up = Integer.toString(cha.getInventory().getItemCount(item));
+        if (up.equals("-1")) {
+            return "N/A";
+        }
+        return up;
     }
     /**
      * Helper method for selling items to market
@@ -836,7 +777,11 @@ public class UniverseController implements Initializable {
      * @return String for label update
      */
     private String upBuyLab(String item) {
-        return Integer.toString(currentP().getMarket().getInventory().getItemCount(item));
+        String up = Integer.toString(currentP().getMarket().getInventory().getItemCount(item));
+        if(up.equals("-1")) {
+            return "N/A";
+        }
+        return up;
     }
     
     /**
