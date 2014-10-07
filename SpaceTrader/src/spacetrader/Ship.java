@@ -12,7 +12,7 @@ package spacetrader;
  * @author AfiqAzaibi
  */
 public class Ship {
-    private int fuel = 999999999;
+    private int fuel = 50000000;
     
     public Ship(){
         
@@ -23,7 +23,7 @@ public class Ship {
      * @param int fuel, int distance, Character player
      * @return new fuel level
      */
-    public int subtractFuel(int fuel, int distance) {
+    public int subtractFuel(int f, int distance) {
         //int val = 0;
         
         Character player = Singleton.getCharacter(); //Grabs current character
@@ -41,12 +41,14 @@ public class Ship {
             val += array[i];
         }*/
         
-        fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
+      //  fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
+        fuel -= 200;
         return fuel;
     }
     
     //rusn a check to see if player can travel a distance.
     public String checkSufficientFuel(int distance){
+        
         if(calcFuelForTravel(distance) > fuel) {
             return "Insufficient fuel";
         }
@@ -57,9 +59,10 @@ public class Ship {
     //private since only use in class
     private int calcFuelForTravel(int dist){
         Character player = Singleton.getCharacter(); //Grabs current character
-        double pn = player.getPilot() / 10; //Stores the player's pilot score
-        double returnValue = dist/pn;
-        return (int)returnValue;
+        //double pn = player.getPilot() / 10; //Stores the player's pilot score
+        //double returnValue = dist/pn;
+       // return (int)returnValue;
+        return player.getShip().getFuelLevel();
     }
     
     /**

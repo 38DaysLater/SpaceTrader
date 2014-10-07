@@ -556,6 +556,10 @@ public class UniverseController implements Initializable {
     private void universeTabSelected(Event event) {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
         drawSolarSystem(gc);
+        int fuelLevel = Singleton.getCharacter().getShip().getFuelLevel();
+        String fuelString = Integer.toString(fuelLevel);
+        System.out.println(fuelLevel);
+        fuelLabel.setText("Fuel level:" + fuelString);
     }
     /**
      * Helper method that draws the current Solar System on the canvas
@@ -565,9 +569,6 @@ public class UniverseController implements Initializable {
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         Object[] ss = cha.getCurrentSolarSystem();
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
-        int fuelLevel = Singleton.getCharacter().getShip().getFuelLevel();
-        String fuelString = Integer.toString(fuelLevel);
-        fuelLabel.setText("Fuel level:" + fuelString);
         List<Planet> planets = (List<Planet>)ss[2];
         planets.stream().forEach((p) -> {
             Image image = p.getPlanetPic();
@@ -602,9 +603,10 @@ public class UniverseController implements Initializable {
                             //set current planet and solarsystem
                             int dist = cha.checkDistance(p);
                             String thing = cha.getShip().checkSufficientFuel(dist);
-                            if(thing == null){
+                            if(thing == null) {
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
+                                fuelLabel.setText("Fuel level: " + cha.getShip().getFuelLevel());
                                 //sets current shown tab to the planet info tab                                
                                 tabPane.getSelectionModel().select(0);
                             } else {
