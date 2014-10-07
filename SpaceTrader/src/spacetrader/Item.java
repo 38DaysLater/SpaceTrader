@@ -24,7 +24,7 @@ import java.util.Random;
 public class Item {
     
     private String name;
-    private int basePrice, finalPrice;
+    private int basePrice;
     private int MTLP, MTLU, TTP, IPL, Var; 
     private RandConditions IE, CR, ER;
     
@@ -53,10 +53,10 @@ public class Item {
  * @return None
  */
     
-    public void calcFinalPrice(RandConditions rc1, int techLevel) {
+    public int calcFinalPrice(RandConditions rc1, int techLevel) {
         double mult = calcCondtionMultiplyer(rc1);
         Random rand = new Random();
-        finalPrice = Math.abs((int) mult * basePrice + 3*2 * (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(Var));
+        return Math.abs((int) mult * basePrice + 3*2 * (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(Var));
     }
 /**
  * Gets the name
@@ -74,13 +74,13 @@ public class Item {
  * @return an int of the final price
  */
     
-    public int getFinalPrice() {
-        return finalPrice;
-    }
+    // public int getFinalPrice() {
+    //     return finalPrice;
+    // }
     
-    public void setFinalPrice(int number) {
-        finalPrice = number;
-    }
+    // public void setFinalPrice(int number) {
+    //     finalPrice = number;
+    // }
 
 /**
  * A helper method that determines the effect of the random condition
@@ -102,17 +102,17 @@ public class Item {
         return mult;
     }
     
-    @Override
-    public boolean equals(Object ob1) {
-        if (ob1 instanceof Item){
-            Item it2 = (Item) ob1;
-            if (name.equals(it2.name)) {
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
+    // @Override
+    // public boolean equals(Object ob1) {
+    //     if (ob1 instanceof Item){
+    //         Item it2 = (Item) ob1;
+    //         if (name.equals(it2.name) && basePrice == it2.basePrice && finalPrice) {
+    //             return true;
+    //         }
+    //         return false;
+    //     }
+    //     return false;
+    // }
     
 /**
  * retrieves the MTLP

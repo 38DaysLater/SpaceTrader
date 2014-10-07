@@ -16,21 +16,23 @@ public class Market {
     private Inventory inventory;
     private int techLevel;
     private RandConditions randCond1;
-    private Hashtable<String, Item> priceList;
+    private Hashtable<String, Integer> priceList;
     private final int NUM_ITEMS = 5;
+    private Planet planet;
 
 /**
  * This is the constructor. It generates the inventory
  * @param tech level and resource level
  */
-    public Market(int techLevel, int resourceLevel) {
+    public Market(int techLevel, int resourceLevel, Planet planet) {
+        this.planet = planet;
         this.techLevel = techLevel;
         inventory = new Inventory();
         inventory.setCapacity(100000000); //marketplace can hold whatever it wants
         inventory.addToBalance(1000);
         Random rand = new Random();
         //keeps track of the prices of each item
-        priceList = new Hashtable<String,Item>();
+        priceList = new Hashtable<String, Integer>();
                
         
         //generating a random event
@@ -41,14 +43,16 @@ public class Market {
         //Add to the inventory only if the tech level is sufficient
         for (Item item: Items.getList()) {
             if (techLevel >= item.getMTLP()) {
-                item.calcFinalPrice(randCond1, techLevel);
-                //keepign track of the final prices of itme to be placed in inventory
-                priceList.put(item.getName(), item);
+                int price = item.calcFinalPrice(randCond1, techLevel);
+                //keeping track of the final prices of itme to be placed in inventory
+                priceList.put(item.getName(), price);
                 
                 //adding the item to the inventory
                 inventory.add(item.getName(), NUM_ITEMS);
             }
         }
+        inventory.setPriceList(priceList);
+        System.out.println();
     }
     
     //Player is trying to buy something

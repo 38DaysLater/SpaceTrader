@@ -48,7 +48,7 @@ public class Planet {
         govType = GovernmentType.values()[rand.nextInt(6)];
         resources = Resources.values()[rand.nextInt(13)];
         
-        market = new Market(techLevel.ordinal(), resources.ordinal());
+        market = new Market(techLevel.ordinal(), resources.ordinal(), this);
     }
     
  /**
@@ -66,7 +66,6 @@ public class Planet {
         message = message + "\n\tGovernment Type: " + govType.toString();
         message = message + "\n\tPolice Level (1-10): " + policeLevel;
         message = message + "\n\tChance of meeting pirates: " + pirateChance + "%";
-        //message = message + "\n\tSolar System: " + solarSystem.getName();
         
         return message;
     }
