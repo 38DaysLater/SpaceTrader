@@ -417,134 +417,250 @@ public class UniverseController implements Initializable {
         //sets initial coin amount from player inventory
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         
-        //sets all labels for item price and quantity from market and player inventory
-        int check = currentP().getMarket().getInventory().getItemPrice("Food");
-        if (check != -1) {
-            bfoodP.setText(Integer.toString(check));
-            sfoodP.setText(Integer.toString(check));
+        //sets all labels for item quantity from market and player inventory
+        //if quantity for planet it -1 then the planet can't buy or sell that item
+        String bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Food"));
+        String bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Food"));
+        String sQuan = Integer.toString(cha.getInventory().getItemCount("Food"));
+        if (bQuan.equals("0")) {
+            bfoodP.setText(bPrice);
+            sfoodP.setText(bPrice);
+            bfoodQuan.setText(bQuan);
+            sfoodQuan.setText(sQuan);
             sfoodText.setVisible(true);
-            bfoodText.setVisible(true);
-        } else {
+            bfoodText.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bfoodP.setText("N/A");
             sfoodP.setText("N/A");
+            bfoodQuan.setText("N/A");
+            sfoodQuan.setText(sQuan);
             sfoodText.setVisible(false);
             bfoodText.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Water");
-        if (check != -1) {
-            bWatP.setText(Integer.toString(check));
-            swatP.setText(Integer.toString(check));
-            swatText.setVisible(true);
-            bwatText.setVisible(true);
         } else {
+            bfoodP.setText(bPrice);
+            sfoodP.setText(bPrice);
+            bfoodQuan.setText(bQuan);
+            sfoodQuan.setText(sQuan);
+            sfoodText.setVisible(true);
+            bfoodText.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Water"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Water"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Water"));
+        if (bQuan.equals("0")) {
+            bWatP.setText(bPrice);
+            swatP.setText(bPrice);
+            bwatQuan.setText(bQuan);
+            swatQuan.setText(sQuan);
+            swatText.setVisible(true);
+            bwatText.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bWatP.setText("N/A");
             swatP.setText("N/A");
+            bwatQuan.setText("N/A");
+            swatQuan.setText(sQuan);
             swatText.setVisible(false);
             bwatText.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Medicine");
-        if (check != -1) {
-            bmedP.setText(Integer.toString(check));
-            smedP.setText(Integer.toString(check));
-            smedText.setVisible(true);
-            bmedText.setVisible(true);
         } else {
+            bWatP.setText(bPrice);
+            swatP.setText(bPrice);
+            bwatQuan.setText(bQuan);
+            swatQuan.setText(sQuan);
+            swatText.setVisible(true);
+            bwatText.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Medicine"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Medicine"));
+        if (bQuan.equals("0")) {
+            bmedP.setText(bPrice);
+            smedP.setText(bPrice);
+            bmedQuan.setText(bQuan);
+            smedQuan.setText(sQuan);
+            smedText.setVisible(true);
+            bmedText.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bmedP.setText("N/A");
             smedP.setText("N/A");
+            bmedQuan.setText("N/A");
+            smedQuan.setText(sQuan);
             smedText.setVisible(false);
             bmedText.setVisible(false);
-        } 
-        check = currentP().getMarket().getInventory().getItemPrice("Firearms");
-        if (check != -1) {
-            bFireP.setText(Integer.toString(check));
-            sFireP.setText(Integer.toString(check));
-            sFireTxt.setVisible(true);
-            bFireTxt.setVisible(true);
         } else {
+            bmedP.setText(bPrice);
+            smedP.setText(bPrice);
+            bmedQuan.setText(bQuan);
+            smedQuan.setText(sQuan);
+            smedText.setVisible(true);
+            bmedText.setVisible(true);
+        } 
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Firearms"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Firearms"));
+        if (bQuan.equals("0")) {
+            bFireP.setText(bPrice);
+            sFireP.setText(bPrice);
+            bFireQ.setText(bQuan);
+            sFireQ.setText(sQuan);
+            sFireTxt.setVisible(true);
+            bFireTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bFireP.setText("N/A");
             sFireP.setText("N/A");
+            bFireQ.setText("N/A");
+            sFireQ.setText(sQuan);
             sFireTxt.setVisible(false);
             bFireTxt.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Machines");
-        if (check != -1) {
-            bMacP.setText(Integer.toString(check));
-            sMacP.setText(Integer.toString(check));
-            sMacTxt.setVisible(true);
-            bMacTxt.setVisible(true);
         } else {
+            bFireP.setText(bPrice);
+            sFireP.setText(bPrice);
+            bFireQ.setText(bQuan);
+            sFireQ.setText(sQuan);
+            sFireTxt.setVisible(true);
+            bFireTxt.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Machines"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Machines"));
+        if (bQuan.equals("0")) {
+            bMacP.setText(bPrice);
+            sMacP.setText(bPrice);
+            bMacQ.setText(bQuan);
+            sMacQ.setText(sQuan);
+            sMacTxt.setVisible(true);
+            bMacTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bMacP.setText("N/A");
             sMacP.setText("N/A");
+            bMacQ.setText("N/A");
+            sMacQ.setText(sQuan);
             sMacTxt.setVisible(false);
             bMacTxt.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Robots");
-        if (check != -1) {
-            bRobP.setText(Integer.toString(check));
-            sRobP.setText(Integer.toString(check));
-            sRobTxt.setVisible(true);
-            bRobTxt.setVisible(true);
         } else {
+            bMacP.setText(bPrice);
+            sMacP.setText(bPrice);
+            bMacQ.setText(bQuan);
+            sMacQ.setText(sQuan);
+            sMacTxt.setVisible(true);
+            bMacTxt.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Robots"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Robots"));
+        if (bQuan.equals("0")) {
+            bRobP.setText(bPrice);
+            sRobP.setText(bPrice);
+            bRobQ.setText(bQuan);
+            sRobQ.setText(sQuan);
+            sRobTxt.setVisible(true);
+            bRobTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bRobP.setText("N/A");
             sRobP.setText("N/A");
+            bRobQ.setText("N/A");
+            sRobQ.setText(sQuan);
             sRobTxt.setVisible(false);
             bRobTxt.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Furs");
-        if (check != -1) {
-            bFursP.setText(Integer.toString(check));
-            sFursP.setText(Integer.toString(check));
-            sFursTxt.setVisible(true);
-            bFursTxt.setVisible(true);
         } else {
+            bRobP.setText(bPrice);
+            sRobP.setText(bPrice);
+            bRobQ.setText(bQuan);
+            sRobQ.setText(sQuan);
+            sRobTxt.setVisible(true);
+            bRobTxt.setVisible(true);
+        }        
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Furs"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Furs"));
+        if (bQuan.equals("0")) {
+            bFursP.setText(bPrice);
+            sFursP.setText(bPrice);
+            bFursQ.setText(bQuan);
+            sFursQ.setText(sQuan);
+            sFursTxt.setVisible(true);
+            bFursTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bFursP.setText("N/A");
             sFursP.setText("N/A");
+            bFursQ.setText("N/A");
+            sFursQ.setText(sQuan);
             sFursTxt.setVisible(false);
             bFursTxt.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Ore");
-        if (check != -1) {
-            bOreP.setText(Integer.toString(check));
-            sOreP.setText(Integer.toString(check));
-            sOreTxt.setVisible(true);
-            bOreTxt.setVisible(true);
         } else {
+            bFursP.setText(bPrice);
+            sFursP.setText(bPrice);
+            bFursQ.setText(bQuan);
+            sFursQ.setText(sQuan);
+            sFursTxt.setVisible(true);
+            bFursTxt.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Ore"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Ore"));
+        if (bQuan.equals("0")) {
+            bOreP.setText(bPrice);
+            sOreP.setText(bPrice);
+            bOreQ.setText(bQuan);
+            sOreQ.setText(sQuan);
+            sOreTxt.setVisible(true);
+            bOreTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bOreP.setText("N/A");
             sOreP.setText("N/A");
+            bOreQ.setText("N/A");
+            sOreQ.setText(sQuan);
             sOreTxt.setVisible(false);
             bOreTxt.setVisible(false);
-        }
-        check = currentP().getMarket().getInventory().getItemPrice("Games");
-        if (check != -1) {
-            bGamP.setText(Integer.toString(check));
-            sGamP.setText(Integer.toString(check));
-            sGamTxt.setVisible(true);
-            bGamTxt.setVisible(true);
         } else {
+            bOreP.setText(bPrice);
+            sOreP.setText(bPrice);
+            bOreQ.setText(bQuan);
+            sOreQ.setText(sQuan);
+            sOreTxt.setVisible(true);
+            bOreTxt.setVisible(true);
+        }
+        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Games"));
+        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Games"));
+        sQuan = Integer.toString(cha.getInventory().getItemCount("Games"));
+        if (bQuan.equals("0")) {
+            bGamP.setText(bPrice);
+            sGamP.setText(bPrice);
+            bGamQ.setText(bQuan);
+            sGamQ.setText(sQuan);
+            sGamTxt.setVisible(true);
+            bGamTxt.setVisible(false);
+        } else if (bQuan.equals("-1")) {
             bGamP.setText("N/A");
             sGamP.setText("N/A");
+            bGamQ.setText("N/A");
+            sGamQ.setText(sQuan);
             sGamTxt.setVisible(false);
             bGamTxt.setVisible(false);
+        } else {
+            bGamP.setText(bPrice);
+            sGamP.setText(bPrice);
+            bGamQ.setText(bQuan);
+            sGamQ.setText(sQuan);
+            sGamTxt.setVisible(true);
+            bGamTxt.setVisible(true);
         }
-        //sets quantities of each item for market and player
-        bfoodQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Food")));
-        sfoodQuan.setText(Integer.toString(cha.getInventory().getItemCount("Food")));
-        bwatQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Water")));
-        swatQuan.setText(Integer.toString(cha.getInventory().getItemCount("Water")));
-        bmedQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine")));
-        smedQuan.setText(Integer.toString(cha.getInventory().getItemCount("Medicine")));
-        bFireQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms")));
-        sFireQ.setText(Integer.toString(cha.getInventory().getItemCount("Firearms")));
-        bMacQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines")));
-        sMacQ.setText(Integer.toString(cha.getInventory().getItemCount("Machines")));
-        bRobQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots")));
-        sRobQ.setText(Integer.toString(cha.getInventory().getItemCount("Robots")));
-        bFursQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs")));
-        sFursQ.setText(Integer.toString(cha.getInventory().getItemCount("Furs")));
-        bOreQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore")));
-        sOreQ.setText(Integer.toString(cha.getInventory().getItemCount("Ore")));
-        bGamQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Games")));
-        sGamQ.setText(Integer.toString(cha.getInventory().getItemCount("Games")));
+        //sets price for player and market
+        // bwatQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Water")));
+        // swatQuan.setText(Integer.toString(cha.getInventory().getItemCount("Water")));
+        // bmedQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine")));
+        // smedQuan.setText(Integer.toString(cha.getInventory().getItemCount("Medicine")));
+        // bFireQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms")));
+        // sFireQ.setText(Integer.toString(cha.getInventory().getItemCount("Firearms")));
+        // bMacQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines")));
+        // sMacQ.setText(Integer.toString(cha.getInventory().getItemCount("Machines")));
+        // bRobQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots")));
+        // sRobQ.setText(Integer.toString(cha.getInventory().getItemCount("Robots")));
+        // bFursQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs")));
+        // sFursQ.setText(Integer.toString(cha.getInventory().getItemCount("Furs")));
+        // bOreQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore")));
+        // sOreQ.setText(Integer.toString(cha.getInventory().getItemCount("Ore")));
+        // bGamQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Games")));
+        // sGamQ.setText(Integer.toString(cha.getInventory().getItemCount("Games")));
         
     }
 
@@ -566,6 +682,7 @@ public class UniverseController implements Initializable {
      * @param GraphicsContext gc
      */
     private void drawSolarSystem(GraphicsContext gc) {
+        uniButton.setVisible(true);
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         Object[] ss = cha.getCurrentSolarSystem();
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
@@ -604,6 +721,7 @@ public class UniverseController implements Initializable {
                             int dist = cha.checkDistance(p);
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
+                                //player has enoughfuel to rech destination
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
                                 fuelLabel.setText("Fuel level: " + cha.getShip().getFuelLevel());
@@ -686,6 +804,7 @@ public class UniverseController implements Initializable {
      * @param GraphicsContext gc
      */
     private void drawUniverse(GraphicsContext gc) {
+        uniButton.setVisible(false);
         gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
         SolarSystem[] solar = uni.getAllSolarSystems();
         currentSSLabelCanvas.setText("Universe");
