@@ -19,6 +19,7 @@ public class Character {
         private Ship ship = null;
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
+        private SolarSystem previousSolarSystem = null;
 
 
         /**
@@ -87,7 +88,26 @@ public class Character {
             return (int)d;
         }
         
+        
+        public int checkDistance(SolarSystem s) {
+            if(previousSolarSystem == null){
+                return 0;
+            }
+            
+            int distance = 0; 
+            int[] oldLoc = previousSolarSystem.getLocation();
+            int[] newLoc = s.getLocation();
+            distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1] - newLoc[1]);
+            double d = Math.sqrt(distance); 
+            return (int)(d * 10); 
+        }
+        
+        
+        
+        
+        
         public void setCurrentPlanet(Planet p){
+            previousSolarSystem = currentSolarSystem;
             currentPlanet = p;
         }
         
@@ -115,6 +135,7 @@ public class Character {
         sets the solar system by just passing one in. 
         */
         public void setCurrentSolarSystem(SolarSystem ss) {
+            previousSolarSystem = currentSolarSystem;
             currentSolarSystem = ss;
         }
         

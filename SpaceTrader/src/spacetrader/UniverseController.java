@@ -655,6 +655,9 @@ public class UniverseController implements Initializable {
                             //bring up travel page - for events and decrement fuel
                             //set current planet and solarsystem
                             int dist = cha.checkDistance(p);
+                            int dist1 = cha.checkDistance(p.getSolarSystem());
+                            dist = dist + dist1;
+                            System.out.println();
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
                                 //player has enoughfuel to rech destination

@@ -97,4 +97,8 @@ public class Planet {
     public Image getPlanetPic() {
         return pic;
     }
+    
+    public SolarSystem getSolarSystem(){
+        return solarSystem;
+    }
 }

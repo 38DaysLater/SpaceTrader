@@ -12,7 +12,7 @@ package spacetrader;
  * @author AfiqAzaibi
  */
 public class Ship {
-    private int fuel = 500;
+    private int fuel = 150;
     
     public Ship(){
         
@@ -27,9 +27,13 @@ public class Ship {
         //int val = 0;
         
         Character player = Singleton.getCharacter(); //Grabs current character
-        double pn = player.getPilot() / 3; //Stores the player's pilot score / 3        
-        fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
-        return fuel;
+        if(player.getPilot() > 5) {
+            double pn = player.getPilot() / 3; //Stores the player's pilot score / 3        
+            fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
+            return fuel;
+        }
+        
+        return fuel -= distance;
     }
     
     //rusn a check to see if player can travel a distance.
