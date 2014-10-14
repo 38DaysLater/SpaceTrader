@@ -12,7 +12,7 @@ package spacetrader;
  * @author AfiqAzaibi
  */
 public class Ship {
-    private int fuel = 300;
+    private int fuel = 500;
     
     public Ship(){
         
@@ -45,9 +45,8 @@ public class Ship {
         return null;
     }
     
-    //checks to see how much fuel will use. 
-    //private since only use in class
-    private int calcFuelForTravel(int dist){
+    //checks to see how much fuel will use.
+    public int calcFuelForTravel(int dist){
         Character player = Singleton.getCharacter(); //Grabs current character
         double pn = player.getPilot() / 3; //Stores the player's pilot score / 3
         double returnValue = dist/pn;
