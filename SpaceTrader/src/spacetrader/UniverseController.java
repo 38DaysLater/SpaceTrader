@@ -581,23 +581,6 @@ public class UniverseController implements Initializable {
             sGamTxt.setVisible(true);
             bGamTxt.setVisible(true);
         }
-        //sets price for player and market
-        // bwatQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Water")));
-        // swatQuan.setText(Integer.toString(cha.getInventory().getItemCount("Water")));
-        // bmedQuan.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine")));
-        // smedQuan.setText(Integer.toString(cha.getInventory().getItemCount("Medicine")));
-        // bFireQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms")));
-        // sFireQ.setText(Integer.toString(cha.getInventory().getItemCount("Firearms")));
-        // bMacQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines")));
-        // sMacQ.setText(Integer.toString(cha.getInventory().getItemCount("Machines")));
-        // bRobQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots")));
-        // sRobQ.setText(Integer.toString(cha.getInventory().getItemCount("Robots")));
-        // bFursQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs")));
-        // sFursQ.setText(Integer.toString(cha.getInventory().getItemCount("Furs")));
-        // bOreQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore")));
-        // sOreQ.setText(Integer.toString(cha.getInventory().getItemCount("Ore")));
-        // bGamQ.setText(Integer.toString(currentP().getMarket().getInventory().getItemCount("Games")));
-        // sGamQ.setText(Integer.toString(cha.getInventory().getItemCount("Games")));
         
     }
 
@@ -623,11 +606,21 @@ public class UniverseController implements Initializable {
         Object[] ss = cha.getCurrentSolarSystem();
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
         List<Planet> planets = (List<Planet>)ss[2];
-        planets.stream().forEach((p) -> {
+        planets.stream().forEach((Planet p) -> {
             Image image = p.getPlanetPic();
-            gc.drawImage(image, p.getLocation()[0]+ (universeCanvas.getWidth() - image.getWidth())/2, p.getLocation()[1]+ (universeCanvas.getHeight() - image.getHeight())/2);
+            double h = image.getHeight();
+            double w = image.getWidth();
+            double x = p.getLocation()[0]+ (universeCanvas.getWidth() - w)/2;
+            double y = p.getLocation()[1]+ (universeCanvas.getHeight() - h)/2;
+            if (p == cha.getCurrentPlanet()[0]) {
+                gc.setFill(Color.YELLOW);
+                gc.setFont(new Font(18.0));
+                gc.fillText("Current Planet", x, y - 2, w);
+            }
+            gc.drawImage(image, x, y);
         });
         //eventually draw fuel circle
+        
     }
     
     /**
@@ -643,10 +636,13 @@ public class UniverseController implements Initializable {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
                     //dialog box to travel to planet
                     if (p != cha.getCurrentPlanet()[0]) {
+                        int dist = cha.checkDistance(p);
+                        int dist1 = cha.checkDistance(p.getSolarSystem());
+                        dist = dist + dist1;
                         Action response = Dialogs.create()
                         .title("Confirm Travel")
-                        .masthead("Do you want to continue?")
-                        .message("You have chosen to travel to " + p.getPlanetName() + " in the " + currentSSLabelCanvas.getText() + " System.")
+                        .masthead("It will cost " + cha.getShip().calcFuelForTravel(dist) + " fuel to travel here. \nDo you want to continue?")
+                        .message("You have chosen to travel to:\n" + p.toString())
                         .showConfirm();
 
                         if (response == Dialog.Actions.YES) {
@@ -654,10 +650,6 @@ public class UniverseController implements Initializable {
                             //check if enough fuel to get there
                             //bring up travel page - for events and decrement fuel
                             //set current planet and solarsystem
-                            int dist = cha.checkDistance(p);
-                            int dist1 = cha.checkDistance(p.getSolarSystem());
-                            dist = dist + dist1;
-                            System.out.println();
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
                                 //player has enoughfuel to rech destination

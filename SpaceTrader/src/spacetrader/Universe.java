@@ -60,8 +60,8 @@ public class Universe {
 		
 		for(int i = 1; i < NUM_SOLAR_SYSTEMS; i ++) {
 
-			x = rand.nextInt(760)-380;
-			y = rand.nextInt(510)-255;
+			x = rand.nextInt(750)-375;
+			y = rand.nextInt(500)-250;
 			key[0] = x; key[1] = y; 
 			
 			//makes sure set doesn't have same coordinate			
@@ -69,8 +69,8 @@ public class Universe {
 				//change memory address
 				key = null;
 				key = new int[2];
-				x = rand.nextInt(760)-380;
-				y = rand.nextInt(510)-255;
+				x = rand.nextInt(750)-375;
+				y = rand.nextInt(500)-250;
 				key[0] = x; key[1] = y;
 			}
 			coordinates.add(key);

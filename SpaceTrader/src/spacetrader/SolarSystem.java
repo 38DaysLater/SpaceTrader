@@ -52,13 +52,13 @@ public class SolarSystem {
             //randomely generates the positions, name, and other characteristcs of the planets
             for (int index = 0; index < NUM_PLANETS; index++){
                 planet = null;
-                int xpos = rand.nextInt(760)-380;
-                int ypos = rand.nextInt(510)-255;
+                int xpos = rand.nextInt(750)-375;
+                int ypos = rand.nextInt(500)-250;
                 String pname = Planets.values()[rand.nextInt(119)].toString();
 
                 if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
-                    xpos = rand.nextInt(760)-380;
-                    ypos = rand.nextInt(510)-255;
+                    xpos = rand.nextInt(750)-375;
+                    ypos = rand.nextInt(500)-250;
                     pname = Planets.values()[rand.nextInt(119)].toString(); 
                 }
 
