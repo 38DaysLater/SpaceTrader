@@ -124,6 +124,8 @@ public class UniverseController implements Initializable {
     private Button uniButton;
     @FXML
     private TabPane tabPane;
+    @FXML
+    private Button saveButt;
 
     /**
      * Initializes the controller class.
@@ -800,6 +802,11 @@ public class UniverseController implements Initializable {
         .message(mess)
         .showWarning();
         //end dialog box
+    }
+
+    @FXML
+    private void saveButtHandle(ActionEvent event) {
+        
     }
 
     
