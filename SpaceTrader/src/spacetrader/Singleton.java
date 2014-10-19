@@ -4,14 +4,15 @@
  */
 
 package spacetrader;
+import java.io.Serializable;
 
 /**
  *
  * @author AfiqAzaibi
  */
-public class Singleton {
+public class Singleton implements Serializable{
     
-    private static Character c; 
+    private static Character c;
     private static Universe u; 
     
     

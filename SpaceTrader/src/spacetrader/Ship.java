@@ -11,12 +11,34 @@ package spacetrader;
  *
  * @author AfiqAzaibi
  */
+
 public class Ship {
     private int fuel = 500;
-    
-    public Ship(){
+    private final int FUEL_CAPACITY;
+    private String name;
+    private int price;
+    private int MLP;
+    private int weight;
+    private int atk;
+    private int speed;
         
+    //this is your starting ship. 
+    public Ship(){
+        FUEL_CAPACITY = fuel;
     }
+    
+    //constructor for real ship. This is one that you purchase. 
+    public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity){
+        this.name = name;
+        this.price = price;
+        this.MLP = MLP;
+        this.weight = weight;
+        atk = attack;
+        this.speed = speed;
+        FUEL_CAPACITY = fuelCapacity;
+        fuel = FUEL_CAPACITY;
+    }
+    
     /**
      * @author Hutchinson
      * substractFuel() will decrement the fuel levels based on how far you've moved and your pilot score
@@ -62,4 +84,10 @@ public class Ship {
     public int getFuelLevel() {
         return fuel;
     }
+    
+    public void fillFuel() {
+        fuel = FUEL_CAPACITY;
+    }
+    
+    
 }

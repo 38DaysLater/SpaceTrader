@@ -137,7 +137,4 @@ public class SolarSystem {
         return message;
     }
     
-    public static void main(String[] args){
-        SolarSystem ss = new SolarSystem("Test", 0, 0);
-    }
 }
