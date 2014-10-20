@@ -169,14 +169,5 @@ public class CharacterCreationController implements Initializable {
         } catch (IOException e) {
         }
     }
-
-    /**
-     * Handles when the cancel button is clicked
-     * @param ActionEvent event
-     */
-    @FXML
-    private void nameHandler(ActionEvent event) {
-        
-    }
     
 }

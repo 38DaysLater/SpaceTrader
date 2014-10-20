@@ -21,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
+import java.util.Optional;
+import org.controlsfx.dialog.Dialogs;
 
 public class FXMLDocumentController implements Initializable {
     @FXML
@@ -71,6 +73,16 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void handleLoadButtonAction(ActionEvent event) {
+        Optional<String> response = Dialogs.create()
+        .title("Load Game")
+        .masthead("Please enther the name of the character you would like to load.")
+        .message("Character Name:")
+        .showTextInput("Name");
+
+        // One way to get the response value.
+        if (response.isPresent()) {
+            System.out.println("Your name: " + response.get());
+        }
     }
 
     /**
