@@ -21,14 +21,15 @@ public class Ship {
     private int weight;
     private int atk;
     private int speed;
-        
+    private final int MAX_HEALTH;
+    private int health;   
     //this is your starting ship. 
     public Ship(){
         FUEL_CAPACITY = fuel;
     }
     
     //constructor for real ship. This is one that you purchase. 
-    public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity){
+    public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity, int health){
         this.name = name;
         this.price = price;
         this.MLP = MLP;
@@ -37,6 +38,8 @@ public class Ship {
         this.speed = speed;
         FUEL_CAPACITY = fuelCapacity;
         fuel = FUEL_CAPACITY;
+        this.health = health;
+        MAX_HEALTH = health;
     }
     
     /**
@@ -93,9 +96,32 @@ public class Ship {
         fuel = FUEL_CAPACITY;
     }
     
-    
     public void addToFuel(int x){
         fuel += x;
+    }
+    
+    public void increaseHealth(int x){
+        
+    }
+    
+    public int getHealth() {
+        return health;
+    }
+    
+    public int getMaxHealth() {
+        return MAX_HEALTH;
+    }
+    
+    public int getDamage() {
+        return MAX_HEALTH - health;
+    }
+    
+    public void restoreHealth() {
+        health = MAX_HEALTH;
+    }
+    
+    public int getPrice() {
+        return price;
     }
     
     
