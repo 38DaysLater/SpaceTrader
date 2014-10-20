@@ -137,8 +137,6 @@ public class UniverseController implements Initializable {
     @FXML
     private TabPane tabPane;
     @FXML
-    private Button saveButt;
-    @FXML
     private Label saveLabel;
 
     /**
@@ -152,6 +150,21 @@ public class UniverseController implements Initializable {
         int index = text.indexOf("\n");
         planInfoLabel.setText(currentP().toString().substring(index + 1));
     }    
+    /**
+     * Handles when the planet tab is selected
+     * @param Event event
+     */
+    @FXML
+    private void PlanetNameTabSelected(Event event) {
+        planNameLabel.setText(currentP().getPlanetName());
+        String text = currentP().toString();
+        int index = text.indexOf("\n");
+        planInfoLabel.setText(currentP().toString().substring(index + 1));
+       
+    }
+/****************************************************
+ *                   MARKET TAB                     *
+ ****************************************************/
     /**
      * Handles when the ok button is clicked inside the buy
      * consumables section of the market
@@ -411,20 +424,7 @@ public class UniverseController implements Initializable {
         sOreTxt.clear();
         sGamTxt.clear();
     }
-    /**
-     * Handles when the planet tab is selected
-     * @param Event event
-     */
-    @FXML
-    private void PlanetNameTabSelected(Event event) {
-        planNameLabel.setText(currentP().getPlanetName());
-        String text = currentP().toString();
-        int index = text.indexOf("\n");
-        planInfoLabel.setText(currentP().toString().substring(index + 1));
-       
-    }
-    
-    /**
+   /**
      * Handles when the market tab is selected
      * @param Event event
      */
@@ -599,7 +599,13 @@ public class UniverseController implements Initializable {
         }
         
     }
-
+/****************************************************
+ *                   MARKET END                     *
+ ****************************************************/
+    
+/****************************************************
+ *                  UNIVERSE TAB                    *
+ ****************************************************/
     /**
      * Handles when the universe tab is selected
      * @param Event event
@@ -612,33 +618,6 @@ public class UniverseController implements Initializable {
         String fuelString = Integer.toString(fuelLevel);
         fuelLabel.setText("Fuel level: " + fuelString);
     }
-    /**
-     * Helper method that draws the current Solar System on the canvas
-     * @param GraphicsContext gc
-     */
-    private void drawSolarSystem(GraphicsContext gc) {
-        uniButton.setVisible(true);
-        gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
-        Object[] ss = cha.getCurrentSolarSystem();
-        currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
-        List<Planet> planets = (List<Planet>)ss[2];
-        planets.stream().forEach((Planet p) -> {
-            Image image = p.getPlanetPic();
-            double h = image.getHeight();
-            double w = image.getWidth();
-            double x = p.getLocation()[0]+ (universeCanvas.getWidth() - w)/2;
-            double y = p.getLocation()[1]+ (universeCanvas.getHeight() - h)/2;
-            if (p == cha.getCurrentPlanet()[0]) {
-                gc.setFill(Color.YELLOW);
-                gc.setFont(new Font(18.0));
-                gc.fillText("Current Planet", x, y - 2, w);
-            }
-            gc.drawImage(image, x, y);
-        });
-        //eventually draw fuel circle
-        
-    }
-    
     /**
      * Handles when the universeCanvas is clicked
      * @param MouseEvent event
@@ -738,12 +717,58 @@ public class UniverseController implements Initializable {
             }
         }
     }
-    
+    /**
+     * Handles when the universe button is pressed
+     * brings up the drawing of the solar systems
+     * @param event 
+     */
     @FXML
     private void uniButtonHandler(ActionEvent event) {
         GraphicsContext gc = universeCanvas.getGraphicsContext2D();
         drawUniverse(gc);
         //hide button
+    }
+/****************************************************
+ *                  UNIVERSE END                    *
+ ****************************************************/
+    /**
+     * Handles when the newspaper button is selected
+     * inside the planet tab
+     * @param ActionEvent event
+     */
+    @FXML
+    private void newsButtHandle(ActionEvent event) {
+    }
+    
+/****************************************************
+ *                HELPER METHODS                    *
+ ****************************************************/
+    
+    /**
+     * Helper method that draws the current Solar System on the canvas
+     * @param GraphicsContext gc
+     */
+    private void drawSolarSystem(GraphicsContext gc) {
+        uniButton.setVisible(true);
+        gc.clearRect(0, 0, universeCanvas.getWidth(), universeCanvas.getHeight());
+        Object[] ss = cha.getCurrentSolarSystem();
+        currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
+        List<Planet> planets = (List<Planet>)ss[2];
+        planets.stream().forEach((Planet p) -> {
+            Image image = p.getPlanetPic();
+            double h = image.getHeight();
+            double w = image.getWidth();
+            double x = p.getLocation()[0]+ (universeCanvas.getWidth() - w)/2;
+            double y = p.getLocation()[1]+ (universeCanvas.getHeight() - h)/2;
+            if (p == cha.getCurrentPlanet()[0]) {
+                gc.setFill(Color.YELLOW);
+                gc.setFont(new Font(18.0));
+                gc.fillText("Current Planet", x, y - 2, w);
+            }
+            gc.drawImage(image, x, y);
+        });
+        //eventually draw fuel circle
+        
     }
     /**
      * Helper method that draws the all of the Solar Systems on the canvas
@@ -760,15 +785,6 @@ public class UniverseController implements Initializable {
         }
         
     }
-    /**
-     * Handles when the newspaper button is selected
-     * inside the planet tab
-     * @param ActionEvent event
-     */
-    @FXML
-    private void newsButtHandle(ActionEvent event) {
-    }
-    
     /**
      * Helper method for buying items from market
      * @param String item
@@ -817,11 +833,9 @@ public class UniverseController implements Initializable {
         .showWarning();
         //end dialog box
     }
-
-    @FXML
-    private void saveButtHandle(ActionEvent event) {
-        
-    }
+/****************************************************
+ *                 HELPERS END                      *
+ ****************************************************/
     
 /****************************************************
  *                 OPTIONS TAB                      *
