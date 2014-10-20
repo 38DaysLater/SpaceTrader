@@ -61,6 +61,10 @@ public class Character implements Serializable{
 	public void setEngineer(int num){engineer += num;}
 
 	public void setHealth(int num){health += num;}
+        
+        public void setShip(Ship ship) {
+            this.ship = ship;
+        }
 
 	//getters
         
@@ -148,5 +152,8 @@ public class Character implements Serializable{
             return SSArray;
         }
         
+        public void updateShip(Ship ship) {
+            this.ship = ship;
+        }
 
 }

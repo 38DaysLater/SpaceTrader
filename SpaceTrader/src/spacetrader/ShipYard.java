@@ -2,7 +2,7 @@ package spacetrader;
 
 /**
  *
- * @author AfiqAzaibi
+ * @author Afiq Azaibi, Lawrence Moore
  * This class is where ships go to planet if it's available. Only available
  * tech levels. 
  */
@@ -12,11 +12,17 @@ package spacetrader;
 //Repair ship
 //upgrade ship
 public class ShipYard {
-    int fuelPrice;
+    //be sure to display these to the user so they can make an educated decision
+    private int fuelPrice;
+    private int techLevel;
+    private int repairCost;
+    
     
     //has price for fuel
-    public ShipYard(int fuelPrice){
-        this.fuelPrice = fuelPrice;
+    public ShipYard(int priceAdjustment, int techLevel){
+        this.fuelPrice = 10 + priceAdjustment;
+        this.techLevel = techLevel;
+        repairCost = 15 - techLevel;
     }
     
     //simply calculates how much it costs to refuel
@@ -72,7 +78,44 @@ public class ShipYard {
     }
     
     
+    public String repairShip() {
+        Inventory playerInventory = Singleton.getCharacter().getInventory();
+        int currentBalance = Singleton.getCharacter().getInventory().getBalance();
+        Ship charShip = Singleton.getCharacter().getShip();
+        
+        if(repairCost > currentBalance){
+            return "You don't have enough moneys";
+        } else if (repairCost < 0) {
+            return "Please enter a positive integer";
+        } 
+      
+        int damage = charShip.getDamage();
+        if (damage * repairCost < currentBalance) {
+            playerInventory.subtractFromBalance(damage * repairCost);
+            charShip.restoreHealth();
+        } else {
+            int healthIncrease = currentBalance / repairCost;
+            charShip.increaseHealth(healthIncrease);
+            playerInventory.subtractFromBalance(currentBalance);
+        }
+        return null;
+    }
     
+    public String buyShip(Ship ship) {
+        Character myChar = Singleton.getCharacter();
+        Inventory playerInventory = myChar.getInventory();
+        int currentBalance = myChar.getInventory().getBalance();
+        Ship charShip = myChar.getShip();
+        
+        if (ship.getPrice() > currentBalance) {
+            return "You don't have enough money for this pimpin ride";
+        }
+        
+       myChar.updateShip(ship);
+       playerInventory.subtractFromBalance(ship.getPrice());
+       
+        return null;
+    }
     
     
 }
