@@ -134,6 +134,8 @@ public class UniverseController implements Initializable {
     private TabPane tabPane;
     @FXML
     private Button saveButt;
+    @FXML
+    private Label saveLabel;
 
     /**
      * Initializes the controller class.
@@ -814,7 +816,35 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void saveButtHandle(ActionEvent event) {
-     
+        
+    }
+    
+/****************************************************
+ *                 OPTIONS TAB                      *
+ ****************************************************/
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void labelExited(MouseEvent event) {
+    }
+    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void labelEntered(MouseEvent event) {
+    }
+
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void saveLabelClicked(MouseEvent event) {
         String fileName = "data.bin";
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
@@ -841,8 +871,25 @@ public class UniverseController implements Initializable {
             System.out.println("LOAD FAILED");
             
         }
-        
     }
 
-    
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void exitLabelClicked(MouseEvent event) {
+    }
+
+    /**
+     * 
+     * @param event 
+     */
+    @FXML
+    private void loadLabelClicked(MouseEvent event) {
+    }
+
+/**************************************************
+*                END OPTIONS TAB                 *
+**************************************************/
 }

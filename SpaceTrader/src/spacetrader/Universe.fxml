@@ -569,6 +569,11 @@
                </children></AnchorPane>
       </content>
     </Tab>
+      <Tab text="Shipyard">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
       <Tab onSelectionChanged="#universeTabSelected" text="Universe">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -599,6 +604,29 @@
                         <Font size="16.0" />
                      </font></Label>
                </children></AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Options">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="saveLabel" alignment="CENTER" layoutX="251.0" layoutY="104.0" onMouseClicked="#saveLabelClicked" onMouseEntered="#labelEntered" onMouseExited="#labelExited" prefHeight="65.0" prefWidth="272.0" text="Save">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="251.0" layoutY="232.0" onMouseClicked="#exitLabelClicked" prefHeight="65.0" prefWidth="272.0" text="Exit">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="251.0" layoutY="169.0" onMouseClicked="#loadLabelClicked" prefHeight="65.0" prefWidth="272.0" text="Load">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
         </content>
       </Tab>
   </tabs>
