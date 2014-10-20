@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
  * @author lsmoore
  */
 public class Planet {
+    private static final int TECH_LEVEL_FOR_SHIPYARD = 4;
     private String name;
     private int x, y;
     private int pirateChance;
@@ -50,6 +51,18 @@ public class Planet {
         resources = Resources.values()[rand.nextInt(13)];
         
         market = new Market(techLevel.ordinal(), resources.ordinal(), this);
+        
+        //if the ship doesn't have a high enough tech level, the shipYard remains null
+        shipYard = null;
+        if (techLevel.ordinal() > TECH_LEVEL_FOR_SHIPYARD) {
+            int priceAdjuster = 0;
+            if (resources == Resources.MINERALRICH) {
+                priceAdjuster = -10;
+            } else if (resources == Resources.MINERALPOOR) {
+                priceAdjuster = 10;
+            }
+            shipYard = new ShipYard(priceAdjuster, resources.ordinal());
+        }
     }
     
  /**
@@ -107,6 +120,10 @@ public class Planet {
     //a ship yard to repair
     public void setShipYard(){
         
+    }
+    
+    public boolean hasShipYard(){
+        return shipYard != null;
     }
     
 }
