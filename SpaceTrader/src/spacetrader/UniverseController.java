@@ -43,6 +43,14 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
+
+//imports for saving/loading game
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+
 //import java.awt.Image;
 
 import org.controlsfx.dialog.Dialogs;
@@ -806,6 +814,33 @@ public class UniverseController implements Initializable {
 
     @FXML
     private void saveButtHandle(ActionEvent event) {
+     
+        String fileName = "data.bin";
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
+            //should be singleton but don't worry about it now. 
+            os.writeObject(Singleton.getCharacter());
+            os.close();
+            
+        } catch (Exception e) {
+            System.out.println("SOMETHING WENT WRONG IN SAVE");
+        }
+        
+        System.out.println("Save Successful");
+        
+        try {
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+            Character chacha = (Character) is.readObject();
+            
+            System.out.println();
+            System.out.println("Name : " + chacha.getName());
+            System.out.println("Planet: " + chacha.getCurrentPlanet());
+            is.close();
+            
+        } catch (Exception e){
+            System.out.println("LOAD FAILED");
+            
+        }
         
     }
 

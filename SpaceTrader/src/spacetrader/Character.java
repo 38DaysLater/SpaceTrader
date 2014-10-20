@@ -7,8 +7,9 @@
  */
 
 package spacetrader;
+import java.io.Serializable;
 
-public class Character {
+public class Character implements Serializable{
 
 	//for constructor
 	private String name;

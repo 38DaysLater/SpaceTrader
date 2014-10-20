@@ -25,6 +25,7 @@ public class Planet {
     private Market market;
     private Image pic;
     private double sizeX, sizeY;
+    private ShipYard shipYard;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -101,4 +102,11 @@ public class Planet {
     public SolarSystem getSolarSystem(){
         return solarSystem;
     }
+    
+    //this makes it so that when a planet has a certain tech level it will have
+    //a ship yard to repair
+    public void setShipYard(){
+        
+    }
+    
 }

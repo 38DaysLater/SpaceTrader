@@ -85,8 +85,17 @@ public class Ship {
         return fuel;
     }
     
+    public int getFuelCapacity(){
+        return FUEL_CAPACITY;
+    }
+    
     public void fillFuel() {
         fuel = FUEL_CAPACITY;
+    }
+    
+    
+    public void addToFuel(int x){
+        fuel += x;
     }
     
     
