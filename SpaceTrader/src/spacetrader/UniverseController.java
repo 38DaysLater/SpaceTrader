@@ -50,6 +50,10 @@ import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
+import java.util.Optional;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 
 //import java.awt.Image;
 
@@ -879,6 +883,20 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void exitLabelClicked(MouseEvent event) {
+        //hides this window and brings up the start screen
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("SpaceTrader");
+            stage.setScene(scene);
+            stage.show();
+
+//        //hide this current window
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+        }
     }
 
     /**
@@ -887,6 +905,16 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void loadLabelClicked(MouseEvent event) {
+        Optional<String> response = Dialogs.create()
+        .title("Load Game")
+        .masthead("Please enther the name of the character you would like to load.")
+        .message("Character Name:")
+        .showTextInput("Name");
+
+        // One way to get the response value.
+        if (response.isPresent()) {
+            System.out.println("Your name: " + response.get());
+        }
     }
 
 /**************************************************
