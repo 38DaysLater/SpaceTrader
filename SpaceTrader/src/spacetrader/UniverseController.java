@@ -643,7 +643,10 @@ public class UniverseController implements Initializable {
                         if (response == Dialog.Actions.YES) {
                             // ... user chose YES
                             //check if enough fuel to get there
-                            //bring up travel page - for events and decrement fuel
+                            /**
+                             * bring up travel page - for events and decrement fuel
+************                 * EVVEEEENNNTTTSSSS
+                             */
                             //set current planet and solarsystem
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
