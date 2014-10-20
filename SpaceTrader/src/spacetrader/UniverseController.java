@@ -138,6 +138,10 @@ public class UniverseController implements Initializable {
     private TabPane tabPane;
     @FXML
     private Label saveLabel;
+    @FXML
+    private Label exitLabel;
+    @FXML
+    private Label loadLabel;
 
     /**
      * Initializes the controller class.
@@ -850,6 +854,8 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void labelExited(MouseEvent event) {
+        ((Node)event.getSource()).setStyle("-fx-background-color: transparent;");
+
     }
     
     /**
@@ -858,6 +864,7 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void labelEntered(MouseEvent event) {
+        ((Node)event.getSource()).setStyle("-fx-background-color: gray;");
     }
 
     /**

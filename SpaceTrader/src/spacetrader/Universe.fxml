@@ -610,12 +610,12 @@
                         <Font size="31.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="251.0" layoutY="232.0" onMouseClicked="#exitLabelClicked" prefHeight="65.0" prefWidth="272.0" text="Exit">
+                  <Label fx:id="exitLabel" alignment="CENTER" layoutX="251.0" layoutY="232.0" onMouseClicked="#exitLabelClicked" onMouseEntered="#labelEntered" onMouseExited="#labelExited" prefHeight="65.0" prefWidth="272.0" text="Exit">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="251.0" layoutY="169.0" onMouseClicked="#loadLabelClicked" prefHeight="65.0" prefWidth="272.0" text="Load">
+                  <Label fx:id="loadLabel" alignment="CENTER" layoutX="251.0" layoutY="169.0" onMouseClicked="#loadLabelClicked" onMouseEntered="#labelEntered" onMouseExited="#labelExited" prefHeight="65.0" prefWidth="272.0" text="Load">
                      <font>
                         <Font size="31.0" />
                      </font>
