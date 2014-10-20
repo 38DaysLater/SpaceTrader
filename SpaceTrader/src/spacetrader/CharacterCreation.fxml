@@ -138,7 +138,7 @@
             <Insets />
          </opaqueInsets>
       </VBox>
-      <TextField fx:id="nameBox" layoutX="325.0" layoutY="38.0" onAction="#nameHandler" opacity="0.62" prefHeight="57.0" prefWidth="203.0" promptText="Shepherd">
+      <TextField fx:id="nameBox" layoutX="325.0" layoutY="38.0" opacity="0.62" prefHeight="57.0" prefWidth="203.0" promptText="Shepherd">
          <font>
             <Font name="LilyUPC" size="29.0" />
          </font>
