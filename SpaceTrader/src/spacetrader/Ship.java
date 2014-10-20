@@ -26,6 +26,7 @@ public class Ship {
     //this is your starting ship. 
     public Ship(){
         FUEL_CAPACITY = fuel;
+        MAX_HEALTH = 100;
     }
     
     //constructor for real ship. This is one that you purchase. 
