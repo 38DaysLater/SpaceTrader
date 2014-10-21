@@ -873,11 +873,14 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void saveLabelClicked(MouseEvent event) {
-        String fileName = "data.bin";
+        SaveObject so = new SaveObject(Singleton.getCharacter(), Singleton.getUniverse());
+        String name = Singleton.getCharacter().getName();
+        
+        String fileName = name + ".bin";
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
             //should be singleton but don't worry about it now. 
-            os.writeObject(Singleton.getCharacter());
+            os.writeObject(so);
             os.close();
             
         } catch (Exception e) {
@@ -886,20 +889,7 @@ public class UniverseController implements Initializable {
         }
         
         System.out.println("Save Successful");
-        
-        try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
-            Character chacha = (Character) is.readObject();
-            
-            System.out.println();
-            System.out.println("Name : " + chacha.getName());
-            System.out.println("Planet: " + ((Planet) chacha.getCurrentPlanet()[0]).getPlanetName());
-            is.close();
-            
-        } catch (Exception e){
-            System.out.println(e + " LOAD FAILED");
-            
-        }
+ 
         
         
     }
@@ -941,7 +931,24 @@ public class UniverseController implements Initializable {
         // One way to get the response value.
         if (response.isPresent()) {
             System.out.println("Your name: " + response.get());
+
+            try {
+
+                String fileName = response.get() + ".bin";
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+                SaveObject so2 = (SaveObject) is.readObject();
+
+                System.out.println();
+                System.out.println("Name : " + so2.getCharacter().getName());
+                System.out.println("Planet: " + ((Planet) so2.getCharacter().getCurrentPlanet()[0]).getPlanetName());
+                is.close();
+
+            } catch (Exception e){
+                System.out.println(e + "LOAD FAILED");
+
+            }
         }
+        
     }
 
 /**************************************************
