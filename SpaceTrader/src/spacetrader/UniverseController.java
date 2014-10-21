@@ -924,7 +924,7 @@ public class UniverseController implements Initializable {
     private void loadLabelClicked(MouseEvent event) {
         Optional<String> response = Dialogs.create()
         .title("Load Game")
-        .masthead("Please enther the name of the character you would like to load.")
+        .masthead("Please enter the name of the\ncharacter you would like to load.")
         .message("Character Name:")
         .showTextInput("Name");
 
@@ -937,14 +937,35 @@ public class UniverseController implements Initializable {
                 String fileName = response.get() + ".bin";
                 ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
                 SaveObject so2 = (SaveObject) is.readObject();
+                Singleton.setCharacter(so2.getCharacter());
+                Singleton.setUniverse(so2.getUniverse());
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
 
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setTitle("Space Trader");
+                    stage.setScene(scene);
+                    stage.show();
+
+        //        //hide current window
+                    ((Node)(event.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                    System.out.println("IOExcpetion caught in UniverseController.java line:954");
+                }
+                
                 System.out.println();
                 System.out.println("Name : " + so2.getCharacter().getName());
                 System.out.println("Planet: " + ((Planet) so2.getCharacter().getCurrentPlanet()[0]).getPlanetName());
                 is.close();
 
             } catch (Exception e){
-                System.out.println(e + "LOAD FAILED");
+//                System.out.println(e + "LOAD FAILED");
+                Dialogs.create()
+                .title("OH NO!")
+                .masthead("Could not find save file")
+                .message( "Please be sure a valid character name is entered.")
+                .showWarning();
 
             }
         }

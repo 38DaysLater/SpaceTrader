@@ -6,6 +6,7 @@
  */
 package spacetrader;
 
+import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Optional;
 import org.controlsfx.dialog.Dialogs;
 
@@ -75,13 +77,49 @@ public class FXMLDocumentController implements Initializable {
     private void handleLoadButtonAction(ActionEvent event) {
         Optional<String> response = Dialogs.create()
         .title("Load Game")
-        .masthead("Please enther the name of the character you would like to load.")
+        .masthead("Please enter the name of the\ncharacter you would like to load.")
         .message("Character Name:")
         .showTextInput("Name");
 
         // One way to get the response value.
         if (response.isPresent()) {
             System.out.println("Your name: " + response.get());
+            try {
+
+                String fileName = response.get() + ".bin";
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+                SaveObject so2 = (SaveObject) is.readObject();
+                Singleton.setCharacter(so2.getCharacter());
+                Singleton.setUniverse(so2.getUniverse());
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setTitle("Space Trader");
+                    stage.setScene(scene);
+                    stage.show();
+
+        //        //hide current window
+                    ((Node)(event.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                    System.out.println("IOExcpetion caught in FXMLDocumentController.java line:106");
+                }
+                
+                System.out.println();
+                System.out.println("Name : " + so2.getCharacter().getName());
+                System.out.println("Planet: " + ((Planet) so2.getCharacter().getCurrentPlanet()[0]).getPlanetName());
+                is.close();
+
+            } catch (Exception e){
+                Dialogs.create()
+                .title("OH NO!")
+                .masthead("Could not find save file")
+                .message( "Please be sure a valid character name is entered.")
+                .showWarning();
+//              System.out.println(e + "LOAD FAILED");
+
+            }
         }
     }
 
