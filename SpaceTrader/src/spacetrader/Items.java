@@ -6,12 +6,13 @@
 package spacetrader;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * This class represents all the items of the space trader universe
  * @author lsmoore
  */
-public class Items {
+public class Items implements Serializable{
     private static ArrayList<Item> list;
     
     static {

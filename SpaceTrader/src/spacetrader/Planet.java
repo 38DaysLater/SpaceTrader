@@ -6,6 +6,7 @@
 package spacetrader;
 import java.util.Random;
 import javafx.scene.image.Image;
+import java.io.Serializable;
 
 /**
  * This class represents a Planet.  It is instantiated by the Solar System class
@@ -13,7 +14,7 @@ import javafx.scene.image.Image;
  * government type, chance of meeting pirates, and its solar system
  * @author lsmoore
  */
-public class Planet {
+public class Planet implements Serializable{
     private static final int TECH_LEVEL_FOR_SHIPYARD = 4;
     private String name;
     private int x, y;

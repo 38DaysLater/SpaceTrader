@@ -8,11 +8,12 @@ package spacetrader;
 
 import java.util.Hashtable;
 import java.util.Random;
+import java.io.Serializable;
 /**
  * This class represents a Market. 
  * @author lsmoore
  */
-public class Market {
+public class Market implements Serializable{
     private Inventory inventory;
     private int techLevel;
     private RandConditions randCond1;

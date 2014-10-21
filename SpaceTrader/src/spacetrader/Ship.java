@@ -6,13 +6,13 @@
  */
 
 package spacetrader;
-
+import java.io.Serializable;
 /**
  *
  * @author AfiqAzaibi
  */
 
-public class Ship {
+public class Ship implements Serializable{
     private int fuel = 500;
     private final int FUEL_CAPACITY;
     private String name;

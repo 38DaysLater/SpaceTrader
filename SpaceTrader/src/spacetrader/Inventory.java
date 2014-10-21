@@ -3,6 +3,7 @@ package spacetrader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
+import java.io.Serializable;
 
 /**
  * This class represents an Inventory.  Every item present in the inventory is
@@ -10,7 +11,7 @@ import java.util.Set;
  * The key is the name of the item, and the value is the item itself along with the number of times it appears
  * @author lsmoore
  */
-public class Inventory {
+public class Inventory implements Serializable{
     
     private Hashtable<String, ItemWrapper> list;
     private int balance = 0;
