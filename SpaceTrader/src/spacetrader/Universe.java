@@ -4,6 +4,7 @@ import java.util.Random;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * This is the universe for the game, contains solar systems and generates
@@ -12,7 +13,7 @@ import java.io.IOException;
  * @author AfiqAzaibi
  */
 
-public class Universe {
+public class Universe implements Serializable{
         private final int NUM_SOLAR_SYSTEMS = 3;
         SolarSystem[] SSArray = new SolarSystem[NUM_SOLAR_SYSTEMS];
         

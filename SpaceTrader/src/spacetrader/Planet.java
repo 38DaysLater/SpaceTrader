@@ -25,7 +25,7 @@ public class Planet implements Serializable{
     private GovernmentType govType;
     private SolarSystem solarSystem;
     private Market market;
-    private Image pic;
+    private transient Image pic;
     private double sizeX, sizeY;
     private ShipYard shipYard;
     
@@ -133,5 +133,7 @@ public class Planet implements Serializable{
     public boolean hasShipYard(){
         return shipYard != null;
     }
+ 
+
     
 }

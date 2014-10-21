@@ -1,4 +1,5 @@
 package spacetrader;
+import java.io.Serializable;
 
 /**
  *
@@ -11,7 +12,7 @@ package spacetrader;
 //trade ship
 //Repair ship
 //upgrade ship
-public class ShipYard {
+public class ShipYard implements Serializable{
     //be sure to display these to the user so they can make an educated decision
     private int fuelPrice;
     private int techLevel;

@@ -881,7 +881,8 @@ public class UniverseController implements Initializable {
             os.close();
             
         } catch (Exception e) {
-            System.out.println("SOMETHING WENT WRONG IN SAVE");
+            System.out.println(e + " SOMETHING WENT WRONG IN SAVE");
+            e.printStackTrace();
         }
         
         System.out.println("Save Successful");
@@ -892,13 +893,15 @@ public class UniverseController implements Initializable {
             
             System.out.println();
             System.out.println("Name : " + chacha.getName());
-            System.out.println("Planet: " + chacha.getCurrentPlanet());
+            System.out.println("Planet: " + ((Planet) chacha.getCurrentPlanet()[0]).getPlanetName());
             is.close();
             
         } catch (Exception e){
-            System.out.println("LOAD FAILED");
+            System.out.println(e + " LOAD FAILED");
             
         }
+        
+        
     }
 
     /**

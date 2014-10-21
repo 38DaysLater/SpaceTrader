@@ -20,7 +20,7 @@ public class SolarSystem implements Serializable{
     private int x, y;
     private final int SOLARSIZE = 1000;
     private final int NUM_PLANETS = 5; 
-    private Image pic;
+    private transient Image pic;
     private double sizeX, sizeY;
         
     
