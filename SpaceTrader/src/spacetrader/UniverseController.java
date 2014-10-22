@@ -651,6 +651,16 @@ public class UniverseController implements Initializable {
                              * bring up travel page - for events and decrement fuel
 ************                 * EVVEEEENNNTTTSSSS
                              */
+                            
+                            /*creates a travel event object to handle random events
+                            * eventually it will read from a text document so the
+                            * events will have different chances based on where we are in the universe
+                            *and be different each time the player travels.
+                            * but for now it is very simple.
+                            */
+                            TravelEvent events = new TravelEvent();
+                            events.handleEvents();
+                            
                             //set current planet and solarsystem
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {

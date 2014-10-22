@@ -109,6 +109,10 @@ public class Ship implements Serializable{
         return health;
     }
     
+    public void subtractDamage(int damage) {
+        this.health = health - damage;
+    }
+    
     public int getMaxHealth() {
         return MAX_HEALTH;
     }
