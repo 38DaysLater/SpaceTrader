@@ -124,6 +124,11 @@ public class Ship implements Serializable{
     public int getPrice() {
         return price;
     }
+
+    public String toString(){
+        String returnString = name + " " + price + " " + MLP + " " + weight + " " + atk + " " + speed + " " + FUEL_CAPACITY + " " + health;
+        return returnString;
+    }
     
     
 }

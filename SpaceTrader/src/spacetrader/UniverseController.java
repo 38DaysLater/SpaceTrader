@@ -941,7 +941,6 @@ public class UniverseController implements Initializable {
                 Singleton.setUniverse(so2.getUniverse());
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
-
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
                     stage.setTitle("Space Trader");
