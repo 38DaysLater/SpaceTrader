@@ -50,6 +50,7 @@ import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -142,7 +143,32 @@ public class UniverseController implements Initializable {
     private Label exitLabel;
     @FXML
     private Label loadLabel;
-
+    @FXML
+    private Label titan1; 
+    @FXML
+    private Label titan2;
+    @FXML
+    private Label titan3;
+    @FXML
+    private Label banshee1;
+    @FXML
+    private Label banshee2;
+    @FXML
+    private Label banshee3;
+    @FXML
+    private Label rusty1;
+    @FXML
+    private Label rusty2;
+    @FXML
+    private Label serenity1;
+    @FXML
+    private Label serenity2;
+    @FXML
+    private Label shipyardHeader;
+    @FXML
+    private Label shipLabel;
+    @FXML
+    
     /**
      * Initializes the controller class.
      */
@@ -605,6 +631,44 @@ public class UniverseController implements Initializable {
     }
 /****************************************************
  *                   MARKET END                     *
+ ****************************************************/
+/****************************************************
+ *                   SHIPYARD TAB                    *
+ ****************************************************/    
+    /**
+     * Handles when the shipyard tab is selected
+     * @param Event event
+     */
+    @FXML
+    private void shipyardTabSelected(Event event) {
+        ArrayList<Ship> shipList = Ships.getList();
+        /*String shipString;
+        or (int i = 0; i < shipList.size(); i++) {
+            System.out.println(i);
+            //shipLabel.setText(shipList.get(i).toString() + "\n");
+            shipString = shipList.get(i) + "\n";
+            shipLabel.setText(shipString);
+        }*/
+        shipyardHeader.setText("Name     Price     MLP      Weight     Attack     Speed     Fuel     Capacity     Health");
+        titan1.setText(shipList.get(0).toString());
+        titan2.setText(shipList.get(1).toString());
+        titan3.setText(shipList.get(2).toString());
+        
+        banshee1.setText(shipList.get(3).toString());
+        banshee2.setText(shipList.get(4).toString());
+        banshee3.setText(shipList.get(5).toString());
+        
+        rusty1.setText(shipList.get(6).toString());
+        rusty2.setText(shipList.get(7).toString());
+        
+        serenity1.setText(shipList.get(8).toString());
+        serenity2.setText(shipList.get(9).toString());
+        
+        
+        shipLabel.setText(Singleton.getCharacter().getShip().toString());
+    }
+/****************************************************
+ *                  SHIPYARD END                    *
  ****************************************************/
     
 /****************************************************
