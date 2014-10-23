@@ -142,17 +142,14 @@ public class Inventory implements Serializable{
  */
  
    public int getItemCount(String name) {
-       System.out.println(name);
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
         } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
-            //System.out.print(priceList.keys());
             return 0;
         } else {
-            System.out.println("but we aint got those items lt. dan");
             return -1;
         }
     }
@@ -240,13 +237,6 @@ public class Inventory implements Serializable{
         }
 
     }
-    
-    public void printEligibleItems(){
-        for (String item: elligibleItems){
-            System.out.println(item);
-        }
-    }
-    
     
     //get balance
     public int getBalance(){
