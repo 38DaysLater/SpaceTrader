@@ -89,10 +89,10 @@ public class Items implements Serializable{
          }
     }
     
-    public static ArrayList<Item> getElligibleItems(int tl) {
-        ArrayList<Item> newList = new ArrayList<Item>();
+    public static ArrayList<String> getElligibleItems(int tl) {
+        ArrayList<String> newList = new ArrayList<String>();
         for (int i = 0; i <= tl; i++) {
-            newList.add(list.get(i));
+            newList.add(list.get(i).getName());
         }
         return newList;
     }
