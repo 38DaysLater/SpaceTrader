@@ -140,8 +140,8 @@ public class Inventory implements Serializable{
  * @param the item we're looking for
  * @return the number of times it occurs in the hashtable
  */
-
-    public int getItemCount(String name) {
+ 
+   public int getItemCount(String name) {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);

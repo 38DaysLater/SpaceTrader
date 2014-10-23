@@ -79,6 +79,9 @@ public class Planet implements Serializable{
  * @return a string of the contents
  */
     
+    public void setPlanetPic(){
+        pic = new Image("/spacetrader/resources/Planet.png");
+    }
     public String toString() {
         String message;
         message = "Planet name: " + name;

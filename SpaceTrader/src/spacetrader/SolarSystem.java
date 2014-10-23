@@ -75,6 +75,11 @@ public class SolarSystem implements Serializable{
         
     }
     
+    public void setSSPic(){
+        pic = new Image("/spacetrader/resources/SolarSystem2.png");
+    }
+    
+    
 /**
  * Gets a list of the planets
  * @param none
