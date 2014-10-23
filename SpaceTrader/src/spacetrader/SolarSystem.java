@@ -122,6 +122,9 @@ public class SolarSystem implements Serializable{
         return false;
     }
     public Image getSSPic() {
+        if (pic == null) {
+            pic = new Image("/spacetrader/resources/SolarSystem2.png");
+        }
         return pic;
     }
 /**

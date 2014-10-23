@@ -18,7 +18,7 @@ public class Inventory implements Serializable{
     private int capacity = 100;
     private int totalItemCount = 0;
     private Hashtable<String, Integer> priceList;
-    private final ArrayList<Item> elligibleItems; 
+    private final ArrayList<String> elligibleItems; 
     private int techLevel = 10;
 
     /**
@@ -121,7 +121,7 @@ public class Inventory implements Serializable{
         //if the item is alread in the inventory, increment its count by 1
         Set<String> set = list.keySet();
         if (set.contains(name)) {
-        ItemWrapper iw = list.remove(name);
+            ItemWrapper iw = list.remove(name);
             iw.addCount(num);
             list.put(name, iw);
         } else {
@@ -142,15 +142,17 @@ public class Inventory implements Serializable{
  */
  
    public int getItemCount(String name) {
+       System.out.println(name);
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
-        } else if (elligibleItems.contains(Items.getItem(name))){
+        } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
             //System.out.print(priceList.keys());
             return 0;
         } else {
+            System.out.println("but we aint got those items lt. dan");
             return -1;
         }
     }
@@ -159,7 +161,7 @@ public class Inventory implements Serializable{
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             return priceList.get(name);
-        } else if (elligibleItems.contains(Items.getItem(name))){
+        } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
             //System.out.print(priceList.keys());
             if (priceList.contains(name))
@@ -237,6 +239,12 @@ public class Inventory implements Serializable{
             return -1;
         }
 
+    }
+    
+    public void printEligibleItems(){
+        for (String item: elligibleItems){
+            System.out.println(item);
+        }
     }
     
     
