@@ -120,6 +120,9 @@ public class Planet implements Serializable{
     }
    
     public Image getPlanetPic() {
+        if(pic == null){
+           pic = new Image("/spacetrader/resources/Planet.png");            
+        }
         return pic;
     }
     
