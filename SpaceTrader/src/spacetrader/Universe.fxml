@@ -564,9 +564,225 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Shipyard">
+      <Tab onSelectionChanged="#shipyardTabSelected" text="Shipyard">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="467.0" fitWidth="796.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@resources/shipYard.jpg" />
+                     </image>
+                     <effect>
+                        <GaussianBlur />
+                     </effect>
+                  </ImageView>
+                  <SplitPane blendMode="SOFT_LIGHT" dividerPositions="0.75" layoutX="32.0" layoutY="31.0" orientation="VERTICAL" prefHeight="420.0" prefWidth="749.0">
+                     <items>
+                        <ScrollPane prefHeight="264.0" prefWidth="734.0">
+                           <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="707.0">
+                                 <children>
+                                    <GridPane layoutX="14.0" prefHeight="346.0" prefWidth="639.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="titan1" blendMode="EXCLUSION" text="Titan 1" textFill="#c62424" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="titan2" blendMode="EXCLUSION" text="Titan 2" textFill="#c62424" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="titan3" blendMode="EXCLUSION" text="Titan 3" textFill="#c62424" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="banshee1" blendMode="EXCLUSION" text="Banshee 1" textFill="#c62424" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="banshee2" blendMode="EXCLUSION" text="Banshee 2" textFill="#c62424" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="banshee3" blendMode="EXCLUSION" text="Banshee 3" textFill="#c62424" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="rusty1" blendMode="EXCLUSION" text="Rusty 1" textFill="#c62424" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="rusty2" blendMode="EXCLUSION" text="Rusty 2" textFill="#c62424" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="serenity1" blendMode="EXCLUSION" text="Serenity 1" textFill="#c62424" GridPane.rowIndex="9">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="serenity2" blendMode="EXCLUSION" text="Serenity 2" textFill="#c62424" GridPane.rowIndex="10">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                          <Label fx:id="shipyardHeader" blendMode="EXCLUSION" text="Header" textFill="#c62424">
+                                             <font>
+                                                <Font name="AR DESTINE" size="16.0" />
+                                             </font>
+                                             <effect>
+                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
+                                             </effect></Label>
+                                       </children>
+                                    </GridPane>
+                                    <GridPane layoutX="663.0" layoutY="41.0" prefHeight="300.0" prefWidth="38.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.rowIndex="4">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="5">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="6">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="7">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="8">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="9">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="1">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="2">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="3">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                          <RadioButton mnemonicParsing="false">
+                                             <effect>
+                                                <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                             </effect></RadioButton>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <AnchorPane focusTraversable="true" prefHeight="106.0" prefWidth="731.0" scaleShape="false">
+                           <children>
+                              <Label fx:id="shipLabel" layoutX="14.0" layoutY="14.0" text="Your ship" textFill="#ab2727">
+                                 <font>
+                                    <Font name="AR DESTINE" size="21.0" />
+                                 </font>
+                                 <effect>
+                                    <ColorAdjust brightness="0.24" contrast="0.54" />
+                                 </effect></Label>
+                              <Button blendMode="EXCLUSION" layoutX="399.0" layoutY="32.0" mnemonicParsing="false" text="Refuel" textFill="#19a0b2" underline="true">
+                                 <font>
+                                    <Font name="AR DESTINE" size="21.0" />
+                                 </font>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
+                                 </effect></Button>
+                              <Button blendMode="EXCLUSION" layoutX="499.0" layoutY="32.0" mnemonicParsing="false" text="Repair" textFill="#19a0b2" underline="true">
+                                 <font>
+                                    <Font name="AR DESTINE" size="21.0" />
+                                 </font>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
+                                 </effect>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></Button>
+                              <Button blendMode="EXCLUSION" layoutX="598.0" layoutY="32.0" mnemonicParsing="false" text="Upgrade" textFill="#19a0b2" underline="true">
+                                 <font>
+                                    <Font name="AR DESTINE" size="21.0" />
+                                 </font>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
+                                 </effect></Button>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </SplitPane>
+               </children></AnchorPane>
         </content>
       </Tab>
       <Tab onSelectionChanged="#universeTabSelected" text="Universe">
