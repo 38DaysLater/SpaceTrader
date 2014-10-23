@@ -651,6 +651,16 @@ public class UniverseController implements Initializable {
                              * bring up travel page - for events and decrement fuel
 ************                 * EVVEEEENNNTTTSSSS
                              */
+                            
+                            /*creates a travel event object to handle random events
+                            * eventually it will read from a text document so the
+                            * events will have different chances based on where we are in the universe
+                            *and be different each time the player travels.
+                            * but for now it is very simple.
+                            */
+                            TravelEvent events = new TravelEvent();
+                            events.handleEvents();
+                            
                             //set current planet and solarsystem
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
@@ -762,9 +772,6 @@ public class UniverseController implements Initializable {
         currentSSLabelCanvas.setText(((SolarSystem)ss[0]).getName());
         List<Planet> planets = (List<Planet>)ss[2];
         planets.stream().forEach((Planet p) -> {
-            if(p.getPlanetPic() == null){
-                p.setPlanetPic();
-            } 
             Image image = p.getPlanetPic();
             double h = image.getHeight();
             double w = image.getWidth();
@@ -790,9 +797,6 @@ public class UniverseController implements Initializable {
         SolarSystem[] solar = uni.getAllSolarSystems();
         currentSSLabelCanvas.setText("Universe");
         for (SolarSystem solar1 : solar) {
-            if (solar1.getSSPic() == null){
-                solar1.setSSPic();
-            }
             Image image = solar1.getSSPic();
             gc.drawImage(image, solar1.getLocation()[0] + (universeCanvas.getWidth() - image.getWidth())/2, solar1.getLocation()[1] + (universeCanvas.getHeight() - image.getHeight())/2);
         }
@@ -893,8 +897,6 @@ public class UniverseController implements Initializable {
             System.out.println(e + " SOMETHING WENT WRONG IN SAVE");
             e.printStackTrace();
         }
-        
-        System.out.println("Water: " + so.getCharacter().getInventory().getItemCount("Water"));
         
         System.out.println("Save Successful");
  
