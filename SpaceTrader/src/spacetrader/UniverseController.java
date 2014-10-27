@@ -55,6 +55,9 @@ import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
 //import java.awt.Image;
 
@@ -71,6 +74,7 @@ public class UniverseController implements Initializable {
     private Universe uni = Singleton.getUniverse();
     private Character cha = Singleton.getCharacter();
     private String success;
+    private ToggleGroup shipGroup = new ToggleGroup();
     @FXML
     private Tab planetNameTab;
     @FXML
@@ -144,30 +148,23 @@ public class UniverseController implements Initializable {
     @FXML
     private Label loadLabel;
     @FXML
-    private Label titan1; 
+    private Label titan1, titan2, titan3;
     @FXML
-    private Label titan2;
+    private Label banshee1, banshee2, banshee3;
     @FXML
-    private Label titan3;
+    private Label rusty1, rusty2;
     @FXML
-    private Label banshee1;
-    @FXML
-    private Label banshee2;
-    @FXML
-    private Label banshee3;
-    @FXML
-    private Label rusty1;
-    @FXML
-    private Label rusty2;
-    @FXML
-    private Label serenity1;
-    @FXML
-    private Label serenity2;
+    private Label serenity1, serenity2;
     @FXML
     private Label shipyardHeader;
     @FXML
     private Label shipLabel;
     @FXML
+    private RadioButton banshee2rad, banshee3rad, rusty1rad, rusty2rad;
+    @FXML
+    private RadioButton serenity1rad, serenity2rad, titan2rad, titan3rad;
+    @FXML
+    private RadioButton banshee1rad, titan1rad;
     
     /**
      * Initializes the controller class.
@@ -666,6 +663,33 @@ public class UniverseController implements Initializable {
         
         
         shipLabel.setText(Singleton.getCharacter().getShip().toString());
+        
+        titan1rad.setToggleGroup(shipGroup);
+        titan2rad.setToggleGroup(shipGroup);
+        titan3rad.setToggleGroup(shipGroup);
+        banshee1rad.setToggleGroup(shipGroup);
+        banshee2rad.setToggleGroup(shipGroup);
+        banshee3rad.setToggleGroup(shipGroup);
+        rusty1rad.setToggleGroup(shipGroup);
+        rusty2rad.setToggleGroup(shipGroup);
+        serenity1rad.setToggleGroup(shipGroup);
+        serenity2rad.setToggleGroup(shipGroup);
+        
+    }
+    
+    @FXML
+    private void refuelButtonClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void repairButtonClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void upgradeButtonClicked(ActionEvent event) {
+        Toggle selected =  shipGroup.getSelectedToggle();
+        //selected.equals(id of button in question)
+        //do things
     }
 /****************************************************
  *                  SHIPYARD END                    *

@@ -696,43 +696,43 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <RadioButton mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.rowIndex="4">
+                                          <RadioButton fx:id="banshee2rad" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.rowIndex="4">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="5">
+                                          <RadioButton fx:id="banshee3rad" mnemonicParsing="false" GridPane.rowIndex="5">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="6">
+                                          <RadioButton fx:id="rusty1rad" mnemonicParsing="false" GridPane.rowIndex="6">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="7">
+                                          <RadioButton fx:id="rusty2rad" mnemonicParsing="false" GridPane.rowIndex="7">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="8">
+                                          <RadioButton fx:id="serenity1rad" mnemonicParsing="false" GridPane.rowIndex="8">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="9">
+                                          <RadioButton fx:id="serenity2rad" mnemonicParsing="false" GridPane.rowIndex="9">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="1">
+                                          <RadioButton fx:id="titan2rad" mnemonicParsing="false" GridPane.rowIndex="1">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="2">
+                                          <RadioButton fx:id="titan3rad" mnemonicParsing="false" GridPane.rowIndex="2">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false" GridPane.rowIndex="3">
+                                          <RadioButton fx:id="banshee1rad" mnemonicParsing="false" GridPane.rowIndex="3">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
-                                          <RadioButton mnemonicParsing="false">
+                                          <RadioButton fx:id="titan1rad" mnemonicParsing="false">
                                              <effect>
                                                 <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
                                              </effect></RadioButton>
@@ -751,14 +751,14 @@
                                  <effect>
                                     <ColorAdjust brightness="0.24" contrast="0.54" />
                                  </effect></Label>
-                              <Button blendMode="EXCLUSION" layoutX="399.0" layoutY="32.0" mnemonicParsing="false" text="Refuel" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="399.0" layoutY="32.0" mnemonicParsing="false" onAction="#refuelButtonClicked" text="Refuel" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
                                  <effect>
                                     <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
                                  </effect></Button>
-                              <Button blendMode="EXCLUSION" layoutX="499.0" layoutY="32.0" mnemonicParsing="false" text="Repair" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="499.0" layoutY="32.0" mnemonicParsing="false" onAction="#repairButtonClicked" text="Repair" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
@@ -768,7 +768,7 @@
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets></Button>
-                              <Button blendMode="EXCLUSION" layoutX="598.0" layoutY="32.0" mnemonicParsing="false" text="Upgrade" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="598.0" layoutY="32.0" mnemonicParsing="false" onAction="#upgradeButtonClicked" text="Upgrade" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
