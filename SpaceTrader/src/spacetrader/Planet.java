@@ -139,7 +139,7 @@ public class Planet implements Serializable{
     public boolean hasShipYard(){
         return shipYard != null;
     }
- 
-
-    
+    public ShipYard getShipYard() {
+        return shipYard;
+    }
 }

@@ -75,10 +75,12 @@ public class UniverseController implements Initializable {
     private Character cha = Singleton.getCharacter();
     private String success;
     private ToggleGroup shipGroup = new ToggleGroup();
+    private ArrayList<Ship> shipList;
+    private ShipYard shipYard;
     @FXML
     private Tab planetNameTab;
     @FXML
-    private Label planNameLabel, planInfoLabel, coinLabel;
+    private Label planNameLabel, planInfoLabel, coinLabel, coinLabel2;
     @FXML
     private Button newsButt;
     @FXML
@@ -638,7 +640,9 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void shipyardTabSelected(Event event) {
-        ArrayList<Ship> shipList = Ships.getList();
+        shipList = Ships.getList();
+        shipYard = currentP().getShipYard();
+        coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
         /*String shipString;
         or (int i = 0; i < shipList.size(); i++) {
             System.out.println(i);
@@ -646,23 +650,23 @@ public class UniverseController implements Initializable {
             shipString = shipList.get(i) + "\n";
             shipLabel.setText(shipString);
         }*/
-        shipyardHeader.setText("Name     Price     MLP      Weight     Attack     Speed     Fuel     Capacity     Health");
-        titan1.setText(shipList.get(0).toString());
-        titan2.setText(shipList.get(1).toString());
-        titan3.setText(shipList.get(2).toString());
+        shipyardHeader.setText("Name\t\tPrice\tMLP\tWeight\tAttack\tSpeed\tFuel Capacity\tHealth");
+        titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
+        titan2.setText(shipList.get(1).getName() + "\t\t" + shipList.get(1).toString());
+        titan3.setText(shipList.get(2).getName() + "\t\t" + shipList.get(2).toString());
         
-        banshee1.setText(shipList.get(3).toString());
-        banshee2.setText(shipList.get(4).toString());
-        banshee3.setText(shipList.get(5).toString());
+        banshee1.setText(shipList.get(3).getName() + "\t" + shipList.get(3).toString());
+        banshee2.setText(shipList.get(4).getName() + "\t" + shipList.get(4).toString());
+        banshee3.setText(shipList.get(5).getName() + "\t" + shipList.get(5).toString());
         
-        rusty1.setText(shipList.get(6).toString());
-        rusty2.setText(shipList.get(7).toString());
+        rusty1.setText(shipList.get(6).getName() + "\t\t" + shipList.get(6).toString());
+        rusty2.setText(shipList.get(7).getName() + "\t\t" + shipList.get(7).toString());
         
-        serenity1.setText(shipList.get(8).toString());
-        serenity2.setText(shipList.get(9).toString());
+        serenity1.setText(shipList.get(8).getName() + "\t" + shipList.get(8).toString());
+        serenity2.setText(shipList.get(9).getName() + "\t" + shipList.get(9).toString());
         
         
-        shipLabel.setText(Singleton.getCharacter().getShip().toString());
+        shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
         
         titan1rad.setToggleGroup(shipGroup);
         titan2rad.setToggleGroup(shipGroup);
@@ -679,6 +683,7 @@ public class UniverseController implements Initializable {
     
     @FXML
     private void refuelButtonClicked(ActionEvent event) {
+        
     }
 
     @FXML
@@ -690,6 +695,37 @@ public class UniverseController implements Initializable {
         Toggle selected =  shipGroup.getSelectedToggle();
         //selected.equals(id of button in question)
         //do things
+        if (selected.equals(titan1rad)) {
+            shipYard.buyShip(shipList.get(0));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(titan2rad)) {
+            shipYard.buyShip(shipList.get(1));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(titan3rad)) {
+            shipYard.buyShip(shipList.get(2));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(banshee1rad)) {
+            shipYard.buyShip(shipList.get(3));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(banshee2rad)) {
+            shipYard.buyShip(shipList.get(4));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(banshee3rad)) {
+            shipYard.buyShip(shipList.get(5));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(rusty1rad)) {
+            shipYard.buyShip(shipList.get(6));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(rusty2rad)) {
+            shipYard.buyShip(shipList.get(7));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(serenity1rad)) {
+            shipYard.buyShip(shipList.get(8));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        } else if (selected.equals(serenity2rad)) {
+            shipYard.buyShip(shipList.get(9));
+            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        }
     }
 /****************************************************
  *                  SHIPYARD END                    *

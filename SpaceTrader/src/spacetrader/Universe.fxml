@@ -576,7 +576,7 @@
                         <GaussianBlur />
                      </effect>
                   </ImageView>
-                  <SplitPane blendMode="SOFT_LIGHT" dividerPositions="0.75" layoutX="32.0" layoutY="31.0" orientation="VERTICAL" prefHeight="420.0" prefWidth="749.0">
+                  <SplitPane blendMode="SRC_ATOP" dividerPositions="0.75" layoutX="32.0" layoutY="31.0" opacity="0.39" orientation="VERTICAL" prefHeight="420.0" prefWidth="749.0">
                      <items>
                         <ScrollPane prefHeight="264.0" prefWidth="734.0">
                            <content>
@@ -600,83 +600,50 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label fx:id="titan1" blendMode="EXCLUSION" text="Titan 1" textFill="#c62424" GridPane.rowIndex="1">
+                                          <Label fx:id="titan1" blendMode="EXCLUSION" text="Titan 1" textFill="WHITE" GridPane.rowIndex="1">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="titan2" blendMode="EXCLUSION" text="Titan 2" textFill="#c62424" GridPane.rowIndex="2">
+                                             </font></Label>
+                                          <Label fx:id="titan2" blendMode="EXCLUSION" text="Titan 2" textFill="WHITE" GridPane.rowIndex="2">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="titan3" blendMode="EXCLUSION" text="Titan 3" textFill="#c62424" GridPane.rowIndex="3">
+                                             </font></Label>
+                                          <Label fx:id="titan3" blendMode="EXCLUSION" text="Titan 3" textFill="WHITE" GridPane.rowIndex="3">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="banshee1" blendMode="EXCLUSION" text="Banshee 1" textFill="#c62424" GridPane.rowIndex="4">
+                                             </font></Label>
+                                          <Label fx:id="banshee1" blendMode="EXCLUSION" text="Banshee 1" textFill="WHITE" GridPane.rowIndex="4">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="banshee2" blendMode="EXCLUSION" text="Banshee 2" textFill="#c62424" GridPane.rowIndex="5">
+                                             </font></Label>
+                                          <Label fx:id="banshee2" blendMode="EXCLUSION" text="Banshee 2" textFill="WHITE" GridPane.rowIndex="5">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="banshee3" blendMode="EXCLUSION" text="Banshee 3" textFill="#c62424" GridPane.rowIndex="6">
+                                             </font></Label>
+                                          <Label fx:id="banshee3" blendMode="EXCLUSION" text="Banshee 3" textFill="WHITE" GridPane.rowIndex="6">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="rusty1" blendMode="EXCLUSION" text="Rusty 1" textFill="#c62424" GridPane.rowIndex="7">
+                                             </font></Label>
+                                          <Label fx:id="rusty1" blendMode="EXCLUSION" text="Rusty 1" textFill="WHITE" GridPane.rowIndex="7">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="rusty2" blendMode="EXCLUSION" text="Rusty 2" textFill="#c62424" GridPane.rowIndex="8">
+                                             </font></Label>
+                                          <Label fx:id="rusty2" blendMode="EXCLUSION" text="Rusty 2" textFill="WHITE" GridPane.rowIndex="8">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="serenity1" blendMode="EXCLUSION" text="Serenity 1" textFill="#c62424" GridPane.rowIndex="9">
+                                             </font></Label>
+                                          <Label fx:id="serenity1" blendMode="EXCLUSION" text="Serenity 1" textFill="WHITE" GridPane.rowIndex="9">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="serenity2" blendMode="EXCLUSION" text="Serenity 2" textFill="#c62424" GridPane.rowIndex="10">
+                                             </font></Label>
+                                          <Label fx:id="serenity2" blendMode="EXCLUSION" text="Serenity 2" textFill="WHITE" GridPane.rowIndex="10">
                                              <font>
                                                 <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
-                                          <Label fx:id="shipyardHeader" blendMode="EXCLUSION" text="Header" textFill="#c62424">
+                                             </font></Label>
+                                          <Label fx:id="shipyardHeader" blendMode="EXCLUSION" text="Header" textFill="WHITE">
                                              <font>
-                                                <Font name="AR DESTINE" size="16.0" />
-                                             </font>
-                                             <effect>
-                                                <ColorAdjust brightness="0.19" contrast="1.0" hue="1.0" saturation="1.0" />
-                                             </effect></Label>
+                                                <Font name="AR DESTINE" size="13.0" />
+                                             </font></Label>
                                        </children>
                                     </GridPane>
                                     <GridPane layoutX="663.0" layoutY="41.0" prefHeight="300.0" prefWidth="38.0">
@@ -746,7 +713,7 @@
                            <children>
                               <Label fx:id="shipLabel" layoutX="14.0" layoutY="14.0" text="Your ship" textFill="#ab2727">
                                  <font>
-                                    <Font name="AR DESTINE" size="21.0" />
+                                    <Font name="AR DESTINE" size="14.0" />
                                  </font>
                                  <effect>
                                     <ColorAdjust brightness="0.24" contrast="0.54" />
@@ -775,6 +742,16 @@
                                  <effect>
                                     <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
                                  </effect></Button>
+                              <Label layoutX="12.0" layoutY="52.0" text="Coins:" textFill="#e42d2d">
+                                 <font>
+                                    <Font name="AR DESTINE" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="coinLabel2" layoutX="62.0" layoutY="51.0" text="Balance" textFill="#d72e2e">
+                                 <font>
+                                    <Font name="AR DESTINE" size="15.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </items>
