@@ -659,7 +659,8 @@ public class UniverseController implements Initializable {
         shipList = Ships.getList();
         shipYard = currentP().getShipYard();
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
-        inventoryLabel.setText()
+      //  inventoryLabel.setText()
+        coinShipLabel.setText("Coins: ");
         
         shipyardHeader.setText("Name\t\t Price\t MLP\t Weight\t Attack\t Speed\t Fuel Cap   Health");
         titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
