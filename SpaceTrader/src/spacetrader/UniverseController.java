@@ -689,28 +689,28 @@ public class UniverseController implements Initializable {
     @FXML
     private void refuelButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
-                    .title("Confirm Refuel");
-                    .masthead("It will cost " + shipYard.getFuelPrice() + " to refuel your ship.");
-                    .message("Do you wish to confirm your purchase?");
-                    .showConfirm();
+            .title("Confirm Refuel")
+            .masthead("It will cost " + shipYard.getFuelPrice() + " to refuel your ship.")
+            .message("Do you wish to confirm your purchase?")
+            .showConfirm();
                         
-                        if (response == Dialog.Actions.YES) {
-                            shipYard.refuelCompletely();
-                        }
+            if (response == Dialog.Actions.YES) {
+                shipYard.refuelCompletely();
+            }
         
     }
 
     @FXML
     private void repairButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
-                    .title("Confirm Reapri");
-                    .masthead("It will cost " + shipYard.getRepairCost() + "to repair your ship.")
-                    .message("Do you wish to confirm your purchase?");   
-                    .showConfirm();
-                    
-                    if (resposne == Dialog.Actions.YES) {
-                        shipYard.repairShip();
-                    }
+            .title("Confirm Repair")
+            .masthead("It will cost " + shipYard.getRepairCost() + " to repair your ship.")
+            .message("Do you wish to confirm your purchase?")
+            .showConfirm();
+            
+        if (response == Dialog.Actions.YES) {
+            shipYard.repairShip();
+        }
     }
 
     @FXML
