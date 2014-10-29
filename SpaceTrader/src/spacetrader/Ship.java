@@ -25,8 +25,15 @@ public class Ship implements Serializable{
     private int health;   
     //this is your starting ship. 
     public Ship(){
-        FUEL_CAPACITY = fuel;
-        MAX_HEALTH = 100;
+        name = "Rusty";
+        price = 0;
+        FUEL_CAPACITY = 0;
+        MAX_HEALTH = 0;
+        MLP = 0;
+        weight = 0;
+        atk = 0;
+        health = 0;
+        fuel = 0;
     }
     
     //constructor for real ship. This is one that you purchase. 
@@ -74,7 +81,7 @@ public class Ship implements Serializable{
     //checks to see how much fuel will use.
     public int calcFuelForTravel(int dist){
         Character player = Singleton.getCharacter(); //Grabs current character
-        double pn = player.getPilot() / 3; //Stores the player's pilot score / 3
+        double pn = 3; //Stores the player's pilot score / 3
         double returnValue = dist/pn;
         return (int)returnValue;
     }

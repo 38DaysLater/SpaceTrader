@@ -48,10 +48,10 @@ public class Ships {
         
         
         //ships that for people who don't invest in pilot
-        Ship normalShipOne = new Ship("Rusty 1", 1000, 0, 50, 3, 4, 500, 70);
+        Ship normalShipOne = new Ship("Shiny 1", 1000, 0, 50, 3, 4, 500, 70);
         list.add(normalShipOne);
         
-        Ship normalShipTwo = new Ship("Rusty 2", 2000, 0, 30, 4, 5, 700, 80);
+        Ship normalShipTwo = new Ship("Shiny 2", 2000, 0, 30, 4, 5, 700, 80);
         list.add(normalShipTwo);
 
         
