@@ -190,6 +190,14 @@ public class UniverseController implements Initializable {
         int index = text.indexOf("\n");
         planInfoLabel.setText(currentP().toString().substring(index + 1));
     }
+    /**
+     * Handles when the newspaper button is selected
+     * inside the planet tab
+     * @param ActionEvent event
+     */
+    @FXML
+    private void newsButtHandle(ActionEvent event) {
+    }
 /****************************************************
  *                   MARKET TAB                     *
  ****************************************************/
@@ -710,37 +718,44 @@ public class UniverseController implements Initializable {
     @FXML
     private void upgradeButtonClicked(ActionEvent event) {
         Toggle selected =  shipGroup.getSelectedToggle();
-        Action response = Dialogs.create()
-            .title("Upgrade Ship")
-            .masthead("You will lose your current ship.")
-            .message("Do you wish to confirm your purchase?")
-            .showConfirm();
-        //selected.equals(id of button in question)
-        //do things
+        if (selected == null) {
+            dialog("Please select a ship to upgrade.");
+        } else {
+            Action response = Dialogs.create()
+                .title("Upgrade Ship")
+                .masthead("You will lose your current ship.")
+                .message("Do you wish to confirm your purchase?")
+                .showConfirm();
+            //selected.equals(id of button in question)
+            //do things
+            String message = null;
                 if (response == Dialog.Actions.YES) {
-        if (selected.equals(titan1rad)) {
-            shipYard.buyShip(shipList.get(0));
-        } else if (selected.equals(titan2rad)) {
-            shipYard.buyShip(shipList.get(1));
-        } else if (selected.equals(titan3rad)) {
-            shipYard.buyShip(shipList.get(2));
-        } else if (selected.equals(banshee1rad)) {
-            shipYard.buyShip(shipList.get(3));
-        } else if (selected.equals(banshee2rad)) {
-            shipYard.buyShip(shipList.get(4));
-        } else if (selected.equals(banshee3rad)) {
-            shipYard.buyShip(shipList.get(5));
-        } else if (selected.equals(rusty1rad)) {
-            shipYard.buyShip(shipList.get(6));
-        } else if (selected.equals(rusty2rad)) {
-            shipYard.buyShip(shipList.get(7));
-        } else if (selected.equals(serenity1rad)) {
-            shipYard.buyShip(shipList.get(8));
-        } else if (selected.equals(serenity2rad)) {
-            shipYard.buyShip(shipList.get(9));
-        }
+                    if (selected.equals(titan1rad)) {
+                        message = shipYard.buyShip(shipList.get(0));
+                    } else if (selected.equals(titan2rad)) {
+                        message = shipYard.buyShip(shipList.get(1));
+                    } else if (selected.equals(titan3rad)) {
+                        message = shipYard.buyShip(shipList.get(2));
+                    } else if (selected.equals(banshee1rad)) {
+                        message = shipYard.buyShip(shipList.get(3));
+                    } else if (selected.equals(banshee2rad)) {
+                        message = shipYard.buyShip(shipList.get(4));
+                    } else if (selected.equals(banshee3rad)) {
+                        message = shipYard.buyShip(shipList.get(5));
+                    } else if (selected.equals(rusty1rad)) {
+                        message = shipYard.buyShip(shipList.get(6));
+                    } else if (selected.equals(rusty2rad)) {
+                        message = shipYard.buyShip(shipList.get(7));
+                    } else if (selected.equals(serenity1rad)) {
+                        message = shipYard.buyShip(shipList.get(8));
+                    } else if (selected.equals(serenity2rad)) {
+                        message = shipYard.buyShip(shipList.get(9));
+                    }
+                    if (message != null) {
+                        dialog(message);
+                    }
                 }
-                
+        }    
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
     }
@@ -787,25 +802,22 @@ public class UniverseController implements Initializable {
 
                         if (response == Dialog.Actions.YES) {
                             // ... user chose YES
-                            //check if enough fuel to get there
-                            /**
+                            /**check if enough fuel to get there
                              * bring up travel page - for events and decrement fuel
-************                 * EVVEEEENNNTTTSSSS
                              */
-                            
-                            /*creates a travel event object to handle random events
-                            * eventually it will read from a text document so the
-                            * events will have different chances based on where we are in the universe
-                            *and be different each time the player travels.
-                            * but for now it is very simple.
-                            */
-                            TravelEvent events = new TravelEvent();
-                            events.handleEvents();
-                            
                             //set current planet and solarsystem
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
                                 //player has enoughfuel to rech destination
+                                //trigger event
+                                /*creates a travel event object to handle random events
+                                * eventually it will read from a text document so the
+                                * events will have different chances based on where we are in the universe
+                                *and be different each time the player travels.
+                                * but for now it is very simple.
+                                */
+                                TravelEvent events = new TravelEvent();
+                                events.handleEvents();
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
                                 //sets current shown tab to the planet info tab                                
@@ -889,14 +901,6 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                  UNIVERSE END                    *
  ****************************************************/
-    /**
-     * Handles when the newspaper button is selected
-     * inside the planet tab
-     * @param ActionEvent event
-     */
-    @FXML
-    private void newsButtHandle(ActionEvent event) {
-    }
     
 /****************************************************
  *                HELPER METHODS                    *
