@@ -642,7 +642,7 @@
                                              </font></Label>
                                           <Label fx:id="shipyardHeader" blendMode="EXCLUSION" text="Header" textFill="WHITE">
                                              <font>
-                                                <Font name="AR DESTINE" size="13.0" />
+                                                <Font name="AR DESTINE" size="15.0" />
                                              </font></Label>
                                        </children>
                                     </GridPane>
