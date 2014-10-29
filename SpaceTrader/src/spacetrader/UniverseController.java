@@ -1006,7 +1006,8 @@ public class UniverseController implements Initializable {
  ****************************************************/
     
     /**
-     * 
+     * Changes the background of the label when the mouse
+     * exits back to transparent
      * @param event 
      */
     @FXML
@@ -1016,7 +1017,8 @@ public class UniverseController implements Initializable {
     }
     
     /**
-     * 
+     * Changes the background of the label when the mouse
+     * enters it
      * @param event 
      */
     @FXML
@@ -1025,7 +1027,7 @@ public class UniverseController implements Initializable {
     }
 
     /**
-     * 
+     * Handles when the save label is clicked in the options tab
      * @param event 
      */
     @FXML
@@ -1052,7 +1054,8 @@ public class UniverseController implements Initializable {
     }
 
     /**
-     * 
+     * Handles when the exit label is clicked 
+     * brings up the initial loading page
      * @param event 
      */
     @FXML
@@ -1074,7 +1077,8 @@ public class UniverseController implements Initializable {
     }
 
     /**
-     * 
+     * Handles when the load label is clicked
+     * brings up the save file of the character name entered
      * @param event 
      */
     @FXML
