@@ -169,6 +169,8 @@ public class UniverseController implements Initializable {
     private RadioButton banshee1rad, titan1rad;
     @FXML
     private Tab shipyardTab;
+    @FXML
+    private Label coinShipLabel;
     
     /**
      * Initializes the controller class.
@@ -701,9 +703,13 @@ public class UniverseController implements Initializable {
                     .title("Confirm Refuel")
                     .masthead("It will cost " + shipYard.costOfRefuelCompletely(cha.getShip()) + " to refuel your ship.")
                     .message("Do you wish to confirm your purchase?")
-                    .showConfirm();                      
+                    .showConfirm(); 
+                    String message = null;
                         if (response == Dialog.Actions.YES) {
-                            shipYard.refuelCompletely();
+                            message = shipYard.refuelCompletely();
+                        }
+                        if (message != null) {
+                            dialog(message);
                         }
        //update coin balance                 
        coinLabel2.setText(Integer.toString(cha.getInventory().getBalance())); 
