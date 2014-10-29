@@ -34,7 +34,7 @@ public class Inventory implements Serializable{
         
         public ItemWrapper(Item item) {
             this.item = item;
-            count = 1;
+            count = 0;
         }
         
         public ItemWrapper(Item item, int count) {
