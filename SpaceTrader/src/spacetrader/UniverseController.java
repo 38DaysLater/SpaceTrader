@@ -167,6 +167,8 @@ public class UniverseController implements Initializable {
     private RadioButton serenity1rad, serenity2rad, titan2rad, titan3rad;
     @FXML
     private RadioButton banshee1rad, titan1rad;
+    @FXML
+    private Tab shipyardTab;
     
     /**
      * Initializes the controller class.
@@ -178,6 +180,11 @@ public class UniverseController implements Initializable {
         String text = currentP().toString();
         int index = text.indexOf("\n");
         planInfoLabel.setText(currentP().toString().substring(index + 1));
+        if (((Planet) cha.getCurrentPlanet()[0]).hasShipYard()) {
+            shipyardTab.setDisable(false);
+        } else {
+            shipyardTab.setDisable(true);
+        }
     }    
     /**
      * Handles when the planet tab is selected
@@ -820,7 +827,12 @@ public class UniverseController implements Initializable {
                                 events.handleEvents();
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
-                                //sets current shown tab to the planet info tab                                
+                                //sets current shown tab to the planet info tab
+                                if (((Planet) cha.getCurrentPlanet()[0]).hasShipYard()) {
+                                    shipyardTab.setDisable(false);
+                                } else {
+                                    shipyardTab.setDisable(true);
+                                }
                                 tabPane.getSelectionModel().select(0);
                             } else {
                                 Dialogs.create()
