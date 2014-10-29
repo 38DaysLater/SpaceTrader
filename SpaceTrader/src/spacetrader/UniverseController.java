@@ -189,7 +189,6 @@ public class UniverseController implements Initializable {
         String text = currentP().toString();
         int index = text.indexOf("\n");
         planInfoLabel.setText(currentP().toString().substring(index + 1));
-       
     }
 /****************************************************
  *                   MARKET TAB                     *
@@ -679,15 +678,39 @@ public class UniverseController implements Initializable {
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
         
-    }
+    }/* Action response = Dialogs.create()
+                        .title("Confirm Travel")
+                        .masthead("It will cost " + cha.getShip().calcFuelForTravel(dist) + " fuel to travel here. \nDo you want to continue?")
+                        .message("You have chosen to travel to:\n" + p.toString())
+                        .showConfirm();
+
+                        if (response == Dialog.Actions.YES) {*/
     
     @FXML
     private void refuelButtonClicked(ActionEvent event) {
+        Action response = Dialogs.create()
+                    .title("Confirm Refuel");
+                    .masthead("It will cost " + shipYard.getFuelPrice() + " to refuel your ship.");
+                    .message("Do you wish to confirm your purchase?");
+                    .showConfirm();
+                        
+                        if (response == Dialog.Actions.YES) {
+                            shipYard.refuelCompletely();
+                        }
         
     }
 
     @FXML
     private void repairButtonClicked(ActionEvent event) {
+        Action response = Dialogs.create()
+                    .title("Confirm Reapri");
+                    .masthead("It will cost " + shipYard.getRepairCost() + "to repair your ship.")
+                    .message("Do you wish to confirm your purchase?");   
+                    .showConfirm();
+                    
+                    if (resposne == Dialog.Actions.YES) {
+                        shipYard.repairShip();
+                    }
     }
 
     @FXML
