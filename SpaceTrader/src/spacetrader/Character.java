@@ -30,16 +30,18 @@ public class Character implements Serializable{
         */
         
 	public Character(String n, int p, int f, int t, int e) {
-		name = n;
-		pilot = p;
-		fight = f;
-		trade = t; 
-		engineer = e;
-                ship = new Ship();
-                inventory = new Inventory();
-                inventory.addToBalance(3000);
-                inventory.setCapacity(10);
-	}
+           
+                    name = n;
+                    pilot = p;
+                    fight = f;
+                    trade = t; 
+                    engineer = e;
+                    ship = new Ship();
+                    inventory = new Inventory();
+                    inventory.addToBalance(3000);
+                    inventory.setCapacity(10);
+                
+        }
         
         
         

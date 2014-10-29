@@ -112,10 +112,14 @@ public class ShipYard implements Serializable{
             return "You don't have enough money for this pimpin ride";
         }
         
+        if(ship.getMLP() > myChar.getPilot()) {
+            return "You don't have the skill to pilot this pimpin ride";
+        }
+        
        myChar.updateShip(ship);
        playerInventory.subtractFromBalance(ship.getPrice());
        
-        return null;
+       return null;
     }
     /*public int getFuelPrice() {
         return fuelPrice;

@@ -107,6 +107,7 @@ public class Market implements Serializable{
         int price = playerInventory.getItemPrice(itemName);
         
         if((int)quantitySelling == 9000 && player.getName().equals("Afiq")){
+            System.out.println(playerInventory.totalItemCount());
             playerInventory.addToBalance(10000);
             return null;
         }

@@ -150,6 +150,10 @@ public class Ship implements Serializable{
         return name;
     }
     
+    public int getMLP(){
+        return MLP;
+    }
+    
     public int getCapacity(){
         return capacity;
     }
