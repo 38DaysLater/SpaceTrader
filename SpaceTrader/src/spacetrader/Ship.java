@@ -23,6 +23,7 @@ public class Ship implements Serializable{
     private int speed;
     private final int MAX_HEALTH;
     private int health;   
+    private int capacity;
     //this is your starting ship. 
     public Ship(){
         name = "Rusty";
@@ -34,10 +35,18 @@ public class Ship implements Serializable{
         atk = 0;
         health = 0;
         fuel = 0;
+        capacity = 0;
     }
     
+    
+    
+    
+    
+    
+    
+    
     //constructor for real ship. This is one that you purchase. 
-    public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity, int health){
+    public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity, int health, int cargo){
         this.name = name;
         this.price = price;
         this.MLP = MLP;
@@ -48,6 +57,7 @@ public class Ship implements Serializable{
         fuel = FUEL_CAPACITY;
         this.health = health;
         MAX_HEALTH = health;
+        capacity = cargo;
     }
     
     /**
@@ -139,9 +149,13 @@ public class Ship implements Serializable{
     public String getName() {
         return name;
     }
+    
+    public int getCapacity(){
+        return capacity;
+    }
 
     public String toString(){
-        String returnString = price + "\t" + MLP + "\t" + weight + "\t" + atk + "\t" + speed + "\t" + FUEL_CAPACITY + "\t" + health;
+        String returnString = price + "\t" + MLP + "\t" + weight + "\t" + atk + "\t" + speed + "\t" + FUEL_CAPACITY + "\t" + health + "\t" + capacity;
         return returnString;
     }
     

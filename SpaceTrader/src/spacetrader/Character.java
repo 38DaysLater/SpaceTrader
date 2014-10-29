@@ -154,6 +154,7 @@ public class Character implements Serializable{
         
         public void updateShip(Ship ship) {
             this.ship = ship;
+            this.getInventory().setCapacity(ship.getCapacity());
         }
 
 }
