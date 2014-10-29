@@ -657,13 +657,7 @@ public class UniverseController implements Initializable {
         shipList = Ships.getList();
         shipYard = currentP().getShipYard();
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
-        /*String shipString;
-        or (int i = 0; i < shipList.size(); i++) {
-            System.out.println(i);
-            //shipLabel.setText(shipList.get(i).toString() + "\n");
-            shipString = shipList.get(i) + "\n";
-            shipLabel.setText(shipString);
-        }*/
+
         shipyardHeader.setText("Name\t\t Price\t MLP\t Weight\t Attack\t Speed\t Fuel Cap   Health");
         titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
         titan2.setText(shipList.get(1).getName() + "\t\t" + shipList.get(1).toString());
@@ -682,6 +676,7 @@ public class UniverseController implements Initializable {
         
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
         
+        //adds the radio buttons to a toggle group
         titan1rad.setToggleGroup(shipGroup);
         titan2rad.setToggleGroup(shipGroup);
         titan3rad.setToggleGroup(shipGroup);
@@ -693,8 +688,13 @@ public class UniverseController implements Initializable {
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
         
+        
+        
+        
     }
-    
+    /*
+    * Handles when the refuel button is pressed.
+    */
     @FXML
     private void refuelButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
@@ -705,9 +705,12 @@ public class UniverseController implements Initializable {
                         if (response == Dialog.Actions.YES) {
                             shipYard.refuelCompletely();
                         }
+       //update coin balance                 
        coinLabel2.setText(Integer.toString(cha.getInventory().getBalance())); 
     }
-
+    /*
+    * Handles when the repair button is pressed.
+    */
     @FXML
     private void repairButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
@@ -719,9 +722,13 @@ public class UniverseController implements Initializable {
                     if (response == Dialog.Actions.YES) {
                         shipYard.repairShip();
                     }
+        //update coin balance
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
     }
 
+    /*
+    * Handles when the upgrade button is pressed.
+    */
     @FXML
     private void upgradeButtonClicked(ActionEvent event) {
         Toggle selected =  shipGroup.getSelectedToggle();
@@ -763,6 +770,7 @@ public class UniverseController implements Initializable {
                     }
                 }
         }    
+       //updates labels
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
     }
