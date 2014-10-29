@@ -649,7 +649,7 @@ public class UniverseController implements Initializable {
             shipString = shipList.get(i) + "\n";
             shipLabel.setText(shipString);
         }*/
-        shipyardHeader.setText("Name\t\tPrice\tMLP\tWeight\tAttack\tSpeed\tFuel Capacity\tHealth");
+        shipyardHeader.setText("Name\t\t Price\t MLP\t Weight\t Attack\t Speed\t Fuel Cap   Health");
         titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
         titan2.setText(shipList.get(1).getName() + "\t\t" + shipList.get(1).toString());
         titan3.setText(shipList.get(2).getName() + "\t\t" + shipList.get(2).toString());
@@ -678,77 +678,71 @@ public class UniverseController implements Initializable {
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
         
-    }/* Action response = Dialogs.create()
-                        .title("Confirm Travel")
-                        .masthead("It will cost " + cha.getShip().calcFuelForTravel(dist) + " fuel to travel here. \nDo you want to continue?")
-                        .message("You have chosen to travel to:\n" + p.toString())
-                        .showConfirm();
-
-                        if (response == Dialog.Actions.YES) {*/
+    }
     
     @FXML
     private void refuelButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
-                    .title("Confirm Refuel");
-                    .masthead("It will cost " + shipYard.getFuelPrice() + " to refuel your ship.");
-                    .message("Do you wish to confirm your purchase?");
-                    .showConfirm();
-                        
+                    .title("Confirm Refuel")
+                    .masthead("It will cost " + shipYard.costOfRefuelCompletely(cha.getShip()) + " to refuel your ship.")
+                    .message("Do you wish to confirm your purchase?")
+                    .showConfirm();                      
                         if (response == Dialog.Actions.YES) {
                             shipYard.refuelCompletely();
                         }
-        
+       coinLabel2.setText(Integer.toString(cha.getInventory().getBalance())); 
     }
 
     @FXML
     private void repairButtonClicked(ActionEvent event) {
         Action response = Dialogs.create()
-                    .title("Confirm Reapri");
-                    .masthead("It will cost " + shipYard.getRepairCost() + "to repair your ship.")
-                    .message("Do you wish to confirm your purchase?");   
+                    .title("Confirm Repair")
+                    .masthead("It will cost " + shipYard.getRepairCost() + " to repair your ship.")
+                    .message("Do you wish to confirm your purchase?")
                     .showConfirm();
                     
-                    if (resposne == Dialog.Actions.YES) {
+                    if (response == Dialog.Actions.YES) {
                         shipYard.repairShip();
                     }
+        coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
     }
 
     @FXML
     private void upgradeButtonClicked(ActionEvent event) {
         Toggle selected =  shipGroup.getSelectedToggle();
+        Action response = Dialogs.create()
+            .title("Upgrade Ship")
+            .masthead("You will lose your current ship.")
+            .message("Do you wish to confirm your purchase?")
+            .showConfirm();
         //selected.equals(id of button in question)
         //do things
+                if (response == Dialog.Actions.YES) {
         if (selected.equals(titan1rad)) {
             shipYard.buyShip(shipList.get(0));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(titan2rad)) {
             shipYard.buyShip(shipList.get(1));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(titan3rad)) {
             shipYard.buyShip(shipList.get(2));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(banshee1rad)) {
             shipYard.buyShip(shipList.get(3));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(banshee2rad)) {
             shipYard.buyShip(shipList.get(4));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(banshee3rad)) {
             shipYard.buyShip(shipList.get(5));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(rusty1rad)) {
             shipYard.buyShip(shipList.get(6));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(rusty2rad)) {
             shipYard.buyShip(shipList.get(7));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(serenity1rad)) {
             shipYard.buyShip(shipList.get(8));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         } else if (selected.equals(serenity2rad)) {
             shipYard.buyShip(shipList.get(9));
-            coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         }
+                }
+                
+        coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
+        shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
     }
 /****************************************************
  *                  SHIPYARD END                    *

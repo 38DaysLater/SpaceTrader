@@ -117,9 +117,9 @@ public class ShipYard implements Serializable{
        
         return null;
     }
-    public int getFuelPrice() {
+    /*public int getFuelPrice() {
         return fuelPrice;
-    }
+    }*/
     public int getRepairCost() {
         return repairCost;
     }
