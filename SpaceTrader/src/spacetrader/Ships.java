@@ -31,7 +31,7 @@ public class Ships {
         Ship tankShipTwo = new Ship("Titan 2", 2000, 5, 85, 7, 4, 750, 125, 20);
         list.add(tankShipTwo);
 
-        Ship tankShipThree = new Ship("Titan 3", 5000, 100, 10, 10, 5, 1000, 150, 50);
+        Ship tankShipThree = new Ship("Titan 3", 5000, 100, 10, 10, 5, 999, 150, 50);
         list.add(tankShipThree);        
         
         
@@ -42,7 +42,7 @@ public class Ships {
         Ship speedShipTwo = new Ship("Banshee 2", 2000, 5, 15, 5, 7, 750, 50, 20);
         list.add(speedShipTwo);
 
-        Ship speedShipThree = new Ship("Banshee 3", 5000, 10, 5, 5, 10, 1000, 60, 30);
+        Ship speedShipThree = new Ship("Banshee 3", 5000, 10, 5, 5, 10, 999, 60, 30);
         list.add(speedShipThree);        
         
         

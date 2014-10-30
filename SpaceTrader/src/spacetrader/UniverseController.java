@@ -170,7 +170,7 @@ public class UniverseController implements Initializable {
     @FXML
     private Tab shipyardTab;
     @FXML
-    private Label coinShipLabel;
+    private Label coinShipLabel, inventoryLabel;
     
     /**
      * Initializes the controller class.
@@ -659,10 +659,12 @@ public class UniverseController implements Initializable {
         shipList = Ships.getList();
         shipYard = currentP().getShipYard();
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
-      //  inventoryLabel.setText()
+       // inventoryLabel.setText(Integer.toString(cha.getInventory().totalItemCount()) + " / "
+         //      + Integer.toString(cha.getInventory().getCapacity()));
         coinShipLabel.setText("Coins: ");
         
-        shipyardHeader.setText("Name\t\t Price\t MLP\t Weight\t Attack\t Speed\t Fuel Cap   Health");
+        shipyardHeader.setText("Name\t\tPrice\t\tMLP\t\tWeight\t\tAttack\t  "
+                + "Speed\t   FuelCap\tItemCap\tHealth");
         titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
         titan2.setText(shipList.get(1).getName() + "\t\t" + shipList.get(1).toString());
         titan3.setText(shipList.get(2).getName() + "\t\t" + shipList.get(2).toString());

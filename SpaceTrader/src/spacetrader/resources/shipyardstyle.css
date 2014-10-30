@@ -9,108 +9,116 @@ and open the template in the editor.
 */
 
 @font-face {
-    font-family: AR DESTINE;
-    src: url('ARDESTINE.ttf');
+    font-family: Agency FB-Bold;
+    src: url('AgencyFB-Bold.ttf');
 }
 
 #shipyardHeader {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: cyan;
-    -fx-font-size: 15px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 14px;
 }
 #shipLabel {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
-    -fx-font-size: 14px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 16px;
 }
 
 #coinLabel2 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
-    -fx-font-size: 14px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 16px;
 }
 
 .label {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: cyan;
-    -fx-font-size: 16px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 15px;
 }
 #shipLabel {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
+    -fx-font-weight: BOLD;
     -fx-font-size: 14px;
 }
 #coinLabel2 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
-    -fx-font-size: 15px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 16px;
 }
 #coinShipLabel {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
-    -fx-font-size: 15px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 16px;
 }
 .button {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: cyan;
+    -fx-font-weight: BOLD;
     -fx-font-size: 21px;
 }
 /*#titan1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan2 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan3 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #banshee1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #banshee2 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #banshee3 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     
 }
 #titan1 {
-    -fx-font-family: 'AR DESTINE';
+    -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;
     -fx-font-size: 16px;
     

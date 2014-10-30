@@ -159,7 +159,9 @@ public class Ship implements Serializable{
     }
 
     public String toString(){
-        String returnString = price + "\t" + MLP + "\t" + weight + "\t" + atk + "\t" + speed + "\t" + FUEL_CAPACITY + "\t" + health + "\t" + capacity;
+        String returnString = price + "\t\t" + MLP + "\t\t" + weight + "\t\t\t"
+                + atk + "\t\t" + speed + "\t\t" + FUEL_CAPACITY + "\t\t"
+                + capacity + "\t\t" + health;
         return returnString;
     }
     
