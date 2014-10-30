@@ -561,6 +561,11 @@
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Label fx:id="inventoryCapLabel" layoutX="157.0" layoutY="16.0" prefHeight="31.0" prefWidth="189.0" text="Capacity: X/Total">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>

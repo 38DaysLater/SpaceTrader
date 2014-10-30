@@ -170,7 +170,9 @@ public class UniverseController implements Initializable {
     @FXML
     private Tab shipyardTab;
     @FXML
-    private Label coinShipLabel, inventoryLabel;
+    private Label coinShipLabel;
+    @FXML
+    private Label inventoryCapLabel;
     
     /**
      * Initializes the controller class.
@@ -244,6 +246,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sfoodQuan.setText(upSellLab("Food"));
         swatQuan.setText(upSellLab("Water"));
         smedQuan.setText(upSellLab("Medicine"));
@@ -290,6 +293,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sfoodQuan.setText(upSellLab("Food"));
         swatQuan.setText(upSellLab("Water"));
         smedQuan.setText(upSellLab("Medicine"));
@@ -332,6 +336,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sFireQ.setText(upSellLab("Firearms"));
         sMacQ.setText(upSellLab("Machines"));
         sRobQ.setText(upSellLab("Robots"));
@@ -374,6 +379,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sFireQ.setText(upSellLab("Firearms"));
         sMacQ.setText(upSellLab("Machines"));
         sRobQ.setText(upSellLab("Robots"));
@@ -416,6 +422,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));
         sGamQ.setText(upSellLab("Games"));
@@ -458,6 +465,7 @@ public class UniverseController implements Initializable {
         }
         //update labels of quantity and coin balance
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         sFursQ.setText(upSellLab("Furs"));
         sOreQ.setText(upSellLab("Ore"));
         sGamQ.setText(upSellLab("Games"));
@@ -477,6 +485,7 @@ public class UniverseController implements Initializable {
     private void marketTabSelected(Event event) {
         //sets initial coin amount from player inventory
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
+        inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
         
         //sets all labels for item quantity from market and player inventory
         //if quantity for planet it -1 then the planet can't buy or sell that item
