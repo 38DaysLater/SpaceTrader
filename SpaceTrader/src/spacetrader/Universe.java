@@ -16,15 +16,11 @@ import java.io.Serializable;
 public class Universe implements Serializable {
         private final int NUM_SOLAR_SYSTEMS = 3;
         SolarSystem[] SSArray = new SolarSystem [NUM_SOLAR_SYSTEMS];
-        
-        
-        
+
         /**
         * Constructor of Solar System 
         * reads in text file and randomly generates solar system coordinates
-        * @param none
-        * @return none
-        * 
+        * @throws IOException
         */
 	public Universe() throws IOException {
 		//sets up string of solar system name creation
