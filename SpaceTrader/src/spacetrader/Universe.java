@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * This is the universe for the game, contains solar systems and generates
+ * This is the universe for the game. Contains solar systems and generates
  * random ones but the player will always start off in the Chocolate Milkyway
  * and on the planet second earth, the only planet in that solar system
  * @author AfiqAzaibi
@@ -15,6 +15,8 @@ import java.io.Serializable;
 
 public class Universe implements Serializable {
         private final int NUM_SOLAR_SYSTEMS = 3;
+        private final int WINDOW_WIDTH = 750;
+        private final int WINDOW_HEIGHT = 500;
         SolarSystem[] SSArray = new SolarSystem [NUM_SOLAR_SYSTEMS];
 
         /**
@@ -53,8 +55,8 @@ public class Universe implements Serializable {
 
             for (int i = 1; i < NUM_SOLAR_SYSTEMS; i++) {
 
-                x = rand.nextInt(750)-375;
-                y = rand.nextInt(500)-250;
+                x = rand.nextInt(WINDOW_WIDTH) - (WINDOW_WIDTH / 2);
+                y = rand.nextInt(WINDOW_HEIGHT) - (WINDOW_HEIGHT / 2);
                 key[0] = x; key[1] = y;
 
                 //makes sure set doesn't have same coordinate
@@ -62,8 +64,8 @@ public class Universe implements Serializable {
                         //change memory address
                         key = null;
                         key = new int[2];
-                        x = rand.nextInt(750)-375;
-                        y = rand.nextInt(500)-250;
+                        x = rand.nextInt(WINDOW_WIDTH) - (WINDOW_WIDTH / 2);
+                        y = rand.nextInt(WINDOW_HEIGHT) - (WINDOW_HEIGHT / 2);
                         key[0] = x; key[1] = y;
                 }
                 coordinates.add(key);
@@ -81,7 +83,7 @@ public class Universe implements Serializable {
                 SSArray[i] = ss;
                 i++;
             }
-	} //ends the constructor
+        } //ends the constructor
 
 
         @Override
@@ -89,14 +91,14 @@ public class Universe implements Serializable {
         * Displays the contents of the solar system.
         * @return String of the contents
         */
-	public String toString() {
+        public String toString() {
             String returnString = "";
             for (int i = 0; i < NUM_SOLAR_SYSTEMS; i++) {
                 returnString = returnString + SSArray[i].toString();
             }
 
             return returnString;
-	}
+        }
 
         public SolarSystem getSolarSystem(int SSNum) {
             return SSArray[SSNum];
