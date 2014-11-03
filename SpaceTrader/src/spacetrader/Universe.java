@@ -13,9 +13,9 @@ import java.io.Serializable;
  * @author AfiqAzaibi
  */
 
-public class Universe implements Serializable{
+public class Universe implements Serializable {
         private final int NUM_SOLAR_SYSTEMS = 3;
-        SolarSystem[] SSArray = new SolarSystem[NUM_SOLAR_SYSTEMS];
+        SolarSystem[] SSArray = new SolarSystem [NUM_SOLAR_SYSTEMS];
         
         
         
@@ -26,7 +26,7 @@ public class Universe implements Serializable{
         * @return none
         * 
         */
-	public Universe() throws IOException{
+	public Universe() throws IOException {
 		//sets up string of solar system name creation
 		String[] solarSystemNames = new String[NUM_SOLAR_SYSTEMS];
                 solarSystemNames[0] = "The Chocolate Milkyway";
@@ -34,7 +34,7 @@ public class Universe implements Serializable{
                     FileReader inputFile = new FileReader("SolarSystemNames.txt");
                     BufferedReader bufReader = new BufferedReader(inputFile);
             
-                    for(int i = 1; i < NUM_SOLAR_SYSTEMS; i ++){
+                    for(int i = 1; i < NUM_SOLAR_SYSTEMS; i ++) {
 			solarSystemNames[i] = bufReader.readLine();
                     }
                     
