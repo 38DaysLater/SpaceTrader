@@ -77,7 +77,6 @@ public class Market implements Serializable {
         }
 
         if ((int) quantityWanted > quantityAvailable) {
-            //System.out.println("Vendor does not have enough to sell");
             return "Vendor does not have enough to sell";
         } else if (price * (int) quantityWanted
                 > playerInventory.getBalance()) {
@@ -138,7 +137,6 @@ public class Market implements Serializable {
         }
 
         //adjust balances: Player gets money, vendor losing
-
         playerInventory.addToBalance((int) quantitySelling * price);
         inventory.subtractFromBalance((int) quantitySelling * price);
 
