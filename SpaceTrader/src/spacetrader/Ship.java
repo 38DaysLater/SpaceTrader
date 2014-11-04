@@ -24,6 +24,7 @@ public class Ship implements Serializable{
     private int maxHealth;
     private int health;   
     private int capacity;
+    private int upgradesLeft = 10;
     private int healthUpgrade;
     private int atkUpgrade;
     private int speedUpgrade;
@@ -156,31 +157,36 @@ public class Ship implements Serializable{
         return capacity;
     }
     
+    public int getUpgradesLeft() {
+        return upgradesLeft;
+    }
+    
     public void upgradeHealth(int increase) {
         maxHealth += increase;
-        capacity--;
+        upgradesLeft--;
         healthUpgrade++;
     }
     
     public void upgradeAttack(int increase) {
         atk += increase;
-        capacity--;
+        upgradesLeft--;
         atkUpgrade++;
     }
     
     public void upgradeCapacity(int increase) {
         capacity += increase;
+        upgradesLeft--;
         capacityUpgrade++;
     }
 
     public void upgradeSpeed(int increase) {
         speed += increase;
-        capacity--;
+        upgradesLeft--;
         speedUpgrade++;
     }
     
-    public void decreaseCapacity(int capacityTaken) {
-        capacity -= capacityTaken;
+    public void updateUpgradesLeft(int upgradesLeft) {
+        this.upgradesLeft = upgradesLeft;
     }
     
     public int getHealthUpgrades() {
@@ -188,15 +194,15 @@ public class Ship implements Serializable{
     }
     
     public int getAttackUpgrades() {
-        return healthUpgrade;
+        return atkUpgrade;
     }
     
     public int getSpeedUpgrades() {
-        return healthUpgrade;
+        return speedUpgrade;
     }
     
     public int getCapacityUpgrades() {
-        return healthUpgrade;
+        return capacityUpgrade;
     }
     
     public String toString(){
