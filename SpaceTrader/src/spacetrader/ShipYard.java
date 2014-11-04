@@ -5,7 +5,7 @@ import java.io.Serializable;
  *
  * @author Afiq Azaibi, Lawrence Moore
  * This class is where ships go to planet if it's available. Only available
- * tech levels. 
+ * tech levels.
  */
 
 //refuel ship
@@ -138,18 +138,16 @@ public class ShipYard implements Serializable {
 
         String currentShipName = charShip.getName();
         String currentShipType = currentShipName.substring(0, 1);
-        int lengthCurrent = currentShipName.length();        
-        int currentShipLevel = Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
+        int lengthCurrent = currentShipName.length();
+        int currentShipLevel =
+                Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
 
         String upgradeShipName = ship.getName();
         int lengthNew = upgradeShipName.length();
         String upgradeShipType = upgradeShipName.substring(0, 1);
-        int upgradeShipLevel = Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
-        
-        
-        
-        
-        
+        int upgradeShipLevel =
+                Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
+
         if (ship.getPrice() > currentBalance + refundPrice) {
             return "You don't have enough money for this pimpin ride";
         } else if (ship.getMLP() > myChar.getPilot()) {
@@ -160,9 +158,10 @@ public class ShipYard implements Serializable {
                     + "accomodate your cargo";
         } else if (currentShipLevel < upgradeShipLevel - 1) {
             return "Your current ship level is " + currentShipLevel + ". "
-                    + "You must upgrade to level " + (currentShipLevel + 1) + 
-                    " before upgrading to level " + upgradeShipLevel;
-        } else if (upgradeShipLevel > 1 && !upgradeShipType.equals(currentShipType)) {
+                    + "You must upgrade to level " + (currentShipLevel + 1)
+                    + " before upgrading to level " + upgradeShipLevel;
+        } else if (upgradeShipLevel > 1
+                && !upgradeShipType.equals(currentShipType)) {
             return "You cannot upgrade to another type of ship";
         } else if (upgradeShipName.equals(currentShipName)) {
             return "You already own that ship.";
@@ -214,44 +213,44 @@ public class ShipYard implements Serializable {
         int MTLP = 7, laserCost = 1500, laserAttackIncrease = 4;
         return upgrade(MTLP, laserCost, laserAttackIncrease, UpgradeType.attackUpgrade);
     }
-    
+
     public String buyNitrogenBooster() {
         // minimum tech level to produce: 5
         int MTLP = 5, boostCost = 300, boosterSpeedIncrease = 1;
         return upgrade(MTLP, boostCost, boosterSpeedIncrease, UpgradeType.speedUpgrade);
     }
-    
+
     public String buyFluxCapacitor() {
         int MTLP = 6, fluxCost = 500, fluxSpeedIncrease = 2;
         return upgrade(MTLP, fluxCost, fluxSpeedIncrease, UpgradeType.speedUpgrade);
     }
-    
+
     public String buyWarpGenerator() {
         // minimum tech level to produce: 6
         int MTLP = 7, warpCost = 1500, warpSpeedIncrease = 4;
         return upgrade(MTLP, warpCost, warpSpeedIncrease, UpgradeType.speedUpgrade);
     }
-    
+
     public String buyGravityShield() {
         int MTLP = 5, gravityCost = 300, gravityHealthIncrease = 1;
         return upgrade(MTLP, gravityCost, gravityHealthIncrease, UpgradeType.healthUpgrade);
     }
-    
+
     public String buyNeuronField() {
         int MTLP = 6, fieldCost = 500, fieldHealthIncrease = 2;
         return upgrade(MTLP, fieldCost, fieldHealthIncrease, UpgradeType.healthUpgrade);
     }
-    
+
     public String buyUnobtanium() {
         int MTLP = 7, unobtaniumCost = 1500, unobtaniumHealthIncrease = 4;
         return upgrade(MTLP, unobtaniumCost, unobtaniumHealthIncrease, UpgradeType.healthUpgrade);
     }
-    
+
     public String buyIncreasedCargo() {
         int MTLP = 7, cargoCost = 500, cargoIncrease = 5;
         return upgrade(MTLP, cargoCost, cargoIncrease, UpgradeType.capacityUpgrade);
     }
-    
+
     public String upgrade(int cost, int increase, int MTLP, UpgradeType up) {
         // minimum tech level to produce: 5
         Inventory playerInventory = Singleton.getCharacter().getInventory();
@@ -265,7 +264,7 @@ public class ShipYard implements Serializable {
         } else if (charShip.getCapacity() <= 0) {
             return "But Lt. Dan, you ain't got no more upgrades";
         }
-        
+
         if (up == UpgradeType.attackUpgrade) {
             charShip.upgradeAttack(increase);
         } else if (up == UpgradeType.healthUpgrade) {
@@ -276,7 +275,7 @@ public class ShipYard implements Serializable {
             charShip.upgradeCapacity(increase);
         }
         playerInventory.subtractFromBalance(cost);
-        
+
         return null;
     }
 }
