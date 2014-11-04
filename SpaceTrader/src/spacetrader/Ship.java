@@ -9,7 +9,7 @@ package spacetrader;
 import java.io.Serializable;
 /**
  *
- * @author AfiqAzaibi
+ * @author AfiqAzaibi, Lawrence Moore
  */
 
 public class Ship implements Serializable{
@@ -21,15 +21,19 @@ public class Ship implements Serializable{
     private int weight;
     private int atk;
     private int speed;
-    private final int MAX_HEALTH;
+    private int maxHealth;
     private int health;   
     private int capacity;
+    private int healthUpgrade;
+    private int atkUpgrade;
+    private int capacityUpgrade;
+
     //this is your starting ship. 
-    public Ship(){
+    public Ship() {
         name = "Rusty";
         price = 0;
         FUEL_CAPACITY = 0;
-        MAX_HEALTH = 0;
+        maxHealth = 0;
         MLP = 0;
         weight = 0;
         atk = 0;
@@ -37,14 +41,7 @@ public class Ship implements Serializable{
         fuel = 0;
         capacity = 0;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     //constructor for real ship. This is one that you purchase. 
     public Ship(String name, int price, int MLP, int weight, int attack, int speed, int fuelCapacity, int health, int cargo){
         this.name = name;
@@ -56,7 +53,7 @@ public class Ship implements Serializable{
         FUEL_CAPACITY = fuelCapacity;
         fuel = FUEL_CAPACITY;
         this.health = health;
-        MAX_HEALTH = health;
+        maxHealth = health;
         capacity = cargo;
     }
     
@@ -119,7 +116,7 @@ public class Ship implements Serializable{
     }
     
     public void increaseHealth(int x){
-        
+        health += x;
     }
     
     public int getHealth() {
@@ -131,15 +128,15 @@ public class Ship implements Serializable{
     }
     
     public int getMaxHealth() {
-        return MAX_HEALTH;
+        return maxHealth;
     }
     
     public int getDamage() {
-        return MAX_HEALTH - health;
+        return maxHealth - health;
     }
     
     public void restoreHealth() {
-        health = MAX_HEALTH;
+        health = maxHealth;
     }
     
     public int getPrice() {
@@ -156,6 +153,22 @@ public class Ship implements Serializable{
     
     public int getCapacity(){
         return capacity;
+    }
+    
+    public void upgradeHealth(int increase) {
+        maxHealth += increase;
+    }
+    
+    public void upgradeAttack(int increase) {
+        atk += increase;
+    }
+    
+    public void upgradeCapacity(int increase) {
+        capacity += increase;
+    }
+
+    public void upgradeSpeed(int increase) {
+        speed += increase;
     }
 
     public String toString(){
