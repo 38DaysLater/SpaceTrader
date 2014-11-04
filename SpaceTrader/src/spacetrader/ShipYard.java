@@ -234,7 +234,7 @@ public class ShipYard implements Serializable {
         int currentBalance = playerInventory.getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
         
-        if (MTLP < 5) {
+        if (techLevel < MTLP) {
             return "Planet not techy enough to buy upgrade";
         } else if (cost > currentBalance) {
             return "You don't have enough moneys";
