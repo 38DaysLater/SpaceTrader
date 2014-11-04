@@ -25,7 +25,12 @@ and open the template in the editor.
     -fx-font-weight: BOLD;
     -fx-font-size: 16px;
 }
-
+#skillLabelShipyard {
+    -fx-font-family: 'Agency FB-Bold';
+    -fx-text-fill: red;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 14px;
+}
 #coinLabel2 {
     -fx-font-family: 'Agency FB-Bold';
     -fx-text-fill: red;

@@ -66,6 +66,7 @@ public class UniverseController implements Initializable {
     private Character cha = Singleton.getCharacter();
     private String success;
     private ToggleGroup shipGroup = new ToggleGroup();
+    private ToggleGroup upgradeGroup = new ToggleGroup();
     private ArrayList<Ship> shipList;
     private ShipYard shipYard;
     @FXML
@@ -135,23 +136,15 @@ public class UniverseController implements Initializable {
     @FXML
     private TabPane tabPane;
     @FXML
-    private Label saveLabel;
-    @FXML
-    private Label exitLabel;
-    @FXML
-    private Label loadLabel;
+    private Label saveLabel, exitLabel, loadLabel;
     @FXML
     private Label titan1, titan2, titan3;
     @FXML
     private Label banshee1, banshee2, banshee3;
     @FXML
-    private Label rusty1, rusty2;
+    private Label rusty1, rusty2, serenity1, serenity2;
     @FXML
-    private Label serenity1, serenity2;
-    @FXML
-    private Label shipyardHeader;
-    @FXML
-    private Label shipLabel;
+    private Label shipyardHeader, shipLabel;
     @FXML
     private RadioButton banshee2rad, banshee3rad, rusty1rad, rusty2rad;
     @FXML
@@ -161,9 +154,15 @@ public class UniverseController implements Initializable {
     @FXML
     private Tab shipyardTab;
     @FXML
-    private Label coinShipLabel;
+    private Label coinShipLabel, inventoryCapLabel;
     @FXML
-    private Label inventoryCapLabel;
+    private RadioButton capacityRad, neuronTorpedos, plasmaBlasters;
+    @FXML
+    private RadioButton deathStarLaser, nitrogenBooster, fluxCapacitor;
+    @FXML
+    private RadioButton warpGenerator, gravityShield, neuronField, unobtanium;
+    @FXML
+    private Label skillLabelShipyard;
 
     /**
      * Initializes the controller class.
@@ -692,7 +691,19 @@ public class UniverseController implements Initializable {
         rusty2rad.setToggleGroup(shipGroup);
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
+        
+        capacityRad.setToggleGroup(upgradeGroup);
+        neuronTorpedos.setToggleGroup(upgradeGroup);
+        plasmaBlasters.setToggleGroup(upgradeGroup);
+        deathStarLaser.setToggleGroup(upgradeGroup);
+        nitrogenBooster.setToggleGroup(upgradeGroup);
+        fluxCapacitor.setToggleGroup(upgradeGroup);
+        warpGenerator.setToggleGroup(upgradeGroup);
+        gravityShield.setToggleGroup(upgradeGroup);
+        neuronField.setToggleGroup(upgradeGroup);
+        unobtanium.setToggleGroup(upgradeGroup);
 
+        skillLabelShipyard.setText("Skill Level: Attack: " + cha.getShip().getAttack() + cha.getShip().getMaxHealth());
     }
     /*
     * Handles when the refuel button is pressed.

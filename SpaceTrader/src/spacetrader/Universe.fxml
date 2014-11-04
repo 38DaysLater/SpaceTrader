@@ -581,7 +581,7 @@
                         <GaussianBlur />
                      </effect>
                   </ImageView>
-                  <SplitPane blendMode="SRC_ATOP" dividerPositions="0.75" layoutY="32.0" opacity="0.39" orientation="VERTICAL" prefHeight="454.0" prefWidth="796.0">
+                  <SplitPane blendMode="SRC_ATOP" dividerPositions="0.7151898734177216" layoutY="32.0" opacity="0.39" orientation="VERTICAL" prefHeight="476.0" prefWidth="796.0">
                      <items>
                         <TabPane prefHeight="375.0" prefWidth="705.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
@@ -748,21 +748,167 @@
                             </Tab>
                             <Tab text="Upgrades">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="307.0" prefWidth="771.0">
                                        <children>
-                                          <ScrollPane prefHeight="307.0" prefWidth="735.0">
-                                            <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                                            </content>
-                                          </ScrollPane>
+                                          <ScrollPane prefHeight="308.0" prefWidth="796.0">
+                                             <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="462.0" prefWidth="791.0">
+                                                   <children>
+                                                      <GridPane layoutX="5.0" prefHeight="446.0" prefWidth="759.0">
+                                                         <children>
+                                                            <Label blendMode="EXCLUSION" contentDisplay="CENTER" prefHeight="21.0" prefWidth="725.0" text="                                   Attack Upgrades" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                                                               <font>
+                                                                  <Font name="Andalus" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" prefHeight="21.0" prefWidth="729.0" text="Neuron Torpedos                                             300                                   Attack +1 " textFill="WHITE" GridPane.rowIndex="3">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Plasma Blasters                                                 500                                   Attack +2" textFill="WHITE" GridPane.rowIndex="4">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Death Star Laser                                               1500                                 Attack +4" textFill="WHITE" GridPane.rowIndex="5">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="                                   Speed Upgrades" textFill="WHITE" GridPane.rowIndex="6">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Nitrogen Booster                                              300                                   Speed +1" textFill="WHITE" GridPane.rowIndex="7">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Flux Capacitor                                                   500                                   Speed +2" textFill="WHITE" GridPane.rowIndex="8">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Warp Generator                                                1500                                 Speed +4" textFill="WHITE" GridPane.rowIndex="9">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="                                   Health Upgrades" textFill="WHITE" GridPane.rowIndex="10">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Gravity Shield                                                    300                                   Health +1" textFill="WHITE" GridPane.rowIndex="11">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" prefHeight="21.0" prefWidth="727.0" text="   Upgrade                                                        Cost                                 Skill Increase" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Neuron Field                                                      500                                   Health +2" textFill="WHITE" GridPane.rowIndex="12">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Unobtanium                                                      1500                                 Health +4" textFill="WHITE" GridPane.rowIndex="13">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label blendMode="EXCLUSION" text="Increase Cargo Space                                       500                                   Capacity +5" textFill="WHITE" GridPane.rowIndex="1">
+                                                               <font>
+                                                                  <Font name="AR DESTINE" size="16.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <RadioButton fx:id="capacityRad" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="neuronTorpedos" layoutX="735.0" layoutY="50.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="plasmaBlasters" layoutX="735.0" layoutY="114.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="deathStarLaser" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="nitrogenBooster" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="fluxCapacitor" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="warpGenerator" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="gravityShield" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="neuronField" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                            <RadioButton fx:id="unobtanium" mnemonicParsing="false" prefHeight="12.0" prefWidth="14.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                                               <effect>
+                                                                  <ColorAdjust brightness="-0.24" contrast="-0.34" hue="0.05" saturation="0.05" />
+                                                               </effect>
+                                                            </RadioButton>
+                                                         </children>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="759.0" minWidth="10.0" prefWidth="728.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="4.0" prefWidth="36.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                      </GridPane>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content></ScrollPane>
                                        </children></AnchorPane>
                               </content>
                             </Tab>
                           </tabs>
                         </TabPane>
-                        <AnchorPane focusTraversable="true" prefHeight="146.0" prefWidth="747.0" scaleShape="false" stylesheets="@resources/shipyardstyle.css">
+                        <AnchorPane focusTraversable="true" prefHeight="133.0" prefWidth="794.0" scaleShape="false" stylesheets="@resources/shipyardstyle.css">
                            <children>
-                              <Label fx:id="shipLabel" layoutX="20.0" layoutY="14.0" stylesheets="@resources/shipyardstyle.css" text="Your ship" textFill="WHITE">
+                              <Label fx:id="shipLabel" layoutX="12.0" layoutY="14.0" stylesheets="@resources/shipyardstyle.css" text="Your ship" textFill="WHITE">
                                  <font>
                                     <Font name="AR DESTINE" size="14.0" />
                                  </font>
@@ -770,7 +916,7 @@
                                     <ColorAdjust brightness="0.24" contrast="0.54" />
                                  </effect>
                               </Label>
-                              <Button blendMode="EXCLUSION" layoutX="456.0" layoutY="32.0" mnemonicParsing="false" onAction="#refuelButtonClicked" text="Refuel" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="456.0" layoutY="72.0" mnemonicParsing="false" onAction="#refuelButtonClicked" text="Refuel" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
@@ -778,7 +924,7 @@
                                     <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
                                  </effect>
                               </Button>
-                              <Button blendMode="EXCLUSION" layoutX="556.0" layoutY="32.0" mnemonicParsing="false" onAction="#repairButtonClicked" text="Repair" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="556.0" layoutY="72.0" mnemonicParsing="false" onAction="#repairButtonClicked" text="Repair" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
@@ -789,7 +935,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Button>
-                              <Button blendMode="EXCLUSION" layoutX="655.0" layoutY="32.0" mnemonicParsing="false" onAction="#upgradeButtonClicked" text="Upgrade" textFill="#19a0b2" underline="true">
+                              <Button blendMode="EXCLUSION" layoutX="655.0" layoutY="72.0" mnemonicParsing="false" onAction="#upgradeButtonClicked" text="Upgrade" textFill="#19a0b2" underline="true">
                                  <font>
                                     <Font name="AR DESTINE" size="21.0" />
                                  </font>
@@ -797,14 +943,22 @@
                                     <ColorAdjust brightness="-0.24" contrast="1.0" hue="-0.05" saturation="-0.15" />
                                  </effect>
                               </Button>
-                              <Label fx:id="coinShipLabel" layoutX="17.0" layoutY="52.0" text="Coins:" textFill="#e42d2d">
+                              <Label fx:id="coinShipLabel" layoutX="12.0" layoutY="84.0" prefHeight="19.0" prefWidth="46.0" text="Coins:" textFill="#e42d2d">
                                  <font>
                                     <Font name="AR DESTINE" size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="coinLabel2" layoutX="83.0" layoutY="52.0" stylesheets="@resources/shipyardstyle.css" text="Balance" textFill="WHITE">
+                              <Label fx:id="coinLabel2" layoutX="67.0" layoutY="84.0" stylesheets="@resources/shipyardstyle.css" text="Balance" textFill="WHITE">
                                  <font>
                                     <Font name="AR DESTINE" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="skillLabelShipyard" layoutX="12.0" layoutY="39.0" stylesheets="@resources/shipyardstyle.css" text="Your ship" textFill="WHITE">
+                                 <effect>
+                                    <ColorAdjust brightness="0.24" contrast="0.54" />
+                                 </effect>
+                                 <font>
+                                    <Font name="AR DESTINE" size="14.0" />
                                  </font>
                               </Label>
                            </children>
