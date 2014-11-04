@@ -26,12 +26,12 @@ public class Ship implements Serializable{
     private int capacity;
     private int healthUpgrade;
     private int atkUpgrade;
+    private int speedUpgrade;
     private int capacityUpgrade;
-    private int upgradesLeft = 10;
 
     //this is your starting ship. 
     public Ship() {
-        name = "Rusty";
+        name = "Rusty 0";
         price = 0;
         FUEL_CAPACITY = 0;
         maxHealth = 0;
@@ -156,30 +156,49 @@ public class Ship implements Serializable{
         return capacity;
     }
     
-    public int getUpgradesLeft() {
-        return upgradesLeft;
-    }
-    
     public void upgradeHealth(int increase) {
         maxHealth += increase;
-        upgradesLeft--;
+        capacity--;
+        healthUpgrade++;
     }
     
     public void upgradeAttack(int increase) {
         atk += increase;
-        upgradesLeft--;
+        capacity--;
+        atkUpgrade++;
     }
     
     public void upgradeCapacity(int increase) {
         capacity += increase;
-        upgradesLeft--;
+        capacityUpgrade++;
     }
 
     public void upgradeSpeed(int increase) {
         speed += increase;
-        upgradesLeft--;
+        capacity--;
+        speedUpgrade++;
     }
-
+    
+    public void decreaseCapacity(int capacityTaken) {
+        capacity -= capacityTaken;
+    }
+    
+    public int getHealthUpgrades() {
+        return healthUpgrade;
+    }
+    
+    public int getAttackUpgrades() {
+        return healthUpgrade;
+    }
+    
+    public int getSpeedUpgrades() {
+        return healthUpgrade;
+    }
+    
+    public int getCapacityUpgrades() {
+        return healthUpgrade;
+    }
+    
     public String toString(){
         String returnString = price + "\t\t" + MLP + "\t\t" + weight + "\t\t\t"
                 + atk + "\t\t" + speed + "\t\t" + FUEL_CAPACITY + "\t\t"

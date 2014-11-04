@@ -155,6 +155,15 @@ public class ShipYard implements Serializable{
        myChar.updateShip(ship);
        playerInventory.subtractFromBalance(ship.getPrice());
        
+       //transfer upgrades
+       ship.upgradeHealth(charShip.getHealthUpgrades());
+       ship.upgradeAttack(charShip.getAttackUpgrades());
+       ship.upgradeSpeed(charShip.getSpeedUpgrades());
+       ship.upgradeCapacity(charShip.getCapacityUpgrades());
+       //update capacity
+       ship.decreaseCapacity(charShip.getHealthUpgrades() + charShip.getAttackUpgrades()
+                                + charShip.getSpeedUpgrades());
+       
        return null;
     }
     /*public int getFuelPrice() {
