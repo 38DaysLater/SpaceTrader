@@ -115,7 +115,7 @@ public class ShipYard implements Serializable{
         int refundPrice = charShip.getPrice()/2;
         
         
-        
+
         
         String currentShipName = charShip.getName();
         String currentShipType = currentShipName.substring(0);
@@ -129,8 +129,6 @@ public class ShipYard implements Serializable{
         String upgradeShipType = upgradeShipName.substring(0);
         int upgradeShipLevel = Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
         
-        System.out.println(currentShipLevel);
-        System.out.println(upgradeShipLevel);
         
         
         
@@ -143,11 +141,13 @@ public class ShipYard implements Serializable{
             return "You have too much cargo on your current ship to get this "
                     + "new one. Sell your merchandise or pick a ship that can "
                     + "accomodate your cargo";
-        } /*else if (currentShipLevel <= upgradeShipLevel - 1) {
+        } else if (currentShipLevel < upgradeShipLevel - 1) {
             return "Your current ship level is " + currentShipLevel + ". "
                     + "You must upgrade to level " + (currentShipLevel + 1) + 
                     " before upgrading to level " + upgradeShipLevel;
-        } */
+        } else if (upgradeShipLevel > 1 && !upgradeShipName.equals(currentShipName)) {
+            return "You cannot upgrade to another type of ship";
+        }
         
 
        //gives refund on current ship and deducts old one. 
