@@ -27,7 +27,7 @@ public class Ship implements Serializable{
     private int healthUpgrade;
     private int atkUpgrade;
     private int capacityUpgrade;
-    private int upgradesLeft = 15;
+    private int upgradesLeft = 10;
 
     //this is your starting ship. 
     public Ship() {
@@ -162,22 +162,22 @@ public class Ship implements Serializable{
     
     public void upgradeHealth(int increase) {
         maxHealth += increase;
-        upgradesLeft -= increase;
+        upgradesLeft--;
     }
     
     public void upgradeAttack(int increase) {
         atk += increase;
-        upgradesLeft -= increase;
+        upgradesLeft--;
     }
     
     public void upgradeCapacity(int increase) {
         capacity += increase;
-        upgradesLeft -= increase;
+        upgradesLeft--;
     }
 
     public void upgradeSpeed(int increase) {
         speed += increase;
-        upgradesLeft -= increase;
+        upgradesLeft--;
     }
 
     public String toString(){
