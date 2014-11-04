@@ -118,7 +118,7 @@ public class ShipYard implements Serializable {
 
         
         String currentShipName = charShip.getName();
-        String currentShipType = currentShipName.substring(0);
+        String currentShipType = currentShipName.substring(0, 1);
         int lengthCurrent = currentShipName.length();        
         int currentShipLevel = Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
 
@@ -126,7 +126,7 @@ public class ShipYard implements Serializable {
         
         String upgradeShipName = ship.getName();
         int lengthNew = upgradeShipName.length();
-        String upgradeShipType = upgradeShipName.substring(0);
+        String upgradeShipType = upgradeShipName.substring(0, 1);
         int upgradeShipLevel = Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
         
         
@@ -145,8 +145,10 @@ public class ShipYard implements Serializable {
             return "Your current ship level is " + currentShipLevel + ". "
                     + "You must upgrade to level " + (currentShipLevel + 1) + 
                     " before upgrading to level " + upgradeShipLevel;
-        } else if (upgradeShipLevel > 1 && !upgradeShipName.equals(currentShipName)) {
+        } else if (upgradeShipLevel > 1 && !upgradeShipType.equals(currentShipType)) {
             return "You cannot upgrade to another type of ship";
+        } else if (upgradeShipName.equals(currentShipName)) {
+            return "You already own that ship.";
         }
         
 
