@@ -93,7 +93,7 @@ public class Ship implements Serializable{
         Character player = Singleton.getCharacter(); //Grabs current character
         double pn = 3; //Stores the player's pilot score / 3
         double returnValue = dist/pn;
-        return (int)returnValue;
+        return (int)returnValue*2;
     }
     
     /**

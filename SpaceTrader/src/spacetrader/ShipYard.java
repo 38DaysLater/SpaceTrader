@@ -44,7 +44,6 @@ public class ShipYard implements Serializable{
         if(currentBalance < costOfRefuelCompletely(charShip)){
             return "You don't have enough to refuel all the way";
         }
-        
         //subtracts price and fills fuel up
         else {          
             playerInventory.subtractFromBalance(costOfRefuelCompletely(charShip));
@@ -78,7 +77,7 @@ public class ShipYard implements Serializable{
         return null;
     }
     
-    
+    //this increaes the ship's health to max when applicable. 
     public String repairShip() {
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance = Singleton.getCharacter().getInventory().getBalance();
@@ -102,20 +101,29 @@ public class ShipYard implements Serializable{
         return null;
     }
     
+    
+    //buys and replaces the current ship that you have. 
+    //checks to make sure that you have enough money and skill
+    //and not too much cargo. 
+    
+    //SELL CURRENT SHIP FOR WHAT IT'S WORTH
     public String buyShip(Ship ship) {
         Character myChar = Singleton.getCharacter();
         Inventory playerInventory = myChar.getInventory();
         int currentBalance = myChar.getInventory().getBalance();
         Ship charShip = myChar.getShip();
-        
-        if (ship.getPrice() > currentBalance) {
+        int refundPrice = myChar.getShip().getPrice()/2;
+       
+        if (ship.getPrice() > currentBalance + refundPrice) {
             return "You don't have enough money for this pimpin ride";
-        }
-        
-        if(ship.getMLP() > myChar.getPilot()) {
+        } else if (ship.getMLP() > myChar.getPilot()) {
             return "You don't have the skill to pilot this pimpin ride";
+        } else if (playerInventory.totalItemCount() > ship.getCapacity()){
+            return "You have too much cargo on your current shpi to get this new one. Sell your merchandise or pick a ship that can accomodate your cargo";
         }
-        
+
+       //gives refund on current ship and deducts old one. 
+       playerInventory.addToBalance(refundPrice);
        myChar.updateShip(ship);
        playerInventory.subtractFromBalance(ship.getPrice());
        

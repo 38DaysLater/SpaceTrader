@@ -30,7 +30,17 @@ public class Character implements Serializable{
         */
         
 	public Character(String n, int p, int f, int t, int e) {
-           
+            if(n.equals("Afiq")) {
+                name = n; 
+                pilot = 10;
+                fight = 10;
+                trade = 10;
+                engineer = 10;
+                ship = new Ship();
+                inventory = new Inventory();
+                inventory.addToBalance(9000);
+                inventory.setCapacity(0);
+            } else {
                     name = n;
                     pilot = p;
                     fight = f;
@@ -39,7 +49,8 @@ public class Character implements Serializable{
                     ship = new Ship();
                     inventory = new Inventory();
                     inventory.addToBalance(3000);
-                    inventory.setCapacity(10);
+                    inventory.setCapacity(0);
+            }
                 
         }
         
