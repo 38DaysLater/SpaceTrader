@@ -145,7 +145,9 @@ public class ShipYard implements Serializable{
             return "Your current ship level is " + currentShipLevel + ". "
                     + "You must upgrade to level " + (currentShipLevel + 1) + 
                     " before upgrading to level " + upgradeShipLevel;
-        } 
+        } else if (upgradeShipLevel > 1 && !upgradeShipName.equals(currentShipName)) {
+            return "You cannot upgrade to another type of ship";
+        }
         
 
        //gives refund on current ship and deducts old one. 
