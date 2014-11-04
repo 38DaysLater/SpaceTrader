@@ -164,5 +164,86 @@ public class ShipYard implements Serializable{
         return repairCost;
     }
     
+    public String buyNeuronTorpedos() {
+        // minimum tech level to produce: 5
+        int MTLP = 5, torpedoCost = 300, torpedoAttackIncrease = 1;
+        return upgrade(MTLP, torpedoCost, torpedoAttackIncrease, UpgradeType.attackUpgrade);
+    }
+
+    public String buyPlasmaBlasters() {
+        // minimum tech level to produce: 6
+        int MTLP = 6, plasmaCost = 500, plasmaAttackIncrease = 2;
+        return upgrade(MTLP, plasmaCost, plasmaAttackIncrease, UpgradeType.attackUpgrade);
+    }
+
+    public String buyDeathStarLaser() {
+        // minimum tech level to produce: 7
+        int MTLP = 7, laserCost = 1500, laserAttackIncrease = 4;
+        return upgrade(MTLP, laserCost, laserAttackIncrease, UpgradeType.attackUpgrade);
+    }
     
+    public String buyNitrogenBooster() {
+        // minimum tech level to produce: 5
+        int MTLP = 5, boostCost = 300, boosterSpeedIncrease = 1;
+        return upgrade(MTLP, boostCost, boosterSpeedIncrease, UpgradeType.speedUpgrade);
+    }
+    
+    public String buyFluxCapacitor() {
+        int MTLP = 6, fluxCost = 500, fluxSpeedIncrease = 2;
+        return upgrade(MTLP, fluxCost, fluxSpeedIncrease, UpgradeType.speedUpgrade);
+    }
+    
+    public String buyWarpGenerator() {
+        // minimum tech level to produce: 6
+        int MTLP = 7, warpCost = 1500, warpSpeedIncrease = 4;
+        return upgrade(MTLP, warpCost, warpSpeedIncrease, UpgradeType.speedUpgrade);
+    }
+    
+    public String buyGravityShield() {
+        int MTLP = 5, gravityCost = 300, gravityHealthIncrease = 1;
+        return upgrade(MTLP, gravityCost, gravityHealthIncrease, UpgradeType.healthUpgrade);
+    }
+    
+    public String buyNeuronField() {
+        int MTLP = 6, fieldCost = 500, fieldHealthIncrease = 2;
+        return upgrade(MTLP, fieldCost, fieldHealthIncrease, UpgradeType.healthUpgrade);
+    }
+    
+    public String buyUnobtanium() {
+        int MTLP = 7, unobtaniumCost = 1500, unobtaniumHealthIncrease = 4;
+        return upgrade(MTLP, unobtaniumCost, unobtaniumHealthIncrease, UpgradeType.healthUpgrade);
+    }
+    
+    public String buyIncreasedCargo() {
+        int MTLP = 7, cargoCost = 500, cargoIncrease = 5;
+        return upgrade(MTLP, cargoCost, cargoIncrease, UpgradeType.capacityUpgrade);
+    }
+    
+    public String upgrade(int cost, int increase, int MTLP, UpgradeType up) {
+        // minimum tech level to produce: 5
+        Inventory playerInventory = Singleton.getCharacter().getInventory();
+        int currentBalance = playerInventory.getBalance();
+        Ship charShip = Singleton.getCharacter().getShip();
+        
+        if (MTLP < 5) {
+            return "Planet not techy enough to buy upgrade";
+        } else if (cost > currentBalance) {
+            return "You don't have enough moneys";
+        } else if (charShip.getCapacity() <= 0) {
+            return "But Lt. Dan, you ain't got no more upgrades";
+        }
+        
+        if (up == UpgradeType.attackUpgrade) {
+            charShip.upgradeAttack(increase);
+        } else if (up == UpgradeType.healthUpgrade) {
+            charShip.upgradeHealth(increase);
+        } else if (up == UpgradeType.speedUpgrade) {
+            charShip.upgradeSpeed(increase);
+        } else {
+            charShip.upgradeCapacity(increase);
+        }
+        playerInventory.subtractFromBalance(cost);
+        
+        return null;
+    }
 }
