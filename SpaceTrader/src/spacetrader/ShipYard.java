@@ -112,15 +112,43 @@ public class ShipYard implements Serializable{
         Inventory playerInventory = myChar.getInventory();
         int currentBalance = myChar.getInventory().getBalance();
         Ship charShip = myChar.getShip();
-        int refundPrice = myChar.getShip().getPrice()/2;
-       
+        int refundPrice = charShip.getPrice()/2;
+        
+        
+        
+        
+        String currentShipName = charShip.getName();
+        String currentShipType = currentShipName.substring(0);
+        int lengthCurrent = currentShipName.length();        
+        int currentShipLevel = Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
+
+        
+        
+        String upgradeShipName = ship.getName();
+        int lengthNew = upgradeShipName.length();
+        String upgradeShipType = upgradeShipName.substring(0);
+        int upgradeShipLevel = Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
+        
+        System.out.println(currentShipLevel);
+        System.out.println(upgradeShipLevel);
+        
+        
+        
+        
         if (ship.getPrice() > currentBalance + refundPrice) {
             return "You don't have enough money for this pimpin ride";
         } else if (ship.getMLP() > myChar.getPilot()) {
             return "You don't have the skill to pilot this pimpin ride";
         } else if (playerInventory.totalItemCount() > ship.getCapacity()){
-            return "You have too much cargo on your current shpi to get this new one. Sell your merchandise or pick a ship that can accomodate your cargo";
-        }
+            return "You have too much cargo on your current ship to get this "
+                    + "new one. Sell your merchandise or pick a ship that can "
+                    + "accomodate your cargo";
+        } /*else if (currentShipLevel <= upgradeShipLevel - 1) {
+            return "Your current ship level is " + currentShipLevel + ". "
+                    + "You must upgrade to level " + (currentShipLevel + 1) + 
+                    " before upgrading to level " + upgradeShipLevel;
+        } */
+        
 
        //gives refund on current ship and deducts old one. 
        playerInventory.addToBalance(refundPrice);
