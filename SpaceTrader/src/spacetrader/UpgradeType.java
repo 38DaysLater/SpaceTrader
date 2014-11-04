@@ -7,10 +7,10 @@ package spacetrader;
 import java.io.Serializable;
 
 /**
- *
+ * Enumerated for upgrade types.
  * @author lsmoore
  */
-public enum UpgradeType implements Serializable{
+public enum UpgradeType implements Serializable {
     attackUpgrade,
     healthUpgrade,
     speedUpgrade,
