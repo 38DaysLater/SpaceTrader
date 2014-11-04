@@ -174,8 +174,7 @@ public class ShipYard implements Serializable {
        playerInventory.subtractFromBalance(ship.getPrice());
        
        //so if you uncomment this code and upgrade your ship from type 1 to 2 to 3,
-       //the capacity gets really messed up. 
-       /*
+       /* */
        
        //transfer upgrades
        ship.upgradeHealth(charShip.getHealthUpgrades());
@@ -183,9 +182,8 @@ public class ShipYard implements Serializable {
        ship.upgradeSpeed(charShip.getSpeedUpgrades());
        ship.upgradeCapacity(charShip.getCapacityUpgrades());
        //update capacity
-       ship.decreaseCapacity(charShip.getHealthUpgrades() + charShip.getAttackUpgrades()
-                                + charShip.getSpeedUpgrades());
-       */
+       ship.updateUpgradesLeft(charShip.getUpgradesLeft());
+       /* */
        return null;
     }
     /*public int getFuelPrice() {
