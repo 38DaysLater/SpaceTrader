@@ -115,7 +115,7 @@ public class ShipYard implements Serializable{
         int refundPrice = charShip.getPrice()/2;
         
         
-        
+
         
         String currentShipName = charShip.getName();
         String currentShipType = currentShipName.substring(0);

@@ -31,7 +31,7 @@ public class Ship implements Serializable{
 
     //this is your starting ship. 
     public Ship() {
-        name = "Rusty";
+        name = "Rusty 0";
         price = 0;
         FUEL_CAPACITY = 0;
         maxHealth = 0;
