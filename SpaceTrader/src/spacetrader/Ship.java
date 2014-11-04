@@ -121,6 +121,14 @@ public class Ship implements Serializable{
         health += x;
     }
     
+    public int getAttack() {
+        return atk;
+    }
+    
+    public int getSpeed() {
+        return speed;
+    }
+    
     public int getHealth() {
         return health;
     }

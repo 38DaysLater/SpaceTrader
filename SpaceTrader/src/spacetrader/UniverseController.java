@@ -754,7 +754,7 @@ public class UniverseController implements Initializable {
         } else {
             Action response = Dialogs.create()
                 .title("Upgrade Ship")
-                .masthead("You will lose your current ship.")
+                .masthead("You will lose your current ship and receive half the value of your it.")
                 .message("Do you wish to confirm your purchase?")
                 .showConfirm();
             //selected.equals(id of button in question)
