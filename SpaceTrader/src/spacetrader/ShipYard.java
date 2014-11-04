@@ -198,68 +198,127 @@ public class ShipYard implements Serializable {
         return repairCost;
     }
 
+    /**
+     * Method to buy Neuron Torpedos.
+     * @return String error
+     */
     public String buyNeuronTorpedos() {
         // minimum tech level to produce: 5
-        int MTLP = 5, torpedoCost = 300, torpedoAttackIncrease = 1;
-        return upgrade(MTLP, torpedoCost, torpedoAttackIncrease, UpgradeType.attackUpgrade);
+        int mTLP = 5, torpedoCost = 300, torpedoAttackIncrease = 1;
+        return upgrade(mTLP, torpedoCost, torpedoAttackIncrease,
+                UpgradeType.attackUpgrade);
     }
 
+    /**
+     * Method to buy Plasma Blasters.
+     * @return String error
+     */
     public String buyPlasmaBlasters() {
         // minimum tech level to produce: 6
-        int MTLP = 6, plasmaCost = 500, plasmaAttackIncrease = 2;
-        return upgrade(MTLP, plasmaCost, plasmaAttackIncrease, UpgradeType.attackUpgrade);
+        int mTLP = 6, plasmaCost = 500, plasmaAttackIncrease = 2;
+        return upgrade(mTLP, plasmaCost, plasmaAttackIncrease,
+                UpgradeType.attackUpgrade);
     }
 
+    /**
+     * Method to buy Death Star Laser.
+     * @return String error
+     */
     public String buyDeathStarLaser() {
         // minimum tech level to produce: 7
-        int MTLP = 7, laserCost = 1500, laserAttackIncrease = 4;
-        return upgrade(MTLP, laserCost, laserAttackIncrease, UpgradeType.attackUpgrade);
+        int mTLP = 7, laserCost = 1500, laserAttackIncrease = 4;
+        return upgrade(mTLP, laserCost, laserAttackIncrease,
+                UpgradeType.attackUpgrade);
     }
 
+    /**
+     * Method to buy Nitrogen Booster.
+     * @return String error
+     */
     public String buyNitrogenBooster() {
         // minimum tech level to produce: 5
-        int MTLP = 5, boostCost = 300, boosterSpeedIncrease = 1;
-        return upgrade(MTLP, boostCost, boosterSpeedIncrease, UpgradeType.speedUpgrade);
+        int mTLP = 5, boostCost = 300, boosterSpeedIncrease = 1;
+        return upgrade(mTLP, boostCost, boosterSpeedIncrease,
+                UpgradeType.speedUpgrade);
     }
 
+    /**
+     * Method to buy Flux Capacitor.
+     * @return String error
+     */
     public String buyFluxCapacitor() {
-        int MTLP = 6, fluxCost = 500, fluxSpeedIncrease = 2;
-        return upgrade(MTLP, fluxCost, fluxSpeedIncrease, UpgradeType.speedUpgrade);
+        int mTLP = 6, fluxCost = 500, fluxSpeedIncrease = 2;
+        return upgrade(mTLP, fluxCost, fluxSpeedIncrease,
+                UpgradeType.speedUpgrade);
     }
 
+    /**
+     * Method to buy Warp Generator.
+     * @return String error
+     */
     public String buyWarpGenerator() {
         // minimum tech level to produce: 6
-        int MTLP = 7, warpCost = 1500, warpSpeedIncrease = 4;
-        return upgrade(MTLP, warpCost, warpSpeedIncrease, UpgradeType.speedUpgrade);
+        int mTLP = 7, warpCost = 1500, warpSpeedIncrease = 4;
+        return upgrade(mTLP, warpCost, warpSpeedIncrease,
+                UpgradeType.speedUpgrade);
     }
 
+    /**
+     * Method to buy gravity shield.
+     * @return String error
+     */
     public String buyGravityShield() {
-        int MTLP = 5, gravityCost = 300, gravityHealthIncrease = 1;
-        return upgrade(MTLP, gravityCost, gravityHealthIncrease, UpgradeType.healthUpgrade);
+        int mTLP = 5, gravityCost = 300, gravityHealthIncrease = 1;
+        return upgrade(mTLP, gravityCost, gravityHealthIncrease,
+                UpgradeType.healthUpgrade);
     }
 
+    /**
+     * Method to buy Neuron field.
+     * @return String error
+     */
     public String buyNeuronField() {
-        int MTLP = 6, fieldCost = 500, fieldHealthIncrease = 2;
-        return upgrade(MTLP, fieldCost, fieldHealthIncrease, UpgradeType.healthUpgrade);
+        int mTLP = 6, fieldCost = 500, fieldHealthIncrease = 2;
+        return upgrade(mTLP, fieldCost, fieldHealthIncrease,
+                UpgradeType.healthUpgrade);
     }
 
+    /**
+     * method to buy Unobtanium.
+     * @return String error
+     */
     public String buyUnobtanium() {
-        int MTLP = 7, unobtaniumCost = 1500, unobtaniumHealthIncrease = 4;
-        return upgrade(MTLP, unobtaniumCost, unobtaniumHealthIncrease, UpgradeType.healthUpgrade);
+        int mTLP = 7, unobtaniumCost = 1500, unobtaniumHealthIncrease = 4;
+        return upgrade(mTLP, unobtaniumCost, unobtaniumHealthIncrease,
+                UpgradeType.healthUpgrade);
     }
 
+    /**
+     * Method to buy more Cargo space.
+     * @return String error
+     */
     public String buyIncreasedCargo() {
-        int MTLP = 7, cargoCost = 500, cargoIncrease = 5;
-        return upgrade(MTLP, cargoCost, cargoIncrease, UpgradeType.capacityUpgrade);
+        int mTLP = 7, cargoCost = 500, cargoIncrease = 5;
+        return upgrade(mTLP, cargoCost, cargoIncrease,
+                UpgradeType.capacityUpgrade);
     }
 
-    public String upgrade(int cost, int increase, int MTLP, UpgradeType up) {
+    /**
+     * Method that adds an upgrade to the inventory.
+     * returns string error for various reasons
+     * @param mTLP
+     * @param cost
+     * @param increase
+     * @param up
+     * @return String error
+     */
+    public String upgrade(int mTLP, int cost, int increase, UpgradeType up) {
         // minimum tech level to produce: 5
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance = playerInventory.getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
-        
-        if (techLevel < MTLP) {
+
+        if (techLevel < mTLP) {
             return "Planet not techy enough to buy upgrade";
         } else if (cost > currentBalance) {
             return "You don't have enough moneys";
