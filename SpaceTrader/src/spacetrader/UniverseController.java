@@ -163,6 +163,8 @@ public class UniverseController implements Initializable {
     private RadioButton warpGenerator, gravityShield, neuronField, unobtanium;
     @FXML
     private Label skillLabelShipyard;
+    @FXML
+    private Tab upgradeTab;
 
     /**
      * Initializes the controller class.
@@ -691,7 +693,7 @@ public class UniverseController implements Initializable {
         rusty2rad.setToggleGroup(shipGroup);
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
-        
+
         capacityRad.setToggleGroup(upgradeGroup);
         neuronTorpedos.setToggleGroup(upgradeGroup);
         plasmaBlasters.setToggleGroup(upgradeGroup);
@@ -703,7 +705,11 @@ public class UniverseController implements Initializable {
         neuronField.setToggleGroup(upgradeGroup);
         unobtanium.setToggleGroup(upgradeGroup);
 
-        skillLabelShipyard.setText("Skill Level: Attack: " + cha.getShip().getAttack() + cha.getShip().getMaxHealth());
+        skillLabelShipyard.setText("Upgrades Left: " + cha.getShip().getUpgradesLeft()
+                + "    Capacity: " + cha.getShip().getCapacity()
+                + "    Attack: " + cha.getShip().getAttack()
+                + "    Speed: " + cha.getShip().getSpeed() + "    Health: "
+                + cha.getShip().getMaxHealth());
     }
     /*
     * Handles when the refuel button is pressed.
@@ -748,46 +754,114 @@ public class UniverseController implements Initializable {
     */
     @FXML
     private void upgradeButtonClicked(ActionEvent event) {
-        Toggle selected =  shipGroup.getSelectedToggle();
-        if (selected == null) {
-            dialog("Please select a ship to upgrade.");
+        if ((!upgradeTab.isSelected())) {    
+            Toggle selected =  shipGroup.getSelectedToggle();
+            if (selected == null) {
+                dialog("Please select a ship to upgrade.");
+            } else {
+                Action response = Dialogs.create()
+                    .title("Upgrade Ship")
+                    .masthead("You will lose your current ship and receive half its value.")
+                    .message("Do you wish to confirm your purchase?")
+                    .showConfirm();
+                //selected.equals(id of button in question)
+                //do things
+                String message = null;
+                    if (response == Dialog.Actions.YES) {
+                        if (selected.equals(titan1rad)) {
+                            message = shipYard.buyShip(shipList.get(0));
+                            titan1rad.setSelected(false);
+                        } else if (selected.equals(titan2rad)) {
+                            message = shipYard.buyShip(shipList.get(1));
+                            titan2rad.setSelected(false);
+                        } else if (selected.equals(titan3rad)) {
+                            message = shipYard.buyShip(shipList.get(2));
+                            titan3rad.setSelected(false);
+                        } else if (selected.equals(banshee1rad)) {
+                            message = shipYard.buyShip(shipList.get(3));
+                            banshee1rad.setSelected(false);
+                        } else if (selected.equals(banshee2rad)) {
+                            message = shipYard.buyShip(shipList.get(4));
+                            banshee2rad.setSelected(false);
+                        } else if (selected.equals(banshee3rad)) {
+                            message = shipYard.buyShip(shipList.get(5));
+                            banshee3rad.setSelected(false);
+                        } else if (selected.equals(rusty1rad)) {
+                            message = shipYard.buyShip(shipList.get(6));
+                            rusty1rad.setSelected(false);
+                        } else if (selected.equals(rusty2rad)) {
+                            message = shipYard.buyShip(shipList.get(7));
+                            rusty2rad.setSelected(false);
+                        } else if (selected.equals(serenity1rad)) {
+                            message = shipYard.buyShip(shipList.get(8));
+                            serenity1rad.setSelected(false);
+                        } else if (selected.equals(serenity2rad)) {
+                            message = shipYard.buyShip(shipList.get(9));
+                            serenity2rad.setSelected(false);
+                        }
+                        if (message != null) {
+                            dialog(message);
+                        }
+                    }
+            }
         } else {
-            Action response = Dialogs.create()
-                .title("Upgrade Ship")
-                .masthead("You will lose your current ship and receive half the value of your it.")
-                .message("Do you wish to confirm your purchase?")
-                .showConfirm();
-            //selected.equals(id of button in question)
-            //do things
-            String message = null;
+            Toggle selected2 = upgradeGroup.getSelectedToggle();
+            if (selected2 == null) {
+                dialog("Please select an upgrade to add.");
+            } else {
+                Action response = Dialogs.create()
+                    .title("Add Upgrades")
+                    .masthead("You have chosen to add an upgrade.")
+                    .message("Do you wish to confirm your purchase?")
+                    .showConfirm();
+                //selected.equals(id of button in question)
+                //do things
+                String message = null;
                 if (response == Dialog.Actions.YES) {
-                    if (selected.equals(titan1rad)) {
-                        message = shipYard.buyShip(shipList.get(0));
-                    } else if (selected.equals(titan2rad)) {
-                        message = shipYard.buyShip(shipList.get(1));
-                    } else if (selected.equals(titan3rad)) {
-                        message = shipYard.buyShip(shipList.get(2));
-                    } else if (selected.equals(banshee1rad)) {
-                        message = shipYard.buyShip(shipList.get(3));
-                    } else if (selected.equals(banshee2rad)) {
-                        message = shipYard.buyShip(shipList.get(4));
-                    } else if (selected.equals(banshee3rad)) {
-                        message = shipYard.buyShip(shipList.get(5));
-                    } else if (selected.equals(rusty1rad)) {
-                        message = shipYard.buyShip(shipList.get(6));
-                    } else if (selected.equals(rusty2rad)) {
-                        message = shipYard.buyShip(shipList.get(7));
-                    } else if (selected.equals(serenity1rad)) {
-                        message = shipYard.buyShip(shipList.get(8));
-                    } else if (selected.equals(serenity2rad)) {
-                        message = shipYard.buyShip(shipList.get(9));
+                    if (selected2.equals(neuronTorpedos)) {
+                        currentP().getShipYard().buyNeuronTorpedos();
+                        neuronTorpedos.setSelected(false);
+                    } else if (selected2.equals(plasmaBlasters)) {
+                        currentP().getShipYard().buyPlasmaBlasters();
+                        plasmaBlasters.setSelected(false);
+                    } else if (selected2.equals(deathStarLaser)) {
+                        currentP().getShipYard().buyDeathStarLaser();
+                        deathStarLaser.setSelected(false);
+                    } else if (selected2.equals(nitrogenBooster)) {
+                        currentP().getShipYard().buyNitrogenBooster();
+                        nitrogenBooster.setSelected(false);
+                    } else if (selected2.equals(fluxCapacitor)) {
+                        currentP().getShipYard().buyFluxCapacitor();
+                        fluxCapacitor.setSelected(false);
+                    } else if (selected2.equals(warpGenerator)) {
+                        currentP().getShipYard().buyWarpGenerator();
+                        warpGenerator.setSelected(false);
+                    } else if (selected2.equals(gravityShield)) {
+                        currentP().getShipYard().buyGravityShield();
+                        gravityShield.setSelected(false);
+                    } else if (selected2.equals(neuronField)) {
+                        currentP().getShipYard().buyNeuronField();
+                        neuronField.setSelected(false);
+                    } else if (selected2.equals(unobtanium)) {
+                        currentP().getShipYard().buyUnobtanium();
+                        unobtanium.setSelected(false);
+                    } else if (selected2.equals(capacityRad)) {
+                        currentP().getShipYard().buyIncreasedCargo();
+                        capacityRad.setSelected(false);
                     }
                     if (message != null) {
                         dialog(message);
                     }
                 }
+            }
         }
+
        //updates labels
+        skillLabelShipyard.setText("Upgrades Left: " + cha.getShip().getUpgradesLeft()
+                + "    Capacity: " + cha.getShip().getCapacity()
+                + "    Attack: " + cha.getShip().getAttack()
+                + "    Speed: " + cha.getShip().getSpeed() + "    Health: "
+                + cha.getShip().getMaxHealth());
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
     }
