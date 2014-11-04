@@ -137,17 +137,19 @@ public class ShipYard implements Serializable {
         int refundPrice = charShip.getPrice() / 2;
 
         String currentShipName = charShip.getName();
-        String currentShipType = currentShipName.substring(0);
-        int lengthCurrent = currentShipName.length();
-        int currentShipLevel =
-                Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
+        String currentShipType = currentShipName.substring(0, 1);
+        int lengthCurrent = currentShipName.length();        
+        int currentShipLevel = Integer.parseInt(currentShipName.substring(lengthCurrent - 1));
 
         String upgradeShipName = ship.getName();
         int lengthNew = upgradeShipName.length();
-        String upgradeShipType = upgradeShipName.substring(0);
-        int upgradeShipLevel =
-                Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
-
+        String upgradeShipType = upgradeShipName.substring(0, 1);
+        int upgradeShipLevel = Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
+        
+        
+        
+        
+        
         if (ship.getPrice() > currentBalance + refundPrice) {
             return "You don't have enough money for this pimpin ride";
         } else if (ship.getMLP() > myChar.getPilot()) {
@@ -158,11 +160,12 @@ public class ShipYard implements Serializable {
                     + "accomodate your cargo";
         } else if (currentShipLevel < upgradeShipLevel - 1) {
             return "Your current ship level is " + currentShipLevel + ". "
-                    + "You must upgrade to level " + (currentShipLevel + 1)
-                    + " before upgrading to level " + upgradeShipLevel;
-        } else if (upgradeShipLevel > 1
-                && !upgradeShipName.equals(currentShipName)) {
+                    + "You must upgrade to level " + (currentShipLevel + 1) + 
+                    " before upgrading to level " + upgradeShipLevel;
+        } else if (upgradeShipLevel > 1 && !upgradeShipType.equals(currentShipType)) {
             return "You cannot upgrade to another type of ship";
+        } else if (upgradeShipName.equals(currentShipName)) {
+            return "You already own that ship.";
         }
 
 
