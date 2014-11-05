@@ -69,7 +69,7 @@ public class Planet implements Serializable{
             } else if (resources == Resources.MINERALPOOR) {
                 priceAdjuster = 10;
             }
-            shipYard = new ShipYard(priceAdjuster, resources.ordinal());
+            shipYard = new ShipYard(priceAdjuster, techLevel.ordinal());
         }
     }
     
