@@ -24,11 +24,14 @@ public class Character implements Serializable{
 
 
         /**
-        * This is the constructor. It establishes the character
-        * special characters will have this available
-        * @param name, pilot level, flight level, fight level, trade level, engineer level
-        */
-        
+         * This is the constructor. It establishes the character
+         * special characters will have this available
+         * @param n name
+         * @param p pilot level
+         * @param f flight level
+         * @param t trade level
+         * @param e engineer level
+         */
 	public Character(String n, int p, int f, int t, int e) {
             if(n.equals("Afiq")) {
                 name = n; 
@@ -44,18 +47,15 @@ public class Character implements Serializable{
                     name = n;
                     pilot = p;
                     fight = f;
-                    trade = t; 
+                    trade = t;
                     engineer = e;
                     ship = new Ship();
                     inventory = new Inventory();
                     inventory.addToBalance(3000);
                     inventory.setCapacity(0);
             }
-                
         }
-        
-        
-        
+
         public Character() {
 		
 	}
@@ -64,29 +64,28 @@ public class Character implements Serializable{
         }
 	//setters
         public void setName(String name) {this.name = name;}
-        
-	public void setPilot(int num){pilot += num;}
 
-	public void setFight(int num){fight += num;}
+	public void setPilot(int num) {pilot += num;}
 
-	public void setTrade(int num){trade += num;}
+	public void setFight(int num) {fight += num;}
 
-	public void setEngineer(int num){engineer += num;}
+	public void setTrade(int num) {trade += num;}
 
-	public void setHealth(int num){health += num;}
-        
+	public void setEngineer(int num) {engineer += num;}
+
+	public void setHealth(int num) {health += num;}
+
         public void setShip(Ship ship) {
             this.ship = ship;
         }
 
 	//getters
-        
         public String getName() {return name;};
-        
+
 	public int getPilot(){return pilot;}
 
 	public int getFight(){return fight;}
-	
+
 	public int getTrade(){return trade;}
 
 	public int getEngineer(){return engineer;}
@@ -96,51 +95,46 @@ public class Character implements Serializable{
         public Inventory getInventory(){
             return inventory;
         }
-        
+
         public int checkDistance(Planet p){
             int distance = 0;
             int[] oldLoc = currentPlanet.getLocation();
             int[] newLoc = p.getLocation();
-            distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1] - newLoc[1]);
-            double d = Math.sqrt(distance); 
-            return (int)d;
+            distance = Math.abs(oldLoc[0] - newLoc[0])
+                    + Math.abs(oldLoc[1] - newLoc[1]);
+            double d = Math.sqrt(distance);
+            return (int) d;
         }
-        
-        
+
         public int checkDistance(SolarSystem s) {
-            if(previousSolarSystem == null){
+            if (previousSolarSystem == null) {
                 return 0;
             }
-            
-            int distance = 0; 
+
+            int distance = 0;
             int[] oldLoc = previousSolarSystem.getLocation();
             int[] newLoc = s.getLocation();
-            distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1] - newLoc[1]);
-            double d = Math.sqrt(distance); 
-            return (int)(d * 10); 
+            distance = Math.abs(oldLoc[0] - newLoc[0])
+                    + Math.abs(oldLoc[1] - newLoc[1]);
+            double d = Math.sqrt(distance);
+            return (int) (d * 10);
         }
-        
-        
-        
-        
-        
+
         public void setCurrentPlanet(Planet p){
             previousSolarSystem = currentSolarSystem;
             currentPlanet = p;
         }
-        
+
         public Ship getShip(){
             return ship;
         }
-        
-        
-        /*
-        returns the current planet
-        @param None
-        @return array length 2. 
-        0th index is planet. 
-        1st index is int array of xy coordinate of planet
-        */
+
+        /**
+         * Returns the current planet.
+         * @return array length 2. 
+         * 0th index is planet. 
+         * 1st index is int array of xy coordinate of planet
+         **/
         public Object[] getCurrentPlanet(){
             Object[] returnArray = new Object[2];
             returnArray[0] = currentPlanet;

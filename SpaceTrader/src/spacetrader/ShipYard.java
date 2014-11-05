@@ -172,10 +172,10 @@ public class ShipYard implements Serializable {
        playerInventory.addToBalance(refundPrice);
        myChar.updateShip(ship);
        playerInventory.subtractFromBalance(ship.getPrice());
-       
+
        //so if you uncomment this code and upgrade your ship from type 1 to 2 to 3,
        /* */
-       
+
        //transfer upgrades
        ship.upgradeHealth(charShip.getHealthUpgrades());
        ship.upgradeAttack(charShip.getAttackUpgrades());

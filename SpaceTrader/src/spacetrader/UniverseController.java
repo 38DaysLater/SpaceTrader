@@ -819,34 +819,34 @@ public class UniverseController implements Initializable {
                 String message = null;
                 if (response == Dialog.Actions.YES) {
                     if (selected2.equals(neuronTorpedos)) {
-                        currentP().getShipYard().buyNeuronTorpedos();
+                        message = currentP().getShipYard().buyNeuronTorpedos();
                         neuronTorpedos.setSelected(false);
                     } else if (selected2.equals(plasmaBlasters)) {
-                        currentP().getShipYard().buyPlasmaBlasters();
+                        message = currentP().getShipYard().buyPlasmaBlasters();
                         plasmaBlasters.setSelected(false);
                     } else if (selected2.equals(deathStarLaser)) {
-                        currentP().getShipYard().buyDeathStarLaser();
+                        message = currentP().getShipYard().buyDeathStarLaser();
                         deathStarLaser.setSelected(false);
                     } else if (selected2.equals(nitrogenBooster)) {
-                        currentP().getShipYard().buyNitrogenBooster();
+                        message = currentP().getShipYard().buyNitrogenBooster();
                         nitrogenBooster.setSelected(false);
                     } else if (selected2.equals(fluxCapacitor)) {
-                        currentP().getShipYard().buyFluxCapacitor();
+                        message = currentP().getShipYard().buyFluxCapacitor();
                         fluxCapacitor.setSelected(false);
                     } else if (selected2.equals(warpGenerator)) {
-                        currentP().getShipYard().buyWarpGenerator();
+                        message = currentP().getShipYard().buyWarpGenerator();
                         warpGenerator.setSelected(false);
                     } else if (selected2.equals(gravityShield)) {
-                        currentP().getShipYard().buyGravityShield();
+                        message = currentP().getShipYard().buyGravityShield();
                         gravityShield.setSelected(false);
                     } else if (selected2.equals(neuronField)) {
-                        currentP().getShipYard().buyNeuronField();
+                        message = currentP().getShipYard().buyNeuronField();
                         neuronField.setSelected(false);
                     } else if (selected2.equals(unobtanium)) {
-                        currentP().getShipYard().buyUnobtanium();
+                        message = currentP().getShipYard().buyUnobtanium();
                         unobtanium.setSelected(false);
                     } else if (selected2.equals(capacityRad)) {
-                        currentP().getShipYard().buyIncreasedCargo();
+                        message = currentP().getShipYard().buyIncreasedCargo();
                         capacityRad.setSelected(false);
                     }
                     if (message != null) {
