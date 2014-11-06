@@ -3,6 +3,7 @@ package spacetrader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
+import java.io.Serializable;
 
 /**
  * This class represents an Inventory.  Every item present in the inventory is
@@ -10,14 +11,14 @@ import java.util.Set;
  * The key is the name of the item, and the value is the item itself along with the number of times it appears
  * @author lsmoore
  */
-public class Inventory {
+public class Inventory implements Serializable{
     
     private Hashtable<String, ItemWrapper> list;
     private int balance = 0;
     private int capacity = 100;
     private int totalItemCount = 0;
     private Hashtable<String, Integer> priceList;
-    private final ArrayList<Item> elligibleItems; 
+    private final ArrayList<String> elligibleItems; 
     private int techLevel = 10;
 
     /**
@@ -27,7 +28,7 @@ public class Inventory {
     * @author lsmoore
     */
 
-    private class ItemWrapper {
+    private class ItemWrapper implements Serializable{
         private Item item;
         private int count;
         
@@ -120,7 +121,7 @@ public class Inventory {
         //if the item is alread in the inventory, increment its count by 1
         Set<String> set = list.keySet();
         if (set.contains(name)) {
-        ItemWrapper iw = list.remove(name);
+            ItemWrapper iw = list.remove(name);
             iw.addCount(num);
             list.put(name, iw);
         } else {
@@ -139,15 +140,14 @@ public class Inventory {
  * @param the item we're looking for
  * @return the number of times it occurs in the hashtable
  */
-
-    public int getItemCount(String name) {
+ 
+   public int getItemCount(String name) {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
             return iw.count;
-        } else if (elligibleItems.contains(Items.getItem(name))){
+        } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
-            //System.out.print(priceList.keys());
             return 0;
         } else {
             return -1;
@@ -158,7 +158,7 @@ public class Inventory {
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             return priceList.get(name);
-        } else if (elligibleItems.contains(Items.getItem(name))){
+        } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
             //System.out.print(priceList.keys());
             if (priceList.contains(name))
@@ -237,7 +237,6 @@ public class Inventory {
         }
 
     }
-    
     
     //get balance
     public int getBalance(){

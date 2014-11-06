@@ -6,6 +6,7 @@
 package spacetrader;
 import java.util.Random;
 import javafx.scene.image.Image;
+import java.io.Serializable;
 
 /**
  * This class represents a Planet.  It is instantiated by the Solar System class
@@ -13,7 +14,7 @@ import javafx.scene.image.Image;
  * government type, chance of meeting pirates, and its solar system
  * @author lsmoore
  */
-public class Planet {
+public class Planet implements Serializable{
     private static final int TECH_LEVEL_FOR_SHIPYARD = 4;
     private String name;
     private int x, y;
@@ -24,9 +25,10 @@ public class Planet {
     private GovernmentType govType;
     private SolarSystem solarSystem;
     private Market market;
-    private Image pic;
+    private transient Image pic;
     private double sizeX, sizeY;
     private ShipYard shipYard;
+    private Weather weather;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -42,6 +44,7 @@ public class Planet {
         sizeX = pic.getWidth();
         sizeY = pic.getHeight();
         solarSystem = ss;
+        weather = new Weather();
         
         if (name.equals("Second Earth")){
             policeLevel = 9;
@@ -68,7 +71,7 @@ public class Planet {
             } else if (resources == Resources.MINERALPOOR) {
                 priceAdjuster = 10;
             }
-            shipYard = new ShipYard(priceAdjuster, resources.ordinal());
+            shipYard = new ShipYard(priceAdjuster, techLevel.ordinal());
         }
     }
     
@@ -78,6 +81,9 @@ public class Planet {
  * @return a string of the contents
  */
     
+    public void setPlanetPic(){
+        pic = new Image("/spacetrader/resources/Planet.png");
+    }
     public String toString() {
         String message;
         message = "Planet name: " + name;
@@ -114,8 +120,15 @@ public class Planet {
     public Market getMarket(){
         return market;
     }
+    
+    public Weather getWeather() {
+        return weather;
+    }
    
     public Image getPlanetPic() {
+        if(pic == null){
+           pic = new Image("/spacetrader/resources/Planet.png");            
+        }
         return pic;
     }
     
@@ -132,5 +145,7 @@ public class Planet {
     public boolean hasShipYard(){
         return shipYard != null;
     }
-    
+    public ShipYard getShipYard() {
+        return shipYard;
+    }
 }

@@ -1,6 +1,7 @@
 package spacetrader;
 
 import java.util.Random;
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +22,7 @@ import java.util.Random;
  * ER (When this condition is present, the resource is expensive)
  * @author lsmoore
  */
-public class Item {
+public class Item implements Serializable{
     
     private String name;
     private int basePrice;

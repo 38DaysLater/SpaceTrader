@@ -6,20 +6,21 @@ import java.util.Set;
 import java.util.Random;
 import java.util.HashSet;
 import javafx.scene.image.Image;
+import java.io.Serializable;
 
 /**
  * This class represents a Solar System.  It is instantiated by the Universe class
  * It contains a list of planets, its name, position, size, and number of planets
  * @author lsmoore
  */
-public class SolarSystem {
+public class SolarSystem implements Serializable{
     private static int ssCount = 0;
     private Set<Planet> planetSet;
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
-    private final int NUM_PLANETS = 3; 
-    private Image pic;
+    private final int NUM_PLANETS = 5; 
+    private transient Image pic;
     private double sizeX, sizeY;
         
     
@@ -48,7 +49,7 @@ public class SolarSystem {
         
         if (ssCount == 0) {
             planetSet.add(new Planet("Second Earth", 0,0, this));
-        } else{
+        } else {
             //randomely generates the positions, name, and other characteristcs of the planets
             for (int index = 0; index < NUM_PLANETS; index++){
                 planet = null;
@@ -73,6 +74,11 @@ public class SolarSystem {
         ssCount++;
         
     }
+    
+    public void setSSPic(){
+        pic = new Image("/spacetrader/resources/SolarSystem2.png");
+    }
+    
     
 /**
  * Gets a list of the planets
@@ -116,6 +122,9 @@ public class SolarSystem {
         return false;
     }
     public Image getSSPic() {
+        if (pic == null) {
+            pic = new Image("/spacetrader/resources/SolarSystem2.png");
+        }
         return pic;
     }
 /**
