@@ -28,6 +28,7 @@ public class Planet implements Serializable{
     private transient Image pic;
     private double sizeX, sizeY;
     private ShipYard shipYard;
+    private Weather weather;
     
  /**
  * This is the constructor. Solar system passes in the name, coordinates, and 
@@ -43,6 +44,7 @@ public class Planet implements Serializable{
         sizeX = pic.getWidth();
         sizeY = pic.getHeight();
         solarSystem = ss;
+        weather = new Weather();
         
         if (name.equals("Second Earth")){
             policeLevel = 9;
@@ -117,6 +119,10 @@ public class Planet implements Serializable{
     
     public Market getMarket(){
         return market;
+    }
+    
+    public Weather getWeather() {
+        return weather;
     }
    
     public Image getPlanetPic() {
