@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 
 public class Universe implements Serializable {
-        private final int NUM_SOLAR_SYSTEMS = 3;
+        private final int NUM_SOLAR_SYSTEMS = 10;
         private final int WINDOW_WIDTH = 750;
         private final int WINDOW_HEIGHT = 500;
         SolarSystem[] SSArray = new SolarSystem [NUM_SOLAR_SYSTEMS];
@@ -48,6 +48,16 @@ public class Universe implements Serializable {
             chocolateMilkyway[0] = 0;
             chocolateMilkyway[1] = 0;
             coordinates.add(chocolateMilkyway);
+/*            
+            for (int i = -250; i < 250; i ++) {
+                for (int j = -250; j < 250; j ++) {
+                        int[] key = new int[2];
+                        key[0] = i;
+                        key[1] = j;
+                        coordinates.add(key);
+                }
+            }
+*/
 
             Random rand = new Random();
             int x, y;
@@ -69,6 +79,17 @@ public class Universe implements Serializable {
                         key[0] = x; key[1] = y;
                 }
                 coordinates.add(key);
+/*
+                //avoids a 10 pixel perimeter
+                for (int a = (x - 250); a < (x + 250); a ++) {
+                    for (int b = (y - 250); b < (y + 250); b ++ ) {
+                        key = new int[2];
+                        key[0] = a;
+                        key[1] = b;
+                        coordinates.add(key);
+                    }
+                }
+*/
             } //ends random generation of solar systems
 
             //to make sure no other SS gets those coordinates
