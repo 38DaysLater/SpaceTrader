@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="180.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.PlanetPageController">
+    <children>
+        <ImageView fitHeight="602.0" fitWidth="833.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@resources/Current%20Planet.jpg" />
+            </image>
+        </ImageView>
+        <Label fx:id="planNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="283.0" layoutY="48.0" prefHeight="60.0" prefWidth="229.0" text="Planet Name" textFill="WHITE">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Label>
+        <Label fx:id="planInfoLabel" alignment="CENTER" layoutX="157.0" layoutY="108.0" prefHeight="214.0" prefWidth="481.0" text="Planet Info" textFill="WHITE">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="newsButt" blendMode="HARD_LIGHT" layoutX="47.0" layoutY="422.0" mnemonicParsing="false" onAction="#newsButtHandle" prefHeight="47.0" prefWidth="166.0" text="Newspaper">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

@@ -12,14 +12,9 @@
  */
 package spacetrader;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
-import static javafx.embed.swing.SwingFXUtils.toFXImage;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -29,18 +24,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 
@@ -50,10 +41,17 @@ import java.io.ObjectOutputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
+import java.net.URL;
+import javafx.scene.layout.Pane;
 
 //import java.awt.Image;
 
@@ -70,62 +68,11 @@ public class UniverseController implements Initializable {
     private Universe uni = Singleton.getUniverse();
     private Character cha = Singleton.getCharacter();
     private String success;
+  
     @FXML
     private Tab planetNameTab;
     @FXML
-    private Label planNameLabel, planInfoLabel, coinLabel;
-    @FXML
-    private Button newsButt;
-    @FXML
     private Tab marketTab;
-    @FXML
-    private Button bcButt;
-    @FXML
-    private TextField bfoodText, bwatText, bmedText;
-    @FXML
-    private Label bfoodP, bWatP, bmedP;
-    @FXML
-    private Label bfoodQuan, bwatQuan, bmedQuan;
-    @FXML
-    private Button scButt;
-    @FXML
-    private TextField sfoodText, swatText, smedText;
-    @FXML
-    private Label sfoodP, swatP, smedP;
-    @FXML
-    private Label sfoodQuan, swatQuan, smedQuan;
-    @FXML
-    private Button bEButt;
-    @FXML
-    private TextField bFireTxt, bMacTxt, bRobTxt;
-    @FXML
-    private Label bFireP, bMacP, bRobP;
-    @FXML
-    private Label bFireQ, bMacQ, bRobQ;
-    @FXML
-    private Button sEButt;
-    @FXML
-    private TextField sFireTxt, sMacTxt, sRobTxt;
-    @FXML
-    private Label sFireP, sMacP, sRobP;
-    @FXML
-    private Label sFireQ, sMacQ, sRobQ;
-    @FXML
-    private Button bMButt;
-    @FXML
-    private TextField bFursTxt, bOreTxt, bGamTxt;
-    @FXML
-    private Label bFursP, bOreP, bGamP;
-    @FXML
-    private Label bFursQ, bOreQ, bGamQ;
-    @FXML
-    private Button sMButt;
-    @FXML
-    private TextField sFursTxt, sOreTxt, sGamTxt;
-    @FXML
-    private Label sFursP, sOreP, sGamP;
-    @FXML
-    private Label sFursQ, sOreQ, sGamQ;
     @FXML
     private Label currentSSLabelCanvas;
     @FXML
@@ -137,476 +84,88 @@ public class UniverseController implements Initializable {
     @FXML
     private TabPane tabPane;
     @FXML
-    private Label saveLabel;
+    private Label saveLabel, exitLabel, loadLabel;
     @FXML
-    private Label exitLabel;
+    private Tab shipyardTab;
     @FXML
-    private Label loadLabel;
+    private Pane planetPane;
+    @FXML
+    private AnchorPane marketPane;
+    @FXML
+    private Pane shipyardPane;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        planNameLabel.setText(currentP().getPlanetName());
-        String text = currentP().toString();
-        int index = text.indexOf("\n");
-        planInfoLabel.setText(currentP().toString().substring(index + 1));
-    }    
+        try {
+        planetPane.getChildren().clear();
+        planetPane.getChildren().add(FXMLLoader.load(
+                getClass().getResource("PlanetPage.fxml")));
+        } catch (IOException e) {
+        }
+        if (((Planet) cha.getCurrentPlanet()[0]).hasShipYard()) {
+            shipyardTab.setDisable(false);
+        } else {
+            shipyardTab.setDisable(true);
+        }
+    }
     /**
      * Handles when the planet tab is selected
      * @param Event event
      */
     @FXML
     private void PlanetNameTabSelected(Event event) {
-        planNameLabel.setText(currentP().getPlanetName());
-        String text = currentP().toString();
-        int index = text.indexOf("\n");
-        planInfoLabel.setText(currentP().toString().substring(index + 1));
-       
-    }
-/****************************************************
- *                   MARKET TAB                     *
- ****************************************************/
-    /**
-     * Handles when the ok button is clicked inside the buy
-     * consumables section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void buyConHandle(ActionEvent event) {
-        try {
-            if (!bfoodText.getText().isEmpty()) {
-                success = currentP().getMarket().sellItem("Food", cha, Integer.parseInt(bfoodText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-            if (!bwatText.getText().isEmpty()) {
-                success = currentP().getMarket().sellItem("Water", cha, Integer.parseInt(bwatText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-            if (!bmedText.getText().isEmpty()) {
-                success = currentP().getMarket().sellItem("Medicine", cha, Integer.parseInt(bmedText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-        } catch(NumberFormatException e) {
-            dialog("Please enter a valid Integer.");
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sfoodQuan.setText(upSellLab("Food"));
-        swatQuan.setText(upSellLab("Water"));
-        smedQuan.setText(upSellLab("Medicine"));
-        bfoodQuan.setText(upBuyLab("Food"));
-        bwatQuan.setText(upBuyLab("Water"));
-        bmedQuan.setText(upBuyLab("Medicine"));
-        //clear textboxes
-        bfoodText.clear();
-        bwatText.clear();
-        bmedText.clear();
-    }
-
-    /**
-     * Handles when the ok button is clicked inside the sell
-     * consumables section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void sellConHandle(ActionEvent event) {
-        try {
-            if (!sfoodText.getText().isEmpty()) {
-                success = currentP().getMarket().buyItem("Food", cha, Integer.parseInt(sfoodText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-            if (!swatText.getText().isEmpty()) {
-                success = currentP().getMarket().buyItem("Water", cha, Integer.parseInt(swatText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-            if (!smedText.getText().isEmpty()) {
-                success = currentP().getMarket().buyItem("Medicine", cha, Integer.parseInt(smedText.getText()));
-                if (success != null) {
-                    //dialog box
-                    dialog(success);
-                }
-            }
-        } catch (NumberFormatException e) {
-            dialog("Please enter a valid Integer.");
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sfoodQuan.setText(upSellLab("Food"));
-        swatQuan.setText(upSellLab("Water"));
-        smedQuan.setText(upSellLab("Medicine"));
-        bfoodQuan.setText(upBuyLab("Food"));
-        bwatQuan.setText(upBuyLab("Water"));
-        bmedQuan.setText(upBuyLab("Medicine"));
-        //clear textboxes
-        sfoodText.clear();
-        swatText.clear();
-        smedText.clear();
-    }
-
-    /**
-     * Handles when the ok button is clicked inside the buy
-     * equipment section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void buyEquiHandle(ActionEvent event) {
-        if (!bFireTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Firearms", cha, Integer.parseInt(bFireTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
+        if (planetNameTab.isSelected()) {
+            System.out.println("planet tab");
+            try {
+//                planetPane.getChildren().clear();
+                planetPane.getChildren().add(FXMLLoader.load(
+                    getClass().getResource("PlanetPage.fxml")));
+            } catch (IOException e) {
             }
         }
-        if (!bMacTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Machines", cha, Integer.parseInt(bMacTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!bRobTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Robots", cha, Integer.parseInt(bRobTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sFireQ.setText(upSellLab("Firearms"));
-        sMacQ.setText(upSellLab("Machines"));
-        sRobQ.setText(upSellLab("Robots"));
-        bFireQ.setText(upBuyLab("Firearms"));
-        bMacQ.setText(upBuyLab("Machines"));
-        bRobQ.setText(upBuyLab("Robots"));
-        //clear textboxes
-        bFireTxt.clear();
-        bMacTxt.clear();
-        bRobTxt.clear();
-    }
-
-    /**
-     * Handles when the ok button is clicked inside the sell
-     * equipment section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void sellEquiHandle(ActionEvent event) {
-        if (!sFireTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Firearms", cha, Integer.parseInt(sFireTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!sMacTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Machines", cha, Integer.parseInt(sMacTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!sRobTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Robots", cha, Integer.parseInt(sRobTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sFireQ.setText(upSellLab("Firearms"));
-        sMacQ.setText(upSellLab("Machines"));
-        sRobQ.setText(upSellLab("Robots"));
-        bFireQ.setText(upBuyLab("Firearms"));
-        bMacQ.setText(upBuyLab("Machines"));
-        bRobQ.setText(upBuyLab("Robots"));
-        //clear textboxes
-        sFireTxt.clear();
-        sMacTxt.clear();
-        sRobTxt.clear();
-    }
-
-    /**
-     * Handles when the ok button is clicked inside the buy
-     * misc. section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void buyMiscHandle(ActionEvent event) {
-        if (!bFursTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Furs", cha, Integer.parseInt(bFursTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!bOreTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Ore", cha, Integer.parseInt(bOreTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!bGamTxt.getText().isEmpty()) {
-            success = currentP().getMarket().sellItem("Games", cha, Integer.parseInt(bGamTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sFursQ.setText(upSellLab("Furs"));
-        sOreQ.setText(upSellLab("Ore"));
-        sGamQ.setText(upSellLab("Games"));
-        bFursQ.setText(upBuyLab("Furs"));
-        bOreQ.setText(upBuyLab("Ore"));
-        bGamQ.setText(upBuyLab("Games"));
-        //clear textboxes
-        bFursTxt.clear();
-        bOreTxt.clear();
-        bGamTxt.clear();
-    }
-
-    /**
-     * Handles when the ok button is clicked inside the sell
-     * misc. section of the market
-     * @param ActionEvent event
-     */
-    @FXML
-    private void sellMiscHandle(ActionEvent event) {
-        if (!sFursTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Furs", cha, Integer.parseInt(sFursTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!sOreTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Ore", cha, Integer.parseInt(sOreTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        if (!sGamTxt.getText().isEmpty()) {
-            success = currentP().getMarket().buyItem("Games", cha, Integer.parseInt(sGamTxt.getText()));
-            if (success != null) {
-                //dialog box
-                dialog(success);
-            }
-        }
-        //update labels of quantity and coin balance
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        sFursQ.setText(upSellLab("Furs"));
-        sOreQ.setText(upSellLab("Ore"));
-        sGamQ.setText(upSellLab("Games"));
-        bFursQ.setText(upBuyLab("Furs"));
-        bOreQ.setText(upBuyLab("Ore"));
-        bGamQ.setText(upBuyLab("Games"));
-        //clear textboxes
-        sFursTxt.clear();
-        sOreTxt.clear();
-        sGamTxt.clear();
     }
    /**
-     * Handles when the market tab is selected
-     * @param Event event
+     * Handles when the market tab is selected.
+     * @param event
      */
     @FXML
     private void marketTabSelected(Event event) {
-        //sets initial coin amount from player inventory
-        coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
-        
-        //sets all labels for item quantity from market and player inventory
-        //if quantity for planet it -1 then the planet can't buy or sell that item
-        String bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Food"));
-        String bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Food"));
-        String sQuan = Integer.toString(cha.getInventory().getItemCount("Food"));
-        if (bQuan.equals("-1")) {
-            bfoodP.setText("N/A");
-            sfoodP.setText("N/A");
-            bfoodQuan.setText("N/A");
-            sfoodQuan.setText(sQuan);
-            sfoodText.setVisible(false);
-            bfoodText.setVisible(false);
-        } else {
-            bfoodP.setText(bPrice);
-            sfoodP.setText(bPrice);
-            bfoodQuan.setText(bQuan);
-            sfoodQuan.setText(sQuan);
-            sfoodText.setVisible(true);
-            bfoodText.setVisible(true);
+        if (marketTab.isSelected()) {
+            System.out.println("market tab");
+            try {
+//                marketPane.getChildren().clear();
+                marketPane.getChildren().add(FXMLLoader.load(
+                    getClass().getResource("MarketPage.fxml")));
+            } catch (IOException e) {
+                System.out.println("Exception caught in market");
+            }
         }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Water"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Water"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Water"));
-        if (bQuan.equals("-1")) {
-            bWatP.setText("N/A");
-            swatP.setText("N/A");
-            bwatQuan.setText("N/A");
-            swatQuan.setText(sQuan);
-            swatText.setVisible(false);
-            bwatText.setVisible(false);
-        } else {
-            bWatP.setText(bPrice);
-            swatP.setText(bPrice);
-            bwatQuan.setText(bQuan);
-            swatQuan.setText(sQuan);
-            swatText.setVisible(true);
-            bwatText.setVisible(true);
-        }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Medicine"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Medicine"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Medicine"));
-        if (bQuan.equals("-1")) {
-            bmedP.setText("N/A");
-            smedP.setText("N/A");
-            bmedQuan.setText("N/A");
-            smedQuan.setText(sQuan);
-            smedText.setVisible(false);
-            bmedText.setVisible(false);
-        } else {
-            bmedP.setText(bPrice);
-            smedP.setText(bPrice);
-            bmedQuan.setText(bQuan);
-            smedQuan.setText(sQuan);
-            smedText.setVisible(true);
-            bmedText.setVisible(true);
-        } 
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Firearms"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Firearms"));
-        if (bQuan.equals("-1")) {
-            bFireP.setText("N/A");
-            sFireP.setText("N/A");
-            bFireQ.setText("N/A");
-            sFireQ.setText(sQuan);
-            sFireTxt.setVisible(false);
-            bFireTxt.setVisible(false);
-        } else {
-            bFireP.setText(bPrice);
-            sFireP.setText(bPrice);
-            bFireQ.setText(bQuan);
-            sFireQ.setText(sQuan);
-            sFireTxt.setVisible(true);
-            bFireTxt.setVisible(true);
-        }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Machines"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Machines"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Machines"));
-        if (bQuan.equals("-1")) {
-            bMacP.setText("N/A");
-            sMacP.setText("N/A");
-            bMacQ.setText("N/A");
-            sMacQ.setText(sQuan);
-            sMacTxt.setVisible(false);
-            bMacTxt.setVisible(false);
-        } else {
-            bMacP.setText(bPrice);
-            sMacP.setText(bPrice);
-            bMacQ.setText(bQuan);
-            sMacQ.setText(sQuan);
-            sMacTxt.setVisible(true);
-            bMacTxt.setVisible(true);
-        }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Robots"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Robots"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Robots"));
-        if (bQuan.equals("-1")) {
-            bRobP.setText("N/A");
-            sRobP.setText("N/A");
-            bRobQ.setText("N/A");
-            sRobQ.setText(sQuan);
-            sRobTxt.setVisible(false);
-            bRobTxt.setVisible(false);
-        } else {
-            bRobP.setText(bPrice);
-            sRobP.setText(bPrice);
-            bRobQ.setText(bQuan);
-            sRobQ.setText(sQuan);
-            sRobTxt.setVisible(true);
-            bRobTxt.setVisible(true);
-        }        
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Furs"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Furs"));
-        if (bQuan.equals("-1")) {
-            bFursP.setText("N/A");
-            sFursP.setText("N/A");
-            bFursQ.setText("N/A");
-            sFursQ.setText(sQuan);
-            sFursTxt.setVisible(false);
-            bFursTxt.setVisible(false);
-        } else {
-            bFursP.setText(bPrice);
-            sFursP.setText(bPrice);
-            bFursQ.setText(bQuan);
-            sFursQ.setText(sQuan);
-            sFursTxt.setVisible(true);
-            bFursTxt.setVisible(true);
-        }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Ore"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Ore"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Ore"));
-        if (bQuan.equals("-1")) {
-            bOreP.setText("N/A");
-            sOreP.setText("N/A");
-            bOreQ.setText("N/A");
-            sOreQ.setText(sQuan);
-            sOreTxt.setVisible(false);
-            bOreTxt.setVisible(false);
-        } else {
-            bOreP.setText(bPrice);
-            sOreP.setText(bPrice);
-            bOreQ.setText(bQuan);
-            sOreQ.setText(sQuan);
-            sOreTxt.setVisible(true);
-            bOreTxt.setVisible(true);
-        }
-        bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Games"));
-        bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Games"));
-        sQuan = Integer.toString(cha.getInventory().getItemCount("Games"));
-        if (bQuan.equals("-1")) {
-            bGamP.setText("N/A");
-            sGamP.setText("N/A");
-            bGamQ.setText("N/A");
-            sGamQ.setText(sQuan);
-            sGamTxt.setVisible(false);
-            bGamTxt.setVisible(false);
-        } else {
-            bGamP.setText(bPrice);
-            sGamP.setText(bPrice);
-            bGamQ.setText(bQuan);
-            sGamQ.setText(sQuan);
-            sGamTxt.setVisible(true);
-            bGamTxt.setVisible(true);
-        }
-        
     }
-/****************************************************
- *                   MARKET END                     *
- ****************************************************/
+    /**
+     * Handles when the shipyard tab is selected
+     * @param Event event
+     */
+    @FXML
+    private void shipyardTabSelected(Event event) {
+        if (shipyardTab.isSelected()) {
+            System.out.println("ship tab");
+            try {
+//                shipyardPane.getChildren().clear();
+                shipyardPane.getChildren().add(FXMLLoader.load(
+                    getClass().getResource("ShipyardPage.fxml")));
+            } catch (IOException e) {
+                System.out.println("Exception caught in shipyard");
+            }
+        }
+    }
     
+/****************************************************
+ *                  SHIPYARD END                    *
+ ****************************************************/
+
 /****************************************************
  *                  UNIVERSE TAB                    *
  ****************************************************/
@@ -646,18 +205,30 @@ public class UniverseController implements Initializable {
 
                         if (response == Dialog.Actions.YES) {
                             // ... user chose YES
-                            //check if enough fuel to get there
-                            /**
+                            /**check if enough fuel to get there
                              * bring up travel page - for events and decrement fuel
-************                 * EVVEEEENNNTTTSSSS
                              */
                             //set current planet and solarsystem
                             String thing = cha.getShip().checkSufficientFuel(dist);
                             if(thing == null) {
                                 //player has enoughfuel to rech destination
+                                //trigger event
+                                /*creates a travel event object to handle random events
+                                * eventually it will read from a text document so the
+                                * events will have different chances based on where we are in the universe
+                                *and be different each time the player travels.
+                                * but for now it is very simple.
+                                */
+                                TravelEvent events = new TravelEvent();
+                                events.handleEvents();
                                 cha.getShip().subtractFuel(cha.getShip().getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);
-                                //sets current shown tab to the planet info tab                                
+                                //sets current shown tab to the planet info tab
+                                if (((Planet) cha.getCurrentPlanet()[0]).hasShipYard()) {
+                                    shipyardTab.setDisable(false);
+                                } else {
+                                    shipyardTab.setDisable(true);
+                                }
                                 tabPane.getSelectionModel().select(0);
                             } else {
                                 Dialogs.create()
@@ -681,7 +252,7 @@ public class UniverseController implements Initializable {
             SolarSystem[] solar = uni.getAllSolarSystems();
             for (SolarSystem p : solar) {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                    //dialog box for going to solar system and then set current solarsystem 
+                    //dialog box for going to solar system and then set current solarsystem
                     cha.setCurrentSolarSystem(p);
                     drawSolarSystem(universeCanvas.getGraphicsContext2D());
                     //show button
@@ -717,7 +288,7 @@ public class UniverseController implements Initializable {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
                     hit = true;
                     planPosUni.setText(p.getName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
-                }  
+                }
             }
             if (!hit) {
                 planPosUni.setText(" ");
@@ -727,7 +298,7 @@ public class UniverseController implements Initializable {
     /**
      * Handles when the universe button is pressed
      * brings up the drawing of the solar systems
-     * @param event 
+     * @param event
      */
     @FXML
     private void uniButtonHandler(ActionEvent event) {
@@ -738,19 +309,11 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                  UNIVERSE END                    *
  ****************************************************/
-    /**
-     * Handles when the newspaper button is selected
-     * inside the planet tab
-     * @param ActionEvent event
-     */
-    @FXML
-    private void newsButtHandle(ActionEvent event) {
-    }
-    
+
 /****************************************************
  *                HELPER METHODS                    *
  ****************************************************/
-    
+
     /**
      * Helper method that draws the current Solar System on the canvas
      * @param GraphicsContext gc
@@ -775,7 +338,6 @@ public class UniverseController implements Initializable {
             gc.drawImage(image, x, y);
         });
         //eventually draw fuel circle
-        
     }
     /**
      * Helper method that draws the all of the Solar Systems on the canvas
@@ -790,33 +352,9 @@ public class UniverseController implements Initializable {
             Image image = solar1.getSSPic();
             gc.drawImage(image, solar1.getLocation()[0] + (universeCanvas.getWidth() - image.getWidth())/2, solar1.getLocation()[1] + (universeCanvas.getHeight() - image.getHeight())/2);
         }
-        
-    }
-    /**
-     * Helper method for buying items from market
-     * @param String item
-     * @return String for label update
-     */
-    private String upSellLab(String item) {
-        String up = Integer.toString(cha.getInventory().getItemCount(item));
-        if (up.equals("-1")) {
-            return "N/A";
-        }
-        return up;
-    }
-    /**
-     * Helper method for selling items to market
-     * @param String item
-     * @return String for label update
-     */
-    private String upBuyLab(String item) {
-        String up = Integer.toString(currentP().getMarket().getInventory().getItemCount(item));
-        if(up.equals("-1")) {
-            return "N/A";
-        }
-        return up;
     }
     
+
     /**
      * Helper method for getting the current planet
      * @param String item
@@ -825,7 +363,7 @@ public class UniverseController implements Initializable {
     private Planet currentP() {
         return ((Planet)cha.getCurrentPlanet()[0]);
     }
-    
+
     /**
      * Helper method for creating dialogs
      * takes in string of the message to display
@@ -843,24 +381,26 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                 HELPERS END                      *
  ****************************************************/
-    
+
 /****************************************************
  *                 OPTIONS TAB                      *
  ****************************************************/
-    
+
     /**
-     * 
-     * @param event 
+     * Changes the background of the label when the mouse
+     * exits back to transparent
+     * @param events
      */
     @FXML
     private void labelExited(MouseEvent event) {
         ((Node)event.getSource()).setStyle("-fx-background-color: transparent;");
 
     }
-    
+
     /**
-     * 
-     * @param event 
+     * Changes the background of the label when the mouse
+     * enters it
+     * @param event
      */
     @FXML
     private void labelEntered(MouseEvent event) {
@@ -868,42 +408,31 @@ public class UniverseController implements Initializable {
     }
 
     /**
-     * 
-     * @param event 
+     * Handles when the save label is clicked in the options tab
+     * @param event
      */
     @FXML
     private void saveLabelClicked(MouseEvent event) {
-        String fileName = "data.bin";
+        SaveObject so = new SaveObject(Singleton.getCharacter(), Singleton.getUniverse());
+        String name = Singleton.getCharacter().getName();
+
+        String fileName = name + ".bin";
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
-            //should be singleton but don't worry about it now. 
-            os.writeObject(Singleton.getCharacter());
+            //should be singleton but don't worry about it now.
+            os.writeObject(so);
             os.close();
-            
+
         } catch (Exception e) {
-            System.out.println("SOMETHING WENT WRONG IN SAVE");
-        }
-        
-        System.out.println("Save Successful");
-        
-        try {
-            ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
-            Character chacha = (Character) is.readObject();
-            
-            System.out.println();
-            System.out.println("Name : " + chacha.getName());
-            System.out.println("Planet: " + chacha.getCurrentPlanet());
-            is.close();
-            
-        } catch (Exception e){
-            System.out.println("LOAD FAILED");
-            
+            System.out.println(e + " SOMETHING WENT WRONG IN SAVE");
+            e.printStackTrace();
         }
     }
 
     /**
-     * 
-     * @param event 
+     * Handles when the exit label is clicked
+     * brings up the initial loading page
+     * @param event
      */
     @FXML
     private void exitLabelClicked(MouseEvent event) {
@@ -924,24 +453,54 @@ public class UniverseController implements Initializable {
     }
 
     /**
-     * 
-     * @param event 
+     * Handles when the load label is clicked
+     * brings up the save file of the character name entered
+     * @param event
      */
     @FXML
     private void loadLabelClicked(MouseEvent event) {
         Optional<String> response = Dialogs.create()
         .title("Load Game")
-        .masthead("Please enther the name of the character you would like to load.")
+        .masthead("Please enter the name of the\ncharacter you would like to load.")
         .message("Character Name:")
         .showTextInput("Name");
 
         // One way to get the response value.
         if (response.isPresent()) {
             System.out.println("Your name: " + response.get());
+
+            try {
+
+                String fileName = response.get() + ".bin";
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+                SaveObject so2 = (SaveObject) is.readObject();
+                Singleton.setCharacter(so2.getCharacter());
+                Singleton.setUniverse(so2.getUniverse());
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setTitle("Space Trader");
+                    stage.setScene(scene);
+                    stage.show();
+
+        //        //hide current window
+                    ((Node)(event.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                    System.out.println("IOExcpetion caught in UniverseController.java line:954");
+                }
+                is.close();
+            } catch (Exception e){
+//                System.out.println(e + "LOAD FAILED");
+                Dialogs.create()
+                .title("OH NO!")
+                .masthead("Could not find save file")
+                .message( "Please be sure a valid character name is entered.")
+                .showWarning();
+            }
         }
     }
 
 /**************************************************
 *                END OPTIONS TAB                 *
 **************************************************/
-}
