@@ -322,7 +322,7 @@ public class ShipYard implements Serializable {
             return "Planet not techy enough to buy upgrade";
         } else if (cost > currentBalance) {
             return "You don't have enough moneys";
-        } else if (charShip.getCapacity() <= 0) {
+        } else if (charShip.getUpgradesLeft() <= 0) {
             return "But Lt. Dan, you ain't got no more upgrades";
         }
 
