@@ -183,6 +183,7 @@ public class Ship implements Serializable{
     
     public void upgradeCapacity(int increase) {
         capacity += increase;
+        Singleton.getCharacter().getInventory().setCapacity(capacity);
         upgradesLeft--;
         capacityUpgrade++;
     }
