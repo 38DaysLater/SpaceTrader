@@ -69,8 +69,8 @@ public class TravelEvent {
      */
     public void populateEvents() {
        //generates event objects. Will only be called once.
-       eventList.add(new TravelEvent("There's some cargo floating in space. Bring it on board?", (float)0.05, 0));
-       eventList.add(new TravelEvent("Some space debris suddenly appears in your field of vision. Try and dodge?", (float)0.99, 1));
+       eventList.add(new TravelEvent("There's some cargo floating in space. Bring it on board?", (float)0.5, 0));
+       eventList.add(new TravelEvent("Some space debris suddenly appears in your field of vision. Try and dodge?", (float)0.5, 1));
     }
     
 
@@ -81,6 +81,7 @@ public class TravelEvent {
      */
     
     public void handleEvents() {
+        String resultDialog = "";
         for (TravelEvent e: eventList) {
             if (e.rollChance()) {
                 //start dialog box
@@ -96,13 +97,16 @@ public class TravelEvent {
                     //handles all cases where the user answered yes.
                     switch (e.id) {
                         case 0:
+                            //needs check to make sure inventory is not full
                             Singleton.getCharacter().getInventory().add("Robots");
-                            System.out.println("item was added");
+                            resultDialog = "1 box of Robots was added to the cargobay";
                             break;
                         case 1:
                             if (roll.nextFloat() > (0.1 * Singleton.getCharacter().getPilot())) {
                                Singleton.getCharacter().getShip().subtractDamage(5);
-                               System.out.println("Ship was hurt");
+                               resultDialog = "You tried to dodge, but your skills just weren't good enough. Hull was damaged 5 points";
+                            } else {
+                                  resultDialog = "You skillfully navigate your way to saftey.";
                             }
                             break;
                         }
@@ -110,14 +114,21 @@ public class TravelEvent {
                     //handles all cases where the user answered no.
                     switch (e.id) {
                         case 0:
-                            System.out.println("item was ignored");
+                            resultDialog = "You ignore the floating cargo";
                             break;
                         case 1:
-                            Singleton.getCharacter().getShip().subtractDamage(5);
-                            System.out.println("Ship was hurt");
+                            Singleton.getCharacter().getShip().subtractDamage(10);
+                           resultDialog = "You don't react at all and your ship takes 10 points of damage.";
                             break;
                         }
                 }
+                 //start dialog box
+                Action result = Dialogs.create()
+                .title("Something's Happened!")
+                .masthead("Something has happened!")
+                .message(resultDialog)
+                .showWarning();
+                //end dialog box
             }
         }
     }
