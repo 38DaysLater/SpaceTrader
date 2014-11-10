@@ -22,7 +22,7 @@ public class Inventory implements Serializable{
     private int techLevel = 10;
 
     /**
-    * This helper class contains the item along with the number of times it appears.  
+    * This helper class contains the item along with the number of times it appears.
     * Every item present in the inventory is
     * stored in a Hashtable along with the number of times it appears in the list
     * @author lsmoore

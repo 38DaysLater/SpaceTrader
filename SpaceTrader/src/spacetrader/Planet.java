@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * This class represents a Planet.  It is instantiated by the Solar System class
- * It contains its name, position, police level, tech level, resources, 
+ * It contains its name, position, police level, tech level, resources,
  * government type, chance of meeting pirates, and its solar system
  * @author lsmoore
  */
@@ -29,13 +29,16 @@ public class Planet implements Serializable{
     private double sizeX, sizeY;
     private ShipYard shipYard;
     private Weather weather;
-    
- /**
- * This is the constructor. Solar system passes in the name, coordinates, and 
- * what solar system it belongs to.  It randomly generates the rest.  
- * @param a String of the name, two ints for x and y, and the solar system.
- */
-    
+
+    /**
+     * This is the constructor. Solar system passes in the name,
+     * coordinates, and what solar system it belongs to.
+     * It randomly generates the rest.
+     * @param name String of the name
+     * @param x two ints for x and y
+     * @param y
+     * @param ss the solar system
+     */
     public Planet(String name, int x, int y, SolarSystem ss){
         this.name = name;
         this.x = x;
@@ -62,7 +65,8 @@ public class Planet implements Serializable{
         }
         market = new Market(techLevel.ordinal(), resources.ordinal(), this);
 
-        //if the ship doesn't have a high enough tech level, the shipYard remains null
+        //if the ship doesn't have a high enough tech level,
+        //the shipYard remains null
         shipYard = null;
         if (techLevel.ordinal() > TECH_LEVEL_FOR_SHIPYARD) {
             int priceAdjuster = 0;
@@ -74,16 +78,15 @@ public class Planet implements Serializable{
             shipYard = new ShipYard(priceAdjuster, techLevel.ordinal());
         }
     }
-    
- /**
- * Displays the contents of the solar system 
- * @param none
- * @return a string of the contents
- */
-    
+
+    /**
+     * Displays the contents of the solar system.
+     * returns a string of the contents
+     */
     public void setPlanetPic(){
         pic = new Image("/spacetrader/resources/Planet.png");
     }
+    @Override
     public String toString() {
         String message;
         message = "Planet name: " + name;
@@ -92,57 +95,58 @@ public class Planet implements Serializable{
         message = message + "\n\tResource Level: " + resources.toString();
         message = message + "\n\tGovernment Type: " + govType.toString();
         message = message + "\n\tPolice Level (1-10): " + policeLevel;
-        message = message + "\n\tChance of meeting pirates: " + pirateChance + "%";
-        
+        message = message + "\n\tChance of meeting pirates: "
+                + pirateChance + "%";
         return message;
     }
-    
+
     public boolean isHit(double px, double py) {
-        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
-            if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
+        if (px >= (x - (sizeX / 2)) && px <= (x + (sizeX / 2))) {
+            if (py >= (y - (sizeY / 2)) && py <= (y + (sizeY / 2))) {
                 return true;
+            }
+        }
         return false;
     }
+
     //getters
-    
-    public int[] getLocation(){
+    public int[] getLocation() {
         int[] location = new int[2];
         location[0] = x;
         location[1] = y;
         return location;
     }
-    
+
     public String getPlanetName(){
         return name;
     }
-    
-    
+
     public Market getMarket(){
         return market;
     }
-    
+
     public Weather getWeather() {
         return weather;
     }
-   
+
     public Image getPlanetPic() {
-        if(pic == null){
-           pic = new Image("/spacetrader/resources/Planet.png");            
+        if (pic == null) {
+           pic = new Image("/spacetrader/resources/Planet.png");
         }
         return pic;
     }
-    
-    public SolarSystem getSolarSystem(){
+
+    public SolarSystem getSolarSystem() {
         return solarSystem;
     }
-    
+
     //this makes it so that when a planet has a certain tech level it will have
     //a ship yard to repair
-    public void setShipYard(){
-        
+    public void setShipYard() {
+
     }
-    
-    public boolean hasShipYard(){
+
+    public boolean hasShipYard() {
         return shipYard != null;
     }
     public ShipYard getShipYard() {

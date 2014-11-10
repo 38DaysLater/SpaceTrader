@@ -58,10 +58,10 @@ public class Ship implements Serializable{
         maxHealth = health;
         capacity = cargo;
     }
-    
+
     /**
-     * @author Hutchinson
-     * substractFuel() will decrement the fuel levels based on how far you've moved and your pilot score
+     * will decrement the fuel levels based on how far you've moved
+     * and your pilot score.
      * @param int fuel, int distance, Character player
      * @return new fuel level
      */
@@ -96,10 +96,8 @@ public class Ship implements Serializable{
     }
     
     /**
-     * @author Hutchinson
-     * getFuelLevel() gets the current level of fuel
-     * @param none
-     * @return current fuel level
+     * gets the current level of fuel.
+     * @return int current fuel level
      */
     public int getFuelLevel() {
         return fuel;

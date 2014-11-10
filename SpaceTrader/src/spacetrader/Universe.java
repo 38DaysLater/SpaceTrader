@@ -48,7 +48,7 @@ public class Universe implements Serializable {
             chocolateMilkyway[0] = 0;
             chocolateMilkyway[1] = 0;
             coordinates.add(chocolateMilkyway);
-/*            
+/*
             for (int i = -250; i < 250; i ++) {
                 for (int j = -250; j < 250; j ++) {
                         int[] key = new int[2];
