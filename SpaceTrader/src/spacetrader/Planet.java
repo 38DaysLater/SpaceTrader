@@ -159,6 +159,10 @@ public class Planet implements Serializable {
     public Market getMarket() {
         return market;
     }
+/**
+ * Gets the weather of the planet.
+ * @return weather
+ */
 
     public Weather getWeather() {
         return weather;
