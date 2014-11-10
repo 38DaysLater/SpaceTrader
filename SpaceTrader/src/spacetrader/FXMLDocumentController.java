@@ -1,6 +1,6 @@
 /*
  * The FXML Document Controller class goversn the opening game screen
- * It provides the user with the option to create a new game, load a game, and 
+ * It provides the user with the option to create a new game, load a game, and
  * bring up the options screen
  * @author Olivia
  */
@@ -27,6 +27,7 @@ import java.util.Optional;
 import org.controlsfx.dialog.Dialogs;
 
 public class FXMLDocumentController implements Initializable {
+    //CHECKSTYLE: OFF
     @FXML
     private AnchorPane loadingPane;
     @FXML
@@ -39,23 +40,26 @@ public class FXMLDocumentController implements Initializable {
     private Button loadGameButton;
     @FXML
     private Button optionsButton;
-
+    //CHECKSTYLE: ON
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-    }    
+    }
 
     /**
-     * Handles when the new game button is clicked
-     * @param ActionEvent event
+     * Handles when the new game button is clicked.
+     * @param event
      */
     @FXML
     private void handleNewGameButtonAction(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("CharacterCreation.fxml"));
+            Parent root = FXMLLoader.load(getClass()
+                    .getResource("CharacterCreation.fxml"));
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
@@ -64,20 +68,21 @@ public class FXMLDocumentController implements Initializable {
             stage.show();
 
 //        //hide this current window
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
         }
     }
-    
+
     /**
-     * Handles when the load game button is clicked
-     * @param ActionEvent event
+     * Handles when the load game button is clicked.
+     * @param event
      */
     @FXML
     private void handleLoadButtonAction(ActionEvent event) {
         Optional<String> response = Dialogs.create()
         .title("Load Game")
-        .masthead("Please enter the name of the\ncharacter you would like to load.")
+        .masthead("Please enter the name of the\n"
+                + "character you would like to load.")
         .message("Character Name:")
         .showTextInput("Name");
 
@@ -87,12 +92,14 @@ public class FXMLDocumentController implements Initializable {
             try {
 
                 String fileName = response.get() + ".bin";
-                ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
+                ObjectInputStream is =
+                        new ObjectInputStream(new FileInputStream(fileName));
                 SaveObject so2 = (SaveObject) is.readObject();
                 Singleton.setCharacter(so2.getCharacter());
                 Singleton.setUniverse(so2.getUniverse());
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
+                    Parent root = FXMLLoader.load(getClass()
+                            .getResource("Universe.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage stage = new Stage();
@@ -101,21 +108,23 @@ public class FXMLDocumentController implements Initializable {
                     stage.show();
 
         //        //hide current window
-                    ((Node)(event.getSource())).getScene().getWindow().hide();
+                    ((Node) (event.getSource())).getScene().getWindow().hide();
                 } catch (IOException e) {
-                    System.out.println("IOExcpetion caught in FXMLDocumentController.java line:106");
+                    System.out.println("IOExcpetion caught in"
+                            + "FXMLDocumentController.java line:106");
                 }
-                
+
                 System.out.println();
                 System.out.println("Name : " + so2.getCharacter().getName());
-                System.out.println("Planet: " + ((Planet) so2.getCharacter().getCurrentPlanet()[0]).getPlanetName());
+                System.out.println("Planet: " + ((Planet) so2.getCharacter()
+                        .getCurrentPlanet()[0]).getPlanetName());
                 is.close();
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 Dialogs.create()
                 .title("OH NO!")
                 .masthead("Could not find save file")
-                .message( "Please be sure a valid character name is entered.")
+                .message("Please be sure a valid character name is entered.")
                 .showWarning();
 //              System.out.println(e + "LOAD FAILED");
 
@@ -124,11 +133,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Handles when the Option button is clicked
-     * @param ActionEvent event
+     * Handles when the Option button is clicked.
+     * @param event
      */
     @FXML
     private void handleOptionButtonAction(ActionEvent event) {
     }
-    
+
 }

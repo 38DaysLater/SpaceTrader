@@ -16,15 +16,15 @@ import java.io.Serializable;
 public class Universe implements Serializable{
         private final int NUM_SOLAR_SYSTEMS = 3;
         SolarSystem[] SSArray = new SolarSystem[NUM_SOLAR_SYSTEMS];
-        
-        
-        
+
+
+
         /**
-        * Constructor of Solar System 
+        * Constructor of Solar System
         * reads in text file and randomly generates solar system coordinates
         * @param none
         * @return none
-        * 
+        *
         */
 	public Universe() throws IOException{
 		//sets up string of solar system name creation
@@ -33,39 +33,39 @@ public class Universe implements Serializable{
                 try {
                     FileReader inputFile = new FileReader("SolarSystemNames.txt");
                     BufferedReader bufReader = new BufferedReader(inputFile);
-            
+
                     for(int i = 1; i < NUM_SOLAR_SYSTEMS; i ++){
 			solarSystemNames[i] = bufReader.readLine();
                     }
-                    
+
                     bufReader.close();
                 }
-                
+
                 catch(IOException e){
                     System.out.println("IOException caught in Universe line 42");
                 }
-        
 
-		//randomly generates a solar system name and location such that no two occupy the same space		
+
+		//randomly generates a solar system name and location such that no two occupy the same space
 		HashSet<int[]> coordinates = new HashSet<int[]>();
-                
+
                 //specific only to starting SS
                 int[] chocolateMilkyway = new int[2];
                 chocolateMilkyway[0] = 0;
                 chocolateMilkyway[1] = 0;
                 coordinates.add(chocolateMilkyway);
-                
-		Random rand = new Random();		
+
+		Random rand = new Random();
 		int x,y;
 		int[] key = new int[2];
-		
+
 		for(int i = 1; i < NUM_SOLAR_SYSTEMS; i ++) {
 
 			x = rand.nextInt(750)-375;
 			y = rand.nextInt(500)-250;
-			key[0] = x; key[1] = y; 
-			
-			//makes sure set doesn't have same coordinate			
+			key[0] = x; key[1] = y;
+
+			//makes sure set doesn't have same coordinate
 			while(coordinates.contains(key)) {
 				//change memory address
 				key = null;
@@ -75,11 +75,11 @@ public class Universe implements Serializable{
 				key[0] = x; key[1] = y;
 			}
 			coordinates.add(key);
-		}//ends random generation of solar systems			
-		
+		}//ends random generation of solar systems
+
                 //to make sure no other SS gets those coordinates
                 coordinates.remove(chocolateMilkyway);
-                
+
 		//creating a solar system
                 SSArray[0] = new SolarSystem(solarSystemNames[0], 0,0);
 		int i = 1;
@@ -90,10 +90,10 @@ public class Universe implements Serializable{
 		}
 	}//ends the constructor
 
-        
+
         @Override
         /**
-        * Displays the contents of the solar system 
+        * Displays the contents of the solar system
         * @param none
         * @return a string of the contents
         */
@@ -102,20 +102,20 @@ public class Universe implements Serializable{
             for(int i = 0; i < NUM_SOLAR_SYSTEMS; i ++){
                 returnString = returnString + SSArray[i].toString();
             }
-             
+
             return returnString;
 	}
-        
+
         public SolarSystem getSolarSystem(int SSNum){
             return SSArray[SSNum];
         }
-        
+
         public SolarSystem[] getAllSolarSystems() {
             return SSArray;
         }
 
-	
-	
+
+
 }
 
 

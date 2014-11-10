@@ -157,7 +157,10 @@ public class Ship implements Serializable{
     public int getCapacity(){
         return capacity;
     }
-
+/**
+ * 
+ * @return String 
+ */
     public String toString(){
         String returnString = price + "\t\t" + MLP + "\t\t" + weight + "\t\t\t"
                 + atk + "\t\t" + speed + "\t\t" + FUEL_CAPACITY + "\t\t"

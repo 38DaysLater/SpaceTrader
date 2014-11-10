@@ -173,7 +173,7 @@ public class UniverseController implements Initializable {
     private Label coinShipLabel;
     @FXML
     private Label inventoryCapLabel;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -189,7 +189,7 @@ public class UniverseController implements Initializable {
         } else {
             shipyardTab.setDisable(true);
         }
-    }    
+    }
     /**
      * Handles when the planet tab is selected
      * @param Event event
@@ -486,7 +486,7 @@ public class UniverseController implements Initializable {
         //sets initial coin amount from player inventory
         coinLabel.setText(Integer.toString(cha.getInventory().getBalance()));
         inventoryCapLabel.setText("Capacity: " + cha.getInventory().totalItemCount() + "/" + cha.getInventory().getCapacity());
-        
+
         //sets all labels for item quantity from market and player inventory
         //if quantity for planet it -1 then the planet can't buy or sell that item
         String bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Food"));
@@ -542,7 +542,7 @@ public class UniverseController implements Initializable {
             smedQuan.setText(sQuan);
             smedText.setVisible(true);
             bmedText.setVisible(true);
-        } 
+        }
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Firearms"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Firearms"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Firearms"));
@@ -596,7 +596,7 @@ public class UniverseController implements Initializable {
             sRobQ.setText(sQuan);
             sRobTxt.setVisible(true);
             bRobTxt.setVisible(true);
-        }        
+        }
         bQuan = Integer.toString(currentP().getMarket().getInventory().getItemCount("Furs"));
         bPrice = Integer.toString(currentP().getMarket().getInventory().getItemPrice("Furs"));
         sQuan = Integer.toString(cha.getInventory().getItemCount("Furs"));
@@ -651,14 +651,14 @@ public class UniverseController implements Initializable {
             sGamTxt.setVisible(true);
             bGamTxt.setVisible(true);
         }
-        
+
     }
 /****************************************************
  *                   MARKET END                     *
  ****************************************************/
 /****************************************************
  *                   SHIPYARD TAB                    *
- ****************************************************/    
+ ****************************************************/
     /**
      * Handles when the shipyard tab is selected
      * @param Event event
@@ -671,26 +671,26 @@ public class UniverseController implements Initializable {
        // inventoryLabel.setText(Integer.toString(cha.getInventory().totalItemCount()) + " / "
          //      + Integer.toString(cha.getInventory().getCapacity()));
         coinShipLabel.setText("Coins: ");
-        
+
         shipyardHeader.setText("Name\t\tPrice\t\tMLP\t\tWeight\t\tAttack\t  "
                 + "Speed\t   FuelCap\tItemCap\tHealth");
         titan1.setText(shipList.get(0).getName() + "\t\t" + shipList.get(0).toString());
         titan2.setText(shipList.get(1).getName() + "\t\t" + shipList.get(1).toString());
         titan3.setText(shipList.get(2).getName() + "\t\t" + shipList.get(2).toString());
-        
+
         banshee1.setText(shipList.get(3).getName() + "\t" + shipList.get(3).toString());
         banshee2.setText(shipList.get(4).getName() + "\t" + shipList.get(4).toString());
         banshee3.setText(shipList.get(5).getName() + "\t" + shipList.get(5).toString());
-        
+
         rusty1.setText(shipList.get(6).getName() + "\t\t" + shipList.get(6).toString());
         rusty2.setText(shipList.get(7).getName() + "\t\t" + shipList.get(7).toString());
-        
+
         serenity1.setText(shipList.get(8).getName() + "\t" + shipList.get(8).toString());
         serenity2.setText(shipList.get(9).getName() + "\t" + shipList.get(9).toString());
-        
-        
+
+
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
-        
+
         //adds the radio buttons to a toggle group
         titan1rad.setToggleGroup(shipGroup);
         titan2rad.setToggleGroup(shipGroup);
@@ -702,10 +702,10 @@ public class UniverseController implements Initializable {
         rusty2rad.setToggleGroup(shipGroup);
         serenity1rad.setToggleGroup(shipGroup);
         serenity2rad.setToggleGroup(shipGroup);
-        
-        
-        
-        
+
+
+
+
     }
     /*
     * Handles when the refuel button is pressed.
@@ -716,7 +716,7 @@ public class UniverseController implements Initializable {
                     .title("Confirm Refuel")
                     .masthead("It will cost " + shipYard.costOfRefuelCompletely(cha.getShip()) + " to refuel your ship.")
                     .message("Do you wish to confirm your purchase?")
-                    .showConfirm(); 
+                    .showConfirm();
                     String message = null;
                         if (response == Dialog.Actions.YES) {
                             message = shipYard.refuelCompletely();
@@ -724,8 +724,8 @@ public class UniverseController implements Initializable {
                         if (message != null) {
                             dialog(message);
                         }
-       //update coin balance                 
-       coinLabel2.setText(Integer.toString(cha.getInventory().getBalance())); 
+       //update coin balance
+       coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
     }
     /*
     * Handles when the repair button is pressed.
@@ -737,7 +737,7 @@ public class UniverseController implements Initializable {
                     .masthead("It will cost " + shipYard.getRepairCost() + " to repair your ship.")
                     .message("Do you wish to confirm your purchase?")
                     .showConfirm();
-                    
+
                     if (response == Dialog.Actions.YES) {
                         shipYard.repairShip();
                     }
@@ -788,7 +788,7 @@ public class UniverseController implements Initializable {
                         dialog(message);
                     }
                 }
-        }    
+        }
        //updates labels
         coinLabel2.setText(Integer.toString(cha.getInventory().getBalance()));
         shipLabel.setText(Singleton.getCharacter().getShip().getName() + "\t" + Singleton.getCharacter().getShip().toString());
@@ -796,7 +796,7 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                  SHIPYARD END                    *
  ****************************************************/
-    
+
 /****************************************************
  *                  UNIVERSE TAB                    *
  ****************************************************/
@@ -883,7 +883,7 @@ public class UniverseController implements Initializable {
             SolarSystem[] solar = uni.getAllSolarSystems();
             for (SolarSystem p : solar) {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
-                    //dialog box for going to solar system and then set current solarsystem 
+                    //dialog box for going to solar system and then set current solarsystem
                     cha.setCurrentSolarSystem(p);
                     drawSolarSystem(universeCanvas.getGraphicsContext2D());
                     //show button
@@ -919,7 +919,7 @@ public class UniverseController implements Initializable {
                 if (p.isHit(event.getX() - universeCanvas.getWidth()/2, event.getY() - universeCanvas.getHeight()/2)) {
                     hit = true;
                     planPosUni.setText(p.getName() + ": [" + p.getLocation()[0] + ", " + p.getLocation()[1] + "]");
-                }  
+                }
             }
             if (!hit) {
                 planPosUni.setText(" ");
@@ -929,7 +929,7 @@ public class UniverseController implements Initializable {
     /**
      * Handles when the universe button is pressed
      * brings up the drawing of the solar systems
-     * @param event 
+     * @param event
      */
     @FXML
     private void uniButtonHandler(ActionEvent event) {
@@ -940,11 +940,11 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                  UNIVERSE END                    *
  ****************************************************/
-    
+
 /****************************************************
  *                HELPER METHODS                    *
  ****************************************************/
-    
+
     /**
      * Helper method that draws the current Solar System on the canvas
      * @param GraphicsContext gc
@@ -969,7 +969,7 @@ public class UniverseController implements Initializable {
             gc.drawImage(image, x, y);
         });
         //eventually draw fuel circle
-        
+
     }
     /**
      * Helper method that draws the all of the Solar Systems on the canvas
@@ -984,7 +984,7 @@ public class UniverseController implements Initializable {
             Image image = solar1.getSSPic();
             gc.drawImage(image, solar1.getLocation()[0] + (universeCanvas.getWidth() - image.getWidth())/2, solar1.getLocation()[1] + (universeCanvas.getHeight() - image.getHeight())/2);
         }
-        
+
     }
     /**
      * Helper method for buying items from market
@@ -1010,7 +1010,7 @@ public class UniverseController implements Initializable {
         }
         return up;
     }
-    
+
     /**
      * Helper method for getting the current planet
      * @param String item
@@ -1019,7 +1019,7 @@ public class UniverseController implements Initializable {
     private Planet currentP() {
         return ((Planet)cha.getCurrentPlanet()[0]);
     }
-    
+
     /**
      * Helper method for creating dialogs
      * takes in string of the message to display
@@ -1037,26 +1037,26 @@ public class UniverseController implements Initializable {
 /****************************************************
  *                 HELPERS END                      *
  ****************************************************/
-    
+
 /****************************************************
  *                 OPTIONS TAB                      *
  ****************************************************/
-    
+
     /**
      * Changes the background of the label when the mouse
      * exits back to transparent
-     * @param event 
+     * @param event
      */
     @FXML
     private void labelExited(MouseEvent event) {
         ((Node)event.getSource()).setStyle("-fx-background-color: transparent;");
 
     }
-    
+
     /**
      * Changes the background of the label when the mouse
      * enters it
-     * @param event 
+     * @param event
      */
     @FXML
     private void labelEntered(MouseEvent event) {
@@ -1065,35 +1065,32 @@ public class UniverseController implements Initializable {
 
     /**
      * Handles when the save label is clicked in the options tab
-     * @param event 
+     * @param event
      */
     @FXML
     private void saveLabelClicked(MouseEvent event) {
         SaveObject so = new SaveObject(Singleton.getCharacter(), Singleton.getUniverse());
         String name = Singleton.getCharacter().getName();
-        
+
         String fileName = name + ".bin";
         try {
             ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
-            //should be singleton but don't worry about it now. 
+            //should be singleton but don't worry about it now.
             os.writeObject(so);
             os.close();
-            
+
         } catch (Exception e) {
             System.out.println(e + " SOMETHING WENT WRONG IN SAVE");
             e.printStackTrace();
         }
-        
+
         System.out.println("Save Successful");
- 
-        
-        
     }
 
     /**
-     * Handles when the exit label is clicked 
+     * Handles when the exit label is clicked
      * brings up the initial loading page
-     * @param event 
+     * @param event
      */
     @FXML
     private void exitLabelClicked(MouseEvent event) {
@@ -1116,7 +1113,7 @@ public class UniverseController implements Initializable {
     /**
      * Handles when the load label is clicked
      * brings up the save file of the character name entered
-     * @param event 
+     * @param event
      */
     @FXML
     private void loadLabelClicked(MouseEvent event) {
@@ -1150,7 +1147,7 @@ public class UniverseController implements Initializable {
                 } catch (IOException e) {
                     System.out.println("IOExcpetion caught in UniverseController.java line:954");
                 }
-                
+
                 System.out.println();
                 System.out.println("Name : " + so2.getCharacter().getName());
                 System.out.println("Planet: " + ((Planet) so2.getCharacter().getCurrentPlanet()[0]).getPlanetName());
@@ -1166,7 +1163,7 @@ public class UniverseController implements Initializable {
 
             }
         }
-        
+
     }
 
 /**************************************************
