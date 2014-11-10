@@ -155,3 +155,4 @@ public class Market implements Serializable {
     public Inventory getInventory() {
         return inventory;
     }
+}
