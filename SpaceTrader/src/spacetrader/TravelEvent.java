@@ -124,6 +124,8 @@ public class TravelEvent {
                                   resultDialog = "You skillfully navigate your way to saftey.";
                             }
                             break;
+                        default:
+                            break;
                         }
                 } else {
                     //handles all cases where the user answered no.
@@ -135,10 +137,12 @@ public class TravelEvent {
                             Singleton.getCharacter().getShip().subtractDamage(10);
                            resultDialog = "You don't react at all and your ship takes 10 points of damage.";
                             break;
+                        default:
+                            break;
                         }
                 }
                  //start dialog box
-                Action result = Dialogs.create()
+                Dialogs.create()
                 .title("Something's Happened!")
                 .masthead("Something has happened!")
                 .message(resultDialog)
