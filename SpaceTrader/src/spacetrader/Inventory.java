@@ -101,6 +101,7 @@ public class Inventory implements Serializable{
             // the item isn't in the inventory, so add it along with a count of 1
             Item currItem = Items.getItem(name);
             ItemWrapper iw = new ItemWrapper(currItem);
+            iw.incrementCount();
             list.put(name, iw);
         }
         
