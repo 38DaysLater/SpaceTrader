@@ -29,6 +29,7 @@ public class Planet implements Serializable{
     private double sizeX, sizeY;
     private ShipYard shipYard;
     private Weather weather;
+    private Random rand = new Random();
 
     /**
      * This is the constructor. Solar system passes in the name,
@@ -39,11 +40,11 @@ public class Planet implements Serializable{
      * @param y
      * @param ss the solar system
      */
-    public Planet(String name, int x, int y, SolarSystem ss){
+    public Planet(String name, int x, int y, SolarSystem ss) {
         this.name = name;
         this.x = x;
         this.y = y;
-        pic = new Image("/spacetrader/resources/Planet.png");
+        pic = setPlanetPic();
         sizeX = pic.getWidth();
         sizeY = pic.getHeight();
         solarSystem = ss;
@@ -56,7 +57,6 @@ public class Planet implements Serializable{
             govType = GovernmentType.CAPITALIST;
             resources= Resources.MINERALRICH;
         } else {
-            Random rand = new Random();
             pirateChance = rand.nextInt(100);
             policeLevel = rand.nextInt(10);
             techLevel = TechLevel.values()[rand.nextInt(8)];
@@ -79,13 +79,32 @@ public class Planet implements Serializable{
         }
     }
 
+    public Image setPlanetPic() {
+        int option = rand.nextInt(3);
+        switch (option) {
+            case 0:
+                pic = new Image("/spacetrader/resources/graphics (1).png",
+                        63, 61, true, true);
+                break;
+            case 1:
+                pic = new Image("/spacetrader/resources/graphics (2).png",
+                        63, 61, true, true);
+                break;
+            case 2:
+                pic = new Image("/spacetrader/resources/graphics (3).png",
+                        63, 61, true, true);
+                break;
+            default:
+                pic = new Image("/spacetrader/resources/Planet.png");
+                break;
+        }
+        return pic;
+    }
+
     /**
      * Displays the contents of the solar system.
      * returns a string of the contents
      */
-    public void setPlanetPic(){
-        pic = new Image("/spacetrader/resources/Planet.png");
-    }
     @Override
     public String toString() {
         String message;

@@ -9,11 +9,13 @@ import javafx.scene.image.Image;
 import java.io.Serializable;
 
 /**
- * This class represents a Solar System.  It is instantiated by the Universe class
- * It contains a list of planets, its name, position, size, and number of planets
+ * This class represents a Solar System.
+ * It is instantiated by the Universe class
+ * It contains a list of planets, its name,
+ * position, size, and number of planets
  * @author lsmoore
  */
-public class SolarSystem implements Serializable{
+public class SolarSystem implements Serializable {
     private static int ssCount = 0;
     private Set<Planet> planetSet;
     private String name;
@@ -22,14 +24,14 @@ public class SolarSystem implements Serializable{
     private final int NUM_PLANETS = 5; 
     private transient Image pic;
     private double sizeX, sizeY;
+    private Random rand = new Random();
         
     
 /**
  * This is the constructor. Universe passes in the name and coordinates
  * @param a String of the name and two ints for x and y
  */
- 
-    
+
     public SolarSystem(String name, int x, int y) {
         HashSet<Integer> xHash = new HashSet<Integer>();
         HashSet<Integer> yHash = new HashSet<Integer>();
@@ -38,7 +40,7 @@ public class SolarSystem implements Serializable{
         this.name = name;
         this.x = x;
         this.y = y;
-        pic = new Image("/spacetrader/resources/SolarSystem2.png");
+        pic = setSSPic();
         sizeX = pic.getWidth();
         sizeY = pic.getHeight();
         
@@ -70,16 +72,31 @@ public class SolarSystem implements Serializable{
                 planetSet.add(planet);
             }
         }
-        
         ssCount++;
-        
     }
-    
-    public void setSSPic(){
-        pic = new Image("/spacetrader/resources/SolarSystem2.png");
+
+    public Image setSSPic() {
+        int option = rand.nextInt(3);
+        switch (option) {
+            case 0:
+                pic = new Image("/spacetrader/resources/isabellesStar.png",
+                        63, 61, true, true);
+                break;
+            case 1:
+                pic = new Image("/spacetrader/resources/redStar.png",
+                        63, 61, true, true);
+                break;
+            case 2:
+                pic = new Image("/spacetrader/resources/shinystar.png",
+                        63, 61, true, true);
+                break;
+            default:
+                pic = new Image("/spacetrader/resources/SolarSystem2.png");
+                break;
+        }
+        return pic;
     }
-    
-    
+
 /**
  * Gets a list of the planets
  * @param none
