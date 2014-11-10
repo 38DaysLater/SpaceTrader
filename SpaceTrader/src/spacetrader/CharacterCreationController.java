@@ -47,6 +47,8 @@ public class CharacterCreationController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,7 +67,7 @@ public class CharacterCreationController implements Initializable {
         fightSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
-                if (value > sp) {       
+                if (value > sp) {
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     fightVal = newValue.intValue();
@@ -76,7 +78,7 @@ public class CharacterCreationController implements Initializable {
         tradeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() != oldValue.intValue()) {
                 value += newValue.intValue() - oldValue.intValue();
-                if (value > sp) {      
+                if (value > sp) {
                     spNumLabel.setText(Integer.toString(sp - value));
                 } else {
                     tradeVal = newValue.intValue();
@@ -95,7 +97,7 @@ public class CharacterCreationController implements Initializable {
                 }
             }
         });
-    }    
+    }
 
     /**
      * Handles when the ok button is clicked
@@ -122,14 +124,14 @@ public class CharacterCreationController implements Initializable {
               .showWarning();
             //end dialog box
         } else {
-            //instantiates character and Universe, then brings up Universe screen 
+            //instantiates character and Universe, then brings up Universe screen
             Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
             Singleton.setCharacter(ch);
             try {
                 Universe uni = new Universe();
                 Singleton.setUniverse(uni);
-                
-                //this is so the character starts off same place every time. 
+
+                //this is so the character starts off same place every time.
                 Singleton.getCharacter().setCurrentPlanet(uni.getSolarSystem(0).getPlanet(0));
                 Singleton.getCharacter().setCurrentSolarSystem(uni.getSolarSystem(0));
                 Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
@@ -147,7 +149,7 @@ public class CharacterCreationController implements Initializable {
             }
         }
     }
-    
+
     /**
      * Handles when the cancel button is clicked
      * @param ActionEvent event
@@ -169,5 +171,4 @@ public class CharacterCreationController implements Initializable {
         } catch (IOException e) {
         }
     }
-    
 }

@@ -14,14 +14,16 @@ import java.io.Serializable;
 //upgrade ship
 public class ShipYard implements Serializable {
     //be sure to display these to the user so they can make an educated decision
+    //CHECKSTYLE: OFF
     private int fuelPrice;
     private int techLevel;
     private int repairCost;
+    //CHECKSTYLE: ON
 
 
-    //has price for fuel
     /**
-     * Constructor for ShipYard.
+     * Constructor that sets the price adjustment and the tech level
+     * of a planet's shipyard.
      * @param priceAdjustment
      * @param techLevel
      */
@@ -56,21 +58,23 @@ public class ShipYard implements Serializable {
         //check to see if enough fuel
         if (currentBalance < costOfRefuelCompletely(charShip)) {
             return "You don't have enough to refuel all the way";
-        } else { //subtracts price and fills fuel up
-            playerInventory.subtractFromBalance(
-                    costOfRefuelCompletely(charShip));
+        }
+        //subtracts price and fills fuel up
+        else {
+            playerInventory
+                    .subtractFromBalance(costOfRefuelCompletely(charShip));
             charShip.fillFuel();
             return null;
         }
     }
 
-    //
-    /**
-     * fills based on how much player is willing to spend.
-     * if doesn't have enough then bad.
-     * @param fuelMoney
-     * @return String error with transaction
-     */
+
+/**
+ * Refuels the fuel tank partially if the player has enough money.
+ * If the player doesn't have enough money, returns an error message.
+ * @param fuelMoney
+ * @return
+ */
     public String refuelPartially(int fuelMoney){
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance =
@@ -92,10 +96,11 @@ public class ShipYard implements Serializable {
         return null;
     }
 
-    /**
-     * this increases the ship's health to max when applicable.
-     * @return String error
-     */
+/**
+ * Repairs the ship if the character has enough money. If the player doesn't
+ * have enough money, returns an error message.
+ * @return String
+ */
     public String repairShip() {
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance =
@@ -120,14 +125,11 @@ public class ShipYard implements Serializable {
         return null;
     }
 
-
     /**
-     * buys and replaces the current ship that you have.
-     * checks to make sure that you have enough money and skill
-     * and not too much cargo.
-     * SELL CURRENT SHIP FOR WHAT IT'S WORTH
+     * If the player has enough money, buys the ship. If the player
+     * doesn't have enough money, returns an error message.
      * @param ship
-     * @return String error
+     * @return String
      */
     public String buyShip(Ship ship) {
         Character myChar = Singleton.getCharacter();
@@ -189,10 +191,9 @@ public class ShipYard implements Serializable {
     /*public int getFuelPrice() {
         return fuelPrice;
     }*/
-
     /**
-     * Returns repair cost of ship.
-     * @return int repair cost
+     * Gets the repair cost.
+     * @return repairCost
      */
     public int getRepairCost() {
         return repairCost;

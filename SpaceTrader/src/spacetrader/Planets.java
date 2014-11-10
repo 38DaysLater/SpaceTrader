@@ -5,8 +5,10 @@ package spacetrader;
  */
 
 public enum Planets {
+    //CHECKSTYLE: OFF
     Acamar,
-    Adahn,		// The alternate personality for The Nameless One in Planescape: Torment
+    Adahn,		// The alternate personality for The Nameless One in
+                        //Planescape: Torment
     Aldea,
     Andevian,
     Antedi,
@@ -20,7 +22,7 @@ public enum Planets {
     Carzon,
     Castor,		// A Greek demi-god
     Cestus,
-    Cheron,		
+    Cheron,
     Courteney,	// After Courteney Cox…
     Daled,
     Damast,
@@ -125,4 +127,5 @@ public enum Planets {
     Yojimbo,		// A film by Akira Kurosawa
     Zalkon,
     Zuul			// From the first Ghostbusters movie
+    //CHECKSTYLE: ON
 };

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Random;
-import java.util.HashSet;
 import javafx.scene.image.Image;
 import java.io.Serializable;
 
@@ -16,17 +15,21 @@ import java.io.Serializable;
  * @author lsmoore
  */
 public class SolarSystem implements Serializable {
+    //CHECKSTYLE: OFF
     private static int ssCount = 0;
     private Set<Planet> planetSet;
     private String name;
     private int x, y;
     private final int SOLARSIZE = 1000;
-    private final int NUM_PLANETS = 5; 
+    private final int NUM_PLANETS = 5;
     private transient Image pic;
     private double sizeX, sizeY;
     private Random rand = new Random();
         
     
+    //CHECKSTYLE: ON
+
+
 /**
  * This is the constructor. Universe passes in the name and coordinates
  * @param a String of the name and two ints for x and y
@@ -36,23 +39,24 @@ public class SolarSystem implements Serializable {
         HashSet<Integer> xHash = new HashSet<Integer>();
         HashSet<Integer> yHash = new HashSet<Integer>();
         HashSet<String> stringHash = new HashSet<String>();
-        
+
         this.name = name;
         this.x = x;
         this.y = y;
         pic = setSSPic();
         sizeX = pic.getWidth();
         sizeY = pic.getHeight();
-        
-        
+
+
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
         Planet planet;
-        
+
         if (ssCount == 0) {
             planetSet.add(new Planet("Second Earth", 0,0, this));
         } else {
-            //randomely generates the positions, name, and other characteristcs of the planets
+            //randomely generates the positions, name, and other characteristcs
+            // of the planets
             for (int index = 0; index < NUM_PLANETS; index++){
                 planet = null;
                 int xpos = rand.nextInt(750)-375;
@@ -62,13 +66,13 @@ public class SolarSystem implements Serializable {
                 if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
                     xpos = rand.nextInt(750)-375;
                     ypos = rand.nextInt(500)-250;
-                    pname = Planets.values()[rand.nextInt(119)].toString(); 
+                    pname = Planets.values()[rand.nextInt(119)].toString();
                 }
 
                 xHash.add(xpos);
                 yHash.add(ypos);
                 stringHash.add(pname);
-                planet = new Planet(pname, xpos, ypos, this);   
+                planet = new Planet(pname, xpos, ypos, this);
                 planetSet.add(planet);
             }
         }
@@ -102,7 +106,7 @@ public class SolarSystem implements Serializable {
  * @param none
  * @return a list of the planets
  */
-    
+
     public List<Planet> getPlanets() {
         ArrayList<Planet> list = new ArrayList<Planet>();
         for (Planet planet: planetSet) {
@@ -110,7 +114,7 @@ public class SolarSystem implements Serializable {
         }
         return list;
     }
-    
+
 /**
  * returns the name of the solar system
  * @param none
@@ -119,21 +123,21 @@ public class SolarSystem implements Serializable {
     public String getName(){
         return name;
     }
-    
+
     public Planet getPlanet(int i){
         Object[] PArray = planetSet.toArray();
         return (Planet)PArray[i];
     }
-    
+
     public int[] getLocation(){
         int[] loc = new int[2];
         loc[0] = x;
         loc[1] = y;
         return loc;
     }
-    
+
     public boolean isHit(double px, double py) {
-        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2))) 
+        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
             if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
                 return true;
         return false;
@@ -145,7 +149,7 @@ public class SolarSystem implements Serializable {
         return pic;
     }
 /**
- * Displays the contents of the solar system 
+ * Displays the contents of the solar system
  * @param none
  * @return a string of the contents
  */
@@ -159,8 +163,8 @@ public class SolarSystem implements Serializable {
             message = message + "\n\t" + planet.toString();
             message = message + "\n--------------------------------------\n";
         }
-        
+
         return message;
     }
-    
+
 }

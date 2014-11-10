@@ -17,11 +17,11 @@ import javafx.stage.Stage;
  * @author Sarah
  */
 public class SpaceTrader extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass()
+                .getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Space Trader");
         stage.setScene(scene);
@@ -34,5 +34,4 @@ public class SpaceTrader extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

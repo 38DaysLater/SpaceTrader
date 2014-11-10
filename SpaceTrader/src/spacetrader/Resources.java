@@ -11,6 +11,7 @@ package spacetrader;
  * @author lsmoore
  */
 public enum Resources {
+    //CHECKSTYLE: OFF
     NOSPECIALRESOURCES,
     MINERALRICH,
     MINERALPOOR,
@@ -24,4 +25,5 @@ public enum Resources {
     LOTSOFHERBS,
     ARTISTIC,
     WARLIKE,
+    //CHECKSTYLE: ON
 }

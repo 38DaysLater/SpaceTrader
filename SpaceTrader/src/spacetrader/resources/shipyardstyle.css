@@ -15,13 +15,13 @@ and open the template in the editor.
 
 #shipyardHeader {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: cyan;
+    -fx-text-fill: #cd32cd;
     -fx-font-weight: BOLD;
     -fx-font-size: 14px;
 }
 #shipLabel {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-weight: BOLD;
     -fx-font-size: 16px;
 }
@@ -33,98 +33,98 @@ and open the template in the editor.
 }
 #coinLabel2 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-weight: BOLD;
     -fx-font-size: 16px;
 }
 
 .label {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: cyan;
+    -fx-text-fill: #cd32cd;
     -fx-font-weight: BOLD;
     -fx-font-size: 15px;
 }
 #shipLabel {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-weight: BOLD;
     -fx-font-size: 14px;
 }
 #coinLabel2 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-weight: BOLD;
     -fx-font-size: 16px;
 }
 #coinShipLabel {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-weight: BOLD;
     -fx-font-size: 16px;
 }
 .button {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: cyan;
+    -fx-text-fill: #cd32cd;
     -fx-font-weight: BOLD;
     -fx-font-size: 21px;
 }
 /*#titan1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan2 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan3 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #banshee1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #banshee2 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #banshee3 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }
 #titan1 {
     -fx-font-family: 'Agency FB-Bold';
-    -fx-text-fill: red;
+    -fx-text-fill: #32cd32;
     -fx-font-size: 16px;
     
 }*/

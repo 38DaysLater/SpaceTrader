@@ -10,6 +10,7 @@ package spacetrader;
  * @author lsmoore
  */
 public enum RandConditions {
+   //CHECKSTYLE: OFF
     DROUGHT,
     LOTSOFWATER,
     DESERT,
@@ -30,4 +31,5 @@ public enum RandConditions {
     LACKOFWORKERS,
     WEIRDMUSHROOMS,
     NEVER;
+    //CHECKSTYLE: ON
 }

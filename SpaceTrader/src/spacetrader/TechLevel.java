@@ -11,7 +11,7 @@ package spacetrader;
  * @author lsmoore
  */
 public enum TechLevel {
-    
+    //CHECKSTYLE: OFF
     PREAGRICULTURE,
     AGRICULTURAL,
     MEDIVAL,
@@ -20,4 +20,5 @@ public enum TechLevel {
     INDUSTRIAL,
     POSTINDUSTRIAL,
     HITECH; 
+    //CHECKSTYLE: ON
 }

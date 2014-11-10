@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author lsmoore
  */
 public class Market implements Serializable {
+    //CHECKSTYLE: OFF
     private Inventory inventory;
     private int techLevel;
     private RandConditions randCond1;
@@ -18,12 +19,13 @@ public class Market implements Serializable {
     private Planet planet;
     private final int NUM_CONDITIONS = 19;
     private final int AFIQ_CHEATING = 9000;
+    //CHECKSTYLE: ON
 
 /**
  * This is the constructor. It generates the inventory
- * @param techLevel
- * @param resourceLevel
- * @param planet
+ * @param techLevel tech level of current planet
+ * @param resourceLevel resource level of current planet
+ * @param planet current planet
  */
     public Market(int techLevel, int resourceLevel, Planet planet) {
         this.planet = planet;
@@ -153,4 +155,3 @@ public class Market implements Serializable {
     public Inventory getInventory() {
         return inventory;
     }
-}

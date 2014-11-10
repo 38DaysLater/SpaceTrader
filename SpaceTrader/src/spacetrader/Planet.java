@@ -14,7 +14,8 @@ import java.io.Serializable;
  * government type, chance of meeting pirates, and its solar system
  * @author lsmoore
  */
-public class Planet implements Serializable{
+public class Planet implements Serializable {
+    //CHECKSTYLE: OFF
     private static final int TECH_LEVEL_FOR_SHIPYARD = 4;
     private String name;
     private int x, y;
@@ -55,7 +56,7 @@ public class Planet implements Serializable{
             pirateChance = 0;
             techLevel = TechLevel.HITECH;
             govType = GovernmentType.CAPITALIST;
-            resources= Resources.MINERALRICH;
+            resources = Resources.MINERALRICH;
         } else {
             pirateChance = rand.nextInt(100);
             policeLevel = rand.nextInt(10);
@@ -118,7 +119,12 @@ public class Planet implements Serializable{
                 + pirateChance + "%";
         return message;
     }
-
+/**
+ * Decides whether or not there is a collision.
+ * @param px
+ * @param py
+ * @return boolean
+ */
     public boolean isHit(double px, double py) {
         if (px >= (x - (sizeX / 2)) && px <= (x + (sizeX / 2))) {
             if (py >= (y - (sizeY / 2)) && py <= (y + (sizeY / 2))) {
@@ -127,20 +133,30 @@ public class Planet implements Serializable{
         }
         return false;
     }
+   /**
+    * Gets the location.
+    * @return location
+    */
 
-    //getters
-    public int[] getLocation() {
+    public int[] getLocation(){
         int[] location = new int[2];
         location[0] = x;
         location[1] = y;
         return location;
     }
-
-    public String getPlanetName(){
+/**
+ * Gets the planet name.
+ * @return name
+ */
+    public String getPlanetName() {
         return name;
     }
 
-    public Market getMarket(){
+/**
+ * Gets the market.
+ * @return market
+ */
+    public Market getMarket() {
         return market;
     }
 
@@ -148,26 +164,43 @@ public class Planet implements Serializable{
         return weather;
     }
 
+/**
+ * Gets the picture of the planet.
+ * @return pic
+ */
     public Image getPlanetPic() {
         if (pic == null) {
            pic = new Image("/spacetrader/resources/Planet.png");
         }
         return pic;
     }
-
+/**
+ * Gets the current solar system
+ * @return solarSystem
+ */
     public SolarSystem getSolarSystem() {
         return solarSystem;
     }
 
     //this makes it so that when a planet has a certain tech level it will have
     //a ship yard to repair
+    /**
+     * Sets ship yard.
+     */
     public void setShipYard() {
 
     }
-
+/**
+ * Determines if the planet has a shipyard.
+ * @return boolean
+ */
     public boolean hasShipYard() {
         return shipYard != null;
     }
+    /**
+     * Gets the ship yard.
+     * @return shipYard
+     */
     public ShipYard getShipYard() {
         return shipYard;
     }
