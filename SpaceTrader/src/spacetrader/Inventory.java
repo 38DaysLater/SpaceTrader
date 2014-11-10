@@ -88,7 +88,7 @@ public class Inventory implements Serializable{
  */
     
     public void add(String name) {
-        if (Items.getItem(name) == null || totalItemCount > capacity) {
+        if (Items.getItem(name) == null || totalItemCount >= capacity) {
             return;
         }
         //if the item is alread in the inventory, increment its count by 1
