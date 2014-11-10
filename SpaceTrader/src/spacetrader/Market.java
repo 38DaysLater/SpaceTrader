@@ -7,7 +7,7 @@ import java.io.Serializable;
  * This class represents a Market.
  * @author lsmoore
  */
-public class Market implements Serializable {
+public class Market extends Inventory implements Serializable {
     //CHECKSTYLE: OFF
     private Inventory inventory;
     private int techLevel;
