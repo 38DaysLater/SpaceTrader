@@ -74,11 +74,11 @@ public class Inventory implements Serializable{
         elligibleItems = Items.getElligibleItems(9);
     }
     
-    public void setPriceList(Hashtable<String, Integer> priceList) {
+    protected void setPriceList(Hashtable<String, Integer> priceList) {
         this.priceList = priceList;
     }
     
-    public Hashtable<String, Integer> getPriceList() {
+    protected Hashtable<String, Integer> getPriceList() {
         return priceList;
     }
 /**
@@ -268,7 +268,4 @@ public class Inventory implements Serializable{
     public int totalItemCount(){
         return totalItemCount;
     }
-     public Hashtable<String, ItemWrapper> getItems() {
-         return list;
-     }
 }
