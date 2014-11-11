@@ -143,6 +143,9 @@ public class Inventory implements Serializable{
  */
  
    public int getItemCount(String name) {
+       if (name == null) {
+           return -1;
+       }
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             ItemWrapper iw =  list.get(name);
@@ -156,6 +159,9 @@ public class Inventory implements Serializable{
     }
     
     public int getItemPrice(String name) {
+        if (name == null) {
+           return -1;
+       }
         Set<String> set = list.keySet();
         if (set.contains(name)) {
             return priceList.get(name);
@@ -178,6 +184,9 @@ public class Inventory implements Serializable{
  */
     
     public int removeItem(String name) {
+        if (Items.getItem(name) == null) {
+            return 0;
+        }
         Set<String> set = list.keySet();
         if (set.contains(name)) {
         // there is at least one instance of the item in the inventory
@@ -211,6 +220,9 @@ public class Inventory implements Serializable{
  */
     
     public int removeItem(String name, int quantitySelling){
+        if (Items.getItem(name) == null) {
+            return 0;
+        }
         Set<String> set = list.keySet();
         if (set.contains(name)) {
         // there is at least one instance of the item in the inventory

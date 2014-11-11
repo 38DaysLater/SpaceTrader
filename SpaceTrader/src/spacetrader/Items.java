@@ -74,6 +74,9 @@ public class Items implements Serializable {
  * @return 
  */
     public static Item getItem(String name) {
+        if (name == null) {
+            return null;
+        }
         if (name.equals("Water")) {
             return list.get(0);
         } else if(name.equals("Furs")){
@@ -104,6 +107,9 @@ public class Items implements Serializable {
  * @return newList
  */
     public static ArrayList<String> getElligibleItems(int tl) {
+        if (tl < 0 || tl > 7) {
+            return null;
+        }
         ArrayList<String> newList = new ArrayList<String>();
         for (int i = 0; i <= tl; i++) {
             newList.add(list.get(i).getName());
