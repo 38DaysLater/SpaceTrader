@@ -133,7 +133,7 @@ public class Character implements Serializable {
  * Gets the character's health.
  * @return health
  */
-	public int getHealth(){return health;}
+    public int getHealth(){return health;}
 /**
  * Gets the player's inventory.
  * @return inventory

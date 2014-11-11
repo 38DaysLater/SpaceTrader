@@ -243,7 +243,9 @@ public class Inventory implements Serializable{
     public int getBalance(){
         return balance;
     }
-    
+    public void setBalance(int x) {
+        balance = x;
+    }
     public void addToBalance(int x){
         balance += x;
     }

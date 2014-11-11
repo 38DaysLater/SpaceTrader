@@ -174,7 +174,7 @@ public class UniverseController implements Initializable {
         // TODO
         planNameLabel.setText(currentP().getPlanetName());
         String text = currentP().toString();
-        int index = text.indexOf("\n");
+        int index = text.indexOf('\n');
         planInfoLabel.setText(currentP().toString().substring(index + 1));
         if (((Planet) cha.getCurrentPlanet()[0]).hasShipYard()) {
             shipyardTab.setDisable(false);
@@ -190,7 +190,7 @@ public class UniverseController implements Initializable {
     private void PlanetNameTabSelected(Event event) {
         planNameLabel.setText(currentP().getPlanetName());
         String text = currentP().toString();
-        int index = text.indexOf("\n");
+        int index = text.indexOf('\n');
         planInfoLabel.setText(currentP().toString().substring(index + 1));
     }
     /**

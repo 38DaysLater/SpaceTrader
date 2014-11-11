@@ -5,6 +5,7 @@
  */
 package spacetrader;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,268 +19,115 @@ import static org.junit.Assert.*;
  */
 public class ShipYardTest {
     
-    public ShipYardTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    int techLevel;
+    Inventory inventory;
+    Ship ship;
+    ShipYard shipYard;
+    Character cha;
+    Ship titan1, titan2, titan3, serenity1, serenity2, banshee1, banshee2;
     
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of costOfRefuelCompletely method, of class ShipYard.
-     */
-    @Test
-    public void testCostOfRefuelCompletely() {
-        System.out.println("costOfRefuelCompletely");
-        Ship s = null;
-        ShipYard instance = null;
-        int expResult = 0;
-        int result = instance.costOfRefuelCompletely(s);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of refuelCompletely method, of class ShipYard.
-     */
-    @Test
-    public void testRefuelCompletely() {
-        System.out.println("refuelCompletely");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.refuelCompletely();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of refuelPartially method, of class ShipYard.
-     */
-    @Test
-    public void testRefuelPartially() {
-        System.out.println("refuelPartially");
-        int fuelMoney = 0;
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.refuelPartially(fuelMoney);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of repairShip method, of class ShipYard.
-     */
-    @Test
-    public void testRepairShip() {
-        System.out.println("repairShip");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.repairShip();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Singleton.setCharacter(new Character("name", 0, 0, 0, 0));
+        cha = Singleton.getCharacter();
+        inventory = cha.getInventory();
+        techLevel = new Random().nextInt(8);
+        ship = new Ship();
+        cha.setShip(ship);
+        shipYard = new ShipYard(0, techLevel);
+        //Ship(name, price, MLP, weight, attack, speed, fuelCap, health, cargo)
+        titan1 = new Ship("Titan 1", 1000, 2, 70, 5, 4, 600, 100, 10);
+        titan2 = new Ship("Titan 2", 2000, 5, 85, 7, 4, 750, 125, 20);
+        titan3 = new Ship("Titan 3", 5000, 100, 10, 10, 5, 999, 150, 50);
+        banshee1 = new Ship("Banshee 1", 1000, 2, 25, 5, 5, 600, 40, 10);
+        serenity1 = new Ship("Serenity 1", 1000, 0, 70, 5, 3, 600, 60, 100);
+        serenity2 = new Ship("Serenity 2", 2000, 0, 75, 5, 2, 700, 70, 200);
+        banshee2 = new Ship("Banshee 2", 2000, 5, 15, 5, 7, 750, 50, 20);
     }
 
     /**
      * Test of buyShip method, of class ShipYard.
+     * checks if a ship can be bought with insufficient money.
      */
     @Test
-    public void testBuyShip() {
-        System.out.println("buyShip");
-        Ship ship = null;
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyShip(ship);
+    public void testBuyShipNotEnoughMoney() {
+        inventory.setBalance(0); //makes sure there is not enough money
+        String expResult = "You don't have enough money for this pimpin ride";
+        String result = shipYard.buyShip(serenity1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    /**
+     * Test of buyShip method, of class ShipYard.
+     * checks if a ship can be bought with insufficient pilot level.
+     */
+    @Test
+    public void testBuyShipPilotSkill() {
+        inventory.setBalance(10000); //to make sure there is enough money to buy
+        cha.setPilot(1); //to make sure the pilot level is insufficient
+        String expResult = "You don't have the skill to pilot this pimpin ride";
+        String result = shipYard.buyShip(titan1);
+        assertEquals(expResult, result);
+    }
+    /**
+     * Test of buyShip method, of class ShipYard.
+     * checks if a ship can be bought too much cargo in inventory
+     * for cargo cap of ship.
+     */
+    @Test
+    public void testBuyShipTooMuchCargo() {
+        inventory.setBalance(10000); //to make sure there is enough money to buy
+        cha.setPilot(7); //to make sure the pilot level is sufficient
+        inventory.setCapacity(15); //sets higher cap than ship buying
+        int cap = inventory.getCapacity();
+        for (int i = 0; i < cap; i++) {
+            inventory.add("Water");
+        }
+        String expResult = "You have too much cargo on your current "
+                    + "ship to get this new one. Sell your merchandise or "
+                    + "pick a ship that can accomodate your cargo";
+        String result = shipYard.buyShip(titan1);
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getRepairCost method, of class ShipYard.
+     * Test of buyShip method, of class ShipYard.
+     * checks if a ship can be bought with insufficient ship level.
      */
     @Test
-    public void testGetRepairCost() {
-        System.out.println("getRepairCost");
-        ShipYard instance = null;
-        int expResult = 0;
-        int result = instance.getRepairCost();
+    public void testBuyShipInsufficientLevel() {
+        inventory.setBalance(10000); //to make sure there is enough money to buy
+        cha.setPilot(500); //to make sure the pilot level is sufficient
+        shipYard.buyShip(titan1);
+        String expResult = "Your current ship level is " + 1 + ". "
+                    + "You must upgrade to level " + (2)
+                    + " before upgrading to level " + 3;
+        String result = shipYard.buyShip(titan3);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
     /**
-     * Test of buyNeuronTorpedos method, of class ShipYard.
+     * Test of buyShip method, of class ShipYard.
+     * checks if ship can be upgraded to different type.
      */
     @Test
-    public void testBuyNeuronTorpedos() {
-        System.out.println("buyNeuronTorpedos");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyNeuronTorpedos();
+    public void testBuyShipDifferentType() {
+        inventory.setBalance(10000); //to make sure there is enough money to buy
+        cha.setPilot(500); //to make sure the pilot level is sufficient
+        shipYard.buyShip(titan1);
+        String expResult = "You cannot upgrade to another type of ship";
+        String result = shipYard.buyShip(serenity2);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
     /**
-     * Test of buyPlasmaBlasters method, of class ShipYard.
+     * Test of buyShip method, of class ShipYard.
+     * checks if same ship can be bought.
      */
     @Test
-    public void testBuyPlasmaBlasters() {
-        System.out.println("buyPlasmaBlasters");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyPlasmaBlasters();
+    public void testBuyShipSameShip() {
+        inventory.setBalance(10000); //to make sure there is enough money to buy
+        cha.setPilot(500); //to make sure the pilot level is sufficient
+        shipYard.buyShip(titan1);
+        String expResult = "You already own that ship.";
+        String result = shipYard.buyShip(titan1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of buyDeathStarLaser method, of class ShipYard.
-     */
-    @Test
-    public void testBuyDeathStarLaser() {
-        System.out.println("buyDeathStarLaser");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyDeathStarLaser();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyNitrogenBooster method, of class ShipYard.
-     */
-    @Test
-    public void testBuyNitrogenBooster() {
-        System.out.println("buyNitrogenBooster");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyNitrogenBooster();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyFluxCapacitor method, of class ShipYard.
-     */
-    @Test
-    public void testBuyFluxCapacitor() {
-        System.out.println("buyFluxCapacitor");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyFluxCapacitor();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyWarpGenerator method, of class ShipYard.
-     */
-    @Test
-    public void testBuyWarpGenerator() {
-        System.out.println("buyWarpGenerator");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyWarpGenerator();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyGravityShield method, of class ShipYard.
-     */
-    @Test
-    public void testBuyGravityShield() {
-        System.out.println("buyGravityShield");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyGravityShield();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyNeuronField method, of class ShipYard.
-     */
-    @Test
-    public void testBuyNeuronField() {
-        System.out.println("buyNeuronField");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyNeuronField();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyUnobtanium method, of class ShipYard.
-     */
-    @Test
-    public void testBuyUnobtanium() {
-        System.out.println("buyUnobtanium");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyUnobtanium();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buyIncreasedCargo method, of class ShipYard.
-     */
-    @Test
-    public void testBuyIncreasedCargo() {
-        System.out.println("buyIncreasedCargo");
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.buyIncreasedCargo();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of upgrade method, of class ShipYard.
-     */
-    @Test
-    public void testUpgrade() {
-        System.out.println("upgrade");
-        int mTLP = 0;
-        int cost = 0;
-        int increase = 0;
-        UpgradeType up = null;
-        ShipYard instance = null;
-        String expResult = "";
-        String result = instance.upgrade(mTLP, cost, increase, up);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
