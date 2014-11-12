@@ -12,8 +12,8 @@ public class Weather implements Serializable {
     private static final long serialVersionUID = 1;
     private int temperature;
     private int chanceOfPrecipitation;
-    private final String[] conditions = {"Rainy, Sunny, Cloudy, Snowy"
-                                            ,"Overcast", "Frightful "};
+    private final String[] conditions = {"Rainy", "Sunny", "Cloudy", "Snowy",
+                                           "Overcast", "Frightful"};
     private String currentCondition;
     private int humidity;
     private int time;
@@ -42,7 +42,7 @@ public class Weather implements Serializable {
             updateWeather();
         }
         time++;
-        return temperature + " degrees Farenheit";
+        return temperature + " \u2109";
     }
     
     /**
@@ -84,7 +84,7 @@ public class Weather implements Serializable {
             updateWeather();
         }
         time++;
-        return currentCondition + " degrees Farenheit";
+        return currentCondition;
     }
     
     /**

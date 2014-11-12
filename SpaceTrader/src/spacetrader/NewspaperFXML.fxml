@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@resources/weatherSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.NewspaperFXMLController">
+   <children>
+      <Pane fx:id="weatherPane" prefHeight="400.0" prefWidth="600.0" />
+      <Label alignment="CENTER" layoutX="157.0" layoutY="25.0" prefHeight="45.0" prefWidth="286.0" text="Weather">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="pictureView" fitHeight="214.0" fitWidth="220.0" layoutX="29.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Weather1.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="condition" alignment="CENTER" layoutX="300.0" layoutY="105.0" prefHeight="45.0" prefWidth="250.0" text="Condition">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="temp" alignment="CENTER" layoutX="300.0" layoutY="155.0" prefHeight="45.0" prefWidth="250.0" text="Temperature">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="precip" alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="45.0" prefWidth="250.0" text="Precipitation">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="humid" alignment="CENTER" layoutX="300.0" layoutY="270.0" prefHeight="45.0" prefWidth="250.0" text="Humidity">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -200,6 +200,18 @@ public class UniverseController implements Initializable {
      */
     @FXML
     private void newsButtHandle(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass()
+                    .getResource("NewspaperFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Newspaper");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("IOExcpetion caught in"
+                    + "UniverseController.java line:215");
+        }
     }
 /****************************************************
  *                   MARKET TAB                     *
