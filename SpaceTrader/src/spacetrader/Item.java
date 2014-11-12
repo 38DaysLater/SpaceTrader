@@ -28,7 +28,7 @@ public class Item implements Serializable {
     //CHECKSTYLE: OFF
     private String name;
     private int basePrice;
-    private int MTLP, MTLU, TTP, IPL, Var;
+    private int MTLP, MTLU, TTP, IPL, var;
     private RandConditions IE, CR, ER;
     //CHECKSTYLE: ON
 
@@ -55,7 +55,7 @@ public class Item implements Serializable {
         MTLU = mtlu;
         TTP = ttp;
         IPL = ipl;
-        Var = var;
+        this.var = var;
         IE = ie;
         CR = cr;
         ER = er;
@@ -71,7 +71,7 @@ public class Item implements Serializable {
         double mult = calcCondtionMultiplyer(rc1);
         Random rand = new Random();
         return Math.abs((int) mult * basePrice + 3*2 *
-                (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(Var));
+                (IPL * Math.abs(techLevel - MTLP)) + rand.nextInt(var));
     }
 /**
  * Gets the name.

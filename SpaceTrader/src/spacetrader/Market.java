@@ -7,18 +7,18 @@ import java.io.Serializable;
  * This class represents a Market.
  * @author lsmoore
  */
-public class Market extends Inventory implements Serializable {
+public class Market extends Inventory {
     //CHECKSTYLE: OFF
     private Inventory inventory;
     private int techLevel;
     private RandConditions randCond1;
     private Hashtable<String, Integer> priceList;
-    private final int NUM_ITEMS = 5;
-    private final int STARTING_BALANCE = 1000;
-    private final int STARTING_CAPACITY = 100000000;
+    private static final int NUM_ITEMS = 5;
+    private static final int STARTING_BALANCE = 1000;
+    private static final int STARTING_CAPACITY = 100000000;
     private Planet planet;
-    private final int NUM_CONDITIONS = 19;
-    private final int AFIQ_CHEATING = 9000;
+    private static final int NUM_CONDITIONS = 19;
+    private static final int AFIQ_CHEATING = 9000;
     //CHECKSTYLE: ON
 
 /**

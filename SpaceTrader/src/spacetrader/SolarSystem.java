@@ -20,8 +20,8 @@ public class SolarSystem implements Serializable {
     private Set<Planet> planetSet;
     private String name;
     private int x, y;
-    private final int SOLARSIZE = 1000;
-    private final int NUM_PLANETS = 5;
+    private static final int SOLARSIZE = 1000;
+    private static final int NUM_PLANETS = 5;
     private transient Image pic;
     private double sizeX, sizeY;
     private Random rand = new Random();

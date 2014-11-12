@@ -28,7 +28,7 @@ public class Inventory implements Serializable{
     * @author lsmoore
     */
 
-    private class ItemWrapper implements Serializable{
+    private static class ItemWrapper implements Serializable{
         private Item item;
         private int count;
         
