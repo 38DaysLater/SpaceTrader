@@ -105,11 +105,11 @@ public class Item implements Serializable {
         double mult = 1;
 
         if (rc == IE) {
-            return mult * 3;
+            mult = mult * 3;
         } else if (rc == CR) {
-            return mult * .5;
+            mult = mult * .5;
         } else if (rc == ER) {
-            return mult * 1.5;
+            mult =  mult * 1.5;
         }
 
         return mult;

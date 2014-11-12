@@ -50,6 +50,8 @@ public class ShipYard implements Serializable {
      * @return String error with transaction
      */
     public String refuelCompletely() {
+        String returnString = null;
+        
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance
                 = Singleton.getCharacter().getInventory().getBalance();
@@ -57,15 +59,16 @@ public class ShipYard implements Serializable {
 
         //check to see if enough fuel
         if (currentBalance < costOfRefuelCompletely(charShip)) {
-            return "You don't have enough to refuel all the way";
+            returnString = "You don't have enough to refuel all the way";
         }
         //subtracts price and fills fuel up
         else {
             playerInventory
                     .subtractFromBalance(costOfRefuelCompletely(charShip));
             charShip.fillFuel();
-            return null;
+            
         }
+        return returnString;
     }
 
 
@@ -76,24 +79,25 @@ public class ShipYard implements Serializable {
  * @return
  */
     public String refuelPartially(int fuelMoney){
+        String returnString = null;
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance =
                 Singleton.getCharacter().getInventory().getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
 
         if (fuelMoney > currentBalance) {
-            return "You don't have enough moneys";
+            returnString = "You don't have enough moneys";
         } else if (fuelMoney < 0) {
-            return "Please enter a positive integer";
+            returnString = "Please enter a positive integer";
         } else if (fuelMoney > costOfRefuelCompletely(charShip)) {
-            return "Your ship can't handle that much fuel";
+            returnString = "Your ship can't handle that much fuel";
         }
 
         //if pass all those tests then add fuel.
         int fuelToAdd = fuelMoney / fuelPrice;
         playerInventory.subtractFromBalance(fuelMoney);
         charShip.addToFuel(fuelToAdd);
-        return null;
+        return returnString;
     }
 
 /**
@@ -106,11 +110,11 @@ public class ShipYard implements Serializable {
         int currentBalance =
                 Singleton.getCharacter().getInventory().getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
-
+        String returnString = null;
         if (repairCost > currentBalance) {
-            return "You don't have enough moneys";
+            returnString = "You don't have enough moneys";
         } else if (repairCost < 0) {
-            return "Please enter a positive integer";
+            returnString = "Please enter a positive integer";
         }
 
         int damage = charShip.getDamage();
@@ -122,7 +126,7 @@ public class ShipYard implements Serializable {
             charShip.increaseHealth(healthIncrease);
             playerInventory.subtractFromBalance(currentBalance);
         }
-        return null;
+        return returnString;
     }
 
     /**
@@ -149,24 +153,24 @@ public class ShipYard implements Serializable {
         String upgradeShipType = upgradeShipName.substring(0, 1);
         int upgradeShipLevel =
                 Integer.parseInt(upgradeShipName.substring(lengthNew - 1));
-
+        String returnString = null;
         if (ship.getPrice() > currentBalance + refundPrice) {
-            return "You don't have enough money for this pimpin ride";
+            returnString = "You don't have enough money for this pimpin ride";
         } else if (ship.getMLP() > myChar.getPilot()) {
-            return "You don't have the skill to pilot this pimpin ride";
+            returnString = "You don't have the skill to pilot this pimpin ride";
         } else if (playerInventory.totalItemCount() > ship.getCapacity()) {
-            return "You have too much cargo on your current ship to get this "
+            returnString = "You have too much cargo on your current ship to get this "
                     + "new one. Sell your merchandise or pick a ship that can "
                     + "accomodate your cargo";
         } else if (currentShipLevel < upgradeShipLevel - 1) {
-            return "Your current ship level is " + currentShipLevel + ". "
+            returnString = "Your current ship level is " + currentShipLevel + ". "
                     + "You must upgrade to level " + (currentShipLevel + 1)
                     + " before upgrading to level " + upgradeShipLevel;
         } else if (upgradeShipLevel > 1
                 && !upgradeShipType.equals(currentShipType)) {
-            return "You cannot upgrade to another type of ship";
+            returnString = "You cannot upgrade to another type of ship";
         } else if (upgradeShipName.equals(currentShipName)) {
-            return "You already own that ship.";
+            returnString = "You already own that ship.";
         }
 
 
@@ -186,7 +190,7 @@ public class ShipYard implements Serializable {
        //update capacity
        ship.updateUpgradesLeft(charShip.getUpgradesLeft());
        /* */
-       return null;
+       return returnString;
     }
     /*public int getFuelPrice() {
         return fuelPrice;
@@ -318,13 +322,13 @@ public class ShipYard implements Serializable {
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance = playerInventory.getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
-
+        String returnString = null;
         if (techLevel < mTLP) {
-            return "Planet not techy enough to buy upgrade";
+            returnString = "Planet not techy enough to buy upgrade";
         } else if (cost > currentBalance) {
-            return "You don't have enough moneys";
+            returnString = "You don't have enough moneys";
         } else if (charShip.getUpgradesLeft() <= 0) {
-            return "But Lt. Dan, you ain't got no more upgrades";
+            returnString = "But Lt. Dan, you ain't got no more upgrades";
         }
 
         if (up == UpgradeType.attackUpgrade) {
@@ -338,6 +342,6 @@ public class ShipYard implements Serializable {
         }
         playerInventory.subtractFromBalance(cost);
 
-        return null;
+        return returnString;
     }
 }

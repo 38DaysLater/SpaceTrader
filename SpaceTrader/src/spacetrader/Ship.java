@@ -72,24 +72,26 @@ public class Ship implements Serializable{
         if(player.getPilot() > 5) {
             double pn = player.getPilot() / 3; //Stores the player's pilot score / 3        
             fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
-            return fuel;
+
+        } else {
+            fuel -= distance;
         }
         
-        return fuel -= distance;
+        return fuel;
     }
     
     //rusn a check to see if player can travel a distance.
     public String checkSufficientFuel(int distance){
-        
+        String returnString = null;
         if(calcFuelForTravel(distance) > fuel) {
-            return "Insufficient fuel";
+            returnString = "Insufficient fuel";
         }
-        return null;
+        return returnString;
     }
     
     //checks to see how much fuel will use.
     public int calcFuelForTravel(int dist){
-        Character player = Singleton.getCharacter(); //Grabs current character
+
         double pn = 3; //Stores the player's pilot score / 3
         double returnValue = dist/pn;
         return (int)returnValue*2;
@@ -213,9 +215,11 @@ public class Ship implements Serializable{
     }
     
     public String toString(){
-        String returnString = price + "\t\t" + MLP + "\t\t" + weight + "\t\t\t"
-                + atk + "\t\t" + speed + "\t\t" + FUEL_CAPACITY + "\t\t"
-                + capacity + "\t\t" + health;
+        String tab = "\t\t";
+        String tabTab = "\t\t\t";
+        String returnString = price + tab + MLP + tab + weight + tabTab
+                + atk + tab + speed + tab + FUEL_CAPACITY + tab
+                + capacity + tab + health;
         return returnString;
     }
     
