@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 public class Singleton implements Serializable {
     //CHECKSTYLE: OFF
+    private static final long serialVersionUID = 1;
     private static Character c;
     private static Universe u;
     //CHECKSTYLE: ON

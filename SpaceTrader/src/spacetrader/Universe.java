@@ -14,6 +14,7 @@ import java.io.Serializable;
  */
 
 public class Universe implements Serializable {
+        private static final long serialVersionUID = 1;
         private final int NUM_SOLAR_SYSTEMS = 10;
         private final int WINDOW_WIDTH = 750;
         private final int WINDOW_HEIGHT = 500;

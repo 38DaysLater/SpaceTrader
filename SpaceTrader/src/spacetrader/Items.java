@@ -13,6 +13,7 @@ import java.io.Serializable;
  * @author lsmoore
  */
 public class Items implements Serializable {
+    private static final long serialVersionUID = 1;
     private static ArrayList<Item> list;
 
     static {

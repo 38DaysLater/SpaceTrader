@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 
 public class Ship implements Serializable{
+    private static final long serialVersionUID = 1;
     private int fuel = 500;
     private final int FUEL_CAPACITY;
     private String name;

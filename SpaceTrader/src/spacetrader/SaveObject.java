@@ -10,6 +10,7 @@ import java.io.Serializable;
  * @author AfiqAzaibi
  */
 public class SaveObject implements Serializable {
+    private static final long serialVersionUID = 1;
     private Character c;
     private Universe u; 
 

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author lsmoore
  */
 public class Inventory implements Serializable{
-    
+    private static final long serialVersionUID = 1;
     private Hashtable<String, ItemWrapper> list;
     private int balance = 0;
     private int capacity = 100;
@@ -168,7 +168,7 @@ public class Inventory implements Serializable{
         } else if (elligibleItems.contains(name)){
             // the item isn't in the inventory, but it could have it
             //System.out.print(priceList.keys());
-            if (priceList.contains(name))
+            if (priceList.containsKey(name))
                     return 0;
             return priceList.get(name);
         } else {

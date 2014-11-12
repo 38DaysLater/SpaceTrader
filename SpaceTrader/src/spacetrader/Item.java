@@ -26,6 +26,7 @@ import java.io.Serializable;
  */
 public class Item implements Serializable {
     //CHECKSTYLE: OFF
+    private static final long serialVersionUID = 1;
     private String name;
     private int basePrice;
     private int MTLP, MTLU, TTP, IPL, var;

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Weather implements Serializable {
+    private static final long serialVersionUID = 1;
     private int temperature;
     private int chanceOfPrecipitation;
     private final String[] conditions = {"Rainy, Sunny, Cloudy, Snowy"

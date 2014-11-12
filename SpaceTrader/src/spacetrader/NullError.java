@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class NullError implements Serializable {
+    private static final long serialVersionUID = 1;
     private String s;
 
     NullError(String s) {

@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class Market extends Inventory {
     //CHECKSTYLE: OFF
+    private static final long serialVersionUID = 1;
     private Inventory inventory;
     private int techLevel;
     private RandConditions randCond1;

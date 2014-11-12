@@ -16,6 +16,7 @@ import java.io.Serializable;
  */
 public class SolarSystem implements Serializable {
     //CHECKSTYLE: OFF
+    private static final long serialVersionUID = 1;
     private static int ssCount = 0;
     private Set<Planet> planetSet;
     private String name;

@@ -15,6 +15,7 @@ import java.io.Serializable;
  * @author lsmoore
  */
 public class Planet implements Serializable {
+    private static final long serialVersionUID = 1;
     //CHECKSTYLE: OFF
     private static final int TECH_LEVEL_FOR_SHIPYARD = 4;
     private String name;

@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class ShipYard implements Serializable {
     //be sure to display these to the user so they can make an educated decision
     //CHECKSTYLE: OFF
+    private static final long serialVersionUID = 1;
     private int fuelPrice;
     private int techLevel;
     private int repairCost;

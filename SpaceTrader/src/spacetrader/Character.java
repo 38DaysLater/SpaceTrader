@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author lawrence, Olivia, and Afiq
  */
 public class Character implements Serializable {
-
+        private static final long serialVersionUID = 1;
         private String name;
         private int pilot, fight, trade, engineer;
         private Inventory inventory;
