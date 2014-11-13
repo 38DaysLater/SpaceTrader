@@ -29,7 +29,8 @@ public class Inventory implements Serializable {
     * @author lsmoore
     */
 
-    private static class ItemWrapper implements Serializable {
+    private static class ItemWrapper implements Serializable{
+        private static final long serialVersionUID = 1;
         private Item item;
         private int count;
 
