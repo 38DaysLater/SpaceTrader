@@ -70,6 +70,7 @@ public class FXMLDocumentController implements Initializable {
 //        //hide this current window
             ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
+            System.out.println("new button pushed");
         }
     }
 
@@ -138,6 +139,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void handleOptionButtonAction(ActionEvent event) {
+        System.out.println("Still yet to be implemented");
     }
 
 }

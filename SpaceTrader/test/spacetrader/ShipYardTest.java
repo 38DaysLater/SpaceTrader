@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author shiro_000
+ * @author shiro_000 (Olivia LaHay)
  */
 public class ShipYardTest {
     

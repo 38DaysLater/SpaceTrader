@@ -19,6 +19,10 @@ public class Character implements Serializable {
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
         private SolarSystem previousSolarSystem = null;
+        private static final int STARTING_MONEY = 3000;
+        private static final int AFIQ_STARTING_MONEY = 9000; 
+        private static final int AFIQ_STARTING_STAT = 10;
+        private static final int SSARRAY_SIZE = 3;
         //CHECKSTYLE:ON
 
 
@@ -37,13 +41,13 @@ public class Character implements Serializable {
         public Character(String n, int p, int f, int t, int e) {
             if (n.equals("Afiq")) {
                 name = n;
-                pilot = 10;
-                fight = 10;
-                trade = 10;
-                engineer = 10;
+                pilot = AFIQ_STARTING_STAT;
+                fight = AFIQ_STARTING_STAT;
+                trade = AFIQ_STARTING_STAT;
+                engineer = AFIQ_STARTING_STAT;
                 ship = new Ship();
                 inventory = new Inventory();
-                inventory.addToBalance(9000);
+                inventory.addToBalance(AFIQ_STARTING_MONEY);
                 inventory.setCapacity(0);
             } else {
                     name = n;
@@ -53,7 +57,7 @@ public class Character implements Serializable {
                     engineer = e;
                     ship = new Ship();
                     inventory = new Inventory();
-                    inventory.addToBalance(3000);
+                    inventory.addToBalance(STARTING_MONEY);
                     inventory.setCapacity(0);
             }
         }
@@ -226,11 +230,11 @@ public class Character implements Serializable {
  * @return SSArray
  */
         public Object[] getCurrentSolarSystem() {
-            Object[] SSArray = new Object[3];
-            SSArray[0] = currentSolarSystem;
-            SSArray[1] = currentSolarSystem.getLocation();
-            SSArray[2] = currentSolarSystem.getPlanets();
-            return SSArray;
+            Object[] ssArray = new Object[SSARRAY_SIZE];
+            ssArray[0] = currentSolarSystem;
+            ssArray[1] = currentSolarSystem.getLocation();
+            ssArray[2] = currentSolarSystem.getPlanets();
+            return ssArray;
         }
 /**
  * Updates the current ship.

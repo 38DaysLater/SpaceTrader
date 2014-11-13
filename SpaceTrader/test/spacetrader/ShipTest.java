@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  *
- * @author Sarah
+ * @author Sarah Alsmiller
  */
 public class ShipTest {
     

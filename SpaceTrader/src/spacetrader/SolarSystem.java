@@ -131,8 +131,8 @@ public class SolarSystem implements Serializable {
  * @return PArray[i]
  */
     public Planet getPlanet(int i) {
-        Object[] PArray = planetSet.toArray();
-        return (Planet) PArray[i];
+        Object[] pArray = planetSet.toArray();
+        return (Planet) pArray[i];
     }
 
     public int[] getLocation() {
@@ -174,5 +174,5 @@ public class SolarSystem implements Serializable {
         }
         return message.toString();
     }
-
+    
 }

@@ -17,7 +17,7 @@ import java.util.Random;
 
 /**
  *
- * @author alixp_000
+ * @author alixp_000 (Hutchinson Pryor)
  */
 public class MarketSellItemTest {
     Character player = new Character("Test Character", 10, 10, 10, 10);

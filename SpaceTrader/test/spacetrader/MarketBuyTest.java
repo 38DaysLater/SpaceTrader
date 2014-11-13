@@ -52,6 +52,7 @@ public class MarketBuyTest {
         
         int playerMoneyBefore = playerInventory.getBalance();
         int marketMoneyBefore = marketInventory.getBalance();
+        assertEquals(playerInventory.getItemCount("Water"), 0);
         market.buyItem("Water", testCharacter, 5);
         
         //item was properly received

@@ -42,7 +42,7 @@ public class CharacterCreationController implements Initializable {
     private TextField nameBox;
     @FXML
     private Label spNumLabel;
-    private final int sp = 16;
+    private static final int sp = 16;
     private int value = 0, pilotVal, fightVal, tradeVal, enginVal;
 
     /**
