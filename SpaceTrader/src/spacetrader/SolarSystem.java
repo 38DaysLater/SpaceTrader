@@ -155,17 +155,17 @@ public class SolarSystem implements Serializable {
  * @return a string of the contents
  */
     public String toString(){
-        String message;
-        message = "Solar System Name: " + name;
-        message = message + "\nSolar System Position: (" + x + "," + y + ")";
-        message = message + "\nPlanets:";
+        StringBuffer message = new StringBuffer();
+        message.append("Solar System Name: " + name);
+        message.append("\nSolar System Position: (" + x + "," + y + ")");
+        message.append("\nPlanets:");
         List<Planet> list = getPlanets();
         for (Planet planet: list){
-            message = message + "\n\t" + planet.toString();
-            message = message + "\n--------------------------------------\n";
+            message.append("\n\t");
+            message.append(planet.toString());
+           message.append("\n--------------------------------------\n");
         }
-
-        return message;
+        return message.toString();
     }
 
 }
