@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package spacetrader;
-import java.io.Serializable;
 
 /**
  * Enumerated for upgrade types.
  * @author lsmoore
  */
-public enum UpgradeType implements Serializable {
+public enum UpgradeType {
     attackUpgrade,
     healthUpgrade,
     speedUpgrade,
