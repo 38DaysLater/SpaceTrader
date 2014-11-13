@@ -26,7 +26,6 @@ public class MarketSellItemTest {
     ArrayList<String> elligibleItems;
     Market market;
     int techLevel;
-    SolarSystem ss;
     Planet planet;
     Hashtable<String, Integer> priceList;
 
@@ -45,7 +44,6 @@ public class MarketSellItemTest {
     
     @Test
     public void testSellZeroItems() {
-        int cost = priceList.get("Food");
         int playerFoodCountBefore = playerInventory.getItemCount("Food");
         int marketFoodCountBefore = marketInventory.getItemCount("Food");
         int playerMoneyBefore = playerInventory.getBalance();
