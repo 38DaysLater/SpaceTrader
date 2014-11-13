@@ -52,7 +52,7 @@ public class ShipYard implements Serializable {
      */
     public String refuelCompletely() {
         String returnString = null;
-        
+
         Inventory playerInventory = Singleton.getCharacter().getInventory();
         int currentBalance
                 = Singleton.getCharacter().getInventory().getBalance();
@@ -67,7 +67,7 @@ public class ShipYard implements Serializable {
             playerInventory
                     .subtractFromBalance(costOfRefuelCompletely(charShip));
             charShip.fillFuel();
-            
+
         }
         return returnString;
     }
@@ -160,11 +160,13 @@ public class ShipYard implements Serializable {
         } else if (ship.getMLP() > myChar.getPilot()) {
             returnString = "You don't have the skill to pilot this pimpin ride";
         } else if (playerInventory.totalItemCount() > ship.getCapacity()) {
-            returnString = "You have too much cargo on your current ship to get this "
+            returnString = "You have too much cargo on your current ship to get "
+                    + "this "
                     + "new one. Sell your merchandise or pick a ship that can "
                     + "accomodate your cargo";
         } else if (currentShipLevel < upgradeShipLevel - 1) {
-            returnString = "Your current ship level is " + currentShipLevel + ". "
+            returnString = "Your current ship level is " + currentShipLevel
+                    + ". "
                     + "You must upgrade to level " + (currentShipLevel + 1)
                     + " before upgrading to level " + upgradeShipLevel;
         } else if (upgradeShipLevel > 1
@@ -180,7 +182,8 @@ public class ShipYard implements Serializable {
        myChar.updateShip(ship);
        playerInventory.subtractFromBalance(ship.getPrice());
 
-       //so if you uncomment this code and upgrade your ship from type 1 to 2 to 3,
+       //so if you uncomment this code and upgrade your ship from type 1
+       // to 2 to 3,
        /* */
 
        //transfer upgrades

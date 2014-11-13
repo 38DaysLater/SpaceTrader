@@ -87,7 +87,7 @@ public class Ships {
     public static Ship getShip(String name) {
         if (name.equals("HeavyOne")) {
             return list.get(0);
-        } else if(name.equals("HeavyTwo")){
+        } else if (name.equals("HeavyTwo")) {
             return list.get(1);
          } else if (name.equals("HeavyThree")) {
              return list.get(2);

@@ -51,8 +51,8 @@ public class Planet implements Serializable {
         sizeY = pic.getHeight();
         solarSystem = ss;
         weather = new Weather();
-        
-        if (name.equals("Second Earth")){
+
+        if (name.equals("Second Earth")) {
             policeLevel = 9;
             pirateChance = 0;
             techLevel = TechLevel.HITECH;

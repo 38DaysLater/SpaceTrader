@@ -26,14 +26,16 @@ public class SolarSystem implements Serializable {
     private transient Image pic;
     private double sizeX, sizeY;
     private Random rand = new Random();
-        
-    
+
+
     //CHECKSTYLE: ON
 
 
 /**
  * This is the constructor. Universe passes in the name and coordinates
- * @param a String of the name and two ints for x and y
+ * @param name
+ * @param x
+ * @param y
  */
 
     public SolarSystem(String name, int x, int y) {
@@ -54,19 +56,20 @@ public class SolarSystem implements Serializable {
         Planet planet;
 
         if (ssCount == 0) {
-            planetSet.add(new Planet("Second Earth", 0,0, this));
+            planetSet.add(new Planet("Second Earth", 0, 0, this));
         } else {
             //randomely generates the positions, name, and other characteristcs
             // of the planets
-            for (int index = 0; index < NUM_PLANETS; index++){
+            for (int index = 0; index < NUM_PLANETS; index++) {
                 planet = null;
-                int xpos = rand.nextInt(750)-375;
-                int ypos = rand.nextInt(500)-250;
+                int xpos = rand.nextInt(750) - 375;
+                int ypos = rand.nextInt(500) - 250;
                 String pname = Planets.values()[rand.nextInt(119)].toString();
 
-                if ((xHash.contains(xpos) && yHash.contains(ypos)) || stringHash.contains(pname)) {
-                    xpos = rand.nextInt(750)-375;
-                    ypos = rand.nextInt(500)-250;
+                if ((xHash.contains(xpos) && yHash.contains(ypos))
+                        || stringHash.contains(pname)) {
+                    xpos = rand.nextInt(750) - 375;
+                    ypos = rand.nextInt(500) - 250;
                     pname = Planets.values()[rand.nextInt(119)].toString();
                 }
 
@@ -104,7 +107,6 @@ public class SolarSystem implements Serializable {
 
 /**
  * Gets a list of the planets
- * @param none
  * @return a list of the planets
  */
 
@@ -117,20 +119,23 @@ public class SolarSystem implements Serializable {
     }
 
 /**
- * returns the name of the solar system
- * @param none
- * @return a string of the name
+ * returns the name of the solar system.
+ * @return name a string of the name
  */
-    public String getName(){
+    public String getName() {
         return name;
     }
-
-    public Planet getPlanet(int i){
+/**
+ * Gets the current planet
+ * @param i
+ * @return PArray[i]
+ */
+    public Planet getPlanet(int i) {
         Object[] PArray = planetSet.toArray();
-        return (Planet)PArray[i];
+        return (Planet) PArray[i];
     }
 
-    public int[] getLocation(){
+    public int[] getLocation() {
         int[] loc = new int[2];
         loc[0] = x;
         loc[1] = y;
@@ -138,9 +143,11 @@ public class SolarSystem implements Serializable {
     }
 
     public boolean isHit(double px, double py) {
-        if (px >= (x - (sizeX/2)) && px <= (x + (sizeX/2)))
-            if (py >= (y - (sizeY/2)) && py <= (y + (sizeY/2)))
+        if (px >= (x - (sizeX / 2)) && px <= (x + (sizeX / 2))) {
+            if (py >= (y - (sizeY / 2)) && py <= (y + (sizeY / 2))) {
                 return true;
+            }
+        }
         return false;
     }
     public Image getSSPic() {
@@ -150,17 +157,17 @@ public class SolarSystem implements Serializable {
         return pic;
     }
 /**
- * Displays the contents of the solar system
- * @param none
+ * Displays the contents of the solar system.
  * @return a string of the contents
  */
+    @Override
     public String toString(){
         StringBuffer message = new StringBuffer();
         message.append("Solar System Name: " + name);
         message.append("\nSolar System Position: (" + x + "," + y + ")");
         message.append("\nPlanets:");
         List<Planet> list = getPlanets();
-        for (Planet planet: list){
+        for (Planet planet: list) {
             message.append("\n\t");
             message.append(planet.toString());
            message.append("\n--------------------------------------\n");

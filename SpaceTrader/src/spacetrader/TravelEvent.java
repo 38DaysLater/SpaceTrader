@@ -117,11 +117,17 @@ public class TravelEvent {
                             System.out.println("item was added");
                             break;
                         case 1:
-                            if (roll.nextFloat() > (0.1 * Singleton.getCharacter().getPilot())) {
-                               Singleton.getCharacter().getShip().subtractDamage(5);
-                               resultDialog = "You tried to dodge, but your skills just weren't good enough. Hull was damaged 5 points";
+                            if (roll.nextFloat() > (0.1 * Singleton
+                                    .getCharacter().getPilot())) {
+                               Singleton.getCharacter().getShip()
+                                       .subtractDamage(5);
+                               resultDialog = "You tried to dodge,"
+                                       + "but your skills just weren't"
+                                       + "good enough. Hull was damaged 5"
+                                       + "points";
                             } else {
-                                  resultDialog = "You skillfully navigate your way to saftey.";
+                                  resultDialog = "You skillfully navigate"
+                                          + "your way to saftey.";
                             }
                             break;
                         default:
@@ -134,8 +140,10 @@ public class TravelEvent {
                             resultDialog = "You ignore the floating cargo";
                             break;
                         case 1:
-                            Singleton.getCharacter().getShip().subtractDamage(10);
-                           resultDialog = "You don't react at all and your ship takes 10 points of damage.";
+                            Singleton.getCharacter().getShip()
+                                    .subtractDamage(10);
+                           resultDialog = "You don't react at all and your ship"
+                                   + "takes 10 points of damage.";
                             break;
                         default:
                             break;

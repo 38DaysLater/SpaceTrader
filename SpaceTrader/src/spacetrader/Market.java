@@ -119,11 +119,11 @@ public class Market extends Inventory {
         Inventory playerInventory = player.getInventory();
         playerInventory.setPriceList(inventory.getPriceList());
         int quantityAvailable = playerInventory.getItemCount(itemName);
-        
-        if(inventory.getItemPrice(itemName) == -1) {
+
+        if (inventory.getItemPrice(itemName) == -1) {
             return "Vendor cannot purchase that item";
         }
-        
+
         int price = playerInventory.getItemPrice(itemName);
 
         if ((int) quantitySelling == AFIQ_CHEATING

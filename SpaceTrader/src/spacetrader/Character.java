@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @author lawrence, Olivia, and Afiq
  */
 public class Character implements Serializable {
+        //CHECKSTYLE: OFF
         private static final long serialVersionUID = 1;
         private String name;
         private int pilot, fight, trade, engineer;
@@ -18,6 +19,7 @@ public class Character implements Serializable {
         private Planet currentPlanet = null;
         private SolarSystem currentSolarSystem = null;
         private SolarSystem previousSolarSystem = null;
+        //CHECKSTYLE:ON
 
 
         /**
@@ -29,9 +31,12 @@ public class Character implements Serializable {
          * @param t trade level
          * @param e engineer level
          */
-	public Character(String n, int p, int f, int t, int e) {
-            if(n.equals("Afiq")) {
-                name = n; 
+
+        //Checkstyle ignored: Params should be final
+        //Checkstyle ignored: Magic numbers
+        public Character(String n, int p, int f, int t, int e) {
+            if (n.equals("Afiq")) {
+                name = n;
                 pilot = 10;
                 fight = 10;
                 trade = 10;
@@ -58,8 +63,9 @@ public class Character implements Serializable {
  * Constructor without variables.
  */
         public Character() {
-	}
+        }
 
+        //Checkstyle ignored: method needs to be abstract, final, or empty
         @Override
         public String toString() {
             return ("Name = " + name + '\n' + "Pilot = " + pilot + '\n'
@@ -75,7 +81,7 @@ public class Character implements Serializable {
  * Sets pilot score.
  * @param num
  */
-	public void setPilot(int num){pilot += num;}
+        public void setPilot(int num){pilot += num;}
 /**
  * Sets fight score.
  * @param num
@@ -168,7 +174,7 @@ public class Character implements Serializable {
                 return 0;
             }
 
-            int distance = 0; 
+            int distance = 0;
             int[] oldLoc = previousSolarSystem.getLocation();
             int[] newLoc = s.getLocation();
             distance = Math.abs(oldLoc[0] - newLoc[0]) + Math.abs(oldLoc[1]

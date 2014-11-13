@@ -66,6 +66,7 @@ public class Item implements Serializable {
  * Calculates the final price according to a formula.
  * @param rc1 a random condition
  * @param techLevel
+ * @return calculation
  */
 
     public int calcFinalPrice(RandConditions rc1, int techLevel) {
@@ -102,7 +103,7 @@ public class Item implements Serializable {
  * @return mult a double of the multiplier used to calculate the final price
  */
 
-    private double calcCondtionMultiplyer(RandConditions rc){
+    private double calcCondtionMultiplyer(RandConditions rc) {
         double mult = 1;
 
         if (rc == IE) {
@@ -130,7 +131,6 @@ public class Item implements Serializable {
 
 /**
  * retrieves the Minimum Tech Level to Produce.
- * @param none
  * @return an int of the MTLP
  */
     public int getMTLP() {
@@ -138,7 +138,6 @@ public class Item implements Serializable {
     }
 /**
  * retrieves the Minimum Tech Level to Use.
- * @param none
  * @return an int of the MTLU
  */
 
@@ -147,7 +146,6 @@ public class Item implements Serializable {
     }
 /**
  * retrieves the TTP.
- * @param none
  * @return an int of the TTP
  */
     public int getTTP() {
@@ -155,7 +153,6 @@ public class Item implements Serializable {
     }
 /**
  * retrieves the IPL.
- * @param none
  * @return an int of the IPL
  */
 

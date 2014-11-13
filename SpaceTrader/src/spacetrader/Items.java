@@ -63,7 +63,7 @@ public class Items implements Serializable {
         list.add(robots);
     }
 /**
- * Gets the list
+ * Gets the list.
  * @return list an array list of items
  */
     public static ArrayList<Item> getList() {
@@ -72,7 +72,7 @@ public class Items implements Serializable {
 /**
  * Gets an item.
  * @param name name of item
- * @return 
+ * @return element of list, or null
  */
     public static Item getItem(String name) {
         if (name == null) {
@@ -80,23 +80,23 @@ public class Items implements Serializable {
         }
         if (name.equals("Water")) {
             return list.get(0);
-        } else if(name.equals("Furs")){
+        } else if (name.equals("Furs")) {
             return list.get(1);
-         } else if (name.equals("Food")){
+         } else if (name.equals("Food")) {
              return list.get(2);
-         } else if (name.equals("Ore")){
+         } else if (name.equals("Ore")) {
              return list.get(3);
-         } else if (name.equals("Games")){
+         } else if (name.equals("Games")) {
              return list.get(4);
-         } else if (name.equals("Firearms")){
+         } else if (name.equals("Firearms")) {
              return list.get(5);
-         } else if (name.equals("Medicine")){
+         } else if (name.equals("Medicine")) {
              return list.get(6);
-         } else if (name.equals("Machines")){
+         } else if (name.equals("Machines")) {
              return list.get(7);
-         } else if (name.equals("Narcotics")){
+         } else if (name.equals("Narcotics")) {
              return list.get(8);
-         } else if (name.equals("Robots")){
+         } else if (name.equals("Robots")) {
              return list.get(9);
          } else {
              return null;

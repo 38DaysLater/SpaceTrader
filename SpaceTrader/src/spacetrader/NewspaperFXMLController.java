@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 /**
- * FXML Controller class
+ * FXML Controller class.
  *
  * @author shiro_000
  */
