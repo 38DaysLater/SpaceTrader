@@ -26,7 +26,6 @@ public class MarketSellItemTest {
     ArrayList<String> elligibleItems;
     Market market;
     int techLevel;
-    SolarSystem ss;
     Planet planet;
     Hashtable<String, Integer> priceList;
 
@@ -45,23 +44,19 @@ public class MarketSellItemTest {
     
     @Test
     public void testSellZeroItems() {
-        int cost = priceList.get("Food");
         int playerFoodCountBefore = playerInventory.getItemCount("Food");
         int marketFoodCountBefore = marketInventory.getItemCount("Food");
         int playerMoneyBefore = playerInventory.getBalance();
         int marketMoneyBefore = marketInventory.getBalance();
         
-        marketInventory.add("Food");
-        marketInventory.add("Food");
-        marketInventory.add("Food");
         
         market.sellItem("Food", player, 0);
         
         
         assertEquals(playerInventory.getItemCount("Food"),
-                playerFoodCountBefore + 0);
+                playerFoodCountBefore);
         assertEquals(marketInventory.getItemCount("Food"),
-                marketFoodCountBefore - 0);
+                marketFoodCountBefore);
         assertEquals(playerMoneyBefore, playerInventory.getBalance());
         assertEquals(marketMoneyBefore, marketInventory.getBalance());
     }
@@ -74,17 +69,14 @@ public class MarketSellItemTest {
         int playerMoneyBefore = playerInventory.getBalance();
         int marketMoneyBefore = marketInventory.getBalance();
         
-        marketInventory.add("Water");
-        marketInventory.add("Water");
-        
         market.sellItem("Water", player, 1);
         
         assertEquals(playerInventory.getItemCount("Water"),
                 playerWaterCountBefore + 1);
         assertEquals(marketInventory.getItemCount("Water"),
                 marketWaterCountBefore - 1);
-        assertEquals(playerMoneyBefore + (cost), playerInventory.getBalance());
-        assertEquals(marketMoneyBefore - (cost), marketInventory.getBalance());
+        assertEquals(playerMoneyBefore - (cost), playerInventory.getBalance());
+        assertEquals(marketMoneyBefore + (cost), marketInventory.getBalance());
         
     }
     
@@ -95,11 +87,7 @@ public class MarketSellItemTest {
         int marketOreCountBefore = marketInventory.getItemCount("Ore");
         int playerMoneyBefore = playerInventory.getBalance();
         int marketMoneyBefore = marketInventory.getBalance();
-        
-        marketInventory.add("Ore");
-        marketInventory.add("Ore");
-        marketInventory.add("Ore");
-        marketInventory.add("Ore");
+
         
         market.sellItem("Ore", player, 2);
         
@@ -107,9 +95,9 @@ public class MarketSellItemTest {
                 playerOreCountBefore + 2);
         assertEquals(marketInventory.getItemCount("Ore"),
                 marketOreCountBefore - 2);
-        assertEquals(playerMoneyBefore + (cost * 2),
+        assertEquals(playerMoneyBefore - (cost * 2),
                 playerInventory.getBalance());
-        assertEquals(marketMoneyBefore - (cost * 2),
+        assertEquals(marketMoneyBefore + (cost * 2),
                 marketInventory.getBalance());
     }
     
@@ -120,24 +108,16 @@ public class MarketSellItemTest {
         int marketFursCountBefore = marketInventory.getItemCount("Furs");
         int playerMoneyBefore = playerInventory.getBalance();
         int marketMoneyBefore = marketInventory.getBalance();
-        
-        marketInventory.add("Furs");
-        marketInventory.add("Furs");
-        marketInventory.add("Furs");
-        
+       
         market.sellItem("Furs", player, 3);
         
         assertEquals(playerInventory.getItemCount("Furs"),
                 playerFursCountBefore + 3); 
         assertEquals(marketInventory.getItemCount("Furs"),
                 marketFursCountBefore - 3);
-        assertEquals(playerMoneyBefore + (cost * 3),
+        assertEquals(playerMoneyBefore - (cost * 3),
                 playerInventory.getBalance());
-        assertEquals(marketMoneyBefore - (cost * 3),
+        assertEquals(marketMoneyBefore + (cost * 3),
                 marketInventory.getBalance());
-    }
-    
-    @Test
-    public void testSellNull() {
     }
 }
