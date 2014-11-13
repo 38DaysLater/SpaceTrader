@@ -187,7 +187,7 @@ public class UniverseController implements Initializable {
      * @param Event event
      */
     @FXML
-    private void PlanetNameTabSelected(Event event) {
+    private void planetNameTabSelected(Event event) {
         planNameLabel.setText(currentP().getPlanetName());
         String text = currentP().toString();
         int index = text.indexOf('\n');
@@ -201,8 +201,8 @@ public class UniverseController implements Initializable {
     @FXML
     private void newsButtHandle(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass()
-                    .getResource("NewspaperFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource(
+                    "NewspaperFXML.fxml"));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("Newspaper");
