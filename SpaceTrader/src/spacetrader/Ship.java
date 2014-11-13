@@ -71,7 +71,7 @@ public class Ship implements Serializable{
         
         Character player = Singleton.getCharacter(); //Grabs current character
         if(player.getPilot() > 5) {
-            double pn = player.getPilot() / 3; //Stores the player's pilot score / 3        
+            double pn = (double) player.getPilot() / 3; //Stores the player's pilot score / 3        
             fuel -= distance/pn;  //Decrements the fuel based on distance and pilot score
 
         } else {
