@@ -136,8 +136,4 @@ public class MarketSellItemTest {
         assertEquals(marketMoneyBefore - (cost * 3),
                 marketInventory.getBalance());
     }
-    
-    @Test
-    public void testSellNull() {
-    }
 }
