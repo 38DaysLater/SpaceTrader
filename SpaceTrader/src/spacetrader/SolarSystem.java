@@ -87,8 +87,7 @@ public class SolarSystem implements Serializable {
         int option = rand.nextInt(3);
         switch (option) {
             case 0:
-                pic = new Image("/spacetrader/resources/isabellesStar.png",
-                        63, 61, true, true);
+                pic = new Image("/spacetrader/resources/SolarSystem2.png");
                 break;
             case 1:
                 pic = new Image("/spacetrader/resources/redStar.png",
