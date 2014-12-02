@@ -138,18 +138,13 @@ public class Market extends Inventory {
                 && player.getName().equals("Afiq")) {
             playerInventory.addToBalance(STARTING_BALANCE);
 
-            File Filename = new File("/Users/AfiqAzaibi/College/Fall2014/CS2340/SpaceTrader/SpaceTrader/src/spacetrader/TDFW.wav");
-            if(Filename.exists()) {
-                System.out.println("FILE EXIST");
-            }
+            File Filename = new File("TDFW.wav");
+
             try{
                 InputStream in = new FileInputStream(Filename);
                 // Create an AudioStream object from the input stream.
                 AudioStream as = new AudioStream(in);   
                 
-                
-                
-
                 // Use the static class member "player" from class AudioPlayer to play
                 // clip.
                 AudioPlayer.player.start(as);            

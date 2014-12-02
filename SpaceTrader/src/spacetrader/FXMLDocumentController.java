@@ -61,6 +61,24 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void handleNewGameButtonAction(ActionEvent event) {
+
+        
+            File Filename2 = new File("DarkParade.wav");
+
+            try{
+                InputStream in2 = new FileInputStream(Filename2);
+                // Create an AudioStream object from the input stream.
+                AudioStream as2 = new AudioStream(in2);   
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as2);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+        
         try {
             Parent root = FXMLLoader.load(getClass()
                     .getResource("CharacterCreation.fxml"));
@@ -78,6 +96,12 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    
+    
+    
+    
+    
+    
     /**
      * Handles when the load game button is clicked.
      * @param event
@@ -126,6 +150,23 @@ public class FXMLDocumentController implements Initializable {
                 is.close();
 
             } catch (Exception e) {
+                        
+        File Filename2 = new File("DarkParade.wav");
+
+                try{
+                    InputStream in2 = new FileInputStream(Filename2);
+                    // Create an AudioStream object from the input stream.
+                    AudioStream as2 = new AudioStream(in2);   
+                    // Use the static class member "player" from class AudioPlayer to play
+                    // clip.
+                    AudioPlayer.player.start(as2);            
+                    // Similarly, to stop the audio.
+                    //AudioPlayer.player.stop(as); 
+                }
+                catch (Exception exception) {
+                    System.out.println(exception);
+                }
+
                 Dialogs.create()
                 .title("OH NO!")
                 .masthead("Could not find save file")
@@ -144,16 +185,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleOptionButtonAction(ActionEvent event) {
         
-            File Filename = new File("interstellar.wav");
+            File Filename = new File("TDFW.wav");
 
             try{
                 InputStream in = new FileInputStream(Filename);
                 // Create an AudioStream object from the input stream.
                 AudioStream as = new AudioStream(in);   
-                
-                
-                
-
                 // Use the static class member "player" from class AudioPlayer to play
                 // clip.
                 AudioPlayer.player.start(as);            
