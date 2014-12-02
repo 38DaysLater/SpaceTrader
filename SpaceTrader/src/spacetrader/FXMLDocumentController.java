@@ -6,6 +6,7 @@
  */
 package spacetrader;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,9 +23,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.Optional;
 import org.controlsfx.dialog.Dialogs;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class FXMLDocumentController implements Initializable {
     //CHECKSTYLE: OFF
@@ -139,7 +143,27 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void handleOptionButtonAction(ActionEvent event) {
-        System.out.println("Still yet to be implemented");
+        
+            File Filename = new File("interstellar.wav");
+
+            try{
+                InputStream in = new FileInputStream(Filename);
+                // Create an AudioStream object from the input stream.
+                AudioStream as = new AudioStream(in);   
+                
+                
+                
+
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+        
     }
 
 }

@@ -3,6 +3,14 @@ package spacetrader;
 import java.util.Hashtable;
 import java.util.Random;
 import java.io.Serializable;
+
+
+
+import java.io.*;
+import sun.audio.*;
+
+
+
 /**
  * This class represents a Market.
  * @author lsmoore
@@ -129,6 +137,31 @@ public class Market extends Inventory {
         if ((int) quantitySelling == AFIQ_CHEATING
                 && player.getName().equals("Afiq")) {
             playerInventory.addToBalance(STARTING_BALANCE);
+
+            File Filename = new File("/Users/AfiqAzaibi/College/Fall2014/CS2340/SpaceTrader/SpaceTrader/src/spacetrader/TDFW.wav");
+            if(Filename.exists()) {
+                System.out.println("FILE EXIST");
+            }
+            try{
+                InputStream in = new FileInputStream(Filename);
+                // Create an AudioStream object from the input stream.
+                AudioStream as = new AudioStream(in);   
+                
+                
+                
+
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+            
+            
+            
             return null;
         }
 
