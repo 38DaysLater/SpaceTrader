@@ -29,6 +29,11 @@ and open the template in the editor.
     -fx-text-fill: yellow;
     -fx-font-size: 18px;
 }
+#textLabel {
+    -fx-font-family: 'OCR A Extended';
+    -fx-text-fill: yellow;
+    -fx-font-size: 38px; 
+}
 
 .button {
     -fx-font-family: 'OCR A Extended';

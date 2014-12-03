@@ -134,11 +134,11 @@ public class CharacterCreationController implements Initializable {
                 //this is so the character starts off same place every time.
                 Singleton.getCharacter().setCurrentPlanet(uni.getSolarSystem(0).getPlanet(0));
                 Singleton.getCharacter().setCurrentSolarSystem(uni.getSolarSystem(0));
-                Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("IntroSpeech.fxml"));
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
-                stage.setTitle("Space Trader");
+                stage.setTitle("Welcome!");
                 stage.setScene(scene);
                 stage.show();
 
