@@ -60,7 +60,11 @@ public class Character implements Serializable {
             engineer = e;
             ship = new Ship();
             inventory = new Inventory();
-            inventory.addToBalance(STARTING_MONEY);
+            if(trade > 0) {
+                inventory.addToBalance(STARTING_MONEY * trade);
+            } else {
+                inventory.addToBalance(STARTING_MONEY);
+            }
             inventory.setCapacity(0);
         }
     }

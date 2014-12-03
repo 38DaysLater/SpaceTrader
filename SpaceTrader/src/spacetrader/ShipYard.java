@@ -112,6 +112,10 @@ public class ShipYard implements Serializable {
                 Singleton.getCharacter().getInventory().getBalance();
         Ship charShip = Singleton.getCharacter().getShip();
         String returnString = null;
+        
+        int engineer = Singleton.getCharacter().getEngineer();
+        repairCost = repairCost/engineer;
+        
         if (repairCost > currentBalance) {
             returnString = "You don't have enough moneys";
         } else if (repairCost < 0) {
