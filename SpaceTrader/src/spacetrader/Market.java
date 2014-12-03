@@ -198,6 +198,19 @@ public class Market extends Inventory {
         }
         return null;
     }
+    
+    /**
+     * retrieves the mystery item.
+     * returns null if not present
+     * @param MysteryItem: the item to be added
+     */
+    
+    public boolean canSellMysteryItem() {
+        if (mysteryItem == null) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * retrieves the inventory.
