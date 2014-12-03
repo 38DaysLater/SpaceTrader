@@ -56,7 +56,10 @@ public class SolarSystem implements Serializable {
         Planet planet;
 
         if (ssCount == 0) {
-            planetSet.add(new Planet("Second Earth", 0, 0, this));
+            Planet secondEarth = new Planet("Second Earth", 0, 0, this);
+            FinalMysteryItem fmi = new FinalMysteryItem();
+            secondEarth.getMarket().addMysteryItem(fmi);
+            planetSet.add(secondEarth);
         } else {
             //randomely generates the positions, name, and other characteristcs
             // of the planets

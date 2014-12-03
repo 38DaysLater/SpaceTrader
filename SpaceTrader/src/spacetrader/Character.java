@@ -307,4 +307,15 @@ public class Character implements Serializable {
         this.ship = ship;
         this.getInventory().setCapacity(ship.getCapacity());
     }
+    
+    /**
+     * Checks whether the player can buy the mystery item
+     * @return a boolean thats true when the player can, false otherwise
+     */
+    public boolean canBuyMysteryItem() {
+        if (inventory.getBalance() >= FinalMysteryItem.getPrice()) {
+            return true;
+        }
+        return false;
+    }
 }

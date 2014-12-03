@@ -61,6 +61,19 @@ public class Item implements Serializable {
         CR = cr;
         ER = er;
     }
+    
+    public Item(String name, int price) {
+        basePrice = price;
+        this.name = name;
+        MTLP = 0;
+        MTLU = 0;
+        TTP = 0;
+        IPL = 0;
+        IE = RandConditions.NONE;
+        CR = RandConditions.NONE;
+        ER = RandConditions.NONE;
+        var = 0;
+    }
 
 /**
  * Calculates the final price according to a formula.

@@ -36,30 +36,30 @@ public class Items implements Serializable {
         list.add(ore);
 
         Item games = new Item(3, 1, 6, 250, -10, 5, RandConditions.BOREDOM,
-                RandConditions.ARTISTIC, RandConditions.NEVER, "Games");
+                RandConditions.ARTISTIC, RandConditions.NONE, "Games");
         list.add(games);
 
         Item firearms = new Item(3, 1, 5, 1250, -75, 100, RandConditions.WAR,
-                RandConditions.WARLIKE, RandConditions.NEVER, "Firearms");
+                RandConditions.WARLIKE, RandConditions.NONE, "Firearms");
         list.add(firearms);
 
         Item medicine = new Item(4, 1, 6, 650, -20, 10, RandConditions.PLAGUE,
-                RandConditions.LOTSOFHERBS, RandConditions.NEVER, "Medicine");
+                RandConditions.LOTSOFHERBS, RandConditions.NONE, "Medicine");
         list.add(medicine);
 
         Item machines = new Item(4, 3, 5, 900, -30, 5, 
-                RandConditions.LACKOFWORKERS, RandConditions.NEVER,
-                RandConditions.NEVER, "Machines");
+                RandConditions.LACKOFWORKERS, RandConditions.NONE,
+                RandConditions.NONE, "Machines");
         list.add(machines);
 
         Item narcotics = new Item(5, 0, 5, 3500, -125, 150,
                 RandConditions.BOREDOM, RandConditions.WEIRDMUSHROOMS,
-                RandConditions.NEVER, "Narcotics");
+                RandConditions.NONE, "Narcotics");
         list.add(narcotics);
 
         Item robots = new Item(6, 4, 7, 5000, -150, 100,
-                RandConditions.LACKOFWORKERS, RandConditions.NEVER,
-                RandConditions.NEVER, "Robots");
+                RandConditions.LACKOFWORKERS, RandConditions.NONE,
+                RandConditions.NONE, "Robots");
         list.add(robots);
     }
 /**

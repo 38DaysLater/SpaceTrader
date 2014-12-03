@@ -30,6 +30,6 @@ public enum RandConditions {
     LOTSOFHERBS,
     LACKOFWORKERS,
     WEIRDMUSHROOMS,
-    NEVER;
+    NONE;
     //CHECKSTYLE: ON
 }

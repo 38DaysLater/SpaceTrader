@@ -28,6 +28,8 @@ public class Market extends Inventory {
     private Planet planet;
     private static final int NUM_CONDITIONS = 19;
     private static final int AFIQ_CHEATING = 9000;
+    private boolean hasMysteryItem = false;
+    private FinalMysteryItem mysteryItem;
     //CHECKSTYLE: ON
 
 /**
@@ -179,13 +181,43 @@ public class Market extends Inventory {
         //adjust items in inventories: Player lose item, vendor gain item
         playerInventory.removeItem(itemName, (int) quantitySelling);
         inventory.add(itemName, (int) quantitySelling);
+        if (Singleton.getCharacter().canBuyMysteryItem()) {
+            System.out.println("Can buy final item");
+            System.out.println("Mystery Item name: " + mysteryItem.getName());
+            System.out.println("Mystery item price: " + FinalMysteryItem.getPrice());
+        } else {
+            System.out.println("Cannot buy final item");
+        }
+        return null;
+    }
+    
+     /**
+     * Adds the mystery item.
+     * @param MysteryItem: the item to be added
+     */
+    
+    public void addMysteryItem(FinalMysteryItem mi) {
+        hasMysteryItem = true;
+        mysteryItem = mi;
+    }
+    
+    /**
+     * retrieves the mystery item.
+     * returns null if not present
+     * @param MysteryItem: the item to be added
+     */
+    
+    public FinalMysteryItem getMysteryItem() {
+        if(hasMysteryItem) {
+            return mysteryItem;
+        }
         return null;
     }
 
-/**
- * retrieves the inventory.
- * @return Inventory
- */
+    /**
+     * retrieves the inventory.
+     * @return Inventory
+     */
     public Inventory getInventory() {
         return inventory;
     }
