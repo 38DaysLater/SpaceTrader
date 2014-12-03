@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javazoom.jl.decoder.JavaLayerException;
 
@@ -58,8 +59,8 @@ public class IntroSpeechController implements Initializable {
     }
 
     @FXML
-    private void keyPressedHandler(KeyEvent event) {
-        System.out.println("key typed");
+    private void mouseClicked(MouseEvent event) {
+         System.out.println("mouse clicked");
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Universe.fxml"));
 
