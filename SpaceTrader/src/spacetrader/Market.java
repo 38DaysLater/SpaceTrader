@@ -140,22 +140,7 @@ public class Market extends Inventory {
                 && player.getName().equals("Afiq")) {
             playerInventory.addToBalance(STARTING_BALANCE);
 
-            File Filename = new File("TDFW.wav");
 
-            try{
-                InputStream in = new FileInputStream(Filename);
-                // Create an AudioStream object from the input stream.
-                AudioStream as = new AudioStream(in);   
-                
-                // Use the static class member "player" from class AudioPlayer to play
-                // clip.
-                AudioPlayer.player.start(as);            
-                // Similarly, to stop the audio.
-                //AudioPlayer.player.stop(as); 
-            }
-            catch (Exception exception) {
-                System.out.println(exception);
-            }
             
             
             

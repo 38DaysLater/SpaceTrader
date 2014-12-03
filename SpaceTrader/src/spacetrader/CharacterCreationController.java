@@ -8,7 +8,10 @@
 
 package spacetrader;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,6 +27,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class CharacterCreationController implements Initializable {
     @FXML
@@ -107,6 +112,23 @@ public class CharacterCreationController implements Initializable {
     private void okButtonHandler(ActionEvent event) {
         //checks to see if there was a name inputed
         if (nameBox.getText() == null || nameBox.getText().isEmpty()) {
+            File Filename = new File("OhNo.wav");
+
+            try{
+                InputStream in = new FileInputStream(Filename);
+                // Create an AudioStream object from the input stream.
+                AudioStream as = new AudioStream(in);   
+                
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+ 
             //dialog box start
               Dialogs.create()
               .title("No name")
@@ -116,6 +138,23 @@ public class CharacterCreationController implements Initializable {
             //end dialog box
         //makes sure not too many skill points are used
         } else if (Integer.parseInt(spNumLabel.getText()) < 0 ) {
+            File Filename = new File("OhNo.wav");
+
+            try{
+                InputStream in = new FileInputStream(Filename);
+                // Create an AudioStream object from the input stream.
+                AudioStream as = new AudioStream(in);   
+                
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+            
             //dialog box start
               Dialogs.create()
               .title("OH NO!")
@@ -124,6 +163,26 @@ public class CharacterCreationController implements Initializable {
               .showWarning();
             //end dialog box
         } else {
+            
+            
+            File Filename = new File("InterstellarFull.wav");
+
+            try{
+                InputStream in = new FileInputStream(Filename);
+                // Create an AudioStream object from the input stream.
+                AudioStream as = new AudioStream(in);   
+                
+                // Use the static class member "player" from class AudioPlayer to play
+                // clip.
+                AudioPlayer.player.start(as);            
+                // Similarly, to stop the audio.
+                //AudioPlayer.player.stop(as); 
+            }
+            catch (Exception exception) {
+                System.out.println(exception);
+            }
+            
+            
             //instantiates character and Universe, then brings up Universe screen
             Character ch = new Character(nameBox.getText(), pilotVal, fightVal, tradeVal, enginVal);
             Singleton.setCharacter(ch);
