@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -14,11 +15,15 @@
          <image>
             <Image url="@resources/STS115_Atlantis_undock_ISS_edit2.jpg" />
          </image>
+         <effect>
+            <ColorAdjust brightness="-0.56" />
+         </effect>
       </ImageView>
-      <Label fx:id="textLabel" layoutX="-1.0" layoutY="-2.0" onMouseClicked="#mouseClicked" prefHeight="400.0" prefWidth="604.0" text="This is a test of the text to speech function. Add the actual dialogue here. Click anywhere to continue." textFill="#f0ff00" wrapText="true">
+      <Label fx:id="charlabels" layoutX="-1.0" layoutY="-2.0" onMouseClicked="#mouseClicked" prefHeight="400.0" prefWidth="604.0" stylesheets="@resources/charstyle.css" text="Welcome to Space Trader. You are finally of age and have decided to follow in your father's footsteps to become a space pilot. Before you begin your journey of seeking the ultimate treasure, you pay a visit to Second Earth's shipyard to buy your first ship." textFill="#f0ff00" wrapText="true">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
+      <Label layoutX="212.0" layoutY="326.0" text="Click anywhere to continue" textFill="#f0ff00" />
    </children>
 </AnchorPane>

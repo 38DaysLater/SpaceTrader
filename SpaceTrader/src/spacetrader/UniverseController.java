@@ -54,6 +54,15 @@ import javafx.scene.control.ToggleGroup;
 
 import org.controlsfx.dialog.Dialogs;
 
+//for speech
+import com.gtranslate.Audio;
+import com.gtranslate.Language;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javazoom.jl.decoder.JavaLayerException;
+
+
 /**
  * FXML Controller class
  *
@@ -165,6 +174,7 @@ public class UniverseController implements Initializable {
     private Label skillLabelShipyard;
     @FXML
     private Tab upgradeTab;
+    private Object Audio;
 
     /**
      * Initializes the controller class.

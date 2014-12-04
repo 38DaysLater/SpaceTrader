@@ -43,7 +43,8 @@ public class IntroSpeechController implements Initializable {
         InputStream sound = null;
         try {
             Audio audio = Audio.getInstance();
-            sound = audio.getAudio("hello", Language.ENGLISH);
+            sound = audio.getAudio("Hello," + Singleton.getCharacter().getName()
+                    + ", and welcome to Space Trader", Language.ENGLISH);
             audio.play(sound);
         } catch (IOException | JavaLayerException ex) {
             Logger.getLogger(IntroSpeechController.class.getName())
