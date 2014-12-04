@@ -64,7 +64,7 @@ public class MiniGame extends Application {
             oppX = 450;
             oppY = 100;
             oppSpeed = 50 ; /* / Singleton.getCharacter.getFight();*/
-            speed = 10 ;/** Singleton.getCharacter().getPilot();*/
+            speed = 2 * Singleton.getCharacter().getFight();
             // create a color palette of 180 colors
             colors = new Paint[181];
             colors[0] = new RadialGradient(0, 0, 0.5, 0.5, 0.5, true, CycleMethod.NO_CYCLE,
