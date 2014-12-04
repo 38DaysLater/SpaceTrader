@@ -53,18 +53,20 @@ public class MiniGame extends Application {
         private final List<Bullet> bullets = new ArrayList<Bullet>();
         private int playX, playY, speed, oppX, oppY, oppSpeed, oppHealth;
         private final Paint[] colors;
-        private boolean hasWon = false;
-        private boolean hasLost = false;
-        private boolean dialogBoxShown = false;
-        private boolean keyCurrentlyPressed = false;
+        private boolean hasWon;
+        private boolean hasLost;
+        private boolean dialogBoxShown;
        
         public GameScreen() {
+            dialogBoxShown = false;
+            hasWon = false;
+            hasLost = false;
             playX = 25;
             playY = 300;
             oppX = 450;
             oppY = 100;
             oppSpeed = 50 ; /* / Singleton.getCharacter.getFight();*/
-            speed = 2 * Singleton.getCharacter().getFight();
+            speed = (2 * Singleton.getCharacter().getFight()) + 5;
             // create a color palette of 180 colors
             colors = new Paint[181];
             colors[0] = new RadialGradient(0, 0, 0.5, 0.5, 0.5, true, CycleMethod.NO_CYCLE,
@@ -110,17 +112,28 @@ public class MiniGame extends Application {
             timer = new AnimationTimer() {
                     //on animation
                 @Override public void handle(long now) {
-                    handleGameOver();
-                    if (dialogBoxShown) {
-                        canvas.getScene().getWindow().hide();
-                        return;
-                    }
                     canvas.requestFocus();
                     GraphicsContext gc = canvas.getGraphicsContext2D();
                     // clear area with transparent black
                     gc.setFill(Color.rgb(0, 0, 0, 0.2));
                     gc.fillRect(0, 0, 500, 500);
                     drawGame(gc);
+                    
+                    String result = handleGameOver();
+                    if (result != null) {
+                         //start dialog box
+                    Dialogs.create()
+                    .title("Something's Happened!")
+                    .masthead("Something has happened!")
+                    .message(result)
+                    .showWarning();
+                    //end dialog box
+                     dialogBoxShown = true;
+                    }
+                    if (dialogBoxShown) {
+                        canvas.getScene().getWindow().hide();
+                        return;
+                    }
                 }
             };
         }
@@ -155,6 +168,7 @@ public class MiniGame extends Application {
                 5 + o.posY > oppY) {
                      // enemy hit, end game
                     hasWon = true;
+                    System.out.println("Hit enemy");
                 }
                 
                 if (o.posX < playX + 25 &&
@@ -163,16 +177,17 @@ public class MiniGame extends Application {
                 5 + o.posY > playY) {
                      // you're hit, end game
                     hasLost = true;
+                    System.out.println("Enemy hit you");
                 }
                 o.update();
                 o.draw(gc);
             }
         }
         
-        private void handleGameOver() {
+        private String handleGameOver() {
             String resultDialog;
             if (!hasWon || !hasLost || dialogBoxShown) {
-                return;
+                resultDialog = null;
             } else if (hasWon) {
                 resultDialog = "You Win! Your fight skill has increased!";
                 int fight = Singleton.getCharacter().getFight();
@@ -181,14 +196,7 @@ public class MiniGame extends Application {
                 resultDialog = "You lose. Your ship has taken 10 damage.";
                 Singleton.getCharacter().getShip().subtractDamage(10);
             }
-            dialogBoxShown = true;
-             //start dialog box
-                Dialogs.create()
-                .title("Something's Happened!")
-                .masthead("Something has happened!")
-                .message(resultDialog)
-                .showWarning();
-                //end dialog box
+            return resultDialog;
         }
         
         private void moveEnemy() {

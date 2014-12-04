@@ -83,9 +83,11 @@ public class TravelEvent {
     public void populateEvents() {
        //generates event objects. Will only be called once.
        eventList.add(new TravelEvent("There's some cargo floating"
-               + "in space. Bring it on board?", (float)0.05, 0));
+               + "in space. Bring it on board?", (float)0.3, 0));
        eventList.add(new TravelEvent("Some space debris suddenly appears "
-               + "in your field of vision. Try and dodge?", (float)0.99, 1));
+               + "in your field of vision. Try and dodge?", (float)0.3, 1));
+       eventList.add(new TravelEvent("You see a fellow merchant with his "
+               + "hazzard lights on. Try and help?", (float)0.3, 2));
     }
 
 
@@ -114,7 +116,7 @@ public class TravelEvent {
                         case 0:
                             Singleton.getCharacter().getInventory()
                                     .add("Robots");
-                            System.out.println("item was added");
+                            resultDialog = "Robots were added to cargo bay";
                             break;
                         case 1:
                             if (roll.nextFloat() > (0.1 * Singleton
@@ -130,6 +132,17 @@ public class TravelEvent {
                                           + "your way to saftey.";
                             }
                             break;
+                        case 2:
+                            if (roll.nextFloat() > (0.1 * Singleton
+                                    .getCharacter().getEngineer())) {
+                                resultDialog = "His problem is too complicated"
+                                        + " for you to fix.";
+                            } else {
+                                resultDialog = "Using your engineering prowress"
+                                        + " you quickly diagnose and solve his"
+                                        + " mechanical failure. Your engineer"
+                                        + " skill has improved!";
+                            }
                         default:
                             break;
                         }
@@ -145,6 +158,9 @@ public class TravelEvent {
                            resultDialog = "You don't react at all and your ship"
                                    + "takes 10 points of damage.";
                             break;
+                        case 2:
+                            resultDialog = "You coldy fly by the stranger in"
+                                    + " need";
                         default:
                             break;
                         }
