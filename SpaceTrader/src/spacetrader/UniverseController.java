@@ -1011,6 +1011,20 @@ public class UniverseController implements Initializable {
                                 */
                                 TravelEvent events = new TravelEvent();
                                 events.handleEvents();
+                                
+                                //calls minigame
+                                try {
+                                if (Math.random() < 0.9) {
+                                                MiniGame mini = new MiniGame();
+                                                Stage stage = new Stage();
+                                                mini.start(stage);
+                                                mini.play();
+                                                
+                                }
+                                }
+                                catch (Exception e) {
+                                    System.out.println("minigame failed");
+                                }
                                 cha.getShip().subtractFuel(cha.getShip()
                                         .getFuelLevel(), dist);
                                 cha.setCurrentPlanet(p);

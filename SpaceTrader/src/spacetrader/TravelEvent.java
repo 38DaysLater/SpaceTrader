@@ -84,7 +84,7 @@ public class TravelEvent {
        //generates event objects. Will only be called once.
        eventList.add(new TravelEvent("There's some cargo floating"
                + "in space. Bring it on board?", (float)0.05, 0));
-       eventList.add(new TravelEvent("Some space debris suddenly appears"
+       eventList.add(new TravelEvent("Some space debris suddenly appears "
                + "in your field of vision. Try and dodge?", (float)0.99, 1));
     }
 
@@ -122,8 +122,8 @@ public class TravelEvent {
                                Singleton.getCharacter().getShip()
                                        .subtractDamage(5);
                                resultDialog = "You tried to dodge,"
-                                       + "but your skills just weren't"
-                                       + "good enough. Hull was damaged 5"
+                                       + "but your skills just weren't "
+                                       + "good enough. Hull was damaged 5 "
                                        + "points";
                             } else {
                                   resultDialog = "You skillfully navigate"
